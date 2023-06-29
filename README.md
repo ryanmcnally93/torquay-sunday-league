@@ -97,7 +97,7 @@ These wireframes were created using <a href="https://balsamiq.com/wireframes/?ga
 
 - This index prototype was created on Figma.com.
 
-<img src="/assets/images/readme-images/index-prototype.png" width="50%" alt="Index Prototype" style="display: inherit; margin: auto;">
+<img src="/assets/images/readme-images/index-prototype.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto;">
 
 ### Q and A of Potential Users
 
