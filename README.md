@@ -219,7 +219,9 @@ Smallest phone size IPhone 5/SE simulator on Dev Tools -->
 
 ### Fixed Bugs
 
+1). When trying to upload database using python3, I was getting an error saying "tsl" does not exist. This is because when setting up my env.py file, I short-handed the name of my project, not doing so anywhere else.
 
+I fixed this issue by opening psql and changing the directory again to torquay_sunday_league, and when I tried again this worked.
 
 ### Responsive Design
 
