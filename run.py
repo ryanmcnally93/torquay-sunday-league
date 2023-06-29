@@ -1,5 +1,5 @@
 import os
-from torquay_super_league import app
+from torquay_sunday_league import app
 
 
 if __name__ == "__main__":

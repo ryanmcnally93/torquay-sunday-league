@@ -77,8 +77,6 @@ These wireframes were created using <a href="https://balsamiq.com/wireframes/?ga
 
 <img src="/assets/images/readme-images/login-or-register-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/assets/images/readme-images/index-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
-
 <img src="/assets/images/readme-images/create-team-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
 <img src="/assets/images/readme-images/team-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
