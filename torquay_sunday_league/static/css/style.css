@@ -1,3 +1,69 @@
+/* Navbar */
+#logo {
+    width: 200px;
+    position: absolute;
+    top: -60px;
+    left: -45px;
+}
+
+#nav {
+    height: 82px;
+    background-color: #fafafa;
+}
+
+@media (min-width: 768px){
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: 82px;
+        line-height: 82px;
+    }
+}
+
 #hello {
     color: red;
+}
+
+nav ul a {
+    color: green;
+    /* font-family? */
+}
+
+nav {
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
+}
+
+.fa-bars:before, .fa-bars:after {
+    color: #008000;
+}
+
+nav .sidenav-trigger {
+    float: right;
+}
+
+.sidenav {
+    left: 150%;
+}
+
+.main-heading, .sub-heading {
+    color: #008000;
+    text-align: center;
+}
+
+.main-heading {
+    font-weight: 600;
+}
+
+#league-table {
+    background-color: #fafafa;
+    width: 33%;
+    margin: auto;
+    background-color: #fafafa;
+    border: 2px solid green;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th, td {
+    text-align: center;
 }
