@@ -81,6 +81,11 @@ th, td {
     overflow: hidden;
 }
 
+#rashford-box {
+    width: 460px;
+    right: 3%;
+}
+
 .player-left-box {
     left: 5%;
 }
@@ -97,7 +102,7 @@ th, td {
     width: 100%;
 }
 
-#index-main {
+#main-content {
     margin-bottom: 20px;
     height: 690px;
 }
