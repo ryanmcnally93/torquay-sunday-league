@@ -223,6 +223,14 @@ Smallest phone size IPhone 5/SE simulator on Dev Tools -->
 
 I fixed this issue by opening psql and changing the directory again to torquay_sunday_league, and when I tried again this worked.
 
+2). Really struggled getting all of the main area content on one line. Salah (right player) was not staying on the same line as Odegaard (left player) and the table.
+
+<!-- IMAGE -->
+
+I fixed this in several steps, first, I made the table inline-table and the two players inline-block. This placed the three elements in a line, but the table's margin: auto property no longer centered it. I fixed this issue by using the margin-left: 50%, left: (half the width of the element) trick.
+
+3). 
+
 ### Responsive Design
 
 #### Ipad Air screen resolution
