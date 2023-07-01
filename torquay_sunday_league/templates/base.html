@@ -17,7 +17,7 @@
     <nav id="nav">
         <!-- Desktop & Tablet Navbar -->
         <div class="nav-wrapper">
-          <a href="#!">
+          <a href="{{ url_for('home') }}">
             <img id="logo" src="{{ url_for('static', filename='images/logo.webp') }}">
           </a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
@@ -139,7 +139,8 @@
     </main>
 
     <footer>
-        
+        <p>© Torquay Sunday League    ~    Back to top</p>
+        <a id="rules-link" href="#">Rules</a>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
