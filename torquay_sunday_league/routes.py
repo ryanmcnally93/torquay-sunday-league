@@ -5,4 +5,4 @@ from torquay_sunday_league.models import Team, Player
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("index.html")
