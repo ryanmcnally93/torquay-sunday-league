@@ -229,7 +229,7 @@ I fixed this issue by opening psql and changing the directory again to torquay_s
 
 I fixed this in several steps, first, I made the table inline-table and the two players inline-block. This placed the three elements in a line, but the table's margin: auto property no longer centered it. I fixed this issue by using the margin-left: 50%, left: (half the width of the element) trick.
 
-3). 
+3). Cannot update postgres after I have changed model.py. Max character length was 15, need it to be 25.
 
 ### Responsive Design
 

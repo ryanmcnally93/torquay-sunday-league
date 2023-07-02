@@ -156,3 +156,12 @@ footer p {
     min-width: 200px;
     text-align: center;
 }
+
+.green-card {
+    background-color: rgb(0,128,0,0.8);
+}
+
+.card .card-action {
+    background-color: rgb(0,128,0,0.0);
+    border-top: none;
+}
