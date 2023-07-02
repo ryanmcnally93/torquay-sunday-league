@@ -142,18 +142,9 @@ footer p {
     color: green;
 }
 
-.teams {
-    margin: auto;
-    float: inherit !important;
-}
-
-.teams-row {
-    display: inline-flex;
-}
-
 .team-card {
     min-height: 270px;
-    min-width: 200px;
+    min-width: 180px;
     text-align: center;
 }
 
@@ -164,4 +155,26 @@ footer p {
 .card .card-action {
     background-color: rgb(0,128,0,0.0);
     border-top: none;
+}
+
+.teams-row {
+    display: inline-block;
+}
+
+@media (max-width: 767px) {
+    .team-card-layout {
+        width: 50%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 950px) {
+    .team-card-layout {
+        width: 33%;
+    }
+}
+
+@media (min-width: 951px) {
+    .team-card-layout {
+        width: 25%;
+    }
 }
