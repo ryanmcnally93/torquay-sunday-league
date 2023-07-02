@@ -4,7 +4,7 @@ from torquay_sunday_league import db
 class Team(db.Model):
     #schema for the Team model
     id = db.Column(db.Integer, primary_key=True)
-    team_name = db.Column(db.String(15), unique=True, nullable=False)
+    team_name = db.Column(db.String(25), unique=True, nullable=False)
     team_no_of_players = db.Column(db.Integer, primary_key=False, nullable=False)
     team_colour = db.Column(db.String(30), nullable=False)
     team_location = db.Column(db.String(25), unique=True, nullable=False)

@@ -84,6 +84,7 @@ th, td {
 #rashford-box {
     width: 460px;
     right: 3%;
+    z-index: -1;
 }
 
 .player-left-box {
@@ -137,6 +138,21 @@ footer p {
     background-color: rgba(0,0,0,0.1);
 }
 
-.fa-futbol {
+.form-icon-colour {
     color: green;
+}
+
+.teams {
+    margin: auto;
+    float: inherit !important;
+}
+
+.teams-row {
+    display: inline-flex;
+}
+
+.team-card {
+    min-height: 270px;
+    min-width: 200px;
+    text-align: center;
 }

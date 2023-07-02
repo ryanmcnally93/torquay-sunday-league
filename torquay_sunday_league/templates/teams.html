@@ -17,6 +17,23 @@
         <img class="player-left" src="{{ url_for('static', filename='images/mitrovic.webp') }}">
     </div>
 
+    <div class="row teams-row">
+        {% for team in teams %}
+        <div class="col s6 m4 l3 teams">
+          <div class="card team-card green darken-2">
+            <div class="card-content white-text">
+              <span class="card-title">{{ team.team_name }}</span>
+            </div>
+            <div class="card-action">
+              <a class="btn blue" href="#">View Team</a>
+              <a class="btn green darken-4" href="#">Edit Team</a>
+              <a class="btn red" href="#">Delete Team</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
     <div id="rashford-box" class="player-right-box">
         <img class="player-right" src="{{ url_for('static', filename='images/rashford.webp') }}">
     </div>

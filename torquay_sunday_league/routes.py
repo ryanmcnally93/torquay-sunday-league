@@ -10,13 +10,19 @@ def home():
 
 @app.route("/teams")
 def teams():
-    return render_template("teams.html")
+    teams = Team.query.order_by(Team.team_name).all()
+    return render_template("teams.html", teams=teams)
 
 
 @app.route("/create_team", methods=["GET", "POST"])
 def create_team():
     if request.method == "POST":
-        team = Team(team_name=request.form.get("team_name"))
+        team = Team(
+            team_name=request.form.get("team_name"),
+            team_no_of_players=request.form.get("team_no_of_players"),
+            team_colour=request.form.get("team_colour"),
+            team_location=request.form.get("team_location")
+            )
         db.session.add(team)
         db.session.commit()
         return redirect(url_for("teams"))
