@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="main-heading">Create Team</h1>
+
+<div class="row card-panel green lighten-4">
+    <form class="col s12" method="POST" action="{{ url_for('create_team') }}">
+        <!-- Team Name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-solid fa-futbol prefix"></i>
+                <input id="team_name" name="team_name" minlength="3" maxlength="20" type="text" class="validate" required>
+                <label for="team_name">Team Name</label>
+            </div>
+        </div>
+        <!-- Submit -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn green">
+                    Create Team <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

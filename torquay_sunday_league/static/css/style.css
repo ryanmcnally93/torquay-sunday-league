@@ -136,3 +136,7 @@ footer p {
 #rules-link:hover {
     background-color: rgba(0,0,0,0.1);
 }
+
+.fa-futbol {
+    color: green;
+}
