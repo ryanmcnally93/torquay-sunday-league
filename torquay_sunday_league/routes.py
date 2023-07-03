@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from torquay_sunday_league import app, db
-from torquay_sunday_league.models import Team, Player
+from torquay_sunday_league.models import Team, Player, User
 
 
 @app.route("/")
@@ -27,3 +27,22 @@ def create_team():
         db.session.commit()
         return redirect(url_for("teams"))
     return render_template("create_team.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        # Check username exists
+        user_object = User.query.filter_by(username=username).first()
+        if user_object:
+            return "This username is taken!"
+
+        user = User(username=username, password=password)
+        db.session.add(user)
+        db.session.commit()
+        return "Inserted into DB!"
+
+    return render_template("register.html")

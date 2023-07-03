@@ -33,3 +33,13 @@ class Player(db.Model):
         return "#{0} - Kit Number: {1} | Name: {2} | Joined: {4}".format(
             self.id, self.player_kit_number, self.player_name, self.player_joined
         )
+
+
+class User(db.Model):
+    """ User Model """
+
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(25), unique=True, nullable=False)
+    password = db.Column(db.String(), nullable=False)
+

@@ -178,3 +178,8 @@ footer p {
         width: 25%;
     }
 }
+
+#register-button {
+    margin: auto;
+    border-radius: 10px;
+}
