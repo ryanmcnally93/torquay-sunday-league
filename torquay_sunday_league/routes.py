@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from torquay_sunday_league import app, db
 from torquay_sunday_league.models import Team, Player, User
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 @app.route("/")
@@ -33,14 +34,20 @@ def create_team():
 def register():
     if request.method == "POST":
         username = request.form.get("username")
-        password = request.form.get("password")
+        emailaddress = request.form.get("emailaddress")
+        password = generate_password_hash(request.form.get("password"))
 
-        # Check username exists
+        # Check username doesn't exist
         user_object = User.query.filter_by(username=username).first()
         if user_object:
             return "This username is taken!"
 
-        user = User(username=username, password=password)
+        # Check email doesn't exist
+        email_object = User.query.filter_by(emailaddress=emailaddress).first()
+        if email_object:
+            return "This email address is taken!"
+
+        user = User(username=username, password=password, emailaddress=emailaddress)
         db.session.add(user)
         db.session.commit()
         return "Inserted into DB!"
