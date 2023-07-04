@@ -1,4 +1,5 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash, session
+from sqlalchemy import exc
 from torquay_sunday_league import app, db
 from torquay_sunday_league.models import Team, Player, User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -50,6 +51,15 @@ def register():
         user = User(username=username, password=password, emailaddress=emailaddress)
         db.session.add(user)
         db.session.commit()
-        return "Inserted into DB!"
+        flash("Inserted into DB!")
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
 
     return render_template("register.html")
+
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
