@@ -60,6 +60,28 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
+@app.route("/log_in", methods=["GET", "POST"])
+def log_in():
+    username = request.form.get("username")
+    if request.method == "POST":
+        # Check that the user exists
+        user_object = User.query.filter_by(username=username).first()
+        if user_object:
+            # Check password is a match
+            # # if check_password_hash(
+            # #     # THIS LINE IS THE PROBLEM!!!!
+            # #     user_object["password"], request.form.get("password")):
+            if check_password_hash(user_object.password, request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("welcome, {}".format(request.form.get("username")))
+            else:
+                # Invalid password
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("log_in"))
+                
+        else:
+            # Invalid username
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("log_in"))
+
+    return render_template("log_in.html")
