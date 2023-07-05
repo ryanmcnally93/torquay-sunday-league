@@ -74,7 +74,7 @@ def log_in():
         if user_object:
             # Check password is a match
             # # if check_password_hash(
-            # #     # THIS LINE IS THE PROBLEM!!!!
+            # #     # THIS LINE IS A MISTAKE I HAD!!!!
             # #     user_object["password"], request.form.get("password")):
             if check_password_hash(user_object.password, request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
@@ -96,4 +96,17 @@ def log_in():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     username = session["user"]
-    return render_template("user_profile.html", username=username)
+
+    # Checking for session cookie
+    if session["user"]:
+        return render_template("user_profile.html", username=username)
+    
+    # If no session cookie, we return to log_in page
+    return redirect(url_for("log_in"))
+
+
+@app.route("/log_out")
+def log_out():
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("log_in"))
