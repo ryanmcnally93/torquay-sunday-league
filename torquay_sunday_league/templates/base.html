@@ -23,6 +23,7 @@
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             <li><a href="{{ url_for('log_in') }}">Log In</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="{{ url_for('teams') }}">Teams</a></li>
@@ -33,6 +34,7 @@
       <!-- Mobile Navbar -->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
         <li><a href="{{ url_for('log_in') }}">Log In</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
         <li><a href="{{ url_for('teams') }}">Teams</a></li>

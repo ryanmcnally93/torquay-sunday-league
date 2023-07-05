@@ -57,12 +57,11 @@ def register():
         user = User(username=username, password=password, emailaddress=emailaddress, month_joined=month_joined)
         db.session.add(user)
         db.session.commit()
-        flash("Inserted into DB!")
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-
+        return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
 
@@ -80,6 +79,7 @@ def log_in():
             if check_password_hash(user_object.password, request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile", username=session["user"]))
             else:
                 # Invalid password
                 flash("Incorrect Username and/or Password")
@@ -91,3 +91,9 @@ def log_in():
             return redirect(url_for("log_in"))
 
     return render_template("log_in.html")
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    username = session["user"]
+    return render_template("user_profile.html", username=username)
