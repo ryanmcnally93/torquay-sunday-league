@@ -95,11 +95,13 @@ def log_in():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    user_object = User.query.filter_by(username=username).first()
     username = session["user"]
+    month_joined = user_object.month_joined
 
     # Checking for session cookie
     if session["user"]:
-        return render_template("user_profile.html", username=username)
+        return render_template("user_profile.html", username=username, month_joined=month_joined)
     
     # If no session cookie, we return to log_in page
     return redirect(url_for("log_in"))

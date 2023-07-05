@@ -2,6 +2,7 @@
 {% block content %}
 
 <h1 class="main-heading">Torquay Sunday League</h1>
+<!-- IF USER HAS A TEAM GET RID OF MESSAGE AND PROVIDE LINK TO IT -->
 <h2 class="sub-heading">One more spot available for this season!</h2>
 {% if session.user %}
 <div class="row">
@@ -36,6 +37,7 @@
         <tbody>
             <tr>
                 <td>1</td>
+                <!-- IF USER IS LOGGED IN AND HAS TEAM, DISPLAY THEIR NAME? -->
                 <td>YOUR TEAM</td>
                 <td>0</td>
                 <td>0</td>
