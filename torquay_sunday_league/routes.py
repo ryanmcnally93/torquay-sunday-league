@@ -3,6 +3,7 @@ from sqlalchemy import exc
 from torquay_sunday_league import app, db
 from torquay_sunday_league.models import Team, Player, User
 from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
 
 
 @app.route("/")
@@ -48,7 +49,12 @@ def register():
         if email_object:
             return "This email address is taken!"
 
-        user = User(username=username, password=password, emailaddress=emailaddress)
+        # Get the month and year of registration
+        date_time = datetime.datetime.now()
+        month = date_time.strftime("%B")
+        year = date_time.year
+        month_joined = "%s %s" % (month, year)
+        user = User(username=username, password=password, emailaddress=emailaddress, month_joined=month_joined)
         db.session.add(user)
         db.session.commit()
         flash("Inserted into DB!")

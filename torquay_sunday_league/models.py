@@ -43,4 +43,5 @@ class User(db.Model):
     username = db.Column(db.String(25), unique=True, nullable=False)
     emailaddress = db.Column(db.String(35), unique=True, nullable=False)
     password = db.Column(db.String(), nullable=False)
+    month_joined = db.Column(db.String())
 
