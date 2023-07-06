@@ -136,10 +136,11 @@ def delete_team(team_id):
     return redirect(url_for("teams"))
 
 
-@app.route("/players")
-def players():
+@app.route("/players/<int:id>")
+def players(id):
+    team = Team.query.get_or_404(id)
     players = Player.query.order_by(Player.player_name).all()
-    return render_template("players.html", players=players)
+    return render_template("players.html", players=players, team=team)
 
 
 @app.route("/add_player", methods=["GET", "POST"])
