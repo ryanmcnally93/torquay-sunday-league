@@ -30,7 +30,11 @@
                         <div class="collapsible-body">
                             Country: {{ player.player_country }}<br>
                             Position: {{ player.player_position }}<br>
-                            Joined: {{ player.player_joined }}<br>
+                            Joined: {{ player.player_joined.strftime("%d-%m-%Y") }}<br>
+                            <!-- if team.created_by == session.user -->
+                            <a class="btn green darken-4" href="{{ url_for('edit_player', player_id=player.id, team_id=team.id) }}">Edit</a>
+                            <a class="btn red modal-trigger" id="delete_player" href="#modal-{{ player.id }}">Delete</a>
+                            <!-- endif -->
                         </div>
                     </li>
                 {% endif %}
@@ -46,7 +50,7 @@
                     <p>This action cannot be undone</p>
                 </div>
                 <div class="modal-footer">
-                    <!--  url_for('delete_team', team_id=team.id)  -->
+                    <!--  url_for('delete_player', team_id=team.id)  -->
                     <a href="#" class="btn green">Yes</a>
                     <a href="{{ url_for('players', id=team.id) }}" class="btn red">No</a>
                 </div>

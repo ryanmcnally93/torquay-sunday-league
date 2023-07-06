@@ -13,7 +13,7 @@ def home():
 
 @app.route("/teams")
 def teams():
-    teams = Team.query.order_by(Team.team_name).all()
+    teams = list(Team.query.order_by(Team.team_name).all())
     return render_template("teams.html", teams=teams)
 
 
@@ -40,12 +40,12 @@ def register():
         password = generate_password_hash(request.form.get("password"))
 
         # Check username doesn't exist
-        user_object = User.query.filter_by(username=username).first()
+        user_object = list(User.query.filter_by(username=username).first())
         if user_object:
             return "This username is taken!"
 
         # Check email doesn't exist
-        email_object = User.query.filter_by(emailaddress=emailaddress).first()
+        email_object = list(User.query.filter_by(emailaddress=emailaddress).first())
         if email_object:
             return "This email address is taken!"
 
@@ -70,7 +70,7 @@ def log_in():
     username = request.form.get("username")
     if request.method == "POST":
         # Check that the user exists
-        user_object = User.query.filter_by(username=username).first()
+        user_object = list(User.query.filter_by(username=username).first())
         if user_object:
             # Check password is a match
             # # if check_password_hash(
@@ -95,7 +95,7 @@ def log_in():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    user_object = User.query.filter_by(username=username).first()
+    user_object = list(User.query.filter_by(username=username).first())
     username = session["user"]
     month_joined = user_object.month_joined
 
@@ -139,13 +139,29 @@ def delete_team(team_id):
 @app.route("/players/<int:id>")
 def players(id):
     team = Team.query.get_or_404(id)
-    players = Player.query.order_by(Player.player_kit_number).all()
+    players = list(Player.query.order_by(Player.player_kit_number).all())
     return render_template("players.html", players=players, team=team)
+
+
+@app.route("/edit_player/<int:player_id>/<int:team_id>", methods=["GET", "POST"])
+def edit_player(player_id, team_id):
+    player = Player.query.get_or_404(player_id)
+    team = Team.query.get_or_404(team_id)
+    if request.method == "POST":
+        player.player_kit_number=request.form.get("player_kit_number")
+        player.player_name = request.form.get("player_name")
+        player.player_country = request.form.get("player_country")
+        player.player_position = request.form.get("player_position")
+        player.player_joined = request.form.get("player_joined")
+        db.session.commit()
+        players = list(Player.query.order_by(Player.player_kit_number).all())
+        return render_template("players.html", players=players, team=team)
+    return render_template("edit_player.html", player=player, team=team)
 
 
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
 def add_player(id):
-    teams = Team.query.order_by(Team.team_name).all()
+    teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(id)
     if request.method == "POST":
         player = Player(
@@ -158,7 +174,7 @@ def add_player(id):
             )
         db.session.add(player)
         db.session.commit()
-        players = Player.query.order_by(Player.player_kit_number).all()
+        players = list(Player.query.order_by(Player.player_kit_number).all())
         return render_template("players.html", players=players, team=team)
 
     return render_template("add_player.html", teams=teams, team=team)
