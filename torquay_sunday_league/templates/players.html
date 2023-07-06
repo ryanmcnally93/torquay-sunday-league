@@ -51,7 +51,7 @@
                 </div>
                 <div class="modal-footer">
                     <!--  url_for('delete_player', team_id=team.id)  -->
-                    <a href="#" class="btn green">Yes</a>
+                    <a href="{{ url_for('delete_player', team_id=team.id, player_id=player.id) }}" class="btn green">Yes</a>
                     <a href="{{ url_for('players', id=team.id) }}" class="btn red">No</a>
                 </div>
             </div>

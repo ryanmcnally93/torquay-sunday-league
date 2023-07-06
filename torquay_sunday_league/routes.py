@@ -184,3 +184,13 @@ def add_player(id):
 def team_profile(id):
     team = Team.query.get_or_404(id)
     return render_template("team_profile.html", team=team)
+
+
+@app.route("/delete_player/<int:team_id>/<int:player_id>")
+def delete_player(team_id, player_id):
+    player = Player.query.get_or_404(player_id)
+    team = Team.query.get_or_404(team_id)
+    db.session.delete(player)
+    db.session.commit()
+    players = list(Player.query.order_by(Player.player_kit_number).all())
+    return render_template("players.html", players=players, team=team)
