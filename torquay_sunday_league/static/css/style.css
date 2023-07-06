@@ -190,3 +190,14 @@ footer p {
     margin: auto;
     border-radius: 25px;
 }
+
+.player-edit-view {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    float: none !important;
+}
+
+.team-profile-button {
+    margin: 5px;
+}
