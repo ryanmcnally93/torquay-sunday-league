@@ -126,3 +126,11 @@ def edit_team(team_id):
         # Change redirect for team profile page
         return redirect(url_for("teams"))
     return render_template("edit_team.html", team=team)
+
+
+@app.route("/delete_team/<int:team_id>")
+def delete_team(team_id):
+    team = Team.query.get_or_404(team_id)
+    db.session.delete(team)
+    db.session.commit()
+    return redirect(url_for("teams"))
