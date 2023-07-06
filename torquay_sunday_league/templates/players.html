@@ -11,39 +11,51 @@
     </div>
 </div>
 
-<div class="row teams-row">
-    {% for player in players %}
-        {% if player.team_id == team.id %}
-        <div class="col team-card-layout">
-        <div class="card team-card green-card darken-2">
-            <div class="card-content white-text">
-            <span class="card-title">{{ player.player_name }}</span>
+<main id="main-content">
 
-            <!-- Other attributes -->
+    <div class="player-left-box">
+        <img id="enzo" class="player-left" src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
+    </div>
 
+    <div class="row teams-row">
+        {% for player in players %}
+            {% if player.team_id == team.id %}
+            <div class="col team-card-layout">
+            <div class="card team-card green-card darken-2">
+                <div class="card-content white-text">
+                <span class="card-title">{{ player.player_name }}</span>
+
+                <!-- Other attributes -->
+
+                </div>
+                <div class="card-action">
+                <!-- if team.created_by == session.user -->
+                <a class="btn green darken-4" href="#">Edit Player</a>
+                <a class="btn red modal-trigger" id="delete_team" href="#modal-{{ player.id }}">Delete Player</a>
+                <!-- endif -->
+                </div>
             </div>
-            <div class="card-action">
-            <!-- if team.created_by == session.user -->
-            <a class="btn green darken-4" href="#">Edit Player</a>
-            <a class="btn red modal-trigger" id="delete_team" href="#modal-{{ player.id }}">Delete Player</a>
-            <!-- endif -->
             </div>
-        </div>
-        </div>
-        <!-- Modal Structure -->
-        <div id="modal-{{ player.id }}" class="modal">
-            <div class="modal-content">
-                <h4>Are you sure you want to delete this player?</h4>
-                <p>This action cannot be undone</p>
+            <!-- Modal Structure -->
+            <div id="modal-{{ player.id }}" class="modal">
+                <div class="modal-content">
+                    <h4>Are you sure you want to delete this player?</h4>
+                    <p>This action cannot be undone</p>
+                </div>
+                <div class="modal-footer">
+                    <!--  url_for('delete_team', team_id=team.id)  -->
+                    <a href="#" class="btn green">Yes</a>
+                    <a href="{{ url_for('players', id=team.id) }}" class="btn red">No</a>
+                </div>
             </div>
-            <div class="modal-footer">
-                <!--  url_for('delete_team', team_id=team.id)  -->
-                <a href="#" class="btn green">Yes</a>
-                <a href="{{ url_for('players', id=team.id) }}" class="btn red">No</a>
-            </div>
-        </div>
-        {% endif %}
-    {% endfor %}
-  </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div id="de-bruyne" class="player-right-box">
+        <img class="player-right" src="{{ url_for('static', filename='images/de-bruyne.webp') }}">
+    </div>
+
+</main>
 
 {% endblock %}
