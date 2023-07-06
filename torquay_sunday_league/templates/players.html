@@ -17,25 +17,28 @@
         <img id="enzo" class="player-left" src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
     </div>
 
-    <div class="row teams-row">
-        {% for player in players %}
-            {% if player.team_id == team.id %}
-            <div class="col team-card-layout">
-            <div class="card team-card green-card darken-2">
-                <div class="card-content white-text">
-                <span class="card-title">{{ player.player_name }}</span>
-
-                <!-- Other attributes -->
-
-                </div>
-                <div class="card-action">
-                <!-- if team.created_by == session.user -->
-                <a class="btn green darken-4" href="#">Edit Player</a>
-                <a class="btn red modal-trigger" id="delete_team" href="#modal-{{ player.id }}">Delete Player</a>
-                <!-- endif -->
-                </div>
-            </div>
-            </div>
+    <div class="row players-row">
+        <!-- Paste content -->
+        <ul class="collapsible player-collapsible">
+            {% for player in players %}
+                {% if player.team_id == team.id %}
+                    <li>
+                        <div class="collapsible-header white-text green">
+                            <i class="fas fa-caret-down"></i>
+                            <strong>{{ player.player_kit_number }}).  {{ player.player_name }}</strong>
+                        </div>
+                        <div class="collapsible-body">
+                            Country: {{ player.player_country }}<br>
+                            Position: {{ player.player_position }}<br>
+                            Joined: {{ player.player_joined }}<br>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% for player in players %}
+        {% if player.team_id == team.id %}
             <!-- Modal Structure -->
             <div id="modal-{{ player.id }}" class="modal">
                 <div class="modal-content">
@@ -48,9 +51,8 @@
                     <a href="{{ url_for('players', id=team.id) }}" class="btn red">No</a>
                 </div>
             </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+        {% endif %}
+    {% endfor %}
 
     <div id="de-bruyne" class="player-right-box">
         <img class="player-right" src="{{ url_for('static', filename='images/de-bruyne.webp') }}">
