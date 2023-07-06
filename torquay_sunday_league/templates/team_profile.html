@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card-panel green lighten-4">
+            <h3 class="center-align green lighten-4">
+                {{ team.team_name }}
+            </h3>
+        </div>
+    </div>
+</div>
+
+<!-- Number of Registered Players -->
+<!-- Kit Colour -->
+<!-- Home Location -->
+<!-- Button to Edit Team info -->
+
+<!-- Button to view players -->
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card-panel green lighten-4">
+            <h3 class="center-align green lighten-4">
+                <a href="{{ url_for('players') }}">Players</a>
+            </h3>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

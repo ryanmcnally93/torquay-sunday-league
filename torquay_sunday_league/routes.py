@@ -134,3 +134,32 @@ def delete_team(team_id):
     db.session.delete(team)
     db.session.commit()
     return redirect(url_for("teams"))
+
+
+@app.route("/players")
+def players():
+    players = Player.query.order_by(Player.player_name).all()
+    return render_template("players.html", players=players)
+
+
+@app.route("/add_player", methods=["GET", "POST"])
+def add_player():
+    teams = Team.query.order_by(Team.team_name).all()
+    if request.method == "POST":
+        player = Player(
+            player_kit_number=request.form.get("player_kit_number"),
+            player_name=request.form.get("player_name"),
+            player_position=request.form.get("player_position"),
+            player_joined=request.form.get("player_joined"),
+            team_id=request.form.get("team_id")
+            )
+        db.session.add(player)
+        db.session.commit()
+        return redirect(url_for("players"))
+    return render_template("add_player.html", teams=teams)
+
+
+@app.route("/team_profile/<int:id>", methods=["GET", "POST"])
+def team_profile(id):
+    team = Team.query.get_or_404(id)
+    return render_template("team_profile.html", team=team)

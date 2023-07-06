@@ -25,7 +25,7 @@
               <span class="card-title">{{ team.team_name }}</span>
             </div>
             <div class="card-action">
-              <a class="btn blue" href="#">View Team</a>
+              <a class="btn blue" href="{{ url_for('team_profile', id=team.id) }}">View Team</a>
               <!-- if team.created_by == session.user -->
               <a class="btn green darken-4" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
               <a class="btn red modal-trigger" id="delete_team" href="#modal-{{ team.id }}">Delete Team</a>
