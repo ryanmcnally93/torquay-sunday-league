@@ -231,6 +231,16 @@ I fixed this in several steps, first, I made the table inline-table and the two 
 
 3). Cannot update postgres after I have changed model.py. Max character length was 15, need it to be 25.
 
+4). 
+
+5). When adding a player, the user is supposed to be transported back to the players page for the team currently being worked on. However, my page would only either load an empty player page, or werksoid would interject with an error, stating that "ID" was either not defined or defined incorrectly.
+
+<!-- IMAGE -->
+
+I fixed this by copying the line from the players app.route, placing in the players variable, however, this loaded without the new player visible. I placed the variable declaration after the commit message but before the return, and this fixed the issue.
+
+<!-- IMAGE -->
+
 ### Responsive Design
 
 #### Ipad Air screen resolution

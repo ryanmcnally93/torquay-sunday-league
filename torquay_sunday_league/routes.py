@@ -78,7 +78,7 @@ def log_in():
             # #     user_object["password"], request.form.get("password")):
             if check_password_hash(user_object.password, request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("welcome, {}".format(request.form.get("username")))
+                flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
             else:
                 # Invalid password
@@ -139,28 +139,32 @@ def delete_team(team_id):
 @app.route("/players/<int:id>")
 def players(id):
     team = Team.query.get_or_404(id)
-    players = Player.query.order_by(Player.player_name).all()
+    players = Player.query.order_by(Player.player_kit_number).all()
     return render_template("players.html", players=players, team=team)
 
 
-@app.route("/add_player", methods=["GET", "POST"])
-def add_player():
+@app.route("/add_player/<int:id>", methods=["GET", "POST"])
+def add_player(id):
     teams = Team.query.order_by(Team.team_name).all()
+    team = Team.query.get_or_404(id)
     if request.method == "POST":
         player = Player(
             player_kit_number=request.form.get("player_kit_number"),
             player_name=request.form.get("player_name"),
             player_position=request.form.get("player_position"),
             player_joined=request.form.get("player_joined"),
+            player_country=request.form.get("player_country"),
             team_id=request.form.get("team_id")
             )
         db.session.add(player)
         db.session.commit()
-        return redirect(url_for("players"))
-    return render_template("add_player.html", teams=teams)
+        players = Player.query.order_by(Player.player_kit_number).all()
+        return render_template("players.html", players=players, team=team)
+
+    return render_template("add_player.html", teams=teams, team=team)
 
 
-@app.route("/team_profile/<int:id>", methods=["GET", "POST"])
+@app.route("/team_profile/<int:id>", methods=["GET", "POST"]) 
 def team_profile(id):
     team = Team.query.get_or_404(id)
     return render_template("team_profile.html", team=team)
