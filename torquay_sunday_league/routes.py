@@ -112,3 +112,17 @@ def log_out():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("log_in"))
+
+
+@app.route("/edit_team/<int:team_id>", methods=["GET", "POST"])
+def edit_team(team_id):
+    team = Team.query.get_or_404(team_id)
+    if request.method == "POST":
+        team.team_name = request.form.get("team_name")
+        team.team_no_of_players = request.form.get("team_no_of_players")
+        team.team_colour = request.form.get("team_colour")
+        team.team_location = request.form.get("team_location")
+        db.session.commit()
+        # Change redirect for team profile page
+        return redirect(url_for("teams"))
+    return render_template("edit_team.html", team=team)
