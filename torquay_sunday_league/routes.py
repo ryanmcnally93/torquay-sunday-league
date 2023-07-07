@@ -14,6 +14,7 @@ def home():
 @app.route("/teams")
 def teams():
     teams = list(Team.query.order_by(Team.team_name).all())
+    # update team no of players
     return render_template("teams.html", teams=teams)
 
 
@@ -22,7 +23,7 @@ def create_team():
     if request.method == "POST":
         team = Team(
             team_name=request.form.get("team_name"),
-            team_no_of_players=request.form.get("team_no_of_players"),
+            team_no_of_players=0,
             team_colour=request.form.get("team_colour"),
             team_location=request.form.get("team_location")
             )
@@ -119,7 +120,7 @@ def edit_team(team_id):
     team = Team.query.get_or_404(team_id)
     if request.method == "POST":
         team.team_name = request.form.get("team_name")
-        team.team_no_of_players = request.form.get("team_no_of_players")
+        team.team_no_of_players = len(Player.query.get(team_id))
         team.team_colour = request.form.get("team_colour")
         team.team_location = request.form.get("team_location")
         db.session.commit()
@@ -162,14 +163,15 @@ def edit_player(player_id, team_id):
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
 def add_player(id):
     players = list(Player.query.order_by(Player.player_kit_number).all())
+    search = Team.query.get(id).players
     teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(id)
-    for current in Player.query.all():
+    for current in search:
         if str(current.player_kit_number) == request.form.get("player_kit_number"):
             flash(f"Error: This {team.team_name} kit number is already taken!")
             return render_template("add_player.html", teams=teams, team=team,)
 
-    for current in Player.query.all():
+    for current in search:
         if str(current.player_name) == request.form.get("player_name"):
             flash(f"Error: This player has already been registered!")
             return render_template("add_player.html", teams=teams, team=team,)
@@ -196,6 +198,12 @@ def add_player(id):
 @app.route("/team_profile/<int:id>", methods=["GET", "POST"]) 
 def team_profile(id):
     team = Team.query.get_or_404(id)
+    number_of_players = 0
+    players = Team.query.get(id).players
+    for player in players:
+        number_of_players += 1
+
+    team.team_no_of_players = number_of_players
     return render_template("team_profile.html", team=team)
 
 
