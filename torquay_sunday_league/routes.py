@@ -165,21 +165,27 @@ def add_player(id):
     teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(id)
     for current in Player.query.all():
-        if request.form.get("player_kit_number") == current.player_kit_number:
-            flash("This kit number is taken!")
-        else:
-            if request.method == "POST":    
-                player = Player(
-                    player_kit_number=request.form.get("player_kit_number"),
-                    player_name=request.form.get("player_name"),
-                    player_position=request.form.get("player_position"),
-                    player_joined=request.form.get("player_joined"),
-                    player_country=request.form.get("player_country"),
-                    team_id=request.form.get("team_id")
-                )
+        if str(current.player_kit_number) == request.form.get("player_kit_number"):
+            flash(f"Error: This {team.team_name} kit number is already taken!")
+            return render_template("add_player.html", teams=teams, team=team,)
 
-                db.session.add(player)
-                db.session.commit()
+    for current in Player.query.all():
+        if str(current.player_name) == request.form.get("player_name"):
+            flash(f"Error: This player has already been registered!")
+            return render_template("add_player.html", teams=teams, team=team,)
+    
+    if request.method == "POST":
+        player = Player(
+            player_kit_number=int(request.form.get("player_kit_number")),
+            player_name=request.form.get("player_name"),
+            player_position=request.form.get("player_position"),
+            player_joined=request.form.get("player_joined"),
+            player_country=request.form.get("player_country"),
+            team_id=request.form.get("team_id")
+        )
+
+        db.session.add(player)
+        db.session.commit()
         
         players = list(Player.query.order_by(Player.player_kit_number).all())
         return render_template("players.html", players=players, team=team)
