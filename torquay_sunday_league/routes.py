@@ -96,13 +96,12 @@ def log_in():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    user_object = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(username=username).first()
     username = session["user"]
-    month_joined = user_object.month_joined
 
     # Checking for session cookie
     if session["user"]:
-        return render_template("user_profile.html", username=username, month_joined=month_joined)
+        return render_template("user_profile.html", username=username, user=user)
     
     # If no session cookie, we return to log_in page
     return redirect(url_for("log_in"))
@@ -218,3 +217,14 @@ def delete_player(team_id, player_id):
     db.session.commit()
     players = list(Player.query.order_by(Player.player_kit_number).all())
     return render_template("players.html", players=players, team=team)
+
+
+@app.route("/user_edit/<username>", methods=["GET", "POST"])
+def user_edit(username):
+    user = User.query.filter_by(username=username).first()
+    if request.method == "POST":
+        user.emailaddress = request.form.get("emailaddress")
+        user.password = generate_password_hash(request.form.get("password"))
+        db.session.commit()
+        return render_template("user_profile.html", user=user)
+    return render_template("user_edit.html", user=user)
