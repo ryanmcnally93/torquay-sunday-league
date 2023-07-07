@@ -21,7 +21,7 @@ class Player(db.Model):
     #schema for the Player model
     id = db.Column(db.Integer, primary_key=True)
     player_kit_number = db.Column(
-        db.Integer, unique=True, primary_key=False, nullable=False)
+        db.Integer, primary_key=False, nullable=False)
     player_name = db.Column(db.String(20), unique=True, nullable=False)
     player_country = db.Column(db.String(20), nullable=False)
     player_position = db.Column(db.String(15), nullable=False)

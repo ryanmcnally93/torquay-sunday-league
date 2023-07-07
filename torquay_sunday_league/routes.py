@@ -40,12 +40,12 @@ def register():
         password = generate_password_hash(request.form.get("password"))
 
         # Check username doesn't exist
-        user_object = list(User.query.filter_by(username=username).first())
+        user_object = User.query.filter_by(username=username).first()
         if user_object:
             return "This username is taken!"
 
         # Check email doesn't exist
-        email_object = list(User.query.filter_by(emailaddress=emailaddress).first())
+        email_object = User.query.filter_by(emailaddress=emailaddress).first()
         if email_object:
             return "This email address is taken!"
 
@@ -70,7 +70,7 @@ def log_in():
     username = request.form.get("username")
     if request.method == "POST":
         # Check that the user exists
-        user_object = list(User.query.filter_by(username=username).first())
+        user_object = User.query.filter_by(username=username).first()
         if user_object:
             # Check password is a match
             # # if check_password_hash(
@@ -95,7 +95,7 @@ def log_in():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    user_object = list(User.query.filter_by(username=username).first())
+    user_object = User.query.filter_by(username=username).first()
     username = session["user"]
     month_joined = user_object.month_joined
 
@@ -161,19 +161,26 @@ def edit_player(player_id, team_id):
 
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
 def add_player(id):
+    players = list(Player.query.order_by(Player.player_kit_number).all())
     teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(id)
-    if request.method == "POST":
-        player = Player(
-            player_kit_number=request.form.get("player_kit_number"),
-            player_name=request.form.get("player_name"),
-            player_position=request.form.get("player_position"),
-            player_joined=request.form.get("player_joined"),
-            player_country=request.form.get("player_country"),
-            team_id=request.form.get("team_id")
-            )
-        db.session.add(player)
-        db.session.commit()
+    for current in Player.query.all():
+        if request.form.get("player_kit_number") == current.player_kit_number:
+            flash("This kit number is taken!")
+        else:
+            if request.method == "POST":    
+                player = Player(
+                    player_kit_number=request.form.get("player_kit_number"),
+                    player_name=request.form.get("player_name"),
+                    player_position=request.form.get("player_position"),
+                    player_joined=request.form.get("player_joined"),
+                    player_country=request.form.get("player_country"),
+                    team_id=request.form.get("team_id")
+                )
+
+                db.session.add(player)
+                db.session.commit()
+        
         players = list(Player.query.order_by(Player.player_kit_number).all())
         return render_template("players.html", players=players, team=team)
 

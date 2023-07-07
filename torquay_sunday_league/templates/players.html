@@ -18,9 +18,10 @@
     </div>
 
     <div class="row players-row">
-        <!-- Paste content -->
         <ul class="collapsible player-collapsible">
+            <!-- Searching through all players -->
             {% for player in players %}
+                <!-- Making sure to only display players in correct team -->
                 {% if player.team_id == team.id %}
                     <li>
                         <div class="collapsible-header white-text green">
