@@ -147,6 +147,7 @@ def players(id):
 @app.route("/edit_player/<int:player_id>/<int:team_id>", methods=["GET", "POST"])
 def edit_player(player_id, team_id):
     player = Player.query.get_or_404(player_id)
+    teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(team_id)
     if request.method == "POST":
         player.player_kit_number=request.form.get("player_kit_number")
@@ -157,7 +158,7 @@ def edit_player(player_id, team_id):
         db.session.commit()
         players = list(Player.query.order_by(Player.player_kit_number).all())
         return render_template("players.html", players=players, team=team)
-    return render_template("edit_player.html", player=player, team=team)
+    return render_template("edit_player.html", player=player, team=team, teams=teams)
 
 
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
