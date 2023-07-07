@@ -12,7 +12,7 @@
 </div>
 
 <!-- Number of Registered Players -->
-<h2 class="center-align">No. of players: {{ team.team_no_of_players }}</h2>
+<h2 class="center-align">No. of players: <p id="no_of_players">{{ team.team_no_of_players }}</p></h2>
 
 <!-- Kit Colour -->
 <h2 class="center-align">Kit Colours: {{ team.team_colour }}</h2>
@@ -29,5 +29,7 @@
         <a class="team-profile-button btn green" href="{{ url_for('players', id=team.id) }}">View Players</a>
     </div>
 </div>
+
+<script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
 
 {% endblock %}

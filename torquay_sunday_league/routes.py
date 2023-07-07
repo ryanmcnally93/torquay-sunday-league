@@ -204,6 +204,8 @@ def team_profile(id):
         number_of_players += 1
 
     team.team_no_of_players = number_of_players
+    if number_of_players < 16:
+        flash("You must have 16 players to be accepted")
     return render_template("team_profile.html", team=team)
 
 

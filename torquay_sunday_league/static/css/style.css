@@ -228,3 +228,7 @@ footer p {
 .player-collapsible {
     width: 30%;
 }
+
+#no_of_players {
+    display: inline;
+}
