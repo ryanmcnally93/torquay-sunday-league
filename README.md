@@ -235,6 +235,31 @@ I fixed this in several steps, first, I made the table inline-table and the two 
 
 5). When adding a player, the user is supposed to be transported back to the players page for the team currently being worked on. However, my page would only either load an empty player page, or werksoid would interject with an error, stating that "ID" was either not defined or defined incorrectly.
 
+6). Error when loading login page, don’t have access Code Anywhere has issues with login.html. Changed to log_in.html.
+7). Update schema? I have changed character length restriction but cannot post this information to Postgres.
+Edit the database doing the following:
+DROP DATABASE {name}
+CREATE DATABASE {name}
+python3 - from {name} import db - db.create_all()
+8). Registration and login, on page load, clear inputs. Javascript files added to clear data as page load would sometime have old data inside.
+9). Originally I had number of players as a typed in property. I struggled to find the actual number of players from the team we were clicked onto.
+
+I fixed this by searching the team table for the id passed in, and then realising that that table has a players attribute, iterated through that and incremented a variable with the original value of 0.
+
+I then added a flash message for teams who have less than the required amount of teams and added some javascript functionality so the css color and title attributes are added, giving the user more feedback on their number of teams.
+10). delete team, had issue with creating the modal. I hadn’t watched the video all the way through and tried to add a script which called a function in js that called the jinja template which didn’t work.
+
+I then was told on google to add it to in-line script. This didn’t work. I saw the modal tutorial on the video created by materialise and made changes.
+
+Had for loop error.
+
+I had commented out a jinja template i was going to created in the future:
+
+if team.created_by == session.user
+
+But this was actually being read so deleted the %% symbols
+11). Edit players team dropdown wasn’t working, I had to edit the for loop and it’s placement so the selected item was outside the for loop, and the if statement only returned items that weren’t equal to the team already selected. Was duplicating at first.
+
 <!-- IMAGE -->
 
 I fixed this by copying the line from the players app.route, placing in the players variable, however, this loaded without the new player visible. I placed the variable declaration after the commit message but before the return, and this fixed the issue.
