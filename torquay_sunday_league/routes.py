@@ -25,7 +25,8 @@ def create_team():
             team_name=request.form.get("team_name"),
             team_no_of_players=0,
             team_colour=request.form.get("team_colour"),
-            team_location=request.form.get("team_location")
+            team_location=request.form.get("team_location"),
+            team_created_by=session["user"]
             )
         db.session.add(team)
         db.session.commit()

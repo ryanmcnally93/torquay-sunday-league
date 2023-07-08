@@ -235,6 +235,12 @@ I fixed this in several steps, first, I made the table inline-table and the two 
 
 5). When adding a player, the user is supposed to be transported back to the players page for the team currently being worked on. However, my page would only either load an empty player page, or werksoid would interject with an error, stating that "ID" was either not defined or defined incorrectly.
 
+<!-- IMAGE -->
+
+I fixed this by copying the line from the players app.route, placing in the players variable, however, this loaded without the new player visible. I placed the variable declaration after the commit message but before the return, and this fixed the issue.
+
+<!-- IMAGE -->
+
 6). Error when loading login page, don’t have access Code Anywhere has issues with login.html. Changed to log_in.html.
 7). Update schema? I have changed character length restriction but cannot post this information to Postgres.
 Edit the database doing the following:
@@ -260,11 +266,7 @@ if team.created_by == session.user
 But this was actually being read so deleted the %% symbols
 11). Edit players team dropdown wasn’t working, I had to edit the for loop and it’s placement so the selected item was outside the for loop, and the if statement only returned items that weren’t equal to the team already selected. Was duplicating at first.
 
-<!-- IMAGE -->
-
-I fixed this by copying the line from the players app.route, placing in the players variable, however, this loaded without the new player visible. I placed the variable declaration after the commit message but before the return, and this fixed the issue.
-
-<!-- IMAGE -->
+12). User could login twice, changed the register and log_in pages.
 
 ### Responsive Design
 

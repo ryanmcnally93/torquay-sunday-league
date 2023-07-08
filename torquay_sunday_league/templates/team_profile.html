@@ -20,15 +20,20 @@
 <!-- Home Location -->
 <h2 class="center-align">Location: {{ team.team_location }}</h2>
 
-<div class="row">
-    <div class="col player-edit-view">
-        <!-- Button to Edit Team info -->
-        <a class="team-profile-button btn green" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
+<!-- Created By -->
+<h2 class="center-align">Created by: {{ team.team_created_by }}</h2>
 
-        <!-- Button to view players -->
-        <a class="team-profile-button btn green" href="{{ url_for('players', id=team.id) }}">View Players</a>
+{% if team.team_created_by == session["user"] %}
+    <div class="row">
+        <div class="col player-edit-view">
+            <!-- Button to Edit Team info -->
+            <a class="team-profile-button btn green" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
+
+            <!-- Button to view players -->
+            <a class="team-profile-button btn green" href="{{ url_for('players', id=team.id) }}">View Players</a>
+        </div>
     </div>
-</div>
+{% endif %}
 
 <script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
 
