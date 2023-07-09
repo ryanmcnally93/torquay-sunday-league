@@ -5,30 +5,30 @@
 <h2 class="sub-heading">One more spot available for this season!</h2>
 
 <!-- This message will display if the user has an account but not a team -->
-{% if session.user and user.team_managed == ""  %}
+<!--  if session.user and user.team_managed == ""  
     <div class="row">
         <div class="col s12 center-align">
             <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green">Create Team</a>
         </div>
-    </div>
+    </div> -->
 
 <!-- This message will display the users team if they have one, except for my account -->
-{% elif session.user and session["user"] != "ryanmcnally93" %}
+<!--  elif session.user and session["user"] != "ryanmcnally93" 
     <div class="row">
         <div class="col s12 center-align">
-            <a href="{{ url_for('team_profile', id=team.team_id) }}" id="register-button" class="btn green">{{ team.team_name }}</a>
+            <a href=" url_for('team_profile', id=team.team_id) " id="register-button" class="btn green"> team.team_name </a>
         </div>
-    </div>
+    </div> -->
 
 <!-- The only other way this page can be displayed is by people who don't have an account -->
-{% else %}
+<!--  else  -->
     <div class="row">
         <div class="col s12 center-align">
             <a href="{{ url_for('register') }}" id="register-button" class="btn green">Register NOW!</a>
         </div>
     </div>
 
-{% endif %}
+<!--  endif  -->
 
 <main id="main-content">
 
@@ -49,11 +49,11 @@
             <tr>
                 <td>1</td>
                 <!-- IF USER IS LOGGED IN AND HAS TEAM, DISPLAY THEIR NAME? -->
-                {% if session.user and user.team_managed != "" and session["user"] != "ryanmcnally93" %}
-                    <td>{{ team }}</td>
-                {% else %}
+                <!--  if session.user and .team_managed != "" and session["user"] != "ryanmcnally93"  -->
+                    <!-- <td> team </td> -->
+                <!--  else -->
                     <td>YOUR TEAM!</td>
-                {% endif %}
+                <!--  endif  -->
                 <td>0</td>
                 <td>0</td>
             </tr>

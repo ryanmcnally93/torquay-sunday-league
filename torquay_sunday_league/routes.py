@@ -8,10 +8,7 @@ import datetime
 
 @app.route("/")
 def home():
-    user = session["user"]
-    if user.team_managed != "":
-        team = Team.query.filter_by(user.team_managed=user.team_managed).first()
-    return render_template("index.html", user=user)
+    return render_template("index.html")
 
 
 @app.route("/teams")
