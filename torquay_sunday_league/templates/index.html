@@ -2,20 +2,32 @@
 {% block content %}
 
 <h1 class="main-heading">Torquay Sunday League</h1>
-<!-- IF USER HAS A TEAM GET RID OF MESSAGE AND PROVIDE LINK TO IT -->
 <h2 class="sub-heading">One more spot available for this season!</h2>
-{% if session.user %}
-<div class="row">
-    <div class="col s12 center-align">
-        <a href="{{ url_for('create_team') }}" id="register-button" class="btn green">Create Team</a>
+
+<!-- This message will display if the user has an account but not a team -->
+{% if session.user and user.team_managed == ""  %}
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green">Create Team</a>
+        </div>
     </div>
-</div>
+
+<!-- This message will display the users team if they have one, except for my account -->
+{% elif session.user and session["user"] != "ryanmcnally93" %}
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{{ url_for('team_profile', id=team.team_id) }}" id="register-button" class="btn green">{{ team.team_name }}</a>
+        </div>
+    </div>
+
+<!-- The only other way this page can be displayed is by people who don't have an account -->
 {% else %}
     <div class="row">
         <div class="col s12 center-align">
             <a href="{{ url_for('register') }}" id="register-button" class="btn green">Register NOW!</a>
         </div>
     </div>
+
 {% endif %}
 
 <main id="main-content">
@@ -24,7 +36,6 @@
         <img class="player-left" src="{{ url_for('static', filename='images/odegaard.webp') }}">
     </div>
 
-    <!-- Could I use a jinja for loop to cycle through the teams and produce this list? -->
     <table id="league-table">
         <thead>
             <tr>
@@ -38,7 +49,11 @@
             <tr>
                 <td>1</td>
                 <!-- IF USER IS LOGGED IN AND HAS TEAM, DISPLAY THEIR NAME? -->
-                <td>YOUR TEAM</td>
+                {% if session.user and user.team_managed != "" and session["user"] != "ryanmcnally93" %}
+                    <td>{{ team }}</td>
+                {% else %}
+                    <td>YOUR TEAM!</td>
+                {% endif %}
                 <td>0</td>
                 <td>0</td>
             </tr>

@@ -4,7 +4,7 @@
 <h1 class="main-heading">Create Team</h1>
 
 <div class="row card-panel green lighten-4">
-    <form class="col s12" method="POST" action="{{ url_for('create_team') }}">
+    <form class="col s12" method="POST" action="{{ url_for('create_team', username=session['user']) }}">
         <!-- Team Name --> 
         <div class="row">
             <div class="input-field col s12">

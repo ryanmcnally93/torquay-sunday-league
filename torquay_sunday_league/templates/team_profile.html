@@ -1,40 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row">
-    <div class="col s12 m8 offset-m2">
-        <div class="card-panel green lighten-4">
-            <h3 class="center-align green lighten-4">
-                {{ team.team_name }}
-            </h3>
-        </div>
-    </div>
-</div>
 
-<!-- Number of Registered Players -->
-<h2 class="center-align">No. of players: <p id="no_of_players">{{ team.team_no_of_players }}</p></h2>
-
-<!-- Kit Colour -->
-<h2 class="center-align">Kit Colours: {{ team.team_colour }}</h2>
-
-<!-- Home Location -->
-<h2 class="center-align">Location: {{ team.team_location }}</h2>
-
-<!-- Created By -->
-<h2 class="center-align">Created by: {{ team.team_created_by }}</h2>
-
-{% if team.team_created_by == session["user"] %}
+{% if user.team_managed == "" %}
     <div class="row">
-        <div class="col player-edit-view">
-            <!-- Button to Edit Team info -->
-            <a class="team-profile-button btn green" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
-
-            <!-- Button to view players -->
-            <a class="team-profile-button btn green" href="{{ url_for('players', id=team.id) }}">View Players</a>
+        <div class="col s12 m8 offset-m2">
+            <div class="card-panel green lighten-4">
+                <h3 class="center-align green lighten-4">
+                    You have not yet created a club.
+                </h3>
+            </div>
         </div>
     </div>
-{% endif %}
 
-<script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green">Create Team</a>
+        </div>
+    </div>
+
+{% else %}
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card-panel green lighten-4">
+                <h3 class="center-align green lighten-4">
+                    {{ team.team_name }}
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Number of Registered Players -->
+    <h2 class="center-align">No. of players: <p id="no_of_players">{{ team.team_no_of_players }}</p></h2>
+
+    <!-- Kit Colour -->
+    <h2 class="center-align">Kit Colours: {{ team.team_colour }}</h2>
+
+    <!-- Home Location -->
+    <h2 class="center-align">Location: {{ team.team_location }}</h2>
+
+    <!-- Created By -->
+    <h2 class="center-align">Created by: {{ team.team_created_by }}</h2>
+
+    {% if team.team_created_by == session["user"] %}
+        <div class="row">
+            <div class="col player-edit-view">
+                <!-- Button to Edit Team info -->
+                <a class="team-profile-button btn green" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
+
+                <!-- Button to view players -->
+                <a class="team-profile-button btn green" href="{{ url_for('players', id=team.id) }}">View Players</a>
+            </div>
+        </div>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
+
+{% endif %}
 
 {% endblock %}
