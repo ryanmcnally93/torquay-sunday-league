@@ -8,7 +8,9 @@ import datetime
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    user1 = User.query.filter_by(username=session["user"]).first()
+    team1 = Team.query.filter_by(team_name=user1.team_managed).first()
+    return render_template("index.html", user=user1, team=team1)
 
 
 @app.route("/teams")

@@ -271,6 +271,9 @@ But this was actually being read so deleted the %% symbols
 13). created an if statement that only allows user to see teams created by them or me. Cannot see teams created by other users. If user is me, all teams are visible, so I can look through and pick the best candidate. On edit and delete functions, check if user is creator.
 
 14). The user must not be allowed to make more than one team, how do I achieve this? Use created_by variable ++, only allow 1.
+Create team route had an issue as I typed user.team_managed == team.team_name when I should have typed user.team_managed = team.team_name.
+
+15). 
 
 ### Responsive Design
 
