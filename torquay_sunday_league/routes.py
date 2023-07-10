@@ -22,7 +22,7 @@ def teams():
 def create_team(username):
     user = User.query.filter_by(username=username).first()
     if request.method == "POST":
-        if session["user"] == "ryanmcnally93" or user.team_managed == "":
+        if session["user"] == "ryanmcnally93" or user.team_managed == "None":
             team = Team(
                 team_name=request.form.get("team_name"),
                 team_no_of_players=0,
@@ -30,9 +30,9 @@ def create_team(username):
                 team_location=request.form.get("team_location"),
                 team_created_by=session["user"]
                 )
+            user.team_managed = team.team_name
             db.session.add(team)
             db.session.commit()
-            user.team_managed == team.team_name
             return redirect(url_for("teams"))
         else:
             flash("A user may only register one team.")
@@ -61,7 +61,13 @@ def register():
         month = date_time.strftime("%B")
         year = date_time.year
         month_joined = "%s %s" % (month, year)
-        user = User(username=username, password=password, emailaddress=emailaddress, month_joined=month_joined)
+        user = User(
+            username=username,
+            password=password,
+            emailaddress=emailaddress,
+            month_joined=month_joined,
+            team_managed="None"
+            )
         db.session.add(user)
         db.session.commit()
 
