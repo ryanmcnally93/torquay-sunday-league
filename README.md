@@ -273,7 +273,10 @@ But this was actually being read so deleted the %% symbols
 14). The user must not be allowed to make more than one team, how do I achieve this? Use created_by variable ++, only allow 1.
 Create team route had an issue as I typed user.team_managed == team.team_name when I should have typed user.team_managed = team.team_name.
 
-15). 
+15). Team1 and User1 explanation in index route.
+
+16).             <!--THIS LINE IS A MISTAKE I HAD!!!!-->
+           <!--     user_object["password"], request.form.get("password")): -->
 
 ### Responsive Design
 
