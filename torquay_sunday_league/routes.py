@@ -3,7 +3,7 @@ from sqlalchemy import exc
 from torquay_sunday_league import app, db
 from torquay_sunday_league.models import Team, Player, User
 from werkzeug.security import generate_password_hash, check_password_hash
-import datetime
+from datetime import datetime
 
 
 @app.route("/")
@@ -47,10 +47,10 @@ def create_team(username):
             user.team_managed = team.team_name
             db.session.add(team)
             db.session.commit()
-            return redirect(url_for("teams", username=session["user"], user=user, team=team))
+            return redirect(url_for("teams", username=session["user"], user=user))
         else:
             flash("A user may only register one team.")
-    return render_template("create_team.html", username=session["user"], user=user, team=team)
+    return render_template("create_team.html", username=session["user"], user=user)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -71,7 +71,7 @@ def register():
             return "This email address is taken!"
 
         # Get the month and year of registration
-        date_time = datetime.datetime.now()
+        date_time = datetime.now()
         month = date_time.strftime("%B")
         year = date_time.year
         month_joined = "%s %s" % (month, year)
@@ -149,9 +149,10 @@ def edit_team(team_id):
             team.team_name = request.form.get("team_name")
             team.team_colour = request.form.get("team_colour")
             team.team_location = request.form.get("team_location")
+            user1.team_managed = team.team_name
             db.session.commit()
             # Change redirect for team profile page
-            return redirect(url_for("teams", team=team, user=user1))
+            return redirect(url_for("teams", user=user1))
         else:
             flash("Only the creator of this team may edit it.")
     return render_template("edit_team.html", team=team, user=user1)
@@ -165,7 +166,7 @@ def delete_team(team_id):
         user1.team_managed = "None"
         db.session.delete(team)
         db.session.commit()
-        return redirect(url_for("teams", user=user1, team=team))
+        return redirect(url_for("teams", user=user1))
     else:
         flash("Only the creator of this team may delete it.")
 
@@ -229,8 +230,14 @@ def add_player(id):
                 player_position=request.form.get("player_position"),
                 player_joined=request.form.get("player_joined"),
                 player_country=request.form.get("player_country"),
-                team_id=request.form.get("team_id")
+                team_id=team.id
             )
+            arrival = datetime.strptime(player.player_joined, "%d/%m/%Y")
+            present = datetime.now()
+            if present.date() < arrival.date():
+                flash("If this player hasn't officially joined he cannot be submitted")
+                return render_template("players.html", players=players, team=team, user=user1)
+
             db.session.add(player)
             db.session.commit()
             players = list(Player.query.order_by(Player.player_kit_number).all())
@@ -251,7 +258,7 @@ def team_profile(id):
         number_of_players += 1
 
     team.team_no_of_players = number_of_players
-    if number_of_players < 16:
+    if number_of_players < 16 and session["user"] != "ryanmcnally93":
         flash("You must have 16 players to be accepted")
     return render_template("team_profile.html", team=team, user=user1)
 
@@ -273,7 +280,10 @@ def delete_player(team_id, player_id):
 @app.route("/user_edit/<username>", methods=["GET", "POST"])
 def user_edit(username):
     user = User.query.filter_by(username=username).first()
-    team1 = Team.query.filter_by(team_name=user1.team_managed).first()
+    team1 = Team.query.filter_by(team_name=user.team_managed).first()
+    if session["user"] == "ryanmcnally93":
+        flash("WARNING Changing your email address will affect your admin status.")
+
     if request.method == "POST":
         user.emailaddress = request.form.get("emailaddress")
         user.password = generate_password_hash(request.form.get("password"))

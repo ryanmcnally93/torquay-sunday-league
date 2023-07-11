@@ -3,6 +3,7 @@
 
 <h1 class="main-heading">{{ team.team_name }}'s Players</h1>
 
+{% if team.team_created_by == session["user"] %}
 <div class="row">
     <div class="col s12 center-align">
         <a href="{{ url_for('add_player', id=team.id) }}" class="btn green">
@@ -10,6 +11,7 @@
         </a>
     </div>
 </div>
+{% endif %}
 
 <main id="main-content">
 
@@ -31,7 +33,7 @@
                         <div class="collapsible-body">
                             Country: {{ player.player_country }}<br>
                             Position: {{ player.player_position }}<br>
-                            Joined: {{ player.player_joined.strftime("%d-%m-%Y") }}<br>
+                            Joined: {{ player.player_joined.strftime("%m/%d/%Y") }}<br>
                             {% if team.team_created_by == session["user"] %}
                                 <a class="btn green darken-4" href="{{ url_for('edit_player', player_id=player.id, team_id=team.id) }}">Edit</a>
                                 <a class="btn red modal-trigger" id="delete_player" href="#modal-{{ player.id }}">Delete</a>

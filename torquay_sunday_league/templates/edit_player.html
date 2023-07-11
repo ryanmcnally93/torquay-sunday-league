@@ -41,23 +41,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-calendar form-icon-colour prefix"></i>
-                <input id="player_joined" name="player_joined" value="{{ player.player_joined.strftime('%d-%m-%Y') }}" type="text" class="datepicker validate" required>
+                <input id="player_joined" name="player_joined" value="{{ player.player_joined.strftime('%m/%d/%Y') }}" type="text" class="datepicker validate" required>
                 <label for="player_joined">Joined</label>
-            </div>
-        </div>
-        <!-- Team -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-solid fa-people-group form-icon-colour prefix"></i>
-                <select id="team_id" name="team_id" class="validate">
-                    <option value="{{ team.id }}" selected>{{ team.team_name }}</option>
-                    {% for team in teams %}
-                        {% if team.id != player.team_id %}
-                        <option value="{{ team.id }}">{{ team.team_name }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-                <label for="team_id">Team</label>
             </div>
         </div>
         <!-- Submit -->

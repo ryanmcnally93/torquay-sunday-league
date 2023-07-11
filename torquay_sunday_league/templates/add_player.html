@@ -45,19 +45,6 @@
                 <label for="player_joined">Joined</label>
             </div>
         </div>
-        <!-- Team -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="fas fa-solid fa-people-group form-icon-colour prefix"></i>
-                <select id="team_id" name="team_id" class="validate">
-                    <option value="" disabled selected>Choose Team</option>
-                    {% for team in teams %}
-                        <option value="{{ team.id }}">{{ team.team_name }}</option>
-                    {% endfor %}
-                </select>
-                <label for="team_id">Team</label>
-            </div>
-        </div>
         <!-- Submit -->
         <div class="row">
             <div class="col s12 center-align">
