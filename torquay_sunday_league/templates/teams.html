@@ -4,11 +4,13 @@
 <h1 class="main-heading">Teams</h1>
 {% if session %}
     <div class="row">
-        <div class="col s12 center-align">
-            <a href="{{ url_for('create_team', username=session['user']) }}" class="btn green">
-                Create Team <i class="fas fa-plus-square right"></i>
-            </a>
-        </div>
+        {% if session["user"] == "ryanmcnally93" or user.team_managed == "None" %}
+            <div class="col s12 center-align">
+                <a href="{{ url_for('create_team', username=session['user']) }}" class="btn green">
+                    Create Team <i class="fas fa-plus-square right"></i>
+                </a>
+            </div>
+        {% endif %}
     </div>
 {% endif %}
 

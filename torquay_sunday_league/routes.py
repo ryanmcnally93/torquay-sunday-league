@@ -35,6 +35,7 @@ def teams():
 @app.route("/create_team/<username>", methods=["GET", "POST"])
 def create_team(username):
     user = User.query.filter_by(username=username).first()
+    team1 = Team.query.filter_by(team_name=user.team_managed).first()
     if request.method == "POST":
         if session["user"] == "ryanmcnally93" or user.team_managed == "None":
             team = Team(
@@ -50,7 +51,7 @@ def create_team(username):
             return redirect(url_for("teams", username=session["user"], user=user))
         else:
             flash("A user may only register one team.")
-    return render_template("create_team.html", username=session["user"], user=user)
+    return render_template("create_team.html", username=session["user"], user=user, team=team1)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -104,7 +105,7 @@ def log_in():
                 team1 = Team.query.filter_by(team_name=user.team_managed).first()
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("profile", username=session["user"], user=user, team=team1))
+                return redirect(url_for("profile", username=session["user"], user=user))
             else:
                 # Invalid password
                 flash("Incorrect Username and/or Password")

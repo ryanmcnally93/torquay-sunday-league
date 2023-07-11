@@ -17,7 +17,7 @@
     {% elif session["user"] != "ryanmcnally93" %}
     <div class="row">
         <div class="col s12 center-align">
-            <a href=" url_for('team_profile', id=team.team_id) " id="register-button" class="btn green"> {{ team.team_name }} </a>
+            <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green"> {{ team.team_name }} </a>
         </div>
     </div>
     {% else %}
