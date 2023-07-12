@@ -60,6 +60,12 @@ def register():
         username = request.form.get("username")
         emailaddress = request.form.get("emailaddress")
         password = generate_password_hash(request.form.get("password"))
+        written_password = request.form.get("password")
+        confirmed_password = request.form.get("confirm_password")
+
+        if written_password != confirmed_password:
+            flash("ERROR! Your passwords do not match")
+            return render_template("register.html")
 
         # Check username doesn't exist
         user_object = User.query.filter_by(username=username).first()
@@ -70,6 +76,7 @@ def register():
         email_object = User.query.filter_by(emailaddress=emailaddress).first()
         if email_object:
             return "This email address is taken!"
+
 
         # Get the month and year of registration
         date_time = datetime.now()
