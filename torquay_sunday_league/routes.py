@@ -297,12 +297,29 @@ def user_edit(username):
     if session["user"] != username:
         flash("You cannot change the details of another user.")
         return render_template("user_profile.html", user=user, team=team1)
-
+    
     if request.method == "POST":
-        user.emailaddress = request.form.get("emailaddress")
-        user.password = generate_password_hash(request.form.get("password"))
-        db.session.commit()
-        return render_template("user_profile.html", user=user, team=team1)
+        if request.form.get("new_password") != "":
+            current = request.form.get("password")
+            if check_password_hash(user.password, current):
+                user.emailaddress = request.form.get("emailaddress")
+                user.password = generate_password_hash(request.form.get("new_password"))
+                db.session.commit()
+                return render_template("user_profile.html", user=user, team=team1)
+            else:
+                flash("Your current password is incorrect")
+
+        else:
+            current = request.form.get("password")
+            if check_password_hash(user.password, current):
+                user.emailaddress = request.form.get("emailaddress")
+                db.session.commit()
+                return render_template("user_profile.html", user=user, team=team1)
+            else:
+                flash("current did not match user.password")
+                flash(current)
+                flash(user.password)
+
     return render_template("user_edit.html", user=user, team=team1)
 
 
