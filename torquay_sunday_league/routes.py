@@ -283,7 +283,13 @@ def user_edit(username):
     user = User.query.filter_by(username=username).first()
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
     if session["user"] == "ryanmcnally93":
-        flash("WARNING Changing your email address will affect your admin status.")
+        flash("WARNING Changing your email address may affect your admin status.")
+
+    # This if statement stops the user from being able
+    # to type another managers name into the URL and make changes.
+    if session["user"] != username:
+        flash("You cannot change the details of another user.")
+        return render_template("user_profile.html", user=user, team=team1)
 
     if request.method == "POST":
         user.emailaddress = request.form.get("emailaddress")
@@ -291,3 +297,16 @@ def user_edit(username):
         db.session.commit()
         return render_template("user_profile.html", user=user, team=team1)
     return render_template("user_edit.html", user=user, team=team1)
+
+
+@app.route("/delete_user/<username>")
+def delete_user(username):
+    user = User.query.filter_by(username=username).first()
+    if session["user"] == username:
+        session.pop("user")
+        db.session.delete(user)
+        db.session.commit()
+        flash("Your account has been deleted")
+        return redirect(url_for("log_in"))
+    else:
+        flash("You cannot delete another managers account.")

@@ -25,10 +25,27 @@
 <!-- Email Address -->
 <h2 class="center-align">Email: {{ user.emailaddress }}</h2>
 
+{% if session["user"] == user.username %}
 <div class="row">
     <div class="col player-edit-view">
         <!-- Button to Edit Password or Email info -->
         <a class="team-profile-button btn green" href="{{ url_for('user_edit', username=user.username) }}">Edit Details</a>
+    </div>
+    <div class="col player-edit-view">
+        <!-- Button to delete user -->
+        <a class="btn red modal-trigger" id="delete_user" href="#modal-{{ user.username }}">Delete account</a>
+    </div>
+</div>
+{% endif %}
+
+<div id="modal-{{ user.username }}" class="modal">
+    <div class="modal-content">
+        <h4>Are you sure you want to delete your account?</h4>
+        <p>This action cannot be undone</p>
+    </div>
+    <div class="modal-footer">
+        <a href="{{ url_for('delete_user', username=user.username) }}" class="btn green">Yes</a>
+        <a href="{{ url_for('profile', username=session['user']) }}" class="btn red">No</a>
     </div>
 </div>
 
