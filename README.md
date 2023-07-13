@@ -515,49 +515,57 @@ I saw on Slack that other users discovered this issue on Code Anywhere, and when
 
 I fixed the issue by calling my login page and function log_in instead, which worked fine.
 
-6). Registration and login, on page load, clear inputs. Javascript files added to clear data as page load would sometime have old data inside.
+6). I had an issue with the Register and login pages when they loaded, if I backspaced, the inputs had both the label and last inputs, one of top of the other, it looked messy.
+
+<!-- CAUSE ERROR FOR IMAGE -->
+
+I added Javascript files to each page that had a form, to clear data as the page loads. Edit pages include old value but don't have the error now.
 
 7). Originally I had number of players as a typed in property. I struggled to find the actual number of players from the team we were clicked onto.
 
 I fixed this by searching the team table for the id passed in, and then realising that that table has a players attribute, iterated through that and incremented a variable with the original value of 0.
 
-I then added a flash message for teams who have less than the required amount of teams and added some javascript functionality so the css color and title attributes are added, giving the user more feedback on their number of teams.
+I then added a flash message for teams who have less than the required amount of players and added some javascript functionality so the css color and title attributes are added, giving the user more feedback on their number of players.
 
-8). delete team, had issue with creating the modal. I hadn’t watched the video all the way through and tried to add a script which called a function in js that called the jinja template which didn’t work.
+8). I had an issue with the delete team function, when creating the modal. I hadn’t watched the video all the way through and tried to add a script which called a function in js that called the jinja template which didn’t work.
 
 I then was told on google to add it to in-line script. This didn’t work. I saw the modal tutorial on the video created by materialise and made changes.
 
-Had for loop error.
+<!-- CAUSE ERROR FOR IMAGE -->
 
-I had commented out a jinja template i was going to created in the future:
+I had a for loop error appear, which I discovered was because I had commented out a jinja template i was going to created in the future:
 
 if team.created_by == session.user
 
-But this was actually being read so deleted the %% symbols
+The issue was even though it was commented out, the {%%} symbols were being used as normal, and as there was no endfor line, this was throwing an error.
 
-9). Edit players team dropdown wasn’t working, I had to edit the for loop and it’s placement so the selected item was outside the for loop, and the if statement only returned items that weren’t equal to the team already selected. Was duplicating at first.
+9). Edit players team dropdown wasn’t working, I had to edit the for loop and it’s placement so the selected item was outside the for loop, and the if statement only returned items that weren’t equal to the team already selected as it was duplicating teams at first.
 
-12). User could login twice, changed the register and log_in pages.
+I then realised that you could edit a player and put him in another team, which shouldn't be allowed. As you have to go onto the teams page to view and add this particular player, I thought it best that we cannot change the club of that player, and I deleted the field.
 
-13). created an if statement that only allows user to see teams created by them or me. Cannot see teams created by other users. If user is me, all teams are visible, so I can look through and pick the best candidate. On edit and delete functions, check if user is creator.
+12). User was logged in but the login page could be viewed if typed into the URL, and potentially a second user could be logged in. I added an if statement to the register and log_in pages to make sure there isn't somebody already logged in.
 
-14). The user must not be allowed to make more than one team, how do I achieve this? Use created_by variable ++, only allow 1.
-Create team route had an issue as I typed user.team_managed == team.team_name when I should have typed user.team_managed = team.team_name.
+13). Had an error appear when trying to edit the create team route. I had added code to change the user.team_managed property but I realised I had typed user.team_managed == team.team_name when I should have typed user.team_managed = team.team_name.
 
-15). Team1 and User1 explanation in index route.
+14). I had an issue with the index page and teams page. These pages look through the user and team tables to view certain information, but when the user is not logged in they cannot access this.
 
-16).             <!--THIS LINE IS A MISTAKE I HAD!!!!-->
-           <!--     user_object["password"], request.form.get("password")): -->
+<!-- IMAGE -->
+
+I created an if statement that looks to see if there is a user logged in first and if there isn't one, the variables equal a string with the word None inside.
+
+### Unfixed Bugs
+
+
 
 ### Responsive Design
 
 #### Ipad Air screen resolution
 
-
+Changes on each page
 
 #### IPhone 5/SE screen resolution
 
-
+Changes on each page
 
 ### API Integration
 
@@ -565,12 +573,54 @@ Create team route had an issue as I typed user.team_managed == team.team_name wh
 
 ## Credits
 
-### Content
+### Code
 
+- The code environment was set up using the Code Institute template <!-- LINK TO TEMPLATE -->
 
+- The modals, sidenav, datepicker, selects and collapsibles were created using <a href="materializecss.com" target="_blank">materializecss's</a> code.
+
+- script.js contains some code from <a href="materializecss.com" target="_blank">materializecss</a> which initialises the modals, sidenav, datepicker, selects and collapsibles.
+
+- The run.py, env.py, .gitignore, __init__.py, models.py and routes.py files were initially created by following the code institute tutorials, and making necessary changes and updates to adapt the code to my website.
+
+### Web Tools
+
+- This website was created on <!-- Link for Code Anywhere -->
+
+- This is the site I used for my <a href="https://shields.io/category/analysis" target="_blank">Shields.</a>
+
+- I compressed images using <a href="https://tinypng.com/" target="_blank">tinypng</a> given to me by Jo_ci on Slack.
+
+<!-- - I resized images using this <a href="https://www.simpleimageresizer.com/upload" target="_blank">simple image resizer.</a> -->
+
+- The colours were chosen using <a href="https://coolors.co/" target="_blank">Coolors.</a>
+
+- The contrast was then checked using this contrast checker <a href="https://webaim.org/resources/contrastchecker/" target="_blank">Webaim</a>
+
+- I changed the format of my images from jpg, png and jpeg to webp using <a href="https://convertio.co/png-webp/" target="_blank">convertio.</a>
 
 ### Media
 
+- The image of Kevin De Bruyne was obtained from <a href="https://www.pngplay.com/image/494974">pngplay</a>, the uploader's name is "Arsh".
 
+- The image of Enzo Fernández was obtained from <a href="https://www.footyrenders.com/premier-league/chelsea/enzo-fernandez-2/">footyrenders</a>, Cut by: "crisssnw".
+
+- The image of Marcus Rashford was obtained from <a href="https://www.pinterest.co.uk/pin/marcus-rashford-render-england-view-and-download-football-renders-in-png-now-for-free-by-may-22-2018--655977501949397871/">footyrenders on pinterest</a>, the pinterest account is under "RilkeRainer".
+
+- The image of Martin Ødegaard was obtained from <a href="https://www.footyrenders.com/premier-league/arsenal/martin-odegaard-45/">footyrenders</a>, Cut by: JvierGfx.
+
+- The image of Aleksandar Mitrović was obtained from <a href="https://www.footyrenders.com/nations/serbia/aleksandar-mitrovic-3/">footyrenders</a>, Cut by: szwejzi.
+
+- The image of Trent Alexander-Arnold was obtained from <a href="https://www.footyrenders.com/premier-league/liverpool/trent-alexander-arnold-72/">footyrenders</a>, Cut by: crisssnw.
 
 ### Acknowledgements
+
+- My Mentor Jubril Akolade for continuous helpful feedback.
+
+- My college contact Ben Smith for his support throughout.
+
+- My other college contact Pasquale Fasulo for his support too.
+
+- Tutor support and the Slack community at Code Institute for their help.
+
+This readme.md was spellchecked using the spell checker extension for Chrome. <!-- BE SURE TO CHECK -->
