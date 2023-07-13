@@ -335,37 +335,95 @@ Fan:
 
 ### Competitor Review
 
+What other footballing leagues/teams are there in or near Torquay?
 
+<a href="#">Site One</a>
+
+Pros:
+
+-
+
+Cons:
+
+-
 
 ### Roadmap
 
-<!--This roadmap indicates the importance and viability of specific opportunities.
+This roadmap indicates the importance and viability of specific opportunities.
 
 | Opportunities/Problems               | Importance | Viability |
 | ------------------------------------ | ---------- | --------- |
-| Feature 1         | 5          | 5         |-->
+| League Table | 3          | 5         |
+| User authentication       | 5          | 5         |
+| CRUD functionality for users                    | 5          | 5         |
+| CRUD functionality for teams            | 5          | 5         |
+| CRUD functionality for players             | 5          | 5         |
+| Rules page | 5          | 5         |
+| Gallery                        | 3          | 4         |
+| Team and Player statistics | 1 | 4 |
+| Match information | 5 | 1 |
 
 ## Features
 
 ### Existing Features
 
-- **Navigation Bar**
+#### Navigation Bar
 
-- **Footer**
+- Explain
 
+#### Footer
 
+- Explain
 
-- **Logo**
+#### Logo
 
+- Explain
 
+#### Index League Table
+
+- Explain
+
+#### Buttons
+
+- Explain
+
+#### Team Cards
+
+- Explain
+
+#### Profile pages
+
+- Explain
+
+#### Player Collapsibles
+
+- Explain
+
+#### Add/Edit/login and register form page elements
+
+- Explain
+
+#### Rules elements
+
+- Explain
+
+#### Gallery elements
+
+- Explain
 
 ### Features Left to Implement
 
-- **Feature Name**
+#### Stats
 
+- Explain
 
+#### Matches
+
+- Explain
 
 ## Testing
+
+CREATE TESTING DOCUMENT
 
 I have tested my web application automatically and manually using Test Driven Development and Behaviour Driven Development.
 
@@ -388,6 +446,10 @@ I have tested my web application automatically and manually using Test Driven De
 #### JSHint
 
 
+
+#### Python Validation
+
+<!-- Unit tests -->
 
 ### Lighthouse
 
@@ -429,11 +491,15 @@ I fixed this issue by opening psql and changing the directory again to torquay_s
 
 I fixed this in several steps, first, I made the table inline-table and the two players inline-block. This placed the three elements in a line, but the table's margin: auto property no longer centered it. I fixed this issue by using the margin-left: 50%, left: (half the width of the element) trick.
 
-3). Cannot update postgres after I have changed model.py. Max character length was 15, need it to be 25.
+3). I couldn't update postgres after I made changes to the model.py file. Max character length was originally fifteen, but I needed it to be twenty-five.
 
-4). 
+<!-- CAUSE ERROR FOR IMAGE -->
 
-5). When adding a player, the user is supposed to be transported back to the players page for the team currently being worked on. However, my page would only either load an empty player page, or werksoid would interject with an error, stating that "ID" was either not defined or defined incorrectly.
+I fixed this by discovering the DROP DATABASE and CREATE DATABASE commands in psql. Then I typed python3, import torquay_sunday_league from db, db.create_all() and exit().
+
+Once I ran my run.py file then the database has been recreated, at the loss of all the stored user, team and player information.
+
+4). When adding a player, the user is supposed to be transported back to the players page for the team currently being worked on. However, my page would only either load an empty player page, or werksoid would interject with an error, stating that "ID" was either not defined or defined incorrectly.
 
 <!-- IMAGE -->
 
@@ -441,19 +507,23 @@ I fixed this by copying the line from the players app.route, placing in the play
 
 <!-- IMAGE -->
 
-6). Error when loading login page, don’t have access Code Anywhere has issues with login.html. Changed to log_in.html.
-7). Update schema? I have changed character length restriction but cannot post this information to Postgres.
-Edit the database doing the following:
-DROP DATABASE {name}
-CREATE DATABASE {name}
-python3 - from {name} import db - db.create_all()
-8). Registration and login, on page load, clear inputs. Javascript files added to clear data as page load would sometime have old data inside.
-9). Originally I had number of players as a typed in property. I struggled to find the actual number of players from the team we were clicked onto.
+5). I had an error showing when loading my login page, it said I didn’t have access.
+
+<!-- CAUSE ERROR FOR IMAGE -->
+
+I saw on Slack that other users discovered this issue on Code Anywhere, and when they switched to GitPod, the issue was gone. My belief was that this is because Code Anywhere has an issue with a file being called login.html, which probably refers to their own login page or something.
+
+I fixed the issue by calling my login page and function log_in instead, which worked fine.
+
+6). Registration and login, on page load, clear inputs. Javascript files added to clear data as page load would sometime have old data inside.
+
+7). Originally I had number of players as a typed in property. I struggled to find the actual number of players from the team we were clicked onto.
 
 I fixed this by searching the team table for the id passed in, and then realising that that table has a players attribute, iterated through that and incremented a variable with the original value of 0.
 
 I then added a flash message for teams who have less than the required amount of teams and added some javascript functionality so the css color and title attributes are added, giving the user more feedback on their number of teams.
-10). delete team, had issue with creating the modal. I hadn’t watched the video all the way through and tried to add a script which called a function in js that called the jinja template which didn’t work.
+
+8). delete team, had issue with creating the modal. I hadn’t watched the video all the way through and tried to add a script which called a function in js that called the jinja template which didn’t work.
 
 I then was told on google to add it to in-line script. This didn’t work. I saw the modal tutorial on the video created by materialise and made changes.
 
@@ -464,7 +534,8 @@ I had commented out a jinja template i was going to created in the future:
 if team.created_by == session.user
 
 But this was actually being read so deleted the %% symbols
-11). Edit players team dropdown wasn’t working, I had to edit the for loop and it’s placement so the selected item was outside the for loop, and the if statement only returned items that weren’t equal to the team already selected. Was duplicating at first.
+
+9). Edit players team dropdown wasn’t working, I had to edit the for loop and it’s placement so the selected item was outside the for loop, and the if statement only returned items that weren’t equal to the team already selected. Was duplicating at first.
 
 12). User could login twice, changed the register and log_in pages.
 
@@ -487,6 +558,10 @@ Create team route had an issue as I typed user.team_managed == team.team_name wh
 #### IPhone 5/SE screen resolution
 
 
+
+### API Integration
+
+- Explain What, Why and How
 
 ## Credits
 
