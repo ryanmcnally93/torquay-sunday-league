@@ -301,10 +301,32 @@ def user_edit(username):
     if request.method == "POST":
         if request.form.get("new_password") != "":
             current = request.form.get("password")
+            # This code checks that the password is correct
+            if check_password_hash(user.password, current):
+                # This code will run if the users email address has not changed but the password has
+                if request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress:
+                    user.password = generate_password_hash(request.form.get("new_password"))
+                    db.session.commit()
+                    flash("User password has been changed ")
+                    return render_template("user_profile.html", user=user, team=team1)
+                # This code will run if both the email address and password are to be changed
+                else:
+                    user.emailaddress = request.form.get("emailaddress")
+                    user.password = generate_password_hash(request.form.get("new_password"))
+                    db.session.commit()
+                    flash("User password and email address have been changed ")
+                    return render_template("user_profile.html", user=user, team=team1)
+            else:
+                flash("Your current password is incorrect")
+
+        # This code will run if the user is changing email address but not changing password
+        elif request.form.get("new_password") == "" and request.form.get("emailaddress") != "" and request.form.get("emailaddress") != user.emailaddress:
+            # We still need to run the code that checks the current password is correct
+            current = request.form.get("password")
             if check_password_hash(user.password, current):
                 user.emailaddress = request.form.get("emailaddress")
-                user.password = generate_password_hash(request.form.get("new_password"))
                 db.session.commit()
+                flash("User email address has been changed")
                 return render_template("user_profile.html", user=user, team=team1)
             else:
                 flash("Your current password is incorrect")
@@ -312,13 +334,10 @@ def user_edit(username):
         else:
             current = request.form.get("password")
             if check_password_hash(user.password, current):
-                user.emailaddress = request.form.get("emailaddress")
-                db.session.commit()
+                flash("No user data was changed")
                 return render_template("user_profile.html", user=user, team=team1)
             else:
-                flash("current did not match user.password")
-                flash(current)
-                flash(user.password)
+                flash("Your current password is incorrect")
 
     return render_template("user_edit.html", user=user, team=team1)
 
