@@ -119,24 +119,24 @@ footer p {
     color: green;
     text-align: center;
     font-size: 20px;
-    margin: 0 0 5px 0;
+    margin: -20px 0 0 0;
 }
 
 #rules-link {
     color: green;
-    display: flex;
     margin: auto;
-    width: 80px;
-    height: 35px;
-    justify-content: space-around;
-    align-content: space-around;
-    flex-wrap: wrap;
     font-size: 20px;
+    margin-right: 10px;
+    margin-left: 16px;
+}
+
+#socials:not(.browser-default) {
+    height: 41px;
+    margin-top: 0;
 }
 
 #rules-link:hover {
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 5px;
+    color: lightgreen;
 }
 
 .form-icon-colour {
@@ -254,15 +254,44 @@ footer p {
 
 #back-to-top {
     color: green;
-    height: 35px;
-    width: 110px;
-    display: inline-flex;
-    align-content: center;
-    flex-wrap: wrap;
-    padding: 5px;
+    margin: 10px;
 }
 
 #back-to-top:hover {
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 5px;
+    color: lightgreen;
+}
+
+.social-networks {
+    text-align: center;
+    padding: 0;
+}
+  
+.social-networks li {
+    display: inline;
+}
+  
+.social-networks i {
+    font-size: 160%;
+    margin: 10px 5%;
+    color: green;
+}
+  
+.social-networks i:hover {
+    color: lightgreen;
+}
+  
+@media (max-width: 800px) {
+    footer {
+      margin: 10px;
+    }
+}
+  
+@media (max-width: 600px) {
+    .social-networks i {
+      font-size: 110%;
+    }
+}
+
+.footer-line {
+    display: inline;
 }
