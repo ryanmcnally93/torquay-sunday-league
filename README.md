@@ -157,31 +157,35 @@ User profile displays clubs: multiple, user data can be changed but gives warnin
 
 ### Design Choices
 
+The website needs to be fun and inviting, with bright colours and imagery. This site has a lot of written text so it is important to break it up with some imagery. I have viewed these websites for inspiration:
 
+<a href="#">Site One</a>
 
 #### Fonts
 
-
+Undecided
 
 #### Icons
 
-
+Undecided
 
 #### Colours
 
-
+Undecided
 
 #### Styling
 
-
+Undecided
 
 #### Backgrounds
 
+On the Index, Teams and Players pages, we have two known premier league footballers. One on the left and one on the right. These players either face inwards or forwards but never outwards in any way, we want users focused on the center content. The players are wearing the same colour as one another.
 
+IMAGE 2 Background pitch image Undecided
 
 #### Images
 
-
+Undecided, add gallery page?
 
 ### Wireframes
 
@@ -213,39 +217,121 @@ These wireframes were created using <a href="https://balsamiq.com/wireframes/?ga
 
 ### Q and A of Potential Users
 
+Speak to a manager or captain of football team.
+Speak to a regular sunday league player.
+Speak to a footballing fan.
 
+#### Q1 What makes a good website for football?
 
-#### Q1 ?
+Manager:
 
+- ""
 
+Player:
 
-#### Q2 ?
+- ""
 
+Fan:
 
+- ""
 
-#### Q3 ?
+#### Q2 What information would you be looking for?
 
+Manager:
 
+- ""
 
-#### Q4 ?
+Player:
 
+- ""
 
+Fan:
 
-#### Q5 ?
+- ""
 
+#### Q3 If you lived in Torquay, would you use this site?
 
+Manager:
 
-#### Q6 ?
+- ""
 
+Player:
 
+- ""
 
-#### Q7 ?
+Fan:
 
+- ""
 
+#### Q4 Why?
 
-#### Q8 ?
+Manager:
 
+- ""
 
+Player:
+
+- ""
+
+Fan:
+
+- ""
+
+#### Q5 What changes could I make?
+
+Manager:
+
+- ""
+
+Player:
+
+- ""
+
+Fan:
+
+- ""
+
+#### Q6 What other information might managers/players/fans need?
+
+Manager:
+
+- ""
+
+Player:
+
+- ""
+
+Fan:
+
+- ""
+
+#### Q7 Are the rules what you would expect? Should any be added?
+
+Manager:
+
+- ""
+
+Player:
+
+- ""
+
+Fan:
+
+- ""
+
+#### Q8 Did you find it easy to achieve what you would want to achieve?
+
+Manager:
+
+- ""
+
+Player:
+
+- ""
+
+Fan:
+
+- ""
 
 ### Competitor Review
 
