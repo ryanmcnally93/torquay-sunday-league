@@ -76,23 +76,24 @@ th, td {
     width: 380px;
     height: 680px;
     display: inline-block;
-    position: absolute;
     z-index: -1;
     overflow: hidden;
 }
 
 #rashford-box {
     width: 460px;
-    right: 3%;
+    margin-right: 3%;
     z-index: -1;
+    float: right;
 }
 
 .player-left-box {
-    left: 5%;
+    margin-left: 5%;
 }
 
 .player-right-box {
-    right: 6%;
+    margin-right: 6%;
+    float: right;
 }
 
 .player-left {
@@ -105,7 +106,6 @@ th, td {
 
 #main-content {
     margin-bottom: 20px;
-    height: 690px;
 }
 
 /* BELOW 915px width, need to have 1 player image */
@@ -136,6 +136,7 @@ footer p {
 
 #rules-link:hover {
     background-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
 }
 
 .form-icon-colour {
@@ -159,6 +160,11 @@ footer p {
 
 .teams-row {
     display: inline-block;
+    position: absolute;
+    left: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
 }
 
 @media (max-width: 767px) {
@@ -231,4 +237,27 @@ footer p {
 
 #no_of_players {
     display: inline;
+}
+
+#p-background {
+    background-color: rgb(250, 250, 250, 0.8);
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+#back-to-top {
+    color: green;
+    height: 35px;
+    width: 110px;
+    display: inline-flex;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+#back-to-top:hover {
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
 }

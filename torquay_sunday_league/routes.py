@@ -11,7 +11,6 @@ def home():
     if session:
         user1 = User.query.filter_by(username=session["user"]).first()
         team1 = Team.query.filter_by(team_name=user1.team_managed).first()
-        return render_template("index.html", user=user1, team=team1)
     else:
         user1 = "None"
         team1 = "None"
@@ -258,16 +257,20 @@ def add_player(id):
 
 @app.route("/team_profile/<int:id>", methods=["GET", "POST"]) 
 def team_profile(id):
-    user1 = User.query.filter_by(username=session["user"]).first()
+    if session:
+        user1 = User.query.filter_by(username=session["user"]).first()
+    else:
+        user1 = "None"
     team = Team.query.get_or_404(id)
     number_of_players = 0
     players = Team.query.get(id).players
     for player in players:
         number_of_players += 1
-
     team.team_no_of_players = number_of_players
-    if number_of_players < 16 and session["user"] != "ryanmcnally93":
-        flash("You must have 16 players to be accepted")
+    if session:
+        if number_of_players < 16 and session["user"] != "ryanmcnally93" and session["user"] == team.team_created_by:
+            flash("You must have 16 players to be accepted")
+
     return render_template("team_profile.html", team=team, user=user1)
 
 
