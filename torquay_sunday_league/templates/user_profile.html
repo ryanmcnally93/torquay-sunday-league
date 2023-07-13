@@ -25,6 +25,8 @@
 <!-- Email Address -->
 <h2 class="center-align">Email: {{ user.emailaddress }}</h2>
 
+<p>User data is stored and connected to the user name, which cannot be changed. By doing this we ensure that every manager is protected from their data being changed or deleted by another user. If there are any issues with this site or you believe to have experienced your account being hacked please contact our technical support team on 07954622365.</p>
+
 {% if session["user"] == user.username %}
 <div class="row">
     <div class="col player-edit-view">

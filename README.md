@@ -191,29 +191,29 @@ Undecided, add gallery page?
 
 These wireframes were created using <a href="https://balsamiq.com/wireframes/?gad=1&gclid=Cj0KCQjwmN2iBhCrARIsAG_G2i4B-7yK8ylaMm-EgPZyIat6rzJi5BBNRLhY50Ej2SbjAHbQF2LMZocaAj9nEALw_wcB" target="_blank">Balsamiq Wireframes:</a>
 
-<img src="/static/images/readme-images/index-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/index-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/login-or-register-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/login-or-register-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/create-team-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/create-team-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/team-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/team-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/teams-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/teams-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/add-edit-players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/add-edit-players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/user-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/user-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
-<img src="/static/images/readme-images/rules-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/rules-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
 
 ### Prototype
 
 - This index prototype was created on Figma.com.
 
-<img src="/static/images/readme-images/index-prototype.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/index-prototype.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto;">
 
 ### Q and A of Potential Users
 
