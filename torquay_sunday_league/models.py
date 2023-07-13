@@ -9,6 +9,8 @@ class Team(db.Model):
     team_colour = db.Column(db.String(30), nullable=False)
     team_location = db.Column(db.String(25), unique=True, nullable=False)
     team_created_by = db.Column(db.String(25), nullable=False)
+    team_contact = db.Column(db.String(11))
+    confirmation_status = db.Column(db.Boolean, default=False, nullable=False)
     players = db.relationship(
         "Player", backref="team", cascade="all, delete", lazy=True)
 

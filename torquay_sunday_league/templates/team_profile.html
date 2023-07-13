@@ -24,6 +24,11 @@
     <!-- Created By -->
     <h2 class="center-align">Created by: {{ team.team_created_by }}</h2>
 
+    {% if team.team_contact != "" %}
+        <!-- Created By -->
+        <h2 class="center-align">Contact: {{ team.team_contact }}</h2>
+    {% endif %}
+
         <div class="row">
             <div class="col player-edit-view">
                 {% if team.team_created_by == session["user"] %}

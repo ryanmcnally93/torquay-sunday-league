@@ -42,6 +42,7 @@ def create_team(username):
                 team_no_of_players=0,
                 team_colour=request.form.get("team_colour"),
                 team_location=request.form.get("team_location"),
+                team_contact=request.form.get("team_contact"),
                 team_created_by=session["user"]
                 )
             user.team_managed = team.team_name
@@ -156,6 +157,7 @@ def edit_team(team_id):
             team.team_name = request.form.get("team_name")
             team.team_colour = request.form.get("team_colour")
             team.team_location = request.form.get("team_location")
+            team.team_contact = request.form.get("team_contact")
             user1.team_managed = team.team_name
             db.session.commit()
             # Change redirect for team profile page
@@ -180,7 +182,10 @@ def delete_team(team_id):
 
 @app.route("/players/<int:id>")
 def players(id):
-    user1 = User.query.filter_by(username=session["user"]).first()
+    if session:
+        user1 = User.query.filter_by(username=session["user"]).first()
+    else:
+        user1 = "None"
     team = Team.query.get_or_404(id)
     players = list(Player.query.order_by(Player.player_kit_number).all())
     return render_template("players.html", players=players, team=team, user=user1)
