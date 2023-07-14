@@ -17,11 +17,16 @@ def home():
     return render_template("index.html", user=user1, team=team1)
 
 
-@app.route("/teams")
+@app.route("/teams", methods=["GET", "POST"])
 def teams():
     if session:
         user1 = User.query.filter_by(username=session["user"]).first()
         team1 = Team.query.filter_by(team_name=user1.team_managed).first()
+        if request.method == "POST":
+            team=Team.query.filter_by(team_name=request.form.get("teamid")).first()
+            team.confirmation_status = bool(True if request.form.get(f"{team.id}confirmed") else False)
+            db.session.commit()
+            flash("Confirmation changed")
     else:
         user1 = "None"
         team1 = "None"
@@ -43,6 +48,7 @@ def create_team(username):
                 team_colour=request.form.get("team_colour"),
                 team_location=request.form.get("team_location"),
                 team_contact=request.form.get("team_contact"),
+                confirmation_status=bool(False),
                 team_created_by=session["user"]
                 )
             user.team_managed = team.team_name

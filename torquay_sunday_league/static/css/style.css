@@ -295,3 +295,41 @@ footer p {
 .footer-line {
     display: inline;
 }
+
+/* swtich */
+
+/* Disabled */
+.switch label input[type=checkbox][disabled]+.lever:after, .switch label input[type=checkbox][disabled]:checked+.lever:after {
+    background-color: darkgreen;
+}
+
+/* Enabled */
+.switch label input[type=checkbox]:checked+.lever:after, .switch label .lever:after {
+    background-color: white;
+}
+
+.switch-label {
+    color: white;
+}
+
+.confirmed-p {
+    margin: 10px 0 5px 0;
+    color: white;
+}
+
+.confirm-submit {
+    border-radius: 10px;
+    background-color: lightgreen;
+    color: black;
+    margin-top: 5px;
+}
+
+.confirm-submit:hover {
+    color: white;
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+.switch {
+    margin-top: 5px;
+}

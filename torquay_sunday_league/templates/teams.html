@@ -33,6 +33,42 @@
                         <a class="btn green darken-4" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
                         <a class="btn red modal-trigger" id="delete_team" href="#modal-{{ team.id }}">Delete Team</a>
                     {% endif %}
+                    <!-- If the administrator is logged in, the switches can be changed -->
+                    {% if session["user"] == "ryanmcnally93" %}
+                        <!-- Switch -->
+                        <form method="POST" action="{{ url_for('teams') }}">
+                            <input type="text" id="teamid" name="teamid" value="{{ team.team_name }}" style="display:none;"></input>
+                            <div class="switch">
+                                <label for="{{ team.id }}confirmed" class="switch-label">
+                                No
+                                {% if team.confirmation_status == True %}
+                                    <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox" checked>
+                                {% else %}
+                                    <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox">
+                                {% endif %}
+                                <span class="lever" type="submit"></span>
+                                Yes
+                                </label>
+                            </div>
+                            <button class="confirm-submit" type="submit">Confirm</button>
+                        </form>
+                    <!-- If not the admin, the switch is disabled, but still visible -->
+                    {% else %}
+                        <!-- Disabled Switch -->
+                        <p class="confirmed-p">Confirmed</p>
+                        <div class="switch">
+                            <label for="{{ team.id }}confirmed" class="switch-label">
+                            No
+                            {% if team.confirmation_status == True %}
+                                <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox" checked disabled>
+                            {% else %}
+                                <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox" disabled>
+                            {% endif %}
+                            <span class="lever"></span>
+                            Yes
+                            </label>
+                        </div>
+                    {% endif %}
                     </div>
                 </div>
             </div>

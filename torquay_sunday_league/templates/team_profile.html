@@ -29,6 +29,13 @@
         <h2 class="center-align">Contact: {{ team.team_contact }}</h2>
     {% endif %}
 
+    {% if team.confirmation_status == True %}
+        <h2 class="center-align">Team Confirmed</h2>
+    {% else %}
+        <h2 class="center-align">Team not yet confirmed</h2>
+        <p class="center-align">Teams will be reviewed once we have been contacted to say all players have all been submitted</p>
+    {% endif %}
+
         <div class="row">
             <div class="col player-edit-view">
                 {% if team.team_created_by == session["user"] %}
