@@ -15,12 +15,14 @@
 
     <!-- This message will display the users team if they have one, except for my account -->
     {% elif session["user"] != "ryanmcnally93" %}
+    <h2 class="sub-heading">Team deadline 10/08/2023</h2>
     <div class="row">
         <div class="col s12 center-align">
             <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green"> {{ team.team_name }} </a>
         </div>
     </div>
     {% else %}
+    <h2 class="sub-heading">Viewing as Admin</h2>
     <div class="row">
         <div class="col s12 center-align">
             <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green">Create Team</a>
@@ -42,7 +44,7 @@
 
 <main id="main-content">
 
-    <div class="player-left-box">
+    <div class="index-player-left-box player-left-box">
         <img class="player-left" src="{{ url_for('static', filename='images/odegaard.webp') }}">
     </div>
 
@@ -56,91 +58,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <!-- IF USER IS LOGGED IN AND HAS TEAM, DISPLAY THEIR NAME? -->
-                {% if session.user and user.team_managed != "None" and session["user"] != "ryanmcnally93" %}
-                    <td> {{ team.team_name }} </td>
-                {% else %}
-                    <td>YOUR TEAM!</td>
+            {% for team in teams %}
+                {% if team.confirmation_status == True %}
+                    <tr>
+                        <td>{{ team.id }}</td>
+                        <td>{{ team.team_name }}</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
                 {% endif %}
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Babbacombe</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Barton Albion</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Chelston Town</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Cockington Village</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Edginswell United</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Hele Cross Rangers</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Hollicombe</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Shiphay District</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Torre Town</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>Watcombe Wanderers</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td>Wellswood United</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <div class="player-right-box">
+    <div class="index-player-right-box player-right-box">
         <img id="trent" class="player-right" src="{{ url_for('static', filename='images/trent.webp') }}">
     </div>
 
-    <div class="p-background">
+    <div class="p-background" id="index-p">
         <p>Congratulations to TQ Wanderers for their championship win and promotion to the higher league last year, as usual we have some huge teams that have fallen into our league with amazing players to add excitement too!</p>
         <p>The top tier of torqish football is due to kick off on August 29th 2023, this league consists of the 12 best teams from in and around Torquay along with some of the biggest names associated with this ideal footballing location! <br> The teams latest submission dates are on 10th August 2023, to leave time for fixtures to be organised and announced.</p>
     </div>

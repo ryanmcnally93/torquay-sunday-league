@@ -14,7 +14,9 @@ def home():
     else:
         user1 = "None"
         team1 = "None"
-    return render_template("index.html", user=user1, team=team1)
+
+    teams = list(Team.query.order_by(Team.team_name).all())
+    return render_template("index.html", user=user1, team=team1, teams=teams)
 
 
 @app.route("/teams", methods=["GET", "POST"])

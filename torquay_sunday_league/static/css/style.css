@@ -60,12 +60,10 @@ nav .sidenav-trigger {
     border-radius: 10px;
     border-collapse: separate;
     border-spacing: 0;
-    display: inline-table;
-    margin-left: 50%;
-    left: -275px;
-    position: absolute;
+    display: table;
     z-index: 2;
     height: 680px;
+    justify-content: center;
 }
 
 th, td {
@@ -82,18 +80,44 @@ th, td {
 
 #rashford-box {
     width: 460px;
-    margin-right: 3%;
+    right: 3%;
     z-index: -1;
-    float: right;
 }
 
-.player-left-box {
-    margin-left: 5%;
+.teams-player-left-box {
+    position: absolute;
+    top: 250px;
+    left: 5%;
 }
 
-.player-right-box {
-    margin-right: 6%;
-    float: right;
+.teams-player-right-box {
+    right: 6%;
+    position: absolute;
+    top: 250px;
+}
+
+.players-player-left-box {
+    position: absolute;
+    top: 210px;
+    left: 5%;
+}
+
+.players-player-right-box {
+    right: 6%;
+    position: absolute;
+    top: 210px;
+}
+
+.index-player-left-box {
+    position: absolute;
+    top: 355px;
+    left: 5%;
+}
+
+.index-player-right-box {
+    right: 6%;
+    position: absolute;
+    top: 355px;
 }
 
 .player-left {
@@ -106,6 +130,7 @@ th, td {
 
 #main-content {
     margin-bottom: 20px;
+    min-height: 690px;
 }
 
 /* BELOW 915px width, need to have 1 player image */
@@ -144,8 +169,8 @@ footer p {
 }
 
 .team-card {
-    min-height: 270px;
-    min-width: 180px;
+    height: 320px;
+    width: 200px;
     text-align: center;
 }
 
@@ -160,7 +185,6 @@ footer p {
 
 .teams-row {
     display: inline-block;
-    position: absolute;
     left: 0;
     margin-left: 10%;
     margin-right: 10%;
