@@ -20,7 +20,7 @@
         <!-- Looking through all the teams and displaying them -->
         {% for team in teams %}
             <!-- Administrator can view all teams, other users can only see theirs and the administrator's teams -->
-            {% if team.team_created_by == session["user"] or team.team_created_by == "ryanmcnally93" or session["user"] == "ryanmcnally93" %}
+            {% if team.team_created_by == session["user"] or team.confirmation_status == True or session["user"] == "ryanmcnally93" %}
             <div class="col team-card-layout">
                 <div class="card team-card green-card darken-2">
                     <div class="card-content white-text">

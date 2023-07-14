@@ -119,7 +119,7 @@ We also want to promote the league wherever possible.
 
 #### Unregistered User
 
-All the restricted pages need an identifier to load properly, so the non registered user can only see Index, Teams, Team Profile, Login and Register. The homepage button says register now.
+All the restricted pages need an identifier to load properly, so the non registered user can only see Index, Teams, Team Profile, Login and Register. The homepage button says register now. As a fan I can view the teams and players that are about to start the upcoming season.
 
 <!-- IMAGE -->
 
@@ -415,11 +415,15 @@ This roadmap indicates the importance and viability of specific opportunities.
 
 #### Stats
 
-- Explain
+- Once the teams are finalised, each teams stats should be visible, perhaps on their profile page. This could display their top goalscorers, cards, etc.
 
 #### Matches
 
-- Explain
+- Once the teams are finalised, another page should be created showing the fixture list and showing stats from previous results between the two teams being viewed.
+
+#### Teams Bio
+
+- Another future feature could be a textarea bio area for each teams profile page, containing a brief history of the club and its location, achievements and players.
 
 ## Testing
 

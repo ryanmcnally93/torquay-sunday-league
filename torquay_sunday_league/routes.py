@@ -220,6 +220,8 @@ def players(id):
 def edit_player(player_id, team_id):
     user1 = User.query.filter_by(username=session["user"]).first()
     player = Player.query.get_or_404(player_id)
+    print(player.player_joined)
+
     teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(team_id)
 
@@ -283,6 +285,8 @@ def add_player(id):
                 player_country=request.form.get("player_country"),
                 team_id=team.id
             )
+            print(player.player_joined)
+            print(request.form.get("player_joined"))
             arrival = datetime.strptime(player.player_joined, "%d/%m/%Y")
             present = datetime.now()
             if present.date() < arrival.date():

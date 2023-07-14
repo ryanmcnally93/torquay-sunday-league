@@ -32,6 +32,10 @@ class Player(db.Model):
     team_id = db.Column(db.Integer, db.ForeignKey(
         "team.id", ondelete="CASCADE"), nullable=False)
 
+    # @property
+    # def player_joined(self):
+    #     return self.player_joined.strftime("%d/%m/%Y")
+
     def __repr__(self):
         #__repr__ to represent itself in the form of a string
         return "#{0} Name: {1} | - Kit Number: {2} | Joined: {3} | Country: {4} | Position: {5} | Team: {6}".format(
