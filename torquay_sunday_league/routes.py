@@ -220,7 +220,6 @@ def players(id):
 def edit_player(player_id, team_id):
     user1 = User.query.filter_by(username=session["user"]).first()
     player = Player.query.get_or_404(player_id)
-    print(player.player_joined)
 
     teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(team_id)
@@ -244,7 +243,6 @@ def edit_player(player_id, team_id):
             player.player_name = request.form.get("player_name")
             player.player_country = request.form.get("player_country")
             player.player_position = request.form.get("player_position")
-            player.player_joined = request.form.get("player_joined")
             db.session.commit()
             players = list(Player.query.order_by(Player.player_kit_number).all())
             return render_template("players.html", players=players, team=team, user=user1)
