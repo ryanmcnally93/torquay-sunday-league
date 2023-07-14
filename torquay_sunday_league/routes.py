@@ -55,8 +55,8 @@ def create_team(username):
                 team_created_by=session["user"]
                 )
 
-            team_object = Team.query.filter_by(team_name=team.team_name).first()
-            if team_object:
+            team_name = Team.query.filter_by(team_name=team.team_name).first()
+            if team_name:
                 flash("This team name is taken!")
                 return redirect(url_for("create_team", username=session["user"], user=user))
 
@@ -171,10 +171,18 @@ def edit_team(team_id):
     team = Team.query.get_or_404(team_id)
     if request.method == "POST":
         if session["user"] == team.team_created_by:
+            # This line is the problem, we cannot give the team name this value it's not allowed                    
+            team_name_search_positive = Team.query.filter_by(team_name=request.form.get("team_name")).first()
+            if team_name_search_positive:
+                if team.team_name != request.form.get("team_name"):
+                    flash("This team name is taken!")
+                    return render_template("edit_team.html", team=team, user=user1)
+
             team.team_name = request.form.get("team_name")
             team.team_colour = request.form.get("team_colour")
             team.team_location = request.form.get("team_location")
             team.team_contact = request.form.get("team_contact")
+
             user1.team_managed = team.team_name
             db.session.commit()
             # Change redirect for team profile page
@@ -214,6 +222,20 @@ def edit_player(player_id, team_id):
     player = Player.query.get_or_404(player_id)
     teams = list(Team.query.order_by(Team.team_name).all())
     team = Team.query.get_or_404(team_id)
+
+    search = Team.query.get(team_id).players
+    for current in search:
+        if str(current.player_name) != player.player_name:
+            if str(current.player_kit_number) == request.form.get("player_kit_number"):
+                flash(f"Error: This {team.team_name} kit number is already taken!")
+                return render_template("edit_player.html", player=player, team=team, teams=teams, user=user1)
+
+    for current in search:
+        if str(current.player_name) != player.player_name:
+            if str(current.player_name) == request.form.get("player_name"):
+                flash(f"Error: This player has already been registered!")
+                return render_template("edit_player.html", player=player, team=team, teams=teams, user=user1)
+
     if request.method == "POST":
         if session["user"] == team.team_created_by:
             player.player_kit_number=request.form.get("player_kit_number")
@@ -336,6 +358,13 @@ def user_edit(username):
                     return render_template("user_profile.html", user=user, team=team1)
                 # This code will run if both the email address and password are to be changed
                 else:
+                    # Checking email address is not already taken
+                    emailaddress=request.form.get("emailaddress")
+                    email_object = User.query.filter_by(emailaddress=emailaddress).first()
+                    if email_object:
+                        flash("Email address is taken")
+                        return render_template("user_profile.html", user=user, team=team1)
+
                     user.emailaddress = request.form.get("emailaddress")
                     user.password = generate_password_hash(request.form.get("new_password"))
                     db.session.commit()
@@ -346,6 +375,13 @@ def user_edit(username):
 
         # This code will run if the user is changing email address but not changing password
         elif request.form.get("new_password") == "" and request.form.get("emailaddress") != "" and request.form.get("emailaddress") != user.emailaddress:
+            # Checking email address is not already taken
+            emailaddress=request.form.get("emailaddress")
+            email_object = User.query.filter_by(emailaddress=emailaddress).first()
+            if email_object:
+                flash("Email address is taken")
+                return render_template("user_profile.html", user=user, team=team1)
+
             # We still need to run the code that checks the current password is correct
             current = request.form.get("password")
             if check_password_hash(user.password, current):
