@@ -42,6 +42,7 @@ def teams():
 def create_team(username):
     user = User.query.filter_by(username=username).first()
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
+
     if request.method == "POST":
         if session["user"] == "ryanmcnally93" or user.team_managed == "None":
             team = Team(
@@ -53,6 +54,12 @@ def create_team(username):
                 confirmation_status=bool(False),
                 team_created_by=session["user"]
                 )
+
+            team_object = Team.query.filter_by(team_name=team.team_name).first()
+            if team_object:
+                flash("This team name is taken!")
+                return redirect(url_for("create_team", username=session["user"], user=user))
+
             user.team_managed = team.team_name
             db.session.add(team)
             db.session.commit()
@@ -78,12 +85,14 @@ def register():
         # Check username doesn't exist
         user_object = User.query.filter_by(username=username).first()
         if user_object:
-            return "This username is taken!"
+            flash("Username is taken")
+            return render_template("register.html")
 
         # Check email doesn't exist
         email_object = User.query.filter_by(emailaddress=emailaddress).first()
         if email_object:
-            return "This email address is taken!"
+            flash("Email address is taken")
+            return render_template("register.html")
 
 
         # Get the month and year of registration
