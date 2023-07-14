@@ -29,7 +29,7 @@
                     <div class="card-action">
                     <a class="btn blue" href="{{ url_for('team_profile', id=team.id) }}">View Team</a>
                     <!-- Edit and delete functions are only visible for creators of the team -->
-                    {% if team.team_created_by == session["user"] %}
+                    {% if team.team_created_by == session["user"] and team.confirmation_status == False %}
                         <a class="btn green darken-4" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
                         <a class="btn red modal-trigger" id="delete_team" href="#modal-{{ team.id }}">Delete Team</a>
                     {% endif %}

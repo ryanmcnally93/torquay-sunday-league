@@ -38,7 +38,7 @@
 
         <div class="row">
             <div class="col player-edit-view">
-                {% if team.team_created_by == session["user"] %}
+                {% if team.team_created_by == session["user"] and team.confirmation_status == False %}
                 <!-- Button to Edit Team info -->
                 <a class="team-profile-button btn green" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
                 {% endif %}
