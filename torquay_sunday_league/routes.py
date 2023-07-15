@@ -1,5 +1,6 @@
 import os
 import secrets
+from PIL import Image
 from flask import render_template, request, redirect, url_for, flash, session
 from sqlalchemy import exc
 from torquay_sunday_league import app, db
@@ -346,6 +347,7 @@ def delete_player(team_id, player_id):
 
 
 def save_picture(form_picture):
+    user = User.query.filter_by(username=session["user"]).first()
     # This randomises the file name so 2 files can be uploaded with the same name
     random_hex = secrets.token_hex(8)
     # This gets the file extension type
@@ -354,8 +356,13 @@ def save_picture(form_picture):
     picture_fn = random_hex + f_ext
     # Location of file save
     picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
+    
+    output_size = (430, 430)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+
     # Image saves
-    form_picture.save(picture_path)
+    i.save(picture_path)
 
     return picture_fn
 
@@ -380,6 +387,10 @@ def user_edit(username):
             return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form)
             
         if form.picture.data:
+            # Deletes last image
+            if user.profile_picture != 'default_manager.webp':
+                os.remove(os.path.join(app.root_path,
+                'static/images/profile_pics', user.profile_picture))
             current = request.form.get("password")
             # This code checks that the password is correct
             if check_password_hash(user.password, current):
