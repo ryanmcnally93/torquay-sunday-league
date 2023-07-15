@@ -524,3 +524,22 @@ def delete_user(username):
         return redirect(url_for("log_in"))
     else:
         flash("You cannot delete another managers account.")
+
+
+@app.route("/delete_user_picture/<int:user_id>")
+def delete_user_picture(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if session["user"] == user.username:
+        # Code to delete current image
+        if user.profile_picture != 'default_manager.webp':
+            os.remove(os.path.join(app.root_path,
+            'static/images/profile_pics', user.profile_picture))
+            user.profile_picture = url_for('static', filename='images/profile_pics/default_manager.webp')
+            db.session.commit()
+            flash("Profile picture removed")
+            return redirect(url_for("profile", username=session["user"], user=user))
+        else:
+            flash("Cannot delete default picture")
+            return redirect(url_for("profile", username=session["user"], user=user))
+    else:
+        flash("Cannot remove another users picture")
