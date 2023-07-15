@@ -379,24 +379,72 @@ def user_edit(username):
             return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form)
             
         if form.picture.data:
-            picture_file = save_picture(form.picture.data)
-            user.profile_picture = picture_file
-            db.session.commit()
-            profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
-            flash("Profile Picture changed")
-            return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+            current = request.form.get("password")
+            # This code checks that the password is correct
+            if check_password_hash(user.password, current):
+                # PICTURE ONLY
+                if request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress and request.form.get("new_password") == "":
+                    picture_file = save_picture(form.picture.data)
+                    user.profile_picture = picture_file
+                    db.session.commit()
+                    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+                    flash("Profile picture changed")
+                    return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+                # PICTURE AND PASSWORD
+                elif request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress and request.form.get("new_password") != "":
+                    picture_file = save_picture(form.picture.data)
+                    user.profile_picture = picture_file
+                    user.password = generate_password_hash(request.form.get("new_password"))
+                    db.session.commit()
+                    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+                    flash("Profile picture and password changed")
+                    return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+                # PICTURE AND EMAIL
+                elif request.form.get("emailaddress") != "" or request.form.get("emailaddress") != user.emailaddress and request.form.get("new_password") == "":
+                    picture_file = save_picture(form.picture.data)
+                    user.profile_picture = picture_file
+                    # Checking email address is not already taken
+                    emailaddress=request.form.get("emailaddress")
+                    email_object = User.query.filter_by(emailaddress=emailaddress).first()
+                    if email_object:
+                        flash("Email address is taken")
+                        return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+
+                    user.emailaddress = request.form.get("emailaddress")
+                    db.session.commit()
+                    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+                    flash("Profile picture and email address changed")
+                    return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+                # ALL THREE FIELDS CHANGED
+                else:
+                    picture_file = save_picture(form.picture.data)
+                    user.profile_picture = picture_file
+                    # Checking email address is not already taken
+                    emailaddress=request.form.get("emailaddress")
+                    email_object = User.query.filter_by(emailaddress=emailaddress).first()
+                    if email_object:
+                        flash("Email address is taken")
+                        return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+
+                    user.emailaddress = request.form.get("emailaddress")
+                    user.password = generate_password_hash(request.form.get("new_password"))
+                    db.session.commit()
+                    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+                    flash("Profile picture, password and email address changed")
+                    return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+
 
         if request.form.get("new_password") != "":
             current = request.form.get("password")
             # This code checks that the password is correct
             if check_password_hash(user.password, current):
-                # This code will run if the users email address has not changed but the password has
+                # PASSWORD ONLY
                 if request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress:
                     user.password = generate_password_hash(request.form.get("new_password"))
                     db.session.commit()
                     flash("User password has been changed ")
                     return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
-                # This code will run if both the email address and password are to be changed
+                # EMAIL AND PASSWORD
                 else:
                     # Checking email address is not already taken
                     emailaddress=request.form.get("emailaddress")
@@ -413,7 +461,7 @@ def user_edit(username):
             else:
                 flash("Your current password is incorrect")
 
-        # This code will run if the user is changing email address but not changing password
+        # EMAIL ONLY
         elif request.form.get("new_password") == "" and request.form.get("emailaddress") != "" and request.form.get("emailaddress") != user.emailaddress:
             # Checking email address is not already taken
             emailaddress=request.form.get("emailaddress")
@@ -432,6 +480,7 @@ def user_edit(username):
             else:
                 flash("Your current password is incorrect")
 
+        # NO DATA CHANGED
         else:
             current = request.form.get("password")
             if check_password_hash(user.password, current):
