@@ -149,9 +149,11 @@ def profile(username):
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
     username = session["user"]
 
+    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+
     # Checking for session cookie
     if session["user"]:
-        return render_template("user_profile.html", username=username, user=user, team=team1)
+        return render_template("user_profile.html", username=username, user=user, team=team1, profile_picture=profile_picture)
     
     # If no session cookie, we return to log_in page
     return redirect(url_for("log_in", username=username, user=user, team=team1))
@@ -317,7 +319,9 @@ def team_profile(id):
         if number_of_players < 16 and session["user"] != "ryanmcnally93" and session["user"] == team.team_created_by:
             flash("You must have 16 players to be accepted")
 
-    return render_template("team_profile.html", team=team, user=user1)
+    squad_picture = url_for('static', filename='images/profile_pics/' + team.profile_picture)
+
+    return render_template("team_profile.html", team=team, user=user1, squad_picture=squad_picture)
 
 
 @app.route("/delete_player/<int:team_id>/<int:player_id>")

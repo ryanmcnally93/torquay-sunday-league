@@ -357,3 +357,21 @@ footer p {
 .switch {
     margin-top: 5px;
 }
+
+.profile-picture {
+    width: 320px;
+}
+
+.profile-box {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+}
+
+.team-profile-box {
+    margin-top: 35px;
+}
+
+.team-profile-picture {
+    border-radius: 25px;
+}

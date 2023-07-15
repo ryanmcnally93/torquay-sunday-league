@@ -5,7 +5,7 @@ class Team(db.Model):
     #schema for the Team model
     id = db.Column(db.Integer, primary_key=True)
     team_name = db.Column(db.String(25), unique=True, nullable=False)
-    profile_picture = db.Column(db.String(20), nullable=False, default='default_badge.png')
+    profile_picture = db.Column(db.String(20), nullable=False, default='default_squad.webp')
     team_no_of_players = db.Column(db.Integer, primary_key=False)
     team_colour = db.Column(db.String(30), nullable=False)
     team_location = db.Column(db.String(25), nullable=False)
@@ -46,7 +46,7 @@ class User(db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
-    profile_picture = db.Column(db.String(20), nullable=False, default='default_manager.png')
+    profile_picture = db.Column(db.String(20), nullable=False, default='default_manager.webp')
     emailaddress = db.Column(db.String(35), unique=True, nullable=False)
     password = db.Column(db.String(), nullable=False)
     month_joined = db.Column(db.String())
