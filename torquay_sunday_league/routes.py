@@ -358,7 +358,7 @@ def save_picture(form_picture):
     picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
     
     im = Image.open(form_picture)
-    im.thumbnail((430, 430))
+    im.thumbnail((320, 500))
     # Image saves
     im.save(picture_path)
     # Output: (400, 350)

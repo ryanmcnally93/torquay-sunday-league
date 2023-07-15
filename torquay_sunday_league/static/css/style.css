@@ -361,9 +361,21 @@ footer p {
 .profile-picture {
     object-fit: cover;
     border-radius: 50%;
+    aspect-ratio: 1;
 }
 
-.profile-box {
+.picture-profile-box {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+    margin-top: 20px;
+}
+
+.picture-picture-row, .picture-edit-row {
+    margin-bottom: 10px;
+}
+
+.picture-edit-box {
     display: flex;
     justify-content: center;
     width: 100% !important;

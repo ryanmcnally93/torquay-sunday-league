@@ -6,8 +6,8 @@
 <div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('user_edit', username=user.username) }}" enctype="multipart/form-data">
         <div class="card-panel green lighten-4">
-            <div class="row">
-                <div class="col profile-box">
+            <div class="row picture-edit-row">
+                <div class="col picture-edit-box">
                     <img class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
                 </div>
             </div>
