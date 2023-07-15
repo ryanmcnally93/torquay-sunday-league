@@ -50,7 +50,11 @@
                                 Yes
                                 </label>
                             </div>
-                            <button class="confirm-submit" type="submit">Confirm</button>
+                            {% if team.confirmation_status == True %}
+                                <button class="confirm-submit" type="submit">Unconfirm</button>
+                            {% else %}
+                                <button class="confirm-submit" type="submit">Confirm</button>
+                            {% endif %}
                         </form>
                     <!-- If not the admin, the switch is disabled, but still visible -->
                     {% else %}
