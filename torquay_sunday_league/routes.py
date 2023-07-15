@@ -55,7 +55,8 @@ def create_team(username):
                 team_location=request.form.get("team_location"),
                 team_contact=request.form.get("team_contact"),
                 confirmation_status=bool(False),
-                team_created_by=session["user"]
+                team_created_by=session["user"],
+                users_id=user.id
                 )
 
             team_name = Team.query.filter_by(team_name=team.team_name).first()
