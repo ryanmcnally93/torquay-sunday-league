@@ -1,4 +1,7 @@
 from torquay_sunday_league import db
+from flask_wtf import FlaskForm
+from wtforms import SubmitField
+from flask_wtf.file import FileField, FileAllowed
 
 
 class Team(db.Model):
@@ -51,3 +54,8 @@ class User(db.Model):
     password = db.Column(db.String(), nullable=False)
     month_joined = db.Column(db.String())
     team_managed = db.Column(db.String(), nullable=False)
+
+
+class UpdateProfilePicture(FlaskForm):
+    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Update')

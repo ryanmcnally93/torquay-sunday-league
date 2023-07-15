@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for, flash, session
 from sqlalchemy import exc
 from torquay_sunday_league import app, db
 from torquay_sunday_league.models import Team, Player, User
+from torquay_sunday_league.models import (UpdateProfilePicture)
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 
@@ -151,9 +152,16 @@ def profile(username):
 
     profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
 
+    form = UpdateProfilePicture()
+    if form.validate_on_submit():
+        flash("Validated!")
+    #     if form.picture.data:
+    #         picture_file = save_picture(form.picture.data)
+    #         user.profile_picture = picture_file
+
     # Checking for session cookie
     if session["user"]:
-        return render_template("user_profile.html", username=username, user=user, team=team1, profile_picture=profile_picture)
+        return render_template("user_profile.html", username=username, user=user, team=team1, profile_picture=profile_picture, form=form)
     
     # If no session cookie, we return to log_in page
     return redirect(url_for("log_in", username=username, user=user, team=team1))
