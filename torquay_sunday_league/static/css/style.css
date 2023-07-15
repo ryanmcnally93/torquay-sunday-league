@@ -359,7 +359,6 @@ footer p {
 }
 
 .profile-picture {
-    width: 320px;
     object-fit: cover;
     border-radius: 50%;
 }
