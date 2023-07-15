@@ -1,3 +1,5 @@
+import os
+import secrets
 from flask import render_template, request, redirect, url_for, flash, session
 from sqlalchemy import exc
 from torquay_sunday_league import app, db
@@ -148,20 +150,16 @@ def log_in():
 def profile(username):
     user = User.query.filter_by(username=username).first()
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
+    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
     username = session["user"]
 
-    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
-
-    form = UpdateProfilePicture()
-    if form.validate_on_submit():
-        flash("Validated!")
     #     if form.picture.data:
     #         picture_file = save_picture(form.picture.data)
     #         user.profile_picture = picture_file
 
     # Checking for session cookie
     if session["user"]:
-        return render_template("user_profile.html", username=username, user=user, team=team1, profile_picture=profile_picture, form=form)
+        return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1)
     
     # If no session cookie, we return to log_in page
     return redirect(url_for("log_in", username=username, user=user, team=team1))
@@ -346,20 +344,48 @@ def delete_player(team_id, player_id):
         flash("Only the creator of this team may delete its players.")
 
 
+def save_picture(form_picture):
+    # This randomises the file name so 2 files can be uploaded with the same name
+    random_hex = secrets.token_hex(8)
+    # This gets the file extension type
+    _, f_ext = os.path.splitext(form_picture.filename)
+    # This creates a new filename
+    picture_fn = random_hex + f_ext
+    # Location of file save
+    picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
+    # Image saves
+    form_picture.save(picture_path)
+
+    return picture_fn
+
 @app.route("/user_edit/<username>", methods=["GET", "POST"])
 def user_edit(username):
     user = User.query.filter_by(username=username).first()
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
-    if session["user"] == "ryanmcnally93":
-        flash("WARNING Changing your email address may affect your admin status.")
+    profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+    form = UpdateProfilePicture()
 
     # This if statement stops the user from being able
     # to type another managers name into the URL and make changes.
     if session["user"] != username:
         flash("You cannot change the details of another user.")
-        return render_template("user_profile.html", user=user, team=team1)
+        return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
     
     if request.method == "POST":
+        if form.validate_on_submit():
+            flash("Validated!")
+
+        if form.picture.errors:
+            return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form)
+            
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            user.profile_picture = picture_file
+            db.session.commit()
+            profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+            flash("Profile Picture changed")
+            return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
+
         if request.form.get("new_password") != "":
             current = request.form.get("password")
             # This code checks that the password is correct
@@ -369,7 +395,7 @@ def user_edit(username):
                     user.password = generate_password_hash(request.form.get("new_password"))
                     db.session.commit()
                     flash("User password has been changed ")
-                    return render_template("user_profile.html", user=user, team=team1)
+                    return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
                 # This code will run if both the email address and password are to be changed
                 else:
                     # Checking email address is not already taken
@@ -377,13 +403,13 @@ def user_edit(username):
                     email_object = User.query.filter_by(emailaddress=emailaddress).first()
                     if email_object:
                         flash("Email address is taken")
-                        return render_template("user_profile.html", user=user, team=team1)
+                        return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
 
                     user.emailaddress = request.form.get("emailaddress")
                     user.password = generate_password_hash(request.form.get("new_password"))
                     db.session.commit()
                     flash("User password and email address have been changed ")
-                    return render_template("user_profile.html", user=user, team=team1)
+                    return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
             else:
                 flash("Your current password is incorrect")
 
@@ -394,7 +420,7 @@ def user_edit(username):
             email_object = User.query.filter_by(emailaddress=emailaddress).first()
             if email_object:
                 flash("Email address is taken")
-                return render_template("user_profile.html", user=user, team=team1)
+                return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
 
             # We still need to run the code that checks the current password is correct
             current = request.form.get("password")
@@ -402,7 +428,7 @@ def user_edit(username):
                 user.emailaddress = request.form.get("emailaddress")
                 db.session.commit()
                 flash("User email address has been changed")
-                return render_template("user_profile.html", user=user, team=team1)
+                return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
             else:
                 flash("Your current password is incorrect")
 
@@ -410,11 +436,11 @@ def user_edit(username):
             current = request.form.get("password")
             if check_password_hash(user.password, current):
                 flash("No user data was changed")
-                return render_template("user_profile.html", user=user, team=team1)
+                return render_template("user_profile.html", user=user, team=team1, profile_picture=profile_picture)
             else:
                 flash("Your current password is incorrect")
 
-    return render_template("user_edit.html", user=user, team=team1)
+    return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form)
 
 
 @app.route("/delete_user/<username>")

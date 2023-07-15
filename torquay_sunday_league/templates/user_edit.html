@@ -4,8 +4,23 @@
 <h1 class="main-heading">Edit {{ user.username }}</h1>
 
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('user_edit', username=user.username) }}">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('user_edit', username=user.username) }}" enctype="multipart/form-data">
         <div class="card-panel green lighten-4">
+            <div class="row">
+                <div class="col profile-box">
+                    <img class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
+                </div>
+            </div>
+            <div>
+                {{ form.picture.label(class="center-upload-profile") }}<br>
+                {{ form.picture(class="center-upload-profile file-upload") }}<br>
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="center-upload-profile danger-text"> {{ error }} </span>
+                    {% endfor %}<br>
+                {% endif %}
+                <!-- form.submit(class="center-upload-profile") -->
+            </div>
             <!-- Email Address -->
             <div class="row">
                 <div class="input-field col s12">

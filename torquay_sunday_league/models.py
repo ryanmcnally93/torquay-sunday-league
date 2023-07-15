@@ -57,5 +57,5 @@ class User(db.Model):
 
 
 class UpdateProfilePicture(FlaskForm):
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png', 'webp'])])
     submit = SubmitField('Update')

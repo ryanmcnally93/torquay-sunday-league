@@ -375,3 +375,18 @@ footer p {
 .team-profile-picture {
     border-radius: 25px;
 }
+
+.center-upload-profile {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.file-upload {
+    width: 200px;
+}
+
+.danger-text {
+    color: red;
+    margin-top: -5px;
+}
