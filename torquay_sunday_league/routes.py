@@ -42,6 +42,17 @@ def teams():
     return render_template("teams.html", teams=teams, user=user1, team=team1)
 
 
+@app.route("/rules")
+def rules():
+    if session:
+        user1 = User.query.filter_by(username=session["user"]).first()
+        team1 = Team.query.filter_by(team_name=user1.team_managed).first()
+    else:
+        user1 = "None"
+        team1 = "None"
+    return render_template("rules.html", user=user1, team=team1)
+    
+
 @app.route("/create_team/<username>", methods=["GET", "POST"])
 def create_team(username):
     user = User.query.filter_by(username=username).first()
