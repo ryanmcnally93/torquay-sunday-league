@@ -534,7 +534,7 @@ def delete_user_picture(user_id):
         if user.profile_picture != 'default_manager.webp':
             os.remove(os.path.join(app.root_path,
             'static/images/profile_pics', user.profile_picture))
-            user.profile_picture = url_for('static', filename='images/profile_pics/default_manager.webp')
+            user.profile_picture = 'default_manager.webp'
             db.session.commit()
             flash("Profile picture removed")
             return redirect(url_for("profile", username=session["user"], user=user))
