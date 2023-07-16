@@ -63,3 +63,7 @@ class Player(db.Model):
 class UpdateProfilePicture(FlaskForm):
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png', 'webp'])])
     submit = SubmitField('Update')
+
+class UpdateTeamPicture(FlaskForm):
+    picture = FileField('Update Squad Picture', validators=[FileAllowed(['jpg', 'png', 'webp'])])
+    submit = SubmitField('Update')

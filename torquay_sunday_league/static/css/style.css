@@ -371,7 +371,7 @@ footer p {
     margin-top: 20px;
 }
 
-.picture-picture-row, .picture-edit-row {
+.picture-profile-row, .picture-edit-row {
     margin-bottom: 10px;
 }
 
@@ -381,12 +381,17 @@ footer p {
     width: 100% !important;
 }
 
-.team-profile-box {
-    margin-top: 35px;
+.picture-team-box {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+    margin-top: 20px;
 }
 
 .team-profile-picture {
     border-radius: 25px;
+    object-fit: cover;
+    aspect-ratio: 1.5;
 }
 
 .center-upload-profile {

@@ -5,7 +5,7 @@ from flask import render_template, request, redirect, url_for, flash, session
 from sqlalchemy import exc
 from torquay_sunday_league import app, db
 from torquay_sunday_league.models import Team, Player, User
-from torquay_sunday_league.models import (UpdateProfilePicture)
+from torquay_sunday_league.models import (UpdateProfilePicture, UpdateTeamPicture)
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 
@@ -155,10 +155,6 @@ def profile(username):
     profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
     username = session["user"]
 
-    #     if form.picture.data:
-    #         picture_file = save_picture(form.picture.data)
-    #         user.profile_picture = picture_file
-
     # Checking for session cookie
     if session["user"]:
         return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1)
@@ -179,14 +175,34 @@ def log_out():
 def edit_team(team_id):
     user1 = User.query.filter_by(username=session["user"]).first()
     team = Team.query.get_or_404(team_id)
+    squad_picture = url_for('static', filename='images/profile_pics/' + team.profile_picture)
+    form = UpdateTeamPicture()
+
     if request.method == "POST":
-        if session["user"] == team.team_created_by:
-            # This line is the problem, we cannot give the team name this value it's not allowed                    
+        if form.validate_on_submit():
+            flash("Validated!")
+
+        if form.picture.errors:
+            return render_template("edit_team.html", team=team, user=user1, squad_picture=squad_picture, form=form)
+
+        if form.picture.data:
+            # Deletes last image
+            if team.profile_picture != 'default_squad.webp':
+                os.remove(os.path.join(app.root_path,
+                'static/images/profile_pics', team.profile_picture))
+            
+            picture_file = save_squad_picture(form.picture.data)
+            team.profile_picture = picture_file
+            db.session.commit()
+            profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+            flash("Squad picture changed")
+
+        if session["user"] == team.team_created_by:                  
             team_name_search_positive = Team.query.filter_by(team_name=request.form.get("team_name")).first()
             if team_name_search_positive:
                 if team.team_name != request.form.get("team_name"):
                     flash("This team name is taken!")
-                    return render_template("edit_team.html", team=team, user=user1)
+                    return render_template("edit_team.html", team=team, user=user1, squad_picture=squad_picture, form=form)
 
             team.team_name = request.form.get("team_name")
             team.team_colour = request.form.get("team_colour")
@@ -196,10 +212,10 @@ def edit_team(team_id):
             user1.team_managed = team.team_name
             db.session.commit()
             # Change redirect for team profile page
-            return redirect(url_for("teams", user=user1))
+            return redirect(url_for("team_profile", id=team.id))
         else:
             flash("Only the creator of this team may edit it.")
-    return render_template("edit_team.html", team=team, user=user1)
+    return render_template("edit_team.html", team=team, user=user1, squad_picture=squad_picture, form=form)
 
 
 @app.route("/delete_team/<int:team_id>")
@@ -364,14 +380,28 @@ def save_picture(form_picture):
     # Output: (400, 350)
     print(im.size)
 
-    # output_size = (430, 430)
-    # i = Image.open(form_picture)
-    # i.thumbnail(output_size)
+    return picture_fn
 
+
+def save_squad_picture(form_picture):
+    team = Team.query.filter_by(users_id=session["user"].id).first()
+    # This randomises the file name so 2 files can be uploaded with the same name
+    random_hex = secrets.token_hex(8)
+    # This gets the file extension type
+    _, f_ext = os.path.splitext(form_picture.filename)
+    # This creates a new filename
+    picture_fn = random_hex + f_ext
+    # Location of file save
+    picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
+    
+    im = Image.open(form_picture)
+    im.thumbnail((320, 320))
     # Image saves
-    # i.save(picture_path)
+    im.save(picture_path)
+    print(im.size)
 
     return picture_fn
+
 
 @app.route("/user_edit/<username>", methods=["GET", "POST"])
 def user_edit(username):
@@ -543,3 +573,22 @@ def delete_user_picture(user_id):
             return redirect(url_for("profile", username=session["user"], user=user))
     else:
         flash("Cannot remove another users picture")
+
+
+@app.route("/delete_user_picture/<int:team_id>")
+def delete_squad_picture(team_id):
+    team = Team.query.filter_by(id=team_id).first()
+    if session["user"].id == team.users_id:
+        # Code to delete current image
+        if team.profile_picture != 'default_squad.webp':
+            os.remove(os.path.join(app.root_path,
+            'static/images/profile_pics', team.profile_picture))
+            team.profile_picture = 'default_squad.webp'
+            db.session.commit()
+            flash("Squad picture removed")
+            return redirect(url_for("team_profile", id=team.id))
+        else:
+            flash("Cannot delete default picture")
+            return redirect(url_for("team_profile", id=team.id))
+    else:
+        flash("Cannot remove another teams picture")
