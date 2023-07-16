@@ -214,6 +214,31 @@ footer p {
     border-radius: 10px;
 }
 
+.flashes {
+    margin-bottom: 0;
+}
+
+#num_of_players {
+    display: flex;
+}
+
+.team-title-row {
+    margin-bottom: 0;
+}
+
+#num_of_players-p {
+    margin-right: 4px;
+}
+
+#num_of_players p {
+    margin-bottom: 0;
+}
+
+.team-title {
+    border-radius: 25px;
+    padding: 0;
+}
+
 .flashes h3 {
     line-height: 1;
     width: 75%;
@@ -226,6 +251,11 @@ footer p {
     display: flex;
     justify-content: center;
     float: none !important;
+}
+
+#team-profile-content {
+    margin: auto;
+    width: 40%;
 }
 
 .team-profile-button {
@@ -385,7 +415,11 @@ footer p {
     display: flex;
     justify-content: center;
     width: 100% !important;
-    margin-top: 20px;
+    margin-top: 35px;
+}
+
+#edit-picture-team-box {
+    margin-top: 10px;
 }
 
 .team-profile-picture {

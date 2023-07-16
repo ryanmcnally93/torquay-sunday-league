@@ -194,7 +194,7 @@ def edit_team(team_id):
             picture_file = save_squad_picture(form.picture.data)
             team.profile_picture = picture_file
             db.session.commit()
-            profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
+            squad_picture = url_for('static', filename='images/profile_pics/' + team.profile_picture)
             flash("Squad picture changed")
 
         if session["user"] == team.team_created_by:                  
@@ -384,7 +384,8 @@ def save_picture(form_picture):
 
 
 def save_squad_picture(form_picture):
-    team = Team.query.filter_by(users_id=session["user"].id).first()
+    user = User.query.filter_by(username=session["user"]).first()
+    team = Team.query.filter_by(users_id=user.id).first()
     # This randomises the file name so 2 files can be uploaded with the same name
     random_hex = secrets.token_hex(8)
     # This gets the file extension type
@@ -575,10 +576,11 @@ def delete_user_picture(user_id):
         flash("Cannot remove another users picture")
 
 
-@app.route("/delete_user_picture/<int:team_id>")
+@app.route("/delete_squad_picture/<int:team_id>")
 def delete_squad_picture(team_id):
+    user = User.query.filter_by(username=session["user"]).first()
     team = Team.query.filter_by(id=team_id).first()
-    if session["user"].id == team.users_id:
+    if user.id == team.users_id:
         # Code to delete current image
         if team.profile_picture != 'default_squad.webp':
             os.remove(os.path.join(app.root_path,
