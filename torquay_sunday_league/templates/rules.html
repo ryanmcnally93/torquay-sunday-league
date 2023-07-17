@@ -57,9 +57,9 @@
 </div>
 
 <!-- Background Image -->
-<img id="background-image" src="#">
+<img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 <!-- Over 1200 image -->
-<img id="background-image-large" src="{{ url_for('static', filename='images/background-image.webp') }}">
+<img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 {% endblock %}

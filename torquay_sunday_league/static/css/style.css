@@ -298,9 +298,9 @@ footer p {
     border: 5px solid darkgreen;
 }
 
-#background-image-large {
+#background-image {
     position: fixed;
-    top: -100px;
+    top: -400px;
     z-index: -1;
     width: 1800px;
     margin: auto;
@@ -309,6 +309,30 @@ footer p {
     flex-direction: row;
     left: 50%;
     margin-left: -900px;
+    display: block;
+}
+
+#background-image-large {
+    display: none;
+}
+
+@media (min-width: 1201px) {
+    #background-image-large {
+        position: fixed;
+        top: -100px;
+        z-index: -1;
+        width: 1800px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        left: 50%;
+        margin-left: -900px;
+        display: block;
+    }
+    #background-image {
+        display: none;
+    }
 }
 
 @media (max-width: 1000px) {
