@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="main-heading">Rules</h1>
+<div id="heading-box">
+    <h1 class="main-heading">Rules</h1>
+</div>
 
 <div class="row">
     <div class="col s12 m8 offset-m2">
-        <div class="card-panel green lighten-4">
+        <div class="card-panel green lighten-4 rules-box">
             <p>All of the following rules must be followed by all participants of this league. This includes players, managers and any other members if staff or participants.</p>
             <p>Failure to abide by these rules can result in match bans, fines, and in more serious cases even expulsion from the league.</p>
             <h3>Team Registrations</h3>
@@ -14,6 +16,9 @@
             <p>3). If you have completed filling out your team and player information for this upcoming season, you can either contact our team on 0121 364 8377 for faster application or wait until the deadline arrives.</p>
             <p>HOWEVER this is not advised, as if there are any issues with your team or players, it will be too late to fix them.</p>
             <p>4). Once the deadline day of 10th August 2023 arrives, no information can be changed, no players can be added, and there are no exceptions to this rule.</p>
+            <div id="rules-one-box">
+                <img id="rules-one" src="{{ url_for('static', filename='images/rules-one.webp') }}">
+            </div>
             <p>5). Any abuse aimed at our team during the application process will be handled swiftly, with the team rejected and, if necessary, authorities contacted.</p>
             <p>6). Any rude or profound team names will be rejected.</p>
             <h3>Transfers</h3>
@@ -25,6 +30,9 @@
             <p>11). All team locations MUST provide suitable changing areas for players.</p>
             <p>12). Any matches abandoned due to wrongdoing of teams will result in fines to cover the pitch hire cost.</p>
             <p>13). Any racial abuse will be dealt with swiftly, with the authorities contacted and members removed from game and league.</p>
+            <div id="rules-three-box">
+                <img id="rules-three" src="{{ url_for('static', filename='images/rules-three.webp') }}">
+            </div>
             <h4>Kits</h4>
             <p>14). Teams MUST not wear kit colours that clash.</p>
             <p>15). Shorts MUST be worn, no trousers are permitted.</p>
@@ -41,20 +49,17 @@
                 The rules are in place to make the game fair and more enjoyable, if you see or hear our officials being disrespected please speak out.</p>
             <p>At the end of the season the top team two teams will advance to the next league and the 3rd-6th teams will battle it out in our play-offs for that third promotion spot!</p>
             <p>Best of luck to you all and more importantly, HAVE FUN!</p>
+            <div id="rules-two-box">
+                <img id="rules-two" src="{{ url_for('static', filename='images/rules-two.webp') }}">
+            </div>
         </div>
     </div>
 </div>
 
-<div id="rules-one-box">
-    <img id="rules-one" src="{{ url_for('static', filename='images/rules-one.webp') }}">
-</div>
+<!-- Background Image -->
+<img id="background-image" src="#">
 
-<div id="rules-two-box">
-    <img id="rules-two" src="{{ url_for('static', filename='images/rules-two.webp') }}">
-</div>
-
-<div id="rules-three-box">
-    <img id="rules-three" src="{{ url_for('static', filename='images/rules-three.webp') }}">
-</div>
+<!-- Over 1200 image -->
+<img id="background-image-large" src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 {% endblock %}
