@@ -42,14 +42,36 @@ nav .sidenav-trigger {
 }
 
 /* Headings */
-.main-heading, .sub-heading {
+.main-heading, .sub-heading, .index-main-heading {
     color: #008000;
     text-align: center;
+}
+
+.sub-heading {
+    font-size: 32px;
+    margin-top: 0;
 }
 
 .main-heading {
     font-weight: 600;
     margin: 0;
+    margin-bottom: 20px;
+}
+
+.main-heading {
+    font-weight: 600;
+}
+
+@media (max-width: 767px) {
+    .index-main-heading {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 570px) {
+    #league-table {
+        width: 90% !important;
+    }
 }
 
 /* Index Page */
@@ -113,6 +135,13 @@ th, td {
     position: absolute;
     top: 355px;
     left: 5%;
+}
+
+@media (max-width: 1000px) {
+    .index-player-left-box {
+        left: 50%;
+        margin-left: -190px;
+    }
 }
 
 .index-player-right-box {
@@ -335,13 +364,6 @@ footer p {
     }
 }
 
-@media (max-width: 1000px) {
-    #background-image {
-        width: 1500px;
-        margin-left: -750px;
-    }
-}
-
 #heading-box {
     background-color: rgb(250,250,250,0.8);
     width: 220px;
@@ -393,6 +415,16 @@ footer p {
     margin-left: 10%;
 }
 
+@media (max-width: 1000px) {
+    #trent {
+        display: none;
+    }
+    #index-player-left-box {
+        left: 50%;
+        margin-left: -190px;
+    }
+}
+
 .players-row {
     width: 100%;
     display: inline-flex;
@@ -413,6 +445,7 @@ footer p {
     width: 70%;
     padding: 10px;
     border-radius: 25px;
+    margin-top: 20px;
 }
 
 #register-p {
