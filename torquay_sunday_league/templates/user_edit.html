@@ -1,59 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="main-heading">Edit {{ user.username }}</h1>
+<div id="heading-box"> 
+    <h1 class="main-heading" id="edit-user-heading">Edit {{ user.username }}</h1>
+</div>
 
-<div class="row">
+<div class="row card-panel green lighten-4" id="edit-team-box">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('user_edit', username=user.username) }}" enctype="multipart/form-data">
-        <div class="card-panel green lighten-4">
-            <div class="row picture-edit-row">
-                <div class="col picture-edit-box"> 
-                    <img class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
-                </div>
+        <div class="row picture-edit-row">
+            <div class="col picture-edit-box"> 
+                <img class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
             </div>
-            <div>
-                {{ form.picture.label(class="center-upload-profile") }}<br>
-                {{ form.picture(class="center-upload-profile file-upload") }}<br>
-                {% if form.picture.errors %}
-                    {% for error in form.picture.errors %}
-                        <span class="center-upload-profile danger-text"> {{ error }} </span>
-                    {% endfor %}<br>
-                {% endif %}
-                <a href="#modal-{{ user.id }}" class="btn red remove modal-trigger">Remove Image</a>
+        </div>
+        <div>
+            {{ form.picture.label(class="center-upload-profile") }}<br>
+            {{ form.picture(class="center-upload-profile file-upload") }}<br>
+            {% if form.picture.errors %}
+                {% for error in form.picture.errors %}
+                    <span class="center-upload-profile danger-text"> {{ error }} </span>
+                {% endfor %}<br>
+            {% endif %}
+            <a href="#modal-{{ user.id }}" class="btn red remove modal-trigger">Remove Image</a>
+        </div>
+        <!-- Email Address -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-envelope prefix"></i>
+                <input name="emailaddress" id="emailaddress" value="{{ user.emailaddress }}" type="email" class="validate" required>
+                <label for="emailaddress">Email Address</label>
             </div>
-            <!-- Email Address -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-envelope prefix"></i>
-                    <input name="emailaddress" id="emailaddress" value="{{ user.emailaddress }}" type="email" class="validate" required>
-                    <label for="emailaddress">Email Address</label>
-                </div>
+        </div>
+        <!-- Password -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-user-lock prefix"></i>
+                <input name="new_password" id="new_password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate">
+                <label for="new_password">New Password</label>
+                <!--Add the little eye for visibility-->
             </div>
-            <!-- Password -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-lock prefix"></i>
-                    <input name="new_password" id="new_password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate">
-                    <label for="new_password">New Password</label>
-                    <!--Add the little eye for visibility-->
-                </div>
+        </div>
+        <!-- Type current password to confirm -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-user-lock prefix"></i>
+                <input name="password" id="password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                <label for="password">Type current password to confirm</label>
+                <!--Add the little eye for visibility-->
             </div>
-            <!-- Type current password to confirm -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-lock prefix"></i>
-                    <input name="password" id="password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Type current password to confirm</label>
-                    <!--Add the little eye for visibility-->
-                </div>
-            </div>
-            <!-- Submit -->
-            <div class="row">
-                <div class="col s12 center-align">
-                    <button type="submit" class="btn green">
-                        Submit <i class="fas fa-sign-in-alt right"></i>
-                    </button>
-                </div>
+        </div>
+        <!-- Submit -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn green">
+                    Submit <i class="fas fa-sign-in-alt right"></i>
+                </button>
             </div>
         </div>
     </form>
@@ -70,5 +70,13 @@
         <a href="{{ url_for('user_edit', username=user.username) }}" class="btn red">No</a>
     </div>
 </div>
+
+<!-- Background Image -->
+<img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+
+<!-- Over 1200 image -->
+<img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+
+<script src="{{ url_for('static', filename='js/player_form_script.js') }}"></script>
 
 {% endblock %}

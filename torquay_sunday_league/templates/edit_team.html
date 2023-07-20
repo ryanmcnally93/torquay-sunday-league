@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="main-heading">Edit {{ team.team_name }}</h1> 
+<div id="heading-box"> 
+    <h1 class="main-heading">Edit {{ team.team_name }}</h1>
+</div>
 
-<div class="row card-panel green lighten-4">
+<div class="row card-panel green lighten-4" id="edit-team-box">
     <form class="col s12" method="POST" action="{{ url_for('edit_team', team_id=team.id) }}" enctype="multipart/form-data">
         <div class="row">
             <div class="col picture-team-box" id="edit-picture-team-box">
@@ -47,7 +49,7 @@
         <!-- Team Contact -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-solid fa-globe form-icon-colour prefix"></i>
+                <i class="fas fa-solid fa-phone form-icon-colour prefix"></i>
                 <input id="team_contact" name="team_contact" pattern="[0-9]{11}" value="{{ team.team_contact }}" type="text" class="validate">
                 <label for="team_contact">Contact Mobile</label>
             </div>
@@ -74,5 +76,11 @@
         <a href="{{ url_for('edit_team', team_id=team.id) }}" class="btn red">No</a>
     </div>
 </div>
+
+<!-- Background Image -->
+<img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+
+<!-- Over 1200 image -->
+<img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 {% endblock %}

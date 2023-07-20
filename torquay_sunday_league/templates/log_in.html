@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="main-heading">Log In</h1>
+<div id="heading-box"> 
+    <h1 class="main-heading">Log In</h1>
+</div>
 
 {% if session.user %}
     <!-- Number of Registered Players -->
@@ -48,6 +50,12 @@
             </p>
         </div>
     </div>
+
+    <!-- Background Image -->
+    <img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+
+    <!-- Over 1200 image -->
+    <img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
     <script src="{{ url_for('static', filename='js/log_in_script.js') }}"></script>
 

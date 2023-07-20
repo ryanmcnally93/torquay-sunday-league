@@ -203,6 +203,18 @@ footer p {
     margin-left: 16px;
 }
 
+.rules-box {
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    padding: 24px;
+    margin: 20px 0 20px 0;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
 #socials:not(.browser-default) {
     height: 41px;
     margin-top: 0;
@@ -315,6 +327,18 @@ footer p {
     padding: 5px 20px;
     width: fit-content;
     margin: auto;
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.team-title-inner {
+    padding: 5px 20px;
+    margin: auto;
+    border-radius: 20%;
 }
 
 #tt-box {
@@ -645,6 +669,7 @@ footer p {
     justify-content: center;
     height: 35px;
     padding: 0;
+    margin-bottom: 20px;
 }
 
 #winners {
@@ -670,6 +695,16 @@ footer p {
     justify-content: center;
     display: flex;
     margin-bottom: 25px;
+}
+
+.card-panel {
+    width: 60%;
+    border-radius: 25px;
+    margin: 20px auto 40px auto !important;
+}
+
+#form-content {
+    min-height: 630px;
 }
 
 @media (max-width: 1000px) {
@@ -711,10 +746,28 @@ footer p {
         width: 90% !important;
     }
     .team-title {
+        width: 100%;
+        padding: 5px 0;
+        word-break:break-all;
+    }
+    .team-title-inner {
         font-size: 32px;
     }
     .team-profile-button {
         /* Biggest size width of 320px will allow before causing issues */
         font-size: 13.7px;
+    }
+    .card-panel {
+        width: 90%;
+    }
+    #edit-user-heading {
+        font-size: 20px;
+        word-break: break-all;
+    }
+}
+
+@media (max-width: 410px) {
+    #edit-team-box {
+        width: 100%;
     }
 }
