@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="main-heading">Create Team</h1>
+<div id="heading-box">
+    <h1 class="main-heading">Create Team</h1>
+</div>
 
 <div class="row card-panel green lighten-4">
     <form class="col s12" method="POST" action="{{ url_for('create_team', username=session['user']) }}">
@@ -47,6 +49,12 @@
         </div>
     </form>
 </div>
+
+<!-- Background Image -->
+<img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+
+<!-- Over 1200 image -->
+<img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 <script src="{{ url_for('static', filename='js/team_form_script.js') }}"></script>
 
