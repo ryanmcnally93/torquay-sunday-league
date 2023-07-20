@@ -7,9 +7,9 @@
         </div>
     </div>
 
-    <div class="row team-title-row">
-        <div class="col s8 m6 offset-m3">
-            <div class="card-panel green lighten-4 team-title">
+    <div class="row row-without-mb">
+        <div class="col s12 m6 offset-m3">
+            <div class="card-panel green lighten-4 team-title" id="tt-box">
                 <h3 class="center-align green lighten-4 team-title">
                     {{ team.team_name }}
                 </h3>
@@ -41,18 +41,25 @@
             <p>Team not yet confirmed</p>
             <p>Teams will be reviewed once we have been contacted to say all players have all been submitted</p>
         {% endif %}
+
+        <div class="row-without-mb">
+            <div class="col player-edit-view">
+                {% if team.team_created_by == session["user"] and team.confirmation_status == False %}                    
+                    <!-- Button to Edit Team info -->
+                    <a class="team-profile-button btn green" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
+                {% endif %}
+                <!-- Button to view players -->
+                <a class="team-profile-button btn green" href="{{ url_for('players', id=team.id) }}">View Players</a>
+            </div>
+        </div>
+
     </div>
 
-    <div class="row">
-        <div class="col player-edit-view">
-            {% if team.team_created_by == session["user"] and team.confirmation_status == False %}                    
-                <!-- Button to Edit Team info -->
-                <a class="team-profile-button btn green" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
-            {% endif %}
-            <!-- Button to view players -->
-            <a class="team-profile-button btn green" href="{{ url_for('players', id=team.id) }}">View Players</a>
-        </div>
-    </div>
+    <!-- Background Image -->
+    <img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+
+    <!-- Over 1200 image -->
+    <img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
     <script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
 

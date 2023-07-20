@@ -295,13 +295,14 @@ footer p {
 
 .flashes {
     margin-bottom: 0;
+    margin-top: 10px;
 }
 
 #num_of_players {
     display: flex;
 }
 
-.team-title-row {
+.row-without-mb{
     margin-bottom: 0;
 }
 
@@ -314,8 +315,14 @@ footer p {
 }
 
 .team-title {
-    border-radius: 25px;
-    padding: 0;
+    border-radius: 20px;
+    padding: 5px 20px;
+    width: fit-content;
+    margin: auto;
+}
+
+#tt-box {
+    margin-bottom: 20px;
 }
 
 #rules-one, #rules-two, #rules-three {
@@ -397,9 +404,10 @@ footer p {
 
 .flashes h3 {
     line-height: 1;
-    width: 75%;
     margin: auto;
+    width: fit-content;
     border-radius: 25px;
+    padding: 20px;
 }
 
 .player-edit-view {
@@ -412,6 +420,10 @@ footer p {
 #team-profile-content {
     margin: auto;
     width: 40%;
+    background-color: rgb(250,250,250,0.8);
+    border-radius: 25px;
+    padding: 0 13px 13px 13px;
+    margin-bottom: 20px;
 }
 
 .team-profile-button {
@@ -501,11 +513,11 @@ footer p {
     color: lightgreen;
 }
   
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
     footer {
       margin: 10px;
     }
-}
+} */
   
 @media (max-width: 600px) {
     .social-networks i {
@@ -661,5 +673,34 @@ footer p {
 @media (max-width: 550px) {
     .p-background {
     width: 92%
+    }
+}
+
+/* Team Profile Tablet Responsiveness */
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    #team-profile-content {
+        width: 60% !important;
+    }
+    .flashes h3 {
+        font-size: 32px;
+    }
+}
+
+/* Team Profile Mobile Responsiveness */
+
+@media (max-width: 767px) {
+    .flashes h3 {
+        font-size: 20px;
+    }
+    #team-profile-content {
+        width: 90% !important;
+    }
+    .team-title {
+        font-size: 32px;
+    }
+    .team-profile-button {
+        /* Biggest size width of 320px will allow before causing issues */
+        font-size: 13.7px;
     }
 }
