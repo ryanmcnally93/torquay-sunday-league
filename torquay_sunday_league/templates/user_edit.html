@@ -25,7 +25,7 @@
         <!-- Email Address -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-envelope prefix"></i>
+                <i class="fas fa-envelope form-icon-colour prefix"></i>
                 <input name="emailaddress" id="emailaddress" value="{{ user.emailaddress }}" type="email" class="validate" required>
                 <label for="emailaddress">Email Address</label>
             </div>
@@ -33,7 +33,7 @@
         <!-- Password -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-user-lock prefix"></i>
+                <i class="fas fa-user-lock form-icon-colour prefix"></i>
                 <input name="new_password" id="new_password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate">
                 <label for="new_password">New Password</label>
                 <!--Add the little eye for visibility-->
@@ -42,9 +42,9 @@
         <!-- Type current password to confirm -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-user-lock prefix"></i>
+                <i class="fas fa-user-lock form-icon-colour prefix"></i>
                 <input name="password" id="password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                <label for="password">Type current password to confirm</label>
+                <label for="password">Confirm Old Password</label>
                 <!--Add the little eye for visibility-->
             </div>
         </div>
