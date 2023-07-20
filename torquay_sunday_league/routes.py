@@ -385,10 +385,9 @@ def save_picture(form_picture):
     picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
     
     im = Image.open(form_picture)
-    im.thumbnail((320, 500))
+    im.thumbnail((316, 500))
     # Image saves
     im.save(picture_path)
-    # Output: (400, 350)
     print(im.size)
 
     return picture_fn
@@ -407,7 +406,7 @@ def save_squad_picture(form_picture):
     picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
     
     im = Image.open(form_picture)
-    im.thumbnail((320, 320))
+    im.thumbnail((316, 316))
     # Image saves
     im.save(picture_path)
     print(im.size)

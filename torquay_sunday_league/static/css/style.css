@@ -415,11 +415,13 @@ footer p {
     display: flex;
     justify-content: center;
     float: none !important;
+    padding: 0 !important;
+    margin-top: 5px;
 }
 
-#team-profile-content {
+.profile-content {
     margin: auto;
-    width: 40%;
+    width: 50%;
     background-color: rgb(250,250,250,0.8);
     border-radius: 25px;
     padding: 0 13px 13px 13px;
@@ -512,6 +514,18 @@ footer p {
 .social-networks i:hover {
     color: lightgreen;
 }
+
+#user-team {
+    margin-top: 0
+}
+
+#user-lastp {
+    margin-bottom: 0;
+}
+
+#user-p-content {
+    padding-top: 13px;
+}
   
 /* @media (max-width: 800px) {
     footer {
@@ -571,6 +585,7 @@ footer p {
     object-fit: cover;
     border-radius: 50%;
     aspect-ratio: 1;
+    border: 2px solid darkgreen;
 }
 
 .picture-profile-box {
@@ -605,6 +620,7 @@ footer p {
     border-radius: 25px;
     object-fit: cover;
     aspect-ratio: 1.5;
+    border: 2px solid darkgreen;
 }
 
 .center-upload-profile {
@@ -679,7 +695,7 @@ footer p {
 /* Team Profile Tablet Responsiveness */
 
 @media (min-width: 768px) and (max-width: 1000px) {
-    #team-profile-content {
+    .profile-content {
         width: 60% !important;
     }
     .flashes h3 {
@@ -693,7 +709,7 @@ footer p {
     .flashes h3 {
         font-size: 20px;
     }
-    #team-profile-content {
+    .profile-content {
         width: 90% !important;
     }
     .team-title {
