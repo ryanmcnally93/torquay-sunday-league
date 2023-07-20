@@ -20,7 +20,7 @@
 <div class="profile-content" id="user-p-content">
     {% if session["user"] == "ryanmcnally93" %}
         <!-- I created multiple clubs -->
-        <p id="user-team">Clubs: Multiple</p>
+        <p id="user-team">Web Application Administrator</p>
     {% else %}
         <!-- Club name -->
         <p id="user-team">Club: {{ user.team_managed }}</p>
@@ -31,9 +31,9 @@
 
     <!-- Email Address -->
     <p>Email: {{ user.emailaddress }}</p>
-
-    <p id="user-lastp">We ensure that every manager is protected from their data being changed or deleted by another user. If there are any issues with this site or you believe to have experienced your account being hacked please contact our technical support team on 07954622365.</p>
-
+    {% if session["user"] != "ryanmcnally93" %}
+        <p id="user-lastp">We ensure that every manager is protected from their data being changed or deleted by another user. If there are any issues with this site or you believe to have experienced your account being hacked please contact our technical support team on 07954622365.</p>
+    {% endif %}
 
     {% if session["user"] == user.username %}
     <div class="row row-without-mb">

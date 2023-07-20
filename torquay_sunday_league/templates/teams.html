@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="main-heading">Teams</h1>
+<div id="heading-box">
+    <h1 class="main-heading">Teams</h1>
+</div>
+
 {% if session %}
-    <div class="row">
+    <div class="row row-with-mt">
         {% if session["user"] == "ryanmcnally93" or user.team_managed == "None" %}
             <div class="col s12 center-align">
                 <a href="{{ url_for('create_team', username=session['user']) }}" class="btn green">
@@ -14,7 +17,7 @@
     </div>
 {% endif %}
 
-<main id="main-content">
+<main id="teams-content">
 
     <div class="row teams-row">
         <!-- Looking through all the teams and displaying them -->
@@ -23,15 +26,23 @@
             {% if team.team_created_by == session["user"] or team.confirmation_status == True or session["user"] == "ryanmcnally93" %}
             <div class="col team-card-layout">
                 <div class="card team-card green-card darken-2">
-                    <div class="card-content white-text">
+                    {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
+                        <div class="editable-content white-text">
+                    {% else %}
+                        <div class="card-content white-text">
+                    {% endif %}
                     <span class="card-title">{{ team.team_name }}</span>
                     </div>
-                    <div class="card-action">
-                    <a class="btn blue" href="{{ url_for('team_profile', id=team.id) }}">View Team</a>
+                    {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
+                        <div class="editable-action">
+                    {% else %}
+                        <div class="card-action">
+                    {% endif %}
+                    <a class="btn blue card-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
                     <!-- Edit and delete functions are only visible for creators of the team -->
                     {% if team.team_created_by == session["user"] and team.confirmation_status == False %}
-                        <a class="btn green darken-4" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
-                        <a class="btn red modal-trigger" id="delete_team" href="#modal-{{ team.id }}">Delete Team</a>
+                        <a class="btn green darken-4 card-button" href="{{ url_for('edit_team', team_id=team.id) }}">Edit</a>
+                        <a class="btn red modal-trigger card-button" id="delete_team" href="#modal-{{ team.id }}">Delete</a>
                     {% endif %}
                     <!-- If the administrator is logged in, the switches can be changed -->
                     {% if session["user"] == "ryanmcnally93" %}
@@ -92,13 +103,13 @@
         {% endfor %}
     </div>
 
-    <div class="teams-player-left-box player-left-box">
-        <img class="player-left" src="{{ url_for('static', filename='images/mitrovic.webp') }}">
-    </div>
+    <p id="scroll-p">Be sure to scroll down to see all the teams.</p>
 
-    <div id="rashford-box" class="teams-player-right-box player-rigfht-box">
-        <img class="player-right" src="{{ url_for('static', filename='images/rashford.webp') }}">
-    </div>
+    <!-- Background Image -->
+    <img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+
+    <!-- Over 1200 image -->
+    <img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 </main>
 
