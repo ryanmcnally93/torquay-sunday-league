@@ -176,7 +176,6 @@ def profile(username):
 
 @app.route("/log_out")
 def log_out():
-    user = session["user"]
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("log_in"))
@@ -250,6 +249,7 @@ def players(id):
         user1 = "None"
     team = Team.query.get_or_404(id)
     players = list(Player.query.order_by(Player.player_kit_number).all())
+    print(len(players))
     return render_template("players.html", players=players, team=team, user=user1)
 
 

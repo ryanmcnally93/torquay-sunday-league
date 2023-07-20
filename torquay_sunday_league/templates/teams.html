@@ -9,7 +9,7 @@
     <div class="row row-with-mt">
         {% if session["user"] == "ryanmcnally93" or user.team_managed == "None" %}
             <div class="col s12 center-align">
-                <a href="{{ url_for('create_team', username=session['user']) }}" class="btn green">
+                <a href="{{ url_for('create_team', username=session['user']) }}" class="btn green button-border">
                     Create Team <i class="fas fa-plus-square right"></i>
                 </a>
             </div>
