@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var sidenav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidenav);
+    M.Sidenav.init(sidenav, {edge:'right'});
 
     var modal = document.querySelectorAll('.modal');
     M.Modal.init(modal);

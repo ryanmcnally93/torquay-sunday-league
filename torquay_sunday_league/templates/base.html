@@ -40,22 +40,24 @@
       </nav>
     
       <!-- Mobile Navbar -->
-      <ul class="sidenav nav-list" id="mobile-demo">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('teams') }}">Teams</a></li>
-        {% if session.user %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            {% if user.team_managed == "None" or user.username == "ryanmcnally93" %}
-                <li><a href="{{ url_for('create_team', username=session['user']) }}">Create Team</a></li>
+      <div id="mobile-nav">
+        <ul class="sidenav nav-list" id="mobile-demo">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('teams') }}">Teams</a></li>
+            {% if session.user %}
+                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                {% if user.team_managed == "None" or user.username == "ryanmcnally93" %}
+                    <li><a href="{{ url_for('create_team', username=session['user']) }}">Create Team</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
+                {% endif %}
+                    <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
             {% else %}
-                <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
+                <li><a href="{{ url_for('log_in') }}">Log In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
-                <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
-        {% else %}
-            <li><a href="{{ url_for('log_in') }}">Log In</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
-        {% endif %}
-      </ul>
+        </ul>
+    </div>
 
       <section>
         <!-- Flash messages -->

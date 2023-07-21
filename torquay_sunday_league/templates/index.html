@@ -1,31 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="index-main-heading main-heading">Torquay Sunday League</h1>
+<h1 class="index-main-heading main-heading"><i class="fa-solid fa-futbol"></i>Torquay Sunday League<i class="fa-solid fa-futbol"></i></h1>
 
 {% if session.user %}
     <!-- This message will display if the user has an account but not a team -->
     {% if user.team_managed == "None" %}
-    <h2 class="sub-heading">One more spot available for this season!</h2>
+    <h2 class="index-sub-heading">One more spot available for this season!</h2>
     <div class="row">
         <div class="col s12 center-align">
+            <i class="fa-solid fa-futbol"></i>
             <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn greenbutton-border">Create Team</a>
+            <i class="fa-solid fa-futbol"></i>
         </div>
     </div>
 
     <!-- This message will display the users team if they have one, except for my account -->
     {% elif session["user"] != "ryanmcnally93" %}
-    <h2 class="sub-heading">Team deadline 10/08/2023</h2>
+    <h2 class="index-sub-heading">Team deadline 10/08/2023</h2>
     <div class="row">
         <div class="col s12 center-align">
+            <i class="fa-solid fa-futbol"></i>
             <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green button-border"> {{ team.team_name }} </a>
+            <i class="fa-solid fa-futbol"></i>
         </div>
     </div>
     {% else %}
-    <h2 class="sub-heading">Viewing as Admin</h2>
+    <h2 class="index-sub-heading">Viewing as Admin</h2>
     <div class="row">
         <div class="col s12 center-align">
+            <i class="fa-solid fa-futbol"></i>
             <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green button-border">Create Team</a>
+            <i class="fa-solid fa-futbol"></i>
         </div>
     </div>
 
@@ -33,7 +39,7 @@
     
 <!-- The only other way this page can be displayed is by people who don't have an account -->
 {% else %}
-<h2 class="sub-heading">One more spot available for this season!</h2>
+<h2 class="index-sub-heading">One more spot available for this season!</h2>
 <div class="row">
     <div class="col s12 center-align">
         <a href="{{ url_for('register') }}" id="register-button" class="btn green button-border">Register NOW!</a>

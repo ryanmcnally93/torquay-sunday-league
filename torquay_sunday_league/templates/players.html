@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div id="heading-box">
+<div class="heading-box" id="players-title-box">
     <h1 class="main-heading" id="players-title">{{ team.team_name }}'s Players</h1>
 </div>
 
@@ -21,8 +21,8 @@
         <img id="enzo" class="player-left" src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
     </div>
 
-    {% if players|length == 0 %}
-        <!-- Display nothing -->
+    {% if team.team_no_of_players == 0 %}
+        <p id="no-players">{{ team.team_name }} currently has no players.</p>
     {% else %}
         <div class="row players-row">
             <ul class="collapsible player-collapsible player-border">

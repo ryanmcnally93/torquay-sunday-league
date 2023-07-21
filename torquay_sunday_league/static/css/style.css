@@ -24,11 +24,9 @@
     background-color: #fafafa;
 }
 
-@media (min-width: 768px){
-    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-        height: 82px;
-        line-height: 82px;
-    }
+nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+    height: 82px;
+    line-height: 82px;
 }
 
 .link-colour {
@@ -39,13 +37,27 @@
     color: green;
 }
 
-nav ul a {
+nav ul a, #mobile-nav ul a {
     color: green;
 }
 
-nav ul a:hover {
+nav ul a:hover, #mobile-nav ul a:hover {
     color: #008285;
 }
+
+.sidenav.right-aligned {
+    width: 180px;
+    height: fit-content;
+    border-bottom-left-radius: 25px;
+    padding-bottom: 25px;
+}
+
+@media (max-width: 767px) {
+    .sidenav.right-aligned {
+        width: 150px;
+    }
+}
+
 nav {
     -webkit-box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
     box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
@@ -65,7 +77,7 @@ nav .sidenav-trigger {
 }
 
 /* Headings */
-.main-heading, .sub-heading, .index-main-heading {
+.main-heading, .sub-heading, .index-main-heading, .index-sub-heading {
     color: #008000;
     text-align: center;
 }
@@ -74,20 +86,17 @@ nav .sidenav-trigger {
     margin: 35px 0 25px 0 !important;
 }
 
-.sub-heading {
+.sub-heading, .index-sub-heading {
     font-size: 32px;
     margin-top: 0;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .main-heading {
     font-weight: 600;
     margin: 0;
     font-weight: 400;
-}
-
-.sub-heading {
-    font-weight: 400;
-    font-style: italic;
 }
 
 @media (max-width: 767px) {
@@ -179,11 +188,61 @@ th, td {
         top: 330px;
         width: 300px;
     }
-    .index-main-heading {
-        font-size: 32px
-    }
     .sub-heading {
         font-size: 20px;
+    }
+}
+
+div .fa-futbol {
+    display: none;
+}
+
+#no-players {
+    color: green;
+    background-color: rgb(250,250,250,0.8);
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 20px auto;
+    font-size: 24px;
+    text-align: center;
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+    #no-players {
+        margin-left: 15%;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    div .fa-futbol {
+        font-weight: 100;
+        margin: 0 25px;
+        vertical-align: bottom;
+        color: green;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 24px;
+    }
+    .index-sub-heading {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+    .index-main-heading {
+        font-size: 40px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 .fa-futbol {
+        display: none;
+    }
+    .index-main-heading {
+        font-size: 36px !important;
     }
 }
 
@@ -199,6 +258,12 @@ th, td {
 
 .player-left {
     width: 100%;
+}
+
+h1 .fa-futbol {
+    font-weight: 100;
+    margin: 0 25px;
+    vertical-align: bottom;
 }
 
 .row-with-mt {
@@ -409,6 +474,10 @@ footer p {
     #players-title {
         font-size: 32px;
         word-break: break-word;
+    }
+    #players-title-box {
+        height: 60px;
+        padding: 10px 20px;
     }
 }
 
@@ -636,7 +705,7 @@ body {
     }
 }
 
-#heading-box {
+.heading-box {
     background-color: rgb(250,250,250,0.8);
     width: fit-content;
     margin: auto;
@@ -648,7 +717,7 @@ body {
 }
 
 @media (min-width: 768px) {
-    #heading-box {
+    .heading-box {
         height: 95px;
     }
 }
