@@ -52,6 +52,12 @@ nav {
     box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
 }
 
+.card-panel {
+    width: 60%;
+    border-radius: 25px;
+    margin: 20px auto 40px auto !important;
+}
+
 /* Headings */
 .main-heading, .sub-heading, .index-main-heading, .index-sub-heading {
     color: #008000;
@@ -75,11 +81,228 @@ nav {
     font-weight: 400;
 }
 
+.heading-box {
+    background-color: rgb(250,250,250,0.8);
+    width: fit-content;
+    margin: auto;
+    border-radius: 25px;
+    height: 75px;
+    margin-top: 20px;
+    text-align: center;
+    padding: 8px 20px;
+}
+
+@media (min-width: 768px) {
+    .heading-box {
+        height: 95px;
+    }
+}
+
+/* All Pages Main Elements */
+
+#main-content {
+    margin-bottom: 20px;
+    min-height: 1390px;
+}
+
+/* Row Margin alterations */
+
+.row-with-mt {
+    margin-top: 20px;
+}
+
+.row-without-mb{
+    margin-bottom: 0;
+}
+
+/* Flash Messages */
+
+.flashes {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.flashes h3 {
+    line-height: 1;
+    margin: auto;
+    width: fit-content;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .flashes h3 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .flashes h3 {
+        font-size: 20px;
+    }
+}
+
+/* Modals */
+
+.modal {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.modal p {
+    margin-top: 20px;
+}
+
+/* Background Images */
+
+#background-image {
+    position: fixed;
+    top: -400px;
+    z-index: -1;
+    width: 1800px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    left: 50%;
+    margin-left: -900px;
+    display: block;
+    opacity: 0.8;
+}
+
+#background-image-large {
+    display: none;
+}
+
+@media (min-width: 1201px) {
+    #background-image-large {
+        position: fixed;
+        top: -100px;
+        z-index: -1;
+        width: 1800px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        left: 50%;
+        margin-left: -900px;
+        display: block;
+        opacity: 0.8;
+    }
+    #background-image {
+        display: none;
+    }
+}
+
+/* Buttons */
+
+.button-border {
+    border-radius: 10px;
+    font-family: Ysabeau Infant, sans-serif;
+}
+
+.turq {
+    background-color: turquoise;
+    color: black;
+}
+
+.turq:hover {
+    background-color: #008285 !important;
+    color: white !important;
+}
+
+.red:hover {
+    background-color: darkred !important;
+}
+
+.btn.green:hover {
+    background-color: darkgreen !important;
+}
+
+/* Whole Body */
+
+body {
+    font-family: Ysabeau Infant, sans-serif !important;
+}
+
 /* Footer */
 
 footer {
     -webkit-box-shadow: 0 -2px 2px 0 rgba(0,128,0,0.14),0 -3px 1px -2px rgba(0,128,0,0.12),0 -1px 5px 0 rgba(0,128,0,0.2);
     box-shadow: 0 -2px 2px 0 rgba(0,128,0,0.14),0 -3px 1px -2px rgba(0,128,0,0.12),0 -1px 5px 0 rgba(0,128,0,0.2);
+}
+
+footer {
+    padding-top: 5px;
+}
+
+footer p {
+    color: green;
+    text-align: center;
+    font-size: 20px;
+    margin: -20px 0 0 0;
+}
+
+#rules-link {
+    color: green;
+    margin: auto;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 16px;
+}
+
+.rules-box {
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    padding: 24px;
+    margin: 20px 0 20px 0;
+    border-radius: 25px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+#socials:not(.browser-default) {
+    height: 41px;
+    margin-top: 0;
+}
+
+#rules-link:hover {
+    color: turquoise;
+}
+
+.footer-line {
+    display: inline;
+}
+
+#back-to-top {
+    color: green;
+    margin: 10px;
+}
+
+#back-to-top:hover {
+    color: turquoise;
+}
+
+.social-networks {
+    text-align: center;
+    padding: 0;
+}
+  
+.social-networks li {
+    display: inline;
+    /* font-family: Ysabeau Infant, sans-serif; */
+}
+  
+.social-networks i {
+    font-size: 160%;
+    margin: 10px 5%;
+    color: green;
+}
+  
+.social-networks i:hover {
+    color: turquoise;
 }
 
 /* Base Mobile Responsiveness */
@@ -106,11 +329,21 @@ nav .sidenav-trigger {
     .sub-heading {
         font-size: 20px;
     }
+    .main-heading {
+        font-size: 48px;
+    }
+    .social-networks li {
+        display: inline-flex !important;
+        margin: 2px;
+    }
 }
 
 @media (max-width: 600px) {
     .index-sub-heading {
         font-size: 20px;
+    }
+    .social-networks i {
+        font-size: 110%;
     }
 }
 
@@ -130,12 +363,42 @@ nav .sidenav-trigger {
     justify-content: center;
 }
 
+#register-button {
+    margin: auto;
+    border-radius: 10px;
+}
+
 div .fa-futbol {
     display: none;
 }
 
 th, td {
     text-align: center;
+}
+
+#winners {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: inline;
+    border-radius: 25px;
+    border: 2px solid darkgreen;
+    height: 300px;
+}
+
+#goalscorer {
+    border-style: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: inline;
+    border-radius: 25px;
+    border: 2px solid darkgreen;
+    height: 300px;
+}
+
+#winners-goals {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 25px;
 }
 
 .player-left-box, .player-right-box {
@@ -152,7 +415,48 @@ th, td {
     left: 5%;
 }
 
+.index-player-right-box {
+    right: 3%;
+    position: absolute;
+    top: 355px;
+    width: 530px;
+}
+
+.player-left, .player-right {
+    width: 100%;
+}
+
+h1 .fa-futbol {
+    font-weight: 100;
+    margin: 0 25px;
+    vertical-align: bottom;
+}
+
+#trent {
+    width: 110%;
+    margin-left: 10%;
+}
+
 /* Index Tablet Responsiveness */
+
+@media (max-width: 1000px) {
+    #trent {
+        display: none;
+    }
+    #index-player-left-box {
+        left: 50%;
+        margin-left: -190px;
+    }
+    #winners-goals {
+        flex-wrap: wrap;
+    }
+    #goalscorer {
+        margin-top: 25px;
+    }
+    #winners {
+        height: 190px;
+    }
+}
 
 @media (min-width: 768px) and (max-width: 1000px) {
     .index-player-left-box {
@@ -208,6 +512,10 @@ th, td {
 
 /* Players Page */
 
+#players-background-image {
+    display: none;
+}
+
 .players-player-left-box {
     position: absolute;
     top: 250px;
@@ -218,6 +526,16 @@ th, td {
     right: 3%;
     position: absolute;
     top: 250px;
+}
+
+.players-row {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.player-collapsible {
+    width: 30%;
 }
 
 #no-players {
@@ -231,147 +549,9 @@ th, td {
     text-align: center;
 }
 
-/* Players Tablet Responsiveness */
-
-@media (min-width: 801px) and (max-width: 1000px) {
-    #no-players {
-        margin-left: 15%;
-        margin-top: 20px;
-        font-size: 20px;
-    }
-}
-
-/* I AM HERE */
-
-.index-player-right-box {
-    right: 3%;
-    position: absolute;
-    top: 355px;
-}
-
-.index-player-right-box {
-    width: 530px;
-}
-
-.player-left {
-    width: 100%;
-}
-
-h1 .fa-futbol {
-    font-weight: 100;
-    margin: 0 25px;
-    vertical-align: bottom;
-}
-
-.row-with-mt {
-    margin-top: 20px;
-}
-
-.player-right {
-    width: 100%;
-}
-
-#main-content {
-    margin-bottom: 20px;
-    min-height: 1390px;
-}
-
-#teams-content {
-    margin-bottom: 20px;
-    min-height: 700px;
-}
-
-/* BELOW 915px width, need to have 1 player image */
-
-/* Footer */
-footer {
-    padding-top: 5px;
-}
-
-footer p {
-    color: green;
-    text-align: center;
-    font-size: 20px;
-    margin: -20px 0 0 0;
-}
-
-#rules-link {
-    color: green;
-    margin: auto;
-    font-size: 20px;
-    margin-right: 10px;
-    margin-left: 16px;
-}
-
-.rules-box {
-    -webkit-transition: -webkit-box-shadow .25s;
-    transition: -webkit-box-shadow .25s;
-    transition: box-shadow .25s;
-    transition: box-shadow .25s, -webkit-box-shadow .25s;
-    padding: 24px;
-    margin: 20px 0 20px 0;
-    border-radius: 25px;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-}
-
-#socials:not(.browser-default) {
-    height: 41px;
-    margin-top: 0;
-}
-
-#rules-link:hover {
-    color: turquoise;
-}
-
-.form-icon-colour {
-    color: #008285 !important;
-}
-
-.team-card {
-    height: 270px;
-    width: 200px;
-    text-align: center;
-    margin: auto;
-    border-radius: 30px;
-}
-
-.team-card-layout {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.card-content {
-    padding-bottom: 0 !important;
-    padding-top: 50px !important;
-}
-
-.editable-content {
-    padding-bottom: 0 !important;
-    padding-top: 20px !important;
-}
-
-.card-action {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 134px;
-}
-
 #player-name {
     padding: 10px 20px;
     border-radius: 20px;
-}
-
-.button-border {
-    border-radius: 10px;
-    font-family: Ysabeau Infant, sans-serif;
-    background-color: #008285;
-}
-
-.button-border:hover {
-    background-color: green;
 }
 
 #player-background {
@@ -396,14 +576,6 @@ footer p {
     border-radius: 20px
 }
 
-.editable-action {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 204px;
-}
-
 .player-border {
     border-radius: 20px;
     -webkit-box-shadow: none;
@@ -414,16 +586,22 @@ footer p {
     overflow: scroll;
 }
 
-.modal {
-    border-radius: 20px;
-    padding: 10px;
+#enzo {
+    margin-left: -15%;
 }
 
-.modal p {
-    margin-top: 20px;
+#de-bruyne {
+    margin-left: 15%;
 }
+
+/* Players Tablet Responsiveness */
 
 @media (min-width: 801px) and (max-width: 1000px) {
+    #no-players {
+        margin-left: 15%;
+        margin-top: 20px;
+        font-size: 20px;
+    }
     .players-player-right-box {
         margin-right: 5%;
     }
@@ -478,10 +656,103 @@ footer p {
     }
 }
 
+/* Players Mobile Responsiveness */
+
 @media (max-width: 550px) {
     .player-border {
         width: 90% !important;
     }
+}
+
+/* Teams Page */
+
+#teams-content {
+    margin-bottom: 20px;
+    min-height: 700px;
+}
+
+.confirmed-p {
+    margin: 10px 0 5px 0;
+    color: white;
+}
+
+.confirm-submit {
+    border-radius: 10px;
+    background-color: lightgreen;
+    color: black;
+    margin-top: 12px;
+    font-family: Ysabeau Infant, sans-serif;
+}
+
+.confirm-submit:hover {
+    color: white;
+    background-color: darkgreen;
+    cursor: pointer;
+}
+
+/* Disabled Switch */
+.switch label input[type=checkbox][disabled]+.lever:after, .switch label input[type=checkbox][disabled]:checked+.lever:after {
+    background-color: darkgreen;
+}
+
+/* Enabled Switch */
+.switch label input[type=checkbox]:checked+.lever:after, .switch label .lever:after {
+    background-color: white;
+}
+
+.switch {
+    margin-top: 5px;
+}
+
+.switch-label {
+    color: white;
+}
+
+.team-card {
+    height: 270px;
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    border-radius: 30px;
+}
+
+.editable-action {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 204px;
+}
+
+.team-card {
+    height: 270px;
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    border-radius: 30px;
+}
+
+.team-card-layout {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.card-content {
+    padding-bottom: 0 !important;
+    padding-top: 50px !important;
+}
+
+.editable-content {
+    padding-bottom: 0 !important;
+    padding-top: 20px !important;
+}
+
+.card-action {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 134px;
 }
 
 .green-card {
@@ -514,10 +785,6 @@ footer p {
     color: green;
 }
 
-body {
-    font-family: Ysabeau Infant, sans-serif !important;
-}
-
 .card-button {
     margin-bottom: 5px;
     border-radius: 10px;
@@ -527,41 +794,13 @@ body {
     font-size: 20px !important;
 }
 
-@media (min-width: 566px) and (max-width: 850px) {
+@media (min-width: 1101px) {
     .team-card-layout {
-        width: 50%;
+        width: 25%;
     }
 }
 
-@media (max-width: 767px) {
-    #rules-one, #rules-three {
-        float: none !important;
-        margin: auto !important;
-        margin-right: auto !important;
-    }
-    #rules-one, #rules-two, #rules-three {
-        width: 270px !important;
-    }
-    .rules-box {
-        padding: 10px;
-    }
-    .rules-box h3 {
-        font-size: 36px;
-    }
-    .rules-box h4 {
-        font-size: 28px;
-    }
-    .rules-box p {
-        font-size: 16px;
-    }
-    .main-heading {
-        font-size: 48px;
-    }
-    .social-networks li {
-        display: inline-flex !important;
-        margin: 2px;
-    }
-}
+/* Teams Tablet Responsiveness */
 
 @media (min-width: 851px) and (max-width: 1100px) {
     .team-card-layout {
@@ -569,66 +808,58 @@ body {
     }
 }
 
+@media (min-width: 566px) and (max-width: 850px) {
+    .team-card-layout {
+        width: 50%;
+    }
+}
+
+/* Teams Mobile Responsiveness */
+
 @media (max-width: 565px) {
     .team-card-layout {
         width: 100%;
     }
 }
 
-@media (min-width: 1101px) {
-    .team-card-layout {
-        width: 25%;
-    }
+/* Form Pages */
+
+.form-icon-colour {
+    color: #008285 !important;
 }
 
-#register-button {
-    margin: auto;
-    border-radius: 10px;
+.fa-shirt {
+    margin-left: -5px;
 }
 
-.flashes {
-    margin-bottom: 0;
+.picture-edit-box {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+}
+
+#edit-picture-team-box {
     margin-top: 10px;
 }
 
-#num_of_players {
-    display: flex;
+#form-content {
+    min-height: 630px;
 }
 
-.row-without-mb{
-    margin-bottom: 0;
+@media (min-width: 767px) {
+    #edit-user-heading {
+        font-size: 20px;
+        word-break: break-all;
+    }
 }
 
-#num_of_players-p {
-    margin-right: 4px;
+@media (max-width: 410px) {
+    #edit-team-box {
+        width: 100%;
+    }
 }
 
-#num_of_players p {
-    margin-bottom: 0;
-}
-
-.team-title {
-    border-radius: 20px;
-    padding: 5px 20px;
-    width: fit-content;
-    margin: auto;
-    -webkit-transition: -webkit-box-shadow .25s;
-    transition: -webkit-box-shadow .25s;
-    transition: box-shadow .25s;
-    transition: box-shadow .25s, -webkit-box-shadow .25s;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-}
-
-.team-title-inner {
-    padding: 5px 20px;
-    margin: auto;
-    border-radius: 20%;
-}
-
-#tt-box {
-    margin-bottom: 20px;
-}
+/* Rules Page */
 
 #rules-one, #rules-two, #rules-three {
     width: 320px;
@@ -659,72 +890,84 @@ body {
     border: 5px solid darkgreen;
 }
 
-#background-image {
-    position: fixed;
-    top: -400px;
-    z-index: -1;
-    width: 1800px;
+/* Rules Mobile Responsiveness */
+
+@media (max-width: 767px) {
+    #rules-one, #rules-three {
+        float: none !important;
+        margin: auto !important;
+        margin-right: auto !important;
+    }
+    #rules-one, #rules-two, #rules-three {
+        width: 270px !important;
+    }
+    .rules-box {
+        padding: 10px;
+    }
+    .rules-box h3 {
+        font-size: 36px;
+    }
+    .rules-box h4 {
+        font-size: 28px;
+    }
+    .rules-box p {
+        font-size: 16px;
+    }
+}
+
+/* Team Profile Page */
+
+.team-title {
+    border-radius: 20px;
+    padding: 5px 20px;
+    width: fit-content;
     margin: auto;
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.team-profile-picture {
+    border-radius: 25px;
+    object-fit: cover;
+    aspect-ratio: 1.5;
+    border: 2px solid darkgreen;
+}
+
+.picture-team-box {
     display: flex;
     justify-content: center;
-    flex-direction: row;
-    left: 50%;
-    margin-left: -900px;
-    display: block;
-    opacity: 0.8;
+    width: 100% !important;
+    margin-top: 35px;
 }
 
-#players-background-image {
-    display: none;
-}
-
-#background-image-large {
-    display: none;
-}
-
-@media (min-width: 1201px) {
-    #background-image-large {
-        position: fixed;
-        top: -100px;
-        z-index: -1;
-        width: 1800px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        left: 50%;
-        margin-left: -900px;
-        display: block;
-        opacity: 0.8;
-    }
-    #background-image {
-        display: none;
-    }
-}
-
-.heading-box {
-    background-color: rgb(250,250,250,0.8);
-    width: fit-content;
+.team-title-inner {
+    padding: 5px 20px;
     margin: auto;
-    border-radius: 25px;
-    height: 75px;
-    margin-top: 20px;
-    text-align: center;
-    padding: 8px 20px;
+    border-radius: 20%;
 }
 
-@media (min-width: 768px) {
-    .heading-box {
-        height: 95px;
-    }
+#num_of_players {
+    display: flex;
 }
 
-.flashes h3 {
-    line-height: 1;
-    margin: auto;
-    width: fit-content;
-    border-radius: 25px;
-    padding: 20px;
+#num_of_players-p {
+    margin-right: 4px;
+}
+
+#num_of_players p {
+    margin-bottom: 0;
+}
+
+#no_of_players {
+    display: inline;
+}
+
+#tt-box {
+    margin-bottom: 20px;
 }
 
 .player-edit-view {
@@ -749,46 +992,38 @@ body {
     margin: 5px;
 }
 
-.fa-shirt {
-    margin-left: -5px;
-}
+/* Team Profile Tablet Responsiveness */
 
-#enzo {
-    margin-left: -15%;
-}
-
-#de-bruyne {
-    margin-left: 15%;
-}
-
-#trent {
-    width: 110%;
-    margin-left: 10%;
-}
-
-@media (max-width: 1000px) {
-    #trent {
-        display: none;
-    }
-    #index-player-left-box {
-        left: 50%;
-        margin-left: -190px;
+@media (min-width: 768px) and (max-width: 1000px) {
+    .profile-content {
+        width: 60% !important;
     }
 }
 
-.players-row {
-    width: 100%;
-    display: inline-flex;
-    justify-content: center;
+/* Team Profile Mobile Responsiveness */
+
+@media (max-width: 767px) {
+    .profile-content {
+        width: 90% !important;
+    }
+    .team-title {
+        width: 100%;
+        padding: 5px 0;
+        word-break: break-word;
+    }
+    .team-title-inner {
+        font-size: 32px;
+    }
+    .team-profile-button {
+        /* Biggest size width of 320px will allow before causing issues */
+        font-size: 13.7px;
+    }
+    .card-panel, .p-background {
+        width: 90%;
+    }
 }
 
-.player-collapsible {
-    width: 30%;
-}
-
-#no_of_players {
-    display: inline;
-}
+/* Register Page */
 
 .p-background {
     background-color: rgb(250, 250, 250, 0.8);
@@ -804,37 +1039,28 @@ body {
     font-size: 20px;
 }
 
-#back-to-top {
-    color: green;
-    margin: 10px;
+.reg-login-p {
+    background-color: rgb(250,250,250,0.8);
+    border-radius: 25px;
+    width: fit-content !important;
+    margin: auto;
+    float: none !important;
+    padding: 2px 15px !important;
+}
+.reg-login-p p {
+    margin: 5px;
 }
 
-#back-to-top:hover {
-    color: turquoise;
+@media (max-width: 767px) {
+    #register-p {
+        font-size: 16px;
+    }
 }
 
-.social-networks {
-    text-align: center;
-    padding: 0;
-}
-  
-.social-networks li {
-    display: inline;
-    /* font-family: Ysabeau Infant, sans-serif; */
-}
-  
-.social-networks i {
-    font-size: 160%;
-    margin: 10px 5%;
-    color: green;
-}
-  
-.social-networks i:hover {
-    color: turquoise;
-}
+/* User Profile */
 
 #user-team {
-    margin-top: 0
+    margin-top: 0;
 }
 
 #user-lastp {
@@ -843,55 +1069,6 @@ body {
 
 #user-p-content {
     padding-top: 13px;
-}
-  
-@media (max-width: 600px) {
-    .social-networks i {
-      font-size: 110%;
-    }
-}
-
-.footer-line {
-    display: inline;
-}
-
-/* swtich */
-
-/* Disabled */
-.switch label input[type=checkbox][disabled]+.lever:after, .switch label input[type=checkbox][disabled]:checked+.lever:after {
-    background-color: darkgreen;
-}
-
-/* Enabled */
-.switch label input[type=checkbox]:checked+.lever:after, .switch label .lever:after {
-    background-color: white;
-}
-
-.switch-label {
-    color: white;
-}
-
-.confirmed-p {
-    margin: 10px 0 5px 0;
-    color: white;
-}
-
-.confirm-submit {
-    border-radius: 10px;
-    background-color: lightgreen;
-    color: black;
-    margin-top: 12px;
-    font-family: Ysabeau Infant, sans-serif;
-}
-
-.confirm-submit:hover {
-    color: white;
-    background-color: darkgreen;
-    cursor: pointer;
-}
-
-.switch {
-    margin-top: 5px;
 }
 
 .profile-picture {
@@ -912,40 +1089,12 @@ body {
     margin-bottom: 10px;
 }
 
-.picture-edit-box {
-    display: flex;
-    justify-content: center;
-    width: 100% !important;
-}
-
-.picture-team-box {
-    display: flex;
-    justify-content: center;
-    width: 100% !important;
-    margin-top: 35px;
-}
-
-#edit-picture-team-box {
-    margin-top: 10px;
-}
-
-.team-profile-picture {
-    border-radius: 25px;
-    object-fit: cover;
-    aspect-ratio: 1.5;
-    border: 2px solid darkgreen;
-}
-
 .center-upload-profile {
     display: flex;
     justify-content: center;
     margin: auto;
     font-family: Ysabeau Infant, sans-serif;
 }
-
-/* input:not([type="range"]):not([type="color"]) {
-    border-radius: 10px;
-} */
 
 .file-upload {
     width: 200px;
@@ -966,136 +1115,4 @@ body {
     height: 35px;
     padding: 0;
     margin-bottom: 20px;
-}
-
-#winners {
-    margin-left: 20px;
-    margin-right: 20px;
-    display: inline;
-    border-radius: 25px;
-    border: 2px solid darkgreen;
-    height: 300px;
-}
-
-#goalscorer {
-    border-style: none;
-    margin-left: 20px;
-    margin-right: 20px;
-    display: inline;
-    border-radius: 25px;
-    border: 2px solid darkgreen;
-    height: 300px;
-}
-
-.turq {
-    background-color: turquoise;
-    color: black;
-}
-
-.turq:hover {
-    background-color: #008285 !important;
-    color: white !important;
-}
-
-.red:hover {
-    background-color: darkred !important;
-}
-
-.btn.green:hover {
-    background-color: darkgreen !important;
-}
-
-.turq:hover {
-    background-color: turquoise;
-    color: black;
-}
-
-#winners-goals {
-    justify-content: center;
-    display: flex;
-    margin-bottom: 25px;
-}
-
-.card-panel {
-    width: 60%;
-    border-radius: 25px;
-    margin: 20px auto 40px auto !important;
-}
-
-#form-content {
-    min-height: 630px;
-}
-
-.reg-login-p {
-    background-color: rgb(250,250,250,0.8);
-    border-radius: 25px;
-    width: fit-content !important;
-    margin: auto;
-    float: none !important;
-    padding: 2px 15px !important;
-}
-.reg-login-p p {
-    margin: 5px;
-}
-
-@media (max-width: 1000px) {
-    #winners-goals {
-        flex-wrap: wrap;
-    }
-    #goalscorer {
-        margin-top: 25px;
-    }
-    #winners {
-        height: 190px;
-    }
-}
-
-/* Team Profile Tablet Responsiveness */
-
-@media (min-width: 768px) and (max-width: 1000px) {
-    .profile-content {
-        width: 60% !important;
-    }
-    .flashes h3 {
-        font-size: 32px;
-    }
-}
-
-/* Team Profile Mobile Responsiveness */
-
-@media (max-width: 767px) {
-    .flashes h3 {
-        font-size: 20px;
-    }
-    .profile-content {
-        width: 90% !important;
-    }
-    .team-title {
-        width: 100%;
-        padding: 5px 0;
-        word-break: break-word;
-    }
-    .team-title-inner {
-        font-size: 32px;
-    }
-    .team-profile-button {
-        /* Biggest size width of 320px will allow before causing issues */
-        font-size: 13.7px;
-    }
-    .card-panel, .p-background {
-        width: 90%;
-    }
-    #register-p {
-        font-size: 16px;
-    }
-    #edit-user-heading {
-        font-size: 20px;
-        word-break: break-all;
-    }
-}
-
-@media (max-width: 410px) {
-    #edit-team-box {
-        width: 100%;
-    }
 }
