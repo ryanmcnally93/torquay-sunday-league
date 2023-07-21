@@ -40,7 +40,7 @@
                                 <p id="middle-p">Position: {{ player.player_position }}</p>
                                 <p id="bottom-p">Joined: {{ player.player_joined }}</p>
                                 {% if team.team_created_by == session["user"] and team.confirmation_status == False %}
-                                    <a class="btn green darken-4 button-border" href="{{ url_for('edit_player', player_id=player.id, team_id=team.id) }}">Edit</a>
+                                    <a class="btn green button-border" href="{{ url_for('edit_player', player_id=player.id, team_id=team.id) }}">Edit</a>
                                     <a class="btn red modal-trigger button-border" id="delete_player" href="#modal-{{ player.id }}">Delete</a>
                                 {% endif %}
                             </div>

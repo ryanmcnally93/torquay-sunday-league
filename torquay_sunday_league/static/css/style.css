@@ -820,7 +820,7 @@ body {
 
 .confirm-submit:hover {
     color: white;
-    background-color: #008285;
+    background-color: darkgreen;
     cursor: pointer;
 }
 
@@ -907,7 +907,7 @@ body {
     margin-right: 20px;
     display: inline;
     border-radius: 25px;
-    border: 5px solid darkgreen;
+    border: 2px solid darkgreen;
     height: 300px;
 }
 
@@ -917,8 +917,31 @@ body {
     margin-right: 20px;
     display: inline;
     border-radius: 25px;
-    border: 5px solid darkgreen;
+    border: 2px solid darkgreen;
     height: 300px;
+}
+
+.turq {
+    background-color: turquoise;
+    color: black;
+}
+
+.turq:hover {
+    background-color: #008285 !important;
+    color: white !important;
+}
+
+.red:hover {
+    background-color: darkred !important;
+}
+
+.btn.green:hover {
+    background-color: darkgreen !important;
+}
+
+.turq:hover {
+    background-color: turquoise;
+    color: black;
 }
 
 #winners-goals {

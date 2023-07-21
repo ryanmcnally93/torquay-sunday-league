@@ -9,7 +9,7 @@
     <h2 class="sub-heading">One more spot available for this season!</h2>
     <div class="row">
         <div class="col s12 center-align">
-            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green button-border">Create Team</a>
+            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn greenbutton-border">Create Team</a>
         </div>
     </div>
 
@@ -18,14 +18,14 @@
     <h2 class="sub-heading">Team deadline 10/08/2023</h2>
     <div class="row">
         <div class="col s12 center-align">
-            <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green"> {{ team.team_name }} </a>
+            <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green button-border"> {{ team.team_name }} </a>
         </div>
     </div>
     {% else %}
     <h2 class="sub-heading">Viewing as Admin</h2>
     <div class="row">
         <div class="col s12 center-align">
-            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green">Create Team</a>
+            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green button-border">Create Team</a>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
 <h2 class="sub-heading">One more spot available for this season!</h2>
 <div class="row">
     <div class="col s12 center-align">
-        <a href="{{ url_for('register') }}" id="register-button" class="btn green">Register NOW!</a>
+        <a href="{{ url_for('register') }}" id="register-button" class="btn green button-border">Register NOW!</a>
     </div>
 </div>
 
