@@ -495,9 +495,9 @@ I fixed this issue by opening psql and changing the directory again to torquay_s
 
 I fixed this in several steps, first, I made the table inline-table and the two players inline-block. This placed the three elements in a line, but the table's margin: auto property no longer centered it. I fixed this issue by using the margin-left: 50%, left: (half the width of the element) trick.
 
-3). I couldn't update postgres after I made changes to the model.py file. Max character length was originally fifteen, but I needed it to be twenty-five.
+3). I couldn't update postgres after I made changes to the model.py file. Max character length was originally twenty, but I needed it to be twenty-five.
 
-<!-- CAUSE ERROR FOR IMAGE -->
+<!-- IMAGE -->
 
 I fixed this by discovering the DROP DATABASE and CREATE DATABASE commands in psql. Then I typed python3, import torquay_sunday_league from db, db.create_all() and exit().
 
@@ -513,7 +513,7 @@ I fixed this by copying the line from the players app.route, placing in the play
 
 5). I had an error showing when loading my login page, it said I didn’t have access.
 
-<!-- CAUSE ERROR FOR IMAGE -->
+<!-- IMAGE -->
 
 I saw on Slack that other users discovered this issue on Code Anywhere, and when they switched to GitPod, the issue was gone. My belief was that this is because Code Anywhere has an issue with a file being called login.html, which probably refers to their own login page or something.
 
@@ -521,13 +521,13 @@ I fixed the issue by calling my login page and function log_in instead, which wo
 
 6). I had an issue with the Register and login pages when they loaded, if I backspaced, the inputs had both the label and last inputs, one of top of the other, it looked messy.
 
-<!-- CAUSE ERROR FOR IMAGE -->
-
 I added Javascript files to each page that had a form, to clear data as the page loads. Edit pages include old value but don't have the error now.
 
 7). Originally I had number of players as a typed in property. I struggled to find the actual number of players from the team we were clicked onto.
 
 I fixed this by searching the team table for the id passed in, and then realising that that table has a players attribute, iterated through that and incremented a variable with the original value of 0.
+
+<!-- IMAGE -->
 
 I then added a flash message for teams who have less than the required amount of players and added some javascript functionality so the css color and title attributes are added, giving the user more feedback on their number of players.
 

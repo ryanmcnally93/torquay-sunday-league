@@ -246,6 +246,9 @@ footer {
 
 footer {
     padding-top: 5px;
+    /* width: 100%;
+    position: absolute;
+    bottom: 0; */
 }
 
 footer p {
