@@ -96,8 +96,8 @@
                     <p>This action cannot be undone</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{ url_for('delete_team', team_id=team.id) }}" class="btn green">Yes</a>
-                    <a href="{{ url_for('teams') }}" class="btn red">No</a>
+                    <a href="{{ url_for('delete_team', team_id=team.id) }}" class="btn green button-border">Yes</a>
+                    <a href="{{ url_for('teams') }}" class="btn red button-border">No</a>
                 </div>
             </div>
         {% endfor %}

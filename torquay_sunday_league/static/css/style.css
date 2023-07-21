@@ -317,6 +317,15 @@ footer p {
     overflow: scroll;
 }
 
+.modal {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.modal p {
+    margin-top: 20px;
+}
+
 @media (min-width: 801px) and (max-width: 1000px) {
     .players-player-right-box {
         margin-right: 5%;
