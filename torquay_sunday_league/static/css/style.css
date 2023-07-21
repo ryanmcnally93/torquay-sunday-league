@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap');
+
 /* Navbar */
 #logo {
     width: 200px;
@@ -47,6 +49,10 @@ nav .sidenav-trigger {
     text-align: center;
 }
 
+.index-main-heading {
+    margin: 35px 0 25px 0 !important;
+}
+
 .sub-heading {
     font-size: 32px;
     margin-top: 0;
@@ -55,10 +61,12 @@ nav .sidenav-trigger {
 .main-heading {
     font-weight: 600;
     margin: 0;
+    font-weight: 400;
 }
 
-.main-heading {
-    font-weight: 600;
+.sub-heading {
+    font-weight: 400;
+    font-style: italic;
 }
 
 @media (max-width: 767px) {
@@ -275,6 +283,7 @@ footer p {
 
 .button-border {
     border-radius: 10px;
+    font-family: Ysabeau Infant, sans-serif;
 }
 
 #player-background {
@@ -411,6 +420,10 @@ footer p {
     border-radius: 15px;
     width: fit-content;
     color: green;
+}
+
+body {
+    font-family: Ysabeau Infant, sans-serif !important;
 }
 
 .card-button {
@@ -709,6 +722,7 @@ footer p {
   
 .social-networks li {
     display: inline;
+    /* font-family: Ysabeau Infant, sans-serif; */
 }
   
 .social-networks i {
@@ -769,6 +783,7 @@ footer p {
     background-color: lightgreen;
     color: black;
     margin-top: 12px;
+    font-family: Ysabeau Infant, sans-serif;
 }
 
 .confirm-submit:hover {

@@ -39,9 +39,9 @@
     <div class="row row-without-mb">
         <div class="col player-edit-view">
             <!-- Button to Edit Password or Email info -->
-            <a class="team-profile-button btn green" href="{{ url_for('user_edit', username=user.username) }}">Edit User</a>
+            <a class="team-profile-button btn green button-border" href="{{ url_for('user_edit', username=user.username) }}">Edit User</a>
             <!-- Button to delete user -->
-            <a class="team-profile-button btn red modal-trigger" id="delete_user" href="#modal-{{ user.username }}">Delete User</a>
+            <a class="team-profile-button btn red modal-trigger button-border" id="delete_user" href="#modal-{{ user.username }}">Delete User</a>
         </div>
     </div>
     {% endif %}
