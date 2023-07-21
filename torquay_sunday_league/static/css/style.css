@@ -120,14 +120,14 @@ th, td {
 
 .players-player-left-box {
     position: absolute;
-    top: 210px;
+    top: 250px;
     left: 5%;
 }
 
 .players-player-right-box {
     right: 3%;
     position: absolute;
-    top: 210px;
+    top: 250px;
 }
 
 .index-player-left-box {
@@ -312,15 +312,65 @@ footer p {
     -webkit-box-shadow: none;
     box-shadow: none;
     border: none;
+    margin-top: 0;
+    height: 670px;
+    overflow: scroll;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 801px) and (max-width: 1000px) {
+    .players-player-right-box {
+        margin-right: 5%;
+    }
+    .players-player-left-box {
+        display: none;
+    }
+    .player-border {
+        width: 40% !important;
+    }
+    .players-row {
+        justify-content: flex-start !important;
+        margin-left: 10%;
+        width: 90% !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .players-row {
+        justify-content: center;
+        margin-left: 0;
+    }
+    .player-border {
+        width: 60% !important;
+    }
     .players-player-right-box {
         display: none;
     }
     .players-player-left-box {
+        display: none;
+    }
+    #players-background-image {
+        position: fixed;
+        top: -400px;
+        z-index: -1;
+        width: 1800px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
         left: 50%;
-        margin-left: -110px;
+        margin-left: -900px;
+        display: block !important;
+        opacity: 0.8;
+    }
+    #players-title {
+        font-size: 32px;
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 550px) {
+    .player-border {
+        width: 90% !important;
     }
 }
 
@@ -510,6 +560,10 @@ footer p {
     opacity: 0.8;
 }
 
+#players-background-image {
+    display: none;
+}
+
 #background-image-large {
     display: none;
 }
@@ -669,12 +723,6 @@ footer p {
 #user-p-content {
     padding-top: 13px;
 }
-  
-/* @media (max-width: 800px) {
-    footer {
-      margin: 10px;
-    }
-} */
   
 @media (max-width: 600px) {
     .social-networks i {
@@ -875,7 +923,7 @@ footer p {
     .team-title {
         width: 100%;
         padding: 5px 0;
-        word-break:break-all;
+        word-break: break-word;
     }
     .team-title-inner {
         font-size: 32px;

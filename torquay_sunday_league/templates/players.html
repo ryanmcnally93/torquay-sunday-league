@@ -2,7 +2,7 @@
 {% block content %}
 
 <div id="heading-box">
-    <h1 class="main-heading">{{ team.team_name }}'s Players</h1>
+    <h1 class="main-heading" id="players-title">{{ team.team_name }}'s Players</h1>
 </div>
 
 {% if team.team_created_by == session["user"] and team.confirmation_status == False %}
@@ -70,6 +70,9 @@
     <div id="de-bruyne" class="player-right-box players-player-right-box">
         <img class="player-right" src="{{ url_for('static', filename='images/de-bruyne.webp') }}">
     </div>
+
+    <!-- Background Image -->
+    <img id="players-background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 </main>
 
