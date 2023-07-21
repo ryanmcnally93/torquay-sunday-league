@@ -2,10 +2,21 @@
 
 /* Navbar */
 #logo {
-    width: 200px;
+    width: 82px;
     position: absolute;
-    top: -60px;
-    left: -45px;
+    transition: background-color .3s;
+}
+
+#logo-a {
+    padding-left: 10px;
+    transition: background-color .3s;
+    height: 82px;
+    display: inline-block;
+    width: 100px;
+}
+
+#logo-a:hover {
+    background-color: rgba(0,0,0,0.1);
 }
 
 #nav, footer {
@@ -20,11 +31,21 @@
     }
 }
 
-nav ul a {
-    color: green;
-    /* font-family? */
+.link-colour {
+    color: #008285;
 }
 
+.link-colour:hover {
+    color: green;
+}
+
+nav ul a {
+    color: green;
+}
+
+nav ul a:hover {
+    color: #008285;
+}
 nav {
     -webkit-box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
     box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
@@ -238,11 +259,11 @@ footer p {
 }
 
 #rules-link:hover {
-    color: lightgreen;
+    color: turquoise;
 }
 
 .form-icon-colour {
-    color: green;
+    color: #008285 !important;
 }
 
 .team-card {
@@ -284,6 +305,11 @@ footer p {
 .button-border {
     border-radius: 10px;
     font-family: Ysabeau Infant, sans-serif;
+    background-color: #008285;
+}
+
+.button-border:hover {
+    background-color: green;
 }
 
 #player-background {
@@ -615,10 +641,16 @@ body {
     width: fit-content;
     margin: auto;
     border-radius: 25px;
-    height: fit-content;
+    height: 75px;
     margin-top: 20px;
     text-align: center;
     padding: 8px 20px;
+}
+
+@media (min-width: 768px) {
+    #heading-box {
+        height: 95px;
+    }
 }
 
 .flashes h3 {
@@ -712,7 +744,7 @@ body {
 }
 
 #back-to-top:hover {
-    color: lightgreen;
+    color: turquoise;
 }
 
 .social-networks {
@@ -732,7 +764,7 @@ body {
 }
   
 .social-networks i:hover {
-    color: lightgreen;
+    color: turquoise;
 }
 
 #user-team {
@@ -788,7 +820,7 @@ body {
 
 .confirm-submit:hover {
     color: white;
-    background-color: darkgreen;
+    background-color: #008285;
     cursor: pointer;
 }
 
@@ -842,7 +874,12 @@ body {
     display: flex;
     justify-content: center;
     margin: auto;
+    font-family: Ysabeau Infant, sans-serif;
 }
+
+/* input:not([type="range"]):not([type="color"]) {
+    border-radius: 10px;
+} */
 
 .file-upload {
     width: 200px;
