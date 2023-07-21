@@ -380,7 +380,7 @@ nav .sidenav-trigger {
     border-radius: 10px;
 }
 
-div .fa-futbol {
+.football {
     display: none;
 }
 
@@ -499,7 +499,7 @@ h1 .fa-futbol {
 }
 
 @media (max-width: 600px) {
-    div .fa-futbol {
+    .football {
         font-weight: 100;
         margin: 0 25px;
         vertical-align: bottom;
@@ -530,14 +530,14 @@ h1 .fa-futbol {
 
 .players-player-left-box {
     position: absolute;
-    top: 250px;
+    top: 265px;
     left: 5%;
 }
 
 .players-player-right-box {
     right: 3%;
     position: absolute;
-    top: 250px;
+    top: 265px;
 }
 
 .players-row {
@@ -766,7 +766,7 @@ h1 .fa-futbol {
 
 .card-content {
     padding-bottom: 0 !important;
-    padding-top: 40px !important;
+    padding-top: 37px !important;
 }
 
 .editable-content {
@@ -780,6 +780,7 @@ h1 .fa-futbol {
     justify-content: center;
     flex-direction: column;
     height: 134px;
+    margin-top: 15px;
 }
 
 .green-card {

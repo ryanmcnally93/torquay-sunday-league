@@ -248,9 +248,14 @@ def players(id):
         user1 = User.query.filter_by(username=session["user"]).first()
     else:
         user1 = "None"
+    number_of_players = 0
     team = Team.query.get_or_404(id)
+    players = team.players
+    for player in players:
+        number_of_players += 1
+    team.team_no_of_players = number_of_players
     players = list(Player.query.order_by(Player.player_kit_number).all())
-    print(len(players))
+    print(team.team_no_of_players)
     return render_template("players.html", players=players, team=team, user=user1)
 
 
