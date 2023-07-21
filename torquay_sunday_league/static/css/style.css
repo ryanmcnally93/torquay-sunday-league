@@ -219,6 +219,18 @@ nav {
     background-color: darkgreen !important;
 }
 
+.btn.lyellow {
+    color: black;
+}
+
+.btn.lyellow {
+    background-color: #FFFF61;
+}
+
+.btn.lyellow:hover {
+    background-color: #E0E000 !important;
+}
+
 /* Whole Body */
 
 body {
@@ -719,9 +731,24 @@ h1 .fa-futbol {
 .editable-action {
     align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     height: 204px;
+    margin-top: 10px;
+}
+
+.editable-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: 0 10%;
+}
+
+.editable-button {
+    margin: 5%;
+    text-align: center;
+    padding: 0;
+    width: 90%
 }
 
 .team-card {
@@ -739,12 +766,12 @@ h1 .fa-futbol {
 
 .card-content {
     padding-bottom: 0 !important;
-    padding-top: 50px !important;
+    padding-top: 40px !important;
 }
 
 .editable-content {
     padding-bottom: 0 !important;
-    padding-top: 20px !important;
+    padding-top: 33px !important;
 }
 
 .card-action {

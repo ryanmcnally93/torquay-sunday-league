@@ -26,24 +26,36 @@
             {% if team.team_created_by == session["user"] or team.confirmation_status == True or session["user"] == "ryanmcnally93" %}
             <div class="col team-card-layout">
                 <div class="card team-card green-card darken-2">
+
                     {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
                         <div class="editable-content white-text">
+                            <span class="card-title">{{ team.team_name }}</span>
+                        </div>
                     {% else %}
                         <div class="card-content white-text">
+                            <span class="card-title">{{ team.team_name }}</span>
+                        </div>
                     {% endif %}
-                    <span class="card-title">{{ team.team_name }}</span>
-                    </div>
+                    
                     {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
                         <div class="editable-action">
+                            <div class="editable-grid">
+                                <a class="btn turq card-button editable-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
+                                <!-- if team.confirmation_status == True  -->
+                                <a class="btn lyellow card-button editable-button" href="{{ url_for('players', id=team.id) }}">Players</a>
+                                <!-- endif  -->
+                                <!-- Edit and delete functions are only visible for creators of the team -->
+                                <a class="btn green card-button editable-button" href="{{ url_for('edit_team', team_id=team.id) }}">Edit</a>
+                                <a class="btn red modal-trigger card-button editable-button" id="delete_team" href="#modal-{{ team.id }}">Delete</a>
+                            </div>
                     {% else %}
                         <div class="card-action">
+                            <a class="btn turq card-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
+                            <!-- if team.confirmation_status == True  -->
+                            <a class="btn lyellow card-button" href="{{ url_for('players', id=team.id) }}">Players</a>
+                            <!-- endif  -->
                     {% endif %}
-                    <a class="btn turq card-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
-                    <!-- Edit and delete functions are only visible for creators of the team -->
-                    {% if team.team_created_by == session["user"] and team.confirmation_status == False %}
-                        <a class="btn green card-button" href="{{ url_for('edit_team', team_id=team.id) }}">Edit</a>
-                        <a class="btn red modal-trigger card-button" id="delete_team" href="#modal-{{ team.id }}">Delete</a>
-                    {% endif %}
+
                     <!-- If the administrator is logged in, the switches can be changed -->
                     {% if session["user"] == "ryanmcnally93" %}
                         <!-- Switch -->

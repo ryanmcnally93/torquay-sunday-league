@@ -12,6 +12,7 @@ from datetime import datetime
 
 @app.route("/")
 def home():
+    x=0
     if session:
         user1 = User.query.filter_by(username=session["user"]).first()
         team1 = Team.query.filter_by(team_name=user1.team_managed).first()
@@ -20,7 +21,7 @@ def home():
         team1 = "None"
 
     teams = list(Team.query.order_by(Team.team_name).all())
-    return render_template("index.html", user=user1, team=team1, teams=teams)
+    return render_template("index.html", user=user1, team=team1, teams=teams, x=x)
 
 
 @app.route("/teams", methods=["GET", "POST"])
