@@ -12,7 +12,6 @@ from datetime import datetime
 
 @app.route("/")
 def home():
-    x=0
     if session:
         user1 = User.query.filter_by(username=session["user"]).first()
         team1 = Team.query.filter_by(team_name=user1.team_managed).first()
@@ -21,7 +20,7 @@ def home():
         team1 = "None"
 
     teams = list(Team.query.order_by(Team.team_name).all())
-    return render_template("index.html", user=user1, team=team1, teams=teams, x=x)
+    return render_template("index.html", user=user1, team=team1, teams=teams)
 
 
 @app.route("/teams", methods=["GET", "POST"])
@@ -88,6 +87,13 @@ def create_team(username):
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    # if session:
+    #     user = User.query.filter_by(username=session["user"]).first()
+    #     team = Team.query.filter_by(team_name=user.team_managed).first()
+    # else:
+    #     user = "None"
+    #     team = "None"
+
     if request.method == "POST":
         username = request.form.get("username")
         emailaddress = request.form.get("emailaddress")
@@ -136,6 +142,13 @@ def register():
 
 @app.route("/log_in", methods=["GET", "POST"])
 def log_in():
+    # if session:
+    #     user1 = User.query.filter_by(username=session["user"]).first()
+    #     team = Team.query.filter_by(team_name=user1.team_managed).first()
+    # else:
+    #     user1 = "None"
+    #     team = "None"
+
     username = request.form.get("username")
     if request.method == "POST":
         # Check that the user exists

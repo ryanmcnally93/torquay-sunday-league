@@ -191,29 +191,29 @@ Undecided, add gallery page?
 
 These wireframes were created using <a href="https://balsamiq.com/wireframes/?gad=1&gclid=Cj0KCQjwmN2iBhCrARIsAG_G2i4B-7yK8ylaMm-EgPZyIat6rzJi5BBNRLhY50Ej2SbjAHbQF2LMZocaAj9nEALw_wcB" target="_blank">Balsamiq Wireframes:</a>
 
-<img src="/torquay_sunday_league/static/images/readme-images/index-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/index-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/login-or-register-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/login-or-register-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/create-team-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/create-team-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/team-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/team-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/teams-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/teams-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/add-edit-players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/add-edit-players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/user-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/user-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
-<img src="/torquay_sunday_league/static/images/readme-images/rules-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/rules-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
 
 ### Prototype
 
 - This index prototype was created on Figma.com.
 
-<img src="/torquay_sunday_league/static/images/readme-images/index-prototype.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto;">
+<img src="/torquay_sunday_league/static/images/readme-images/index-prototype.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
 
 ### Q and A of Potential Users
 
@@ -491,13 +491,13 @@ I fixed this issue by opening psql and changing the directory again to torquay_s
 
 2). Really struggled getting all of the main area content on one line. Salah (right player) was not staying on the same line as Odegaard (left player) and the table.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/bug-2.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 I fixed this in several steps, first, I made the table inline-table and the two players inline-block. This placed the three elements in a line, but the table's margin: auto property no longer centered it. I fixed this issue by using the margin-left: 50%, left: (half the width of the element) trick.
 
 3). I couldn't update postgres after I made changes to the model.py file. Max character length was originally twenty, but I needed it to be twenty-five.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/bug-3.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 I fixed this by discovering the DROP DATABASE and CREATE DATABASE commands in psql. Then I typed python3, import torquay_sunday_league from db, db.create_all() and exit().
 
@@ -505,15 +505,15 @@ Once I ran my run.py file then the database has been recreated, at the loss of a
 
 4). When adding a player, the user is supposed to be transported back to the players page for the team currently being worked on. However, my page would only either load an empty player page, or werksoid would interject with an error, stating that "ID" was either not defined or defined incorrectly.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/bug-4.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 I fixed this by copying the line from the players app.route, placing in the players variable, however, this loaded without the new player visible. I placed the variable declaration after the commit message but before the return, and this fixed the issue.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/fix-4.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 5). I had an error showing when loading my login page, it said I didn’t have access.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/bug-5.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 I saw on Slack that other users discovered this issue on Code Anywhere, and when they switched to GitPod, the issue was gone. My belief was that this is because Code Anywhere has an issue with a file being called login.html, which probably refers to their own login page or something.
 
@@ -527,7 +527,7 @@ I added Javascript files to each page that had a form, to clear data as the page
 
 I fixed this by searching the team table for the id passed in, and then realising that that table has a players attribute, iterated through that and incremented a variable with the original value of 0.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/fix-7.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 I then added a flash message for teams who have less than the required amount of players and added some javascript functionality so the css color and title attributes are added, giving the user more feedback on their number of players.
 
@@ -535,11 +535,11 @@ I then added a flash message for teams who have less than the required amount of
 
 I then was told on google to add it to in-line script. This didn’t work. I saw the modal tutorial on the video created by materialise and made changes.
 
-<!-- CAUSE ERROR FOR IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/bug-8.1.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 I had a for loop error appear, which I discovered was because I had commented out a jinja template i was going to created in the future:
 
-if team.created_by == session.user
+<img src="/torquay_sunday_league/static/images/readme-images/bug-8.2.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 The issue was even though it was commented out, the {%%} symbols were being used as normal, and as there was no endfor line, this was throwing an error.
 
@@ -547,19 +547,53 @@ The issue was even though it was commented out, the {%%} symbols were being used
 
 I then realised that you could edit a player and put him in another team, which shouldn't be allowed. As you have to go onto the teams page to view and add this particular player, I thought it best that we cannot change the club of that player, and I deleted the field.
 
-12). User was logged in but the login page could be viewed if typed into the URL, and potentially a second user could be logged in. I added an if statement to the register and log_in pages to make sure there isn't somebody already logged in.
+<!-- UNFIXED BUG -->
+10). User was logged in but the login page could be viewed if typed into the URL, and potentially a second user could be logged in. I added an if statement that adds a message to the page to say you are logged in as (username).
 
-13). Had an error appear when trying to edit the create team route. I had added code to change the user.team_managed property but I realised I had typed user.team_managed == team.team_name when I should have typed user.team_managed = team.team_name.
+<img src="/torquay_sunday_league/static/images/readme-images/bug-10.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
-14). I had an issue with the index page and teams page. These pages look through the user and team tables to view certain information, but when the user is not logged in they cannot access this.
+This however did not work and returned this result:
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/fix-10.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+FIX?
+
+11). Had an error appear when trying to edit the create team route. I had added code to change the user.team_managed property but I realised I had typed user.team_managed == team.team_name when I should have typed user.team_managed = team.team_name.
+
+12). I had an issue with the index page and teams page. These pages look through the user and team tables to view certain information, but when the user is not logged in they cannot access this.
+
+<img src="/torquay_sunday_league/static/images/readme-images/bug-12.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 I created an if statement that looks to see if there is a user logged in first and if there isn't one, the variables equal a string with the word None inside.
 
+<img src="/torquay_sunday_league/static/images/readme-images/fix-12.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+13). I had an issue with the datepicker returning american dates. At first entry I had changed the JavaScript so that the date would view on the front end correctly when entering the player join date. But when I went to edit a player this happened.
+
+<img src="/torquay_sunday_league/static/images/readme-images/bug-13.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+As you can see, the month on the left and the month on the right are different. This is because the datepicker is confusing month and date. After hours with a tutor trying different bits of code and multiple attempts to fix I realised I had confused things more than necessary.
+
+I changed the Db type to string instead of date, and disabled the input on the edit player page, as the date a player has joined a club doesn't change anyway!
+
+14). During my CSS changes, I had originally decided to have the left and right players on the index, teams page and players pages. However, the teams page looked like this:
+
+<img src="/torquay_sunday_league/static/images/readme-images/bug-14.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+You could not see the players and it was pointless having them on there. I decided to change the background so it was the same as the other pages. With the players page, I chose a different approach, moving one player to the side and the players collapsibles to the other.
+
+<!-- UNFIXED BUG -->
+15). I noticed on larger tablet devices that my footer element was not at the bottom of the page.
+
+<img src="/torquay_sunday_league/static/images/readme-images/bug-15.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+Simply adding position: absolute, width: 100% and bottom: 0 didn't work, as when on bigger screens if you scroll down the footer didn't follow the scroll, it stayed in the wrong position.
+
+I looked at using the sticky position too, but on mobile devices it takes up unnecessary space.
+
 ### Unfixed Bugs
 
-
+10, 15
 
 ### Responsive Design
 
