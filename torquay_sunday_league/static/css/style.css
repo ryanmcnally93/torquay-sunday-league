@@ -881,10 +881,13 @@ h1 .fa-futbol {
     min-height: 630px;
 }
 
-@media (min-width: 767px) {
+@media (max-width: 767px) {
     #edit-user-heading {
         font-size: 20px;
         word-break: break-all;
+    }
+    #edit-box {
+        height: auto;
     }
 }
 
@@ -1028,6 +1031,12 @@ h1 .fa-futbol {
 }
 
 /* Team Profile Tablet Responsiveness */
+
+@media (min-width: 1000px) and (max-width: 1250px) {
+    .p-background {
+        min-width: 750px;
+    }
+}
 
 @media (min-width: 768px) and (max-width: 1000px) {
     .profile-content {
