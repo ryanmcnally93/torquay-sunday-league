@@ -157,21 +157,27 @@ User profile displays clubs: multiple, user data can be changed but gives warnin
 
 ### Design Choices
 
-The website needs to be fun and inviting, with bright colours and imagery. This site has a lot of written text so it is important to break it up with some imagery. I have viewed these websites for inspiration:
-
-<a href="#">Site One</a>
+The website needs to be fun and inviting, with bright colours and imagery. This site has a lot of written text so it is important to break it up with some imagery.
 
 #### Fonts
 
-Undecided
+I wanted a font that looked professional and tidy, but also looked a bit different from the normal fonts. For this I chose Ysabeau Infant, with a backup of sans-serif if this doesn't work.
+
+I added it to the body element's CSS then made sure the unaffected elements had the correct font-family attribute.
+
+<img src="/torquay_sunday_league/static/images/readme-images/font.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Icons
 
-Undecided
+The icons chosen were mostly used in the form pages. I tried, where possible, to relate them to football. I added shirt for kit number, a calendar for the datepicker, a flag for the country and a football for the position. I also added footballs to the homepage too.
+
+<img src="/torquay_sunday_league/static/images/readme-images/icons.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+
+The user is always referred to with the user icon, or the user plus icon if a new user is being added.
 
 #### Colours
 
-Undecided
+The base colour for this website was always going to be green.
 
 #### Styling
 
