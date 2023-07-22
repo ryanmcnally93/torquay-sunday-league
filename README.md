@@ -625,15 +625,47 @@ I looked at using the sticky position too, but on mobile devices it takes up unn
 
 10, 15
 
+To the best of my knowledge, there are no known bugs left to fix.
+
 ### Responsive Design
+
+<img src="/torquay_sunday_league/static/images/readme-images/desktop.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+- The teams page, viewed on desktop.
 
 #### Ipad Air screen resolution
 
-Changes on each page
+- On devices with a smaller screen width that 1200px, the background image changes to adapt for longer pages.
+
+- On smaller screen widths, the navbar disappears and is replaced by the burger icon, which opens a sidenav. This is the same on mobile devices.
+
+- The team cards on the teams page display from 4 across to 3 across, and then to 2 across when needed. 
+
+- On the players page, The right footballer is more central than before and the left player disappears, leaving more space for the collapsibles.
+
+<img src="/torquay_sunday_league/static/images/readme-images/ipad.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### IPhone 5/SE screen resolution
 
-Changes on each page
+- All headings and their respective boxes change in size to adapt to a smaller page, keeping their centralisation.
+
+- Social media links in the footer have less margin so they don't push one another onto the next line.
+
+- On index page, the player on the right disappears and the left player is centralised behind the table, the winners and goalscorer images are stacked on top of each other instead of side-by-side.
+
+- The footballs either side of the main header element disappear and the same icons appear around the button displayed under the sub-heading.
+
+- The league table widens to allow room for the team names.
+
+- The team cards on the team page are in one column.
+
+- On the players page the second player disappears and the collapsibles centralise.
+
+- The images on the rules page centralise within the div.
+
+- Profil page content widens to make use of smaller screens.
+
+<img src="/torquay_sunday_league/static/images/readme-images/mobile.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 ### API Integration
 
@@ -643,7 +675,7 @@ Changes on each page
 
 ### Code
 
-- The code environment was set up using the Code Institute template <!-- LINK TO TEMPLATE -->
+- The code environment was set up using the <a href="https://github.com/Code-Institute-Org/ci-full-template" target="_blank">Code Institute Template.</a>
 
 - The modals, sidenav, datepicker, selects and collapsibles were created using <a href="materializecss.com" target="_blank">materializecss's</a> code.
 
@@ -653,33 +685,59 @@ Changes on each page
 
 ### Web Tools
 
-- This website was created on <!-- Link for Code Anywhere -->
+- To integrate user authentication on Postgres, I coded along with <a href="https://www.youtube.com/watch?v=7EeAZx78P2U" target="_blank">this YouTube video</a>, by user "Sandeep Sudhakaran", making my own changes for my site to function.
+
+- When wanting to allow users to upload profile pictures I watched and followed along the steps shown in <a href="https://www.youtube.com/watch?v=803Ei2Sq-Zs" target="_blank">this YouTube video</a>, by "Corey Schafer", making my own changes for my site to function.
+
+- This website was created on <a href="https://codeanywhere.com/" target="_blank">Code Anywhere.</a>
 
 - This is the site I used for my <a href="https://shields.io/category/analysis" target="_blank">Shields.</a>
 
 - I compressed images using <a href="https://tinypng.com/" target="_blank">tinypng</a> given to me by Jo_ci on Slack.
 
-<!-- - I resized images using this <a href="https://www.simpleimageresizer.com/upload" target="_blank">simple image resizer.</a> -->
+- I resized images using this <a href="https://www.simpleimageresizer.com/upload" target="_blank">simple image resizer.</a>
 
-- The colours were chosen using <a href="https://coolors.co/" target="_blank">Coolors.</a>
-
-- The contrast was then checked using this contrast checker <a href="https://webaim.org/resources/contrastchecker/" target="_blank">Webaim</a>
+- The contrast of my colours was checked using this contrast checker <a href="https://webaim.org/resources/contrastchecker/" target="_blank">Webaim</a>
 
 - I changed the format of my images from jpg, png and jpeg to webp using <a href="https://convertio.co/png-webp/" target="_blank">convertio.</a>
 
 ### Media
 
-- The image of Kevin De Bruyne was obtained from <a href="https://www.pngplay.com/image/494974">pngplay</a>, the uploader's name is "Arsh".
+- The default user image was obtained from <a href="https://www.pngwing.com/en/free-png-vyecs">Pngwing</a>, the uploader's name says "Non-commercial use, DMCA" - No user credited.
 
-- The image of Enzo Fernández was obtained from <a href="https://www.footyrenders.com/premier-league/chelsea/enzo-fernandez-2/">footyrenders</a>, Cut by: "crisssnw".
+- The squad default image was obtained from <a href="http://www.arbitrosfutbolgalicia.com/pnfg/NPcd/NFG_Sel_WebSeleccion?cod_primaria=5001577&tipo_juego=5&cod_delegacion=100&cod_seleccion=2265328&carga_filtro=1">Aibitros</a>, no author has been credited.
 
-- The image of Marcus Rashford was obtained from <a href="https://www.pinterest.co.uk/pin/marcus-rashford-render-england-view-and-download-football-renders-in-png-now-for-free-by-may-22-2018--655977501949397871/">footyrenders on pinterest</a>, the pinterest account is under "RilkeRainer".
+- The image of Kevin De Bruyne was obtained from <a href="https://www.pngplay.com/image/494974">Pngplay</a>, the uploader's name is "Arsh".
 
-- The image of Martin Ødegaard was obtained from <a href="https://www.footyrenders.com/premier-league/arsenal/martin-odegaard-45/">footyrenders</a>, Cut by: JvierGfx.
+- The image of Enzo Fernández was obtained from <a href="https://www.footyrenders.com/premier-league/chelsea/enzo-fernandez-2/">Footyrenders</a>, Cut by: "crisssnw".
 
-- The image of Aleksandar Mitrović was obtained from <a href="https://www.footyrenders.com/nations/serbia/aleksandar-mitrovic-3/">footyrenders</a>, Cut by: szwejzi.
+- The image of Martin Ødegaard was obtained from <a href="https://www.footyrenders.com/premier-league/arsenal/martin-odegaard-45/">Footyrenders</a>, Cut by: JvierGfx.
 
-- The image of Trent Alexander-Arnold was obtained from <a href="https://www.footyrenders.com/premier-league/liverpool/trent-alexander-arnold-72/">footyrenders</a>, Cut by: crisssnw.
+- The image of Trent Alexander-Arnold was obtained from <a href="https://www.footyrenders.com/premier-league/liverpool/trent-alexander-arnold-72/">Footyrenders</a>, Cut by: crisssnw.
+
+- The rules one image was obtained from <a href="https://www.pexels.com/photo/action-activity-adult-athletes-262524/">Pexels</a>, posted by "Pixabay".
+
+- The rules two image was obtained from <a href="https://pixabay.com/photos/soccer-ball-referee-sports-6679088/">Pixabay</a>, posted by "Planet_fox".
+
+- The rules three image was obtained from <a href="https://pixabay.com/photos/sport-soccer-athlete-player-2177155/">Pixabay</a>, posted by "Keithjj".
+
+- The background image was obtained from <a href="https://pixabay.com/photos/soccer-ball-sports-goal-kick-1678992/">pixabay</a>, posted by "seppH".
+
+- The longer background image was obtained from <a href="https://pixabay.com/photos/stadium-soccer-santiago-grass-1525534/">Pixabay</a>, By "Voltamax".
+
+- The team one image was obtained from <a href="https://pixabay.com/photos/people-soccer-players-athlete-1355497/">pixabay</a>, posted by "Ben_Kerckx".
+
+- The team two image was obtained from <a href="https://www.mirror.co.uk/sport/football/news/best-sunday-league-side-ever-12566783">Mirror</a>, posted by "Image: Birmingham Mail WS".
+
+- The team three image was obtained from <a href="https://iamjimtaylor.com/posts/running-a-sunday-league-football-team/">I am Jim Taylor</a>, Posted by Jim Taylor on 28th March 2016.
+
+- The team four image was obtained from <a href="http://www.lancssundayleague.co.uk/photo.php?action=news&pid=11487&title=Ashton%20on%20Ribble%20celebrate%2010%20years%20in%20the%20League">Lancssundayleague</a>, posted by "Ashton" on Ribble FC.
+
+- The team five image was obtained from <a href="https://www.huffingtonpost.co.uk/entry/men-mental-health-sunday-league_uk_5c487879e4b025aa26beea8b">Huffingtonpost</a>, image of Enate United article By Rob Kazandjian.
+
+- The winners image on the index page was obtained from <a href="https://www.nottinghampost.com/news/local-news/gallery/pictures-nottinghamshire-sunday-league-football-5689848">Nottinghampost</a>, By "Joe Rayner".
+
+- The goalscorer image was obtained from <a href="https://pixabay.com/photos/soccer-football-athlete-player-1473669/">Pixabay</a>, By "Keithjj".
 
 ### Acknowledgements
 
@@ -691,4 +749,5 @@ Changes on each page
 
 - Tutor support and the Slack community at Code Institute for their help.
 
-This readme.md was spellchecked using the spell checker extension for Chrome. <!-- BE SURE TO CHECK -->
+This readme.md was spellchecked using the spell checker extension for Chrome.
+<!-- BE SURE TO CHECK -->
