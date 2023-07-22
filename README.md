@@ -121,7 +121,9 @@ We also want to promote the league wherever possible.
 
 All the restricted pages need an identifier to load properly, so the non registered user can only see Index, Teams, Team Profile, Login and Register. The homepage button says register now. As a fan I can view the teams and players that are about to start the upcoming season.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/unregistered.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+
+This image shows the team page, which will only display the confirmed teams, and all we can do is read the information.
 
 #### Manager One
 
@@ -129,9 +131,9 @@ Register, login and logout is successful. Delete account successful. Cannot edit
 
 Homepage button either says team name or create team, these are also available in the navbar.
 
-On teams page I can view all the confirmed teams along with the team I create. I can only edit and delete my team however, and the create team button disappears when I have a team made. I can only view confirmed teams and players.
+On teams page I can only view all confirmed teams along with the team I create. I can only edit and delete my team however, and the create team button disappears when I have a team made. The switch is disabled and there is a paragraph element which tells me if the team is confirmed or not, but I cannot change this.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/managerone.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
 
 If I attempt to load the create_team url again it lets me fill in information but returns an error saying I can only have one team.
 
@@ -149,9 +151,9 @@ An account has been made, which logs in and out successfully.
 
 Once logged in homepage button now says create team, as does navbar link, as I can create multiple teams. This is also mentioned on my profile.
 
-<!-- IMAGE -->
+I can view all teams but cannot edit or delete any that aren’t mine, even by typing into the url, as I don’t need to have that functionality. I have the option to confirm the team I am viewing. I can keep creating teams and players, editing and deleting as I please.
 
-I can view all teams but cannot edit or delete any that aren’t mine, even by typing into the url, as I don’t need to have that functionality. I have the option to confirm the team I am viewing. I can keep creating teams and players and deleting, but cannot repeat kit number in a team. I also cannot repeat a player name.
+<img src="/torquay_sunday_league/static/images/readme-images/admin.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
 
 User profile displays clubs: multiple, user data can be changed but gives warning that their admin status may be affected if they change email address. This is due to some of the python code using if statements that look through the users information.
 
@@ -177,21 +179,43 @@ The user is always referred to with the user icon, or the user plus icon if a ne
 
 #### Colours
 
-The base colour for this website was always going to be green.
+I decided before I even started coding that as this is a grassroots football league the base colour should be green, as a reference to the grass. I started by using different shades of the same green all over my site, with the only difference being in the images I had added.
+
+<img src="/torquay_sunday_league/static/images/readme-images/green.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+
+I then decided later when creating forms, that a second colour should be decided for the icons. After going through many colours I landed on a dark turquoise colour that goes well with the greens.
+
+<img src="/torquay_sunday_league/static/images/readme-images/turq-with-green.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+
+Later discovered with the additional buttons on the teams page it would be beneficial to have a colour for each option, with a darker tone added when hovered over.
+
+<img src="/torquay_sunday_league/static/images/readme-images/buttons.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Styling
 
-Undecided
+Most of my content is centered in the middle of the page, with a few exceptions. This is so the user is focused on the content, and nothing is missed or forgotten to the side.
+
+I have used border radius throughout my site, with the number of px relevant to the size of the element.
+
+Most margins are of 20px, and all elements have a decent amount of padding.
 
 #### Backgrounds
 
-On the Index, Teams and Players pages, we have two known premier league footballers. One on the left and one on the right. These players either face inwards or forwards but never outwards in any way, we want users focused on the center content. The players are wearing the same colour as one another.
+On the Index and Players pages, we have two known premier league footballers. One on the left and one on the right. These players either face inwards or forwards but never outwards in any way, we want users focused on the center content. The players are wearing the same colour as one another.
 
-IMAGE 2 Background pitch image Undecided
+<img src="/torquay_sunday_league/static/images/readme-images/trent-and-odegaard.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+
+On the other pages we have a background image of a corner being taken in a sunday league game. This image is mostly horizontal, so not suitable for smaller, more vertical devices. For this, I've added an image change when the device is smaller, and the image is a vertical one of a pitch with a goalpost in the distance.
+
+<img src="/torquay_sunday_league/static/images/background-image.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Images
 
-Undecided, add gallery page?
+The images I have used are all showing sunday league teams and players. The images are aimed low so there is no stadium in the background, as we want them to be relevant to grassroots football.
+
+<img src="/torquay_sunday_league/static/images/rules-two.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+
+The only exception to this rule is the transparent images of the premier league footballers, which are just used for fun and familiarity.
 
 ### Wireframes
 

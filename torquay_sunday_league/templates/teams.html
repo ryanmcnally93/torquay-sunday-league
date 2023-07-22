@@ -82,7 +82,11 @@
                     <!-- If not the admin, the switch is disabled, but still visible -->
                     {% else %}
                         <!-- Disabled Switch -->
-                        <p class="confirmed-p">Confirmed</p>
+                        {% if team.confirmation_status == True %}
+                            <p class="confirmed-p">Confirmed</p>
+                        {% else %}
+                            <p class="confirmed-p">Unconfirmed</p>
+                        {% endif %}
                         <div class="switch">
                             <label for="{{ team.id }}confirmed" class="switch-label">
                             No
