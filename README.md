@@ -367,15 +367,59 @@ Fan:
 
 What other footballing leagues/teams are there in or near Torquay?
 
-<a href="#">Site One</a>
+#### Torbay Clearance Services, South Devon Football League
+
+Well, on the FA's website <a href="https://fulltime.thefa.com/index.html?league=316369219" target="_blank">the Torbay Clearance Services, South Devon Football League</a> has a page.
 
 Pros:
 
--
+- Managing to get yourself onto the FA's website isn't easy, and they have a hit counter at 3 million!
+
+- The stats, matches and respect pages are fantastic. They are very well organised.
+
+- The navbar drops down clickable results and the styling is very consistent with the branding.
+
+- A fantastic webpage for any league.
 
 Cons:
 
--
+- The season is about to begin and no fixtures are displayed.
+
+- There are adverts EVERYWHERE! The FA has a lot of brands advertising underneath the header, within the footer, and to the left and right.
+
+- The footer links don't have any hover qualities.
+
+- There's no player information.
+
+- If you were a manager, you'd need to ask for team information to be updated by an FA representitive, you wouldn't have any control over it yourself.
+
+- As this page is probably used by multiple leagues, it doesn't have that leagues branding. The page doesn't have its own stamp.
+
+#### Same league, different website
+
+As this is the only league local to Torquay, and they don't have their own site, there are multiple websites that have produced information for this league.
+
+This one is <a href="https://clubnets.co.uk/southdevonleague/" target="_blank">Clubnets.</a>
+
+Pros:
+
+- This site actually has match information on the right hand side, and it looks like its coming from an FA API.
+
+- There are contact details including name, email and phone numbers for all the contacts relevant to the league.
+
+- News articles for the matches up and coming.
+
+Cons:
+
+- Design elements all over the place, badge covers the title of the page, which is so small in context to the rest of the page it's almost invisible.
+
+<img src="/torquay_sunday_league/static/images/readme-images/clubnets-1.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+- Too many borders, everything is in a box within a box and its all visible.
+
+<img src="/torquay_sunday_league/static/images/readme-images/clubnets-2.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+- Use of colours isn't consistent, and site looks messy.
 
 ### Roadmap
 
@@ -399,47 +443,76 @@ This roadmap indicates the importance and viability of specific opportunities.
 
 #### Navigation Bar
 
-- Explain
+- The navigation bar is smaller than on my other projects, the links are clear, visible, have hover properties and when made smaller, the burger icon is visible. There is a green shadowed line underneath it that was originally styled by materializecss, but I altered the colour and shadow properties.
+
+<img src="/torquay_sunday_league/static/images/readme-images/navbar.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Footer
 
-- Explain
+- This is the same height as the Navbar, I gave the top the same green shadowed line as the navbar. I also included some social links, a link to take the user to the top of the page (which could really help if on a long mobile page), and the rules page link.
+
+- I placed the rules page link as I've noticed a lot of professional looking sites tend to have their more official information in the footer, like terms and conditions, contact info, etc.
+
+<img src="/torquay_sunday_league/static/images/readme-images/footer.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Logo
 
-- Explain
+- I got the design idea from the Torquay United FC badge. The arrow is exactly the same, and I noticed that if you open canva and grab a triangle image, the default colour is the same as the Torquay United colour! (Coincidence? Surely not!).
+
+- I created four of the arrows and made them my green colour to go with the site, using the abbreviation TSL for Torquay Sunday League.
+
+<img src="/torquay_sunday_league/static/images/logo.webp" width="25%" alt="
+TSL Logo" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Index League Table
 
-- Explain
+- The league table format contains a for loop and if statement, so only the confirmed teams will display within the table. This prevents more than 12 teams being visible within it and gives the administrator complete control over it.
 
-#### Buttons
+- The "position" is determined by the loop.index of the team, meaning none of the numbers are skipped by unconfirmed teams.
 
-- Explain
+<img src="/torquay_sunday_league/static/images/readme-images/table.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+#### Last Year Section
+
+- This section lets visitors know of the winners of last years competition, and gives recognition to the top goalscorer of that year.
+
+<img src="/torquay_sunday_league/static/images/readme-images/winners-section.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Team Cards
 
-- Explain
+- The team cards display the buttons that the viewer is allowed to see, there are two types of card that can be called, one with two buttons, and the other with four. They both have their own CSS properties making them all consistent in padding, margin and colours.
 
-#### Profile pages
+<img src="/torquay_sunday_league/static/images/readme-images/buttons.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
-- Explain
+#### Profile Pages
+
+- The profile pages of the users and teams are consistent, with the same backgrounds, edit forms and similar boxes of information underneath.
+
+- There are also profile images which can be edited and deleted. If edited, the old picture is deleted from the dom, if the remove image option is chosen, the default image is set. The default images are never deleted.
+
+<img src="/torquay_sunday_league/static/images/readme-images/profiles.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 #### Player Collapsibles
 
-- Explain
+- The player collapsibles arrange by kit numbers, and they display this alongside their full name.
 
-#### Add/Edit/login and register form page elements
+- When extended, they show information regarding the player, such as their nationality, the position they play and they date they joined their team.
 
-- Explain
+<img src="/torquay_sunday_league/static/images/readme-images/player-collapsibles.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
-#### Rules elements
+#### Form Pages
 
-- Explain
+- The form pages are consistent, with fields that have relevant icons and submit or create buttons.
 
-#### Gallery elements
+- The forms that you can change profile images on display the old image, and have the upload image input above the other inputs.
 
-- Explain
+<img src="/torquay_sunday_league/static/images/readme-images/forms.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+
+#### Rules Page
+
+- This page accurately displays all the rules relevant to most sunday leagues, displaying information regarding the appropriate kit wear, administration process and respect expectations.
+
+<img src="/torquay_sunday_league/static/images/readme-images/rules-page.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
 
 ### Features Left to Implement
 
