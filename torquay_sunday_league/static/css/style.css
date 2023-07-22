@@ -59,13 +59,13 @@ nav {
 }
 
 /* Headings */
-.main-heading, .sub-heading, .index-main-heading, .index-sub-heading {
+.main-heading, .sub-heading, #index-main-heading, .index-sub-heading {
     color: #008000;
     text-align: center;
 }
 
-.index-main-heading {
-    margin: 35px 0 25px 0 !important;
+#index-main-heading {
+    margin: 35px 0 25px 0;
 }
 
 .sub-heading, .index-sub-heading {
@@ -426,14 +426,14 @@ th, td {
 
 .index-player-left-box {
     position: absolute;
-    top: 355px;
+    top: 320px;
     left: 5%;
 }
 
 .index-player-right-box {
     right: 3%;
     position: absolute;
-    top: 355px;
+    top: 320px;
     width: 530px;
 }
 
@@ -477,13 +477,14 @@ h1 .fa-futbol {
     .index-player-left-box {
         left: 50%;
         margin-left: -190px;
-        top: 370px;
+        top: 315px;
     }
 }
 
 @media (min-width: 601px) and (max-width: 850px) {
-    .index-main-heading {
+    #index-main-heading {
         font-size: 40px !important;
+        margin: 45px 0 35.5px 0 !important;
     }
 }
 
@@ -514,7 +515,7 @@ h1 .fa-futbol {
     h1 .fa-futbol {
         display: none;
     }
-    .index-main-heading {
+    #index-main-heading {
         font-size: 36px !important;
     }
 }
