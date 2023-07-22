@@ -686,6 +686,10 @@ h1 .fa-futbol {
     min-height: 700px;
 }
 
+#teams-margin {
+    height: 35px;
+}
+
 .confirmed-p {
     margin: 10px 0 5px 0;
     color: white;
