@@ -121,7 +121,7 @@ We also want to promote the league wherever possible.
 
 All the restricted pages need an identifier to load properly, so the non registered user can only see Index, Teams, Team Profile, Login and Register. The homepage button says register now. As a fan I can view the teams and players that are about to start the upcoming season.
 
-<img src="/torquay_sunday_league/static/images/readme-images/unregistered.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/unregistered.webp" width="50%" alt="Unregistered User's view" style="display: inherit; ">
 
 This image shows the team page, which will only display the confirmed teams, and all we can do is read the information.
 
@@ -133,7 +133,7 @@ Homepage button either says team name or create team, these are also available i
 
 On teams page I can only view all confirmed teams along with the team I create. I can only edit and delete my team however, and the create team button disappears when I have a team made. The switch is disabled and there is a paragraph element which tells me if the team is confirmed or not, but I cannot change this.
 
-<img src="/torquay_sunday_league/static/images/readme-images/managerone.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/managerone.webp" width="50%" alt="Manager user's view" style="display: inherit; ">
 
 If I attempt to load the create_team url again it lets me fill in information but returns an error saying I can only have one team.
 
@@ -153,7 +153,7 @@ Once logged in homepage button now says create team, as does navbar link, as I c
 
 I can view all teams but cannot edit or delete any that aren’t mine, even by typing into the url, as I don’t need to have that functionality. I have the option to confirm the team I am viewing. I can keep creating teams and players, editing and deleting as I please.
 
-<img src="/torquay_sunday_league/static/images/readme-images/admin.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/admin.webp" width="50%" alt="Administrator's view" style="display: inherit; ">
 
 User profile displays clubs: multiple, user data can be changed but gives warning that their admin status may be affected if they change email address. This is due to some of the python code using if statements that look through the users information.
 
@@ -167,13 +167,13 @@ I wanted a font that looked professional and tidy, but also looked a bit differe
 
 I added it to the body element's CSS then made sure the unaffected elements had the correct font-family attribute.
 
-<img src="/torquay_sunday_league/static/images/readme-images/font.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/font.webp" width="50%" alt="The Font used" style="display: inherit; ">
 
 #### Icons
 
 The icons chosen were mostly used in the form pages. I tried, where possible, to relate them to football. I added shirt for kit number, a calendar for the datepicker, a flag for the country and a football for the position. I also added footballs to the homepage too.
 
-<img src="/torquay_sunday_league/static/images/readme-images/icons.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/icons.webp" width="25%" alt="Icons used" style="display: inherit; ">
 
 The user is always referred to with the user icon, or the user plus icon if a new user is being added.
 
@@ -181,15 +181,15 @@ The user is always referred to with the user icon, or the user plus icon if a ne
 
 I decided before I even started coding that as this is a grassroots football league the base colour should be green, as a reference to the grass. I started by using different shades of the same green all over my site, with the only difference being in the images I had added.
 
-<img src="/torquay_sunday_league/static/images/readme-images/green.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/green.webp" width="90%" alt="The index page, illustrating the green colour used" style="display: inherit; ">
 
 I then decided later when creating forms, that a second colour should be decided for the icons. After going through many colours I landed on a dark turquoise colour that goes well with the greens.
 
-<img src="/torquay_sunday_league/static/images/readme-images/turq-with-green.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/turq-with-green.webp" width="50%" alt="The combination of turquoise and green" style="display: inherit; ">
 
 Later discovered with the additional buttons on the teams page it would be beneficial to have a colour for each option, with a darker tone added when hovered over.
 
-<img src="/torquay_sunday_league/static/images/readme-images/buttons.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/buttons.webp" width="40%" alt="The four colours used on the buttons on the teams page" style="display: inherit; ">
 
 #### Styling
 
@@ -203,17 +203,17 @@ Most margins are of 20px, and all elements have a decent amount of padding.
 
 On the Index and Players pages, we have two known premier league footballers. One on the left and one on the right. These players either face inwards or forwards but never outwards in any way, we want users focused on the center content. The players are wearing the same colour as one another.
 
-<img src="/torquay_sunday_league/static/images/readme-images/trent-and-odegaard.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/trent-and-odegaard.webp" width="70%" alt="Trent Alexander-Arnold and Martin Odegaard, premier league players." style="display: inherit; ">
 
 On the other pages we have a background image of a corner being taken in a sunday league game. This image is mostly horizontal, so not suitable for smaller, more vertical devices. For this, I've added an image change when the device is smaller, and the image is a vertical one of a pitch with a goalpost in the distance.
 
-<img src="/torquay_sunday_league/static/images/background-image.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/background-image.webp" width="50%" alt="Sunday League corner kick" style="display: inherit; ">
 
 #### Images
 
 The images I have used are all showing sunday league teams and players. The images are aimed low so there is no stadium in the background, as we want them to be relevant to grassroots football.
 
-<img src="/torquay_sunday_league/static/images/rules-two.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/rules-two.webp" width="50%" alt="A football referee" style="display: inherit; ">
 
 The only exception to this rule is the transparent images of the premier league footballers, which are just used for fun and familiarity.
 
@@ -221,29 +221,29 @@ The only exception to this rule is the transparent images of the premier league 
 
 These wireframes were created using <a href="https://balsamiq.com/wireframes/?gad=1&gclid=Cj0KCQjwmN2iBhCrARIsAG_G2i4B-7yK8ylaMm-EgPZyIat6rzJi5BBNRLhY50Ej2SbjAHbQF2LMZocaAj9nEALw_wcB" target="_blank">Balsamiq Wireframes:</a>
 
-<img src="/torquay_sunday_league/static/images/readme-images/index-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/index-wireframe.webp" width="50%" alt="Homepage Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/login-or-register-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/login-or-register-wireframe.webp" width="50%" alt="Login Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/create-team-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/create-team-wireframe.webp" width="50%" alt="Create Team Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/team-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/team-profile-wireframe.webp" width="50%" alt="Team Profile Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/players-wireframe.webp" width="50%" alt="Players Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/teams-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/teams-wireframe.webp" width="50%" alt="Teams Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/add-edit-players-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/add-edit-players-wireframe.webp" width="50%" alt="Add/Edit Players Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/user-profile-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/user-profile-wireframe.webp" width="50%" alt="User Profile Wireframe" style="display: inherit; ">
 
-<img src="/torquay_sunday_league/static/images/readme-images/rules-wireframe.webp" width="50%" alt="Homepage" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/rules-wireframe.webp" width="50%" alt="Rules Wireframe" style="display: inherit; ">
 
 ### Prototype
 
 - This index prototype was created on Figma.com.
 
-<img src="/torquay_sunday_league/static/images/readme-images/index-prototype.webp" width="50%" alt="Index Prototype" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/index-prototype.webp" width="70%" alt="Homepage Prototype" style="display: inherit; ">
 
 ### Q and A of Potential Users
 
@@ -413,11 +413,11 @@ Cons:
 
 - Design elements all over the place, badge covers the title of the page, which is so small in context to the rest of the page it's almost invisible.
 
-<img src="/torquay_sunday_league/static/images/readme-images/clubnets-1.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/clubnets-1.webp" width="50%" alt="Clubnet's design fault" style="display: inherit; ">
 
 - Too many borders, everything is in a box within a box and its all visible.
 
-<img src="/torquay_sunday_league/static/images/readme-images/clubnets-2.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/clubnets-2.webp" width="50%" alt="Clubnet's border fault" style="display: inherit; ">
 
 - Use of colours isn't consistent, and site looks messy.
 
@@ -445,7 +445,7 @@ This roadmap indicates the importance and viability of specific opportunities.
 
 - The navigation bar is smaller than on my other projects, the links are clear, visible, have hover properties and when made smaller, the burger icon is visible. There is a green shadowed line underneath it that was originally styled by materializecss, but I altered the colour and shadow properties.
 
-<img src="/torquay_sunday_league/static/images/readme-images/navbar.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/navbar.webp" width="100%" alt="The Navbar" style="display: inherit; ">
 
 #### Footer
 
@@ -453,7 +453,7 @@ This roadmap indicates the importance and viability of specific opportunities.
 
 - I placed the rules page link as I've noticed a lot of professional looking sites tend to have their more official information in the footer, like terms and conditions, contact info, etc.
 
-<img src="/torquay_sunday_league/static/images/readme-images/footer.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/footer.webp" width="100%" alt="The Footer" style="display: inherit; ">
 
 #### Logo
 
@@ -461,8 +461,7 @@ This roadmap indicates the importance and viability of specific opportunities.
 
 - I created four of the arrows and made them my green colour to go with the site, using the abbreviation TSL for Torquay Sunday League.
 
-<img src="/torquay_sunday_league/static/images/logo.webp" width="25%" alt="
-TSL Logo" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/logo.webp" width="25%" alt="TSL Logo" style="display: inherit; ">
 
 #### Index League Table
 
@@ -470,19 +469,19 @@ TSL Logo" style="display: inherit; margin: auto; border-radius: 20px;">
 
 - The "position" is determined by the loop.index of the team, meaning none of the numbers are skipped by unconfirmed teams.
 
-<img src="/torquay_sunday_league/static/images/readme-images/table.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/table.webp" width="50%" alt="The table" style="display: inherit; ">
 
 #### Last Year Section
 
 - This section lets visitors know of the winners of last years competition, and gives recognition to the top goalscorer of that year.
 
-<img src="/torquay_sunday_league/static/images/readme-images/winners-section.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/winners-section.webp" width="70%" alt="The winners section" style="display: inherit; ">
 
 #### Team Cards
 
 - The team cards display the buttons that the viewer is allowed to see, there are two types of card that can be called, one with two buttons, and the other with four. They both have their own CSS properties making them all consistent in padding, margin and colours.
 
-<img src="/torquay_sunday_league/static/images/readme-images/buttons.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/buttons.webp" width="40%" alt="The buttons used" style="display: inherit; ">
 
 #### Profile Pages
 
@@ -490,7 +489,7 @@ TSL Logo" style="display: inherit; margin: auto; border-radius: 20px;">
 
 - There are also profile images which can be edited and deleted. If edited, the old picture is deleted from the dom, if the remove image option is chosen, the default image is set. The default images are never deleted.
 
-<img src="/torquay_sunday_league/static/images/readme-images/profiles.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/profiles.webp" width="50%" alt="One of the profile pages" style="display: inherit; ">
 
 #### Player Collapsibles
 
@@ -498,7 +497,7 @@ TSL Logo" style="display: inherit; margin: auto; border-radius: 20px;">
 
 - When extended, they show information regarding the player, such as their nationality, the position they play and they date they joined their team.
 
-<img src="/torquay_sunday_league/static/images/readme-images/player-collapsibles.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/player-collapsibles.webp" width="60%" alt="The player collapsibles" style="display: inherit; ">
 
 #### Form Pages
 
@@ -506,13 +505,13 @@ TSL Logo" style="display: inherit; margin: auto; border-radius: 20px;">
 
 - The forms that you can change profile images on display the old image, and have the upload image input above the other inputs.
 
-<img src="/torquay_sunday_league/static/images/readme-images/forms.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/forms.webp" width="50%" alt="One of the forms used" style="display: inherit; ">
 
 #### Rules Page
 
 - This page accurately displays all the rules relevant to most sunday leagues, displaying information regarding the appropriate kit wear, administration process and respect expectations.
 
-<img src="/torquay_sunday_league/static/images/readme-images/rules-page.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/rules-page.webp" width="50%" alt="The rules page" style="display: inherit; ">
 
 ### Features Left to Implement
 
@@ -594,13 +593,13 @@ I fixed this issue by opening psql and changing the directory again to torquay_s
 
 2). Really struggled getting all of the main area content on one line. Salah (right player) was not staying on the same line as Odegaard (left player) and the table.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-2.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-2.webp" width="70%" alt="Salah bug" style="display: inherit; ">
 
 I fixed this in several steps, first, I made the table inline-table and the two players inline-block. This placed the three elements in a line, but the table's margin: auto property no longer centered it. I fixed this issue by using the margin-left: 50%, left: (half the width of the element) trick.
 
 3). I couldn't update postgres after I made changes to the model.py file. Max character length was originally twenty, but I needed it to be twenty-five.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-3.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-3.webp" width="80%" alt="A dataerror" style="display: inherit; ">
 
 I fixed this by discovering the DROP DATABASE and CREATE DATABASE commands in psql. Then I typed python3, import torquay_sunday_league from db, db.create_all() and exit().
 
@@ -608,15 +607,15 @@ Once I ran my run.py file then the database has been recreated, at the loss of a
 
 4). When adding a player, the user is supposed to be transported back to the players page for the team currently being worked on. However, my page would only either load an empty player page, or werksoid would interject with an error, stating that "ID" was either not defined or defined incorrectly.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-4.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-4.webp" width="60%" alt="ID code used" style="display: inherit; ">
 
 I fixed this by copying the line from the players app.route, placing in the players variable, however, this loaded without the new player visible. I placed the variable declaration after the commit message but before the return, and this fixed the issue.
 
-<img src="/torquay_sunday_league/static/images/readme-images/fix-4.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/fix-4.webp" width="100%" alt="Line that fixed the issue" style="display: inherit; ">
 
 5). I had an error showing when loading my login page, it said I didn’t have access.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-5.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-5.webp" width="70%" alt="Access denied" style="display: inherit; ">
 
 I saw on Slack that other users discovered this issue on Code Anywhere, and when they switched to GitPod, the issue was gone. My belief was that this is because Code Anywhere has an issue with a file being called login.html, which probably refers to their own login page or something.
 
@@ -630,7 +629,7 @@ I added Javascript files to each page that had a form, to clear data as the page
 
 I fixed this by searching the team table for the id passed in, and then realising that that table has a players attribute, iterated through that and incremented a variable with the original value of 0.
 
-<img src="/torquay_sunday_league/static/images/readme-images/fix-7.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/fix-7.webp" width="60%" alt="Number of players accumulator" style="display: inherit; ">
 
 I then added a flash message for teams who have less than the required amount of players and added some javascript functionality so the css color and title attributes are added, giving the user more feedback on their number of players.
 
@@ -638,11 +637,11 @@ I then added a flash message for teams who have less than the required amount of
 
 I then was told on google to add it to in-line script. This didn’t work. I saw the modal tutorial on the video created by materialise and made changes.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-8.1.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-8.1.webp" width="100%" alt="Template Syntax Error" style="display: inherit; ">
 
 I had a for loop error appear, which I discovered was because I had commented out a jinja template i was going to created in the future:
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-8.2.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-8.2.webp" width="100%" alt="Commented out jinja template" style="display: inherit; ">
 
 The issue was even though it was commented out, the {%%} symbols were being used as normal, and as there was no endfor line, this was throwing an error.
 
@@ -653,11 +652,11 @@ I then realised that you could edit a player and put him in another team, which 
 <!-- UNFIXED BUG -->
 10). User was logged in but the login page could be viewed if typed into the URL, and potentially a second user could be logged in. I added an if statement that adds a message to the page to say you are logged in as (username).
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-10.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-10.webp" width="100%" alt="Undefined Error" style="display: inherit; ">
 
 This however did not work and returned this result:
 
-<img src="/torquay_sunday_league/static/images/readme-images/fix-10.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/fix-10.webp" width="70%" alt="Log in page message" style="display: inherit; ">
 
 FIX?
 
@@ -665,15 +664,15 @@ FIX?
 
 12). I had an issue with the index page and teams page. These pages look through the user and team tables to view certain information, but when the user is not logged in they cannot access this.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-12.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-12.webp" width="50%" alt="KeyError" style="display: inherit; ">
 
 I created an if statement that looks to see if there is a user logged in first and if there isn't one, the variables equal a string with the word None inside.
 
-<img src="/torquay_sunday_league/static/images/readme-images/fix-12.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/fix-12.webp" width="70%" alt="Code used to fix issue" style="display: inherit; ">
 
 13). I had an issue with the datepicker returning american dates. At first entry I had changed the JavaScript so that the date would view on the front end correctly when entering the player join date. But when I went to edit a player this happened.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-13.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-13.webp" width="60%" alt="Datepicker bug" style="display: inherit; ">
 
 As you can see, the month on the left and the month on the right are different. This is because the datepicker is confusing month and date. After hours with a tutor trying different bits of code and multiple attempts to fix I realised I had confused things more than necessary.
 
@@ -681,14 +680,14 @@ I changed the Db type to string instead of date, and disabled the input on the e
 
 14). During my CSS changes, I had originally decided to have the left and right players on the index, teams page and players pages. However, the teams page looked like this:
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-14.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-14.webp" width="60%" alt="Players hidden on teams page" style="display: inherit; ">
 
 You could not see the players and it was pointless having them on there. I decided to change the background so it was the same as the other pages. With the players page, I chose a different approach, moving one player to the side and the players collapsibles to the other.
 
 <!-- UNFIXED BUG -->
 15). I noticed on larger tablet devices that my footer element was not at the bottom of the page.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-15.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-15.webp" width="50%" alt="Footer issue" style="display: inherit; ">
 
 Simply adding position: absolute, width: 100% and bottom: 0 didn't work, as when on bigger screens if you scroll down the footer didn't follow the scroll, it stayed in the wrong position.
 
@@ -702,7 +701,7 @@ To the best of my knowledge, there are no known bugs left to fix.
 
 ### Responsive Design
 
-<img src="/torquay_sunday_league/static/images/readme-images/desktop.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/desktop.webp" width="80%" alt="The teams page, viewed on desktop" style="display: inherit; ">
 
 - The teams page, viewed on desktop.
 
@@ -716,7 +715,7 @@ To the best of my knowledge, there are no known bugs left to fix.
 
 - On the players page, The right footballer is more central than before and the left player disappears, leaving more space for the collapsibles.
 
-<img src="/torquay_sunday_league/static/images/readme-images/ipad.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/ipad.webp" width="50%" alt="The teams page on IPad" style="display: inherit; ">
 
 #### IPhone 5/SE screen resolution
 
@@ -738,7 +737,7 @@ To the best of my knowledge, there are no known bugs left to fix.
 
 - Profil page content widens to make use of smaller screens.
 
-<img src="/torquay_sunday_league/static/images/readme-images/mobile.webp" width="50%" alt="Salah bug" style="display: inherit; margin: auto; border-radius: 20px;">
+<img src="/torquay_sunday_league/static/images/readme-images/mobile.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
 
 ### API Integration
 
