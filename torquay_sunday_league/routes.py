@@ -96,7 +96,7 @@ def register():
 
     if request.method == "POST":
         username = request.form.get("username")
-        emailaddress = request.form.get("emailaddress")
+        emailaddress = request.form.get("emailaddress").lower()
         password = generate_password_hash(request.form.get("password"))
         written_password = request.form.get("password")
         confirmed_password = request.form.get("confirm_password")
