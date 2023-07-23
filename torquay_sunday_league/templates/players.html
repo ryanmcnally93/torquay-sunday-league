@@ -18,7 +18,7 @@
 <main id="teams-content">
 
     <div class="player-left-box players-player-left-box">
-        <img id="enzo" class="player-left" src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
+        <img alt="Enzo Fernandez" id="enzo" class="player-left" src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
     </div>
 
     {% if team.team_no_of_players == 0 %}
@@ -68,11 +68,11 @@
     {% endfor %}
 
     <div id="de-bruyne" class="player-right-box players-player-right-box">
-        <img class="player-right" src="{{ url_for('static', filename='images/de-bruyne.webp') }}">
+        <img alt="Kevin De-Bruyne" class="player-right" src="{{ url_for('static', filename='images/de-bruyne.webp') }}">
     </div>
 
     <!-- Background Image -->
-    <img id="players-background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+    <img alt="A football pitch" id="players-background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 </main>
 

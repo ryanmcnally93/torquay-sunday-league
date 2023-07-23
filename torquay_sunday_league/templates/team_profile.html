@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col picture-team-box">
-            <img class="team-profile-picture" src="{{ squad_picture }}" alt="{{ team.team_name }}'s squad picture">
+            <img alt="The team's profile picture" class="team-profile-picture" src="{{ squad_picture }}" alt="{{ team.team_name }}'s squad picture">
         </div>
     </div>
 
@@ -56,10 +56,10 @@
     </div>
 
     <!-- Background Image -->
-    <img id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+    <img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
 
     <!-- Over 1200 image -->
-    <img id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+    <img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
     <script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
 
