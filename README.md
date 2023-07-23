@@ -529,61 +529,7 @@ This roadmap indicates the importance and viability of specific opportunities.
 
 ## Testing
 
-CREATE TESTING DOCUMENT
-
-I have tested my web application automatically and manually using Test Driven Development and Behaviour Driven Development.
-
-### Automated Testing
-
-### W3C Validation
-
-<!-- <p>
-  <a href="http://jigsaw.w3.org/css-validator/check/referer">
-    <img  style="border:0;width:88px;height:31px;margin:auto;display:flex;"
-          src="http://jigsaw.w3.org/css-validator/images/vcss"
-          alt="Valid css!" />
-    </a>
-</p> -->
-
-### Javascript Validation
-
-<!--Jest Tests-->
-
-#### JSHint
-
-
-
-#### Python Validation
-
-<!-- Unit tests -->
-
-### Lighthouse
-
-
-
-#### Mobile Lighthouse
-
-
-
-### Manual Testing
-
-<!-- This project has been tested using the following browsers: -->
-
-<!--Chrome, Safari & Edge-->
-
-<!-- On the following devices
-Desktop Macbook
-Ipad Air Simulator on Dev Tools
-Smallest phone size IPhone 5/SE simulator on Dev Tools -->
-
-<!-- `Homepage`
-
-| Feature                                 | Expected Outcome                                       | Testing Performed                    | Result                                              | Pass/Fail |
-| --------------------------------------- | ------------------------------------------------------ | ------------------------------------ | --------------------------------------------------- | --------- |
-| Navbar links                            | Links take user to correct pages, CSS changes on hover | Clicked Links                        | All four links work, CSS changes on hover           | Pass      |
-| All five other buttons (including logo) | Take user to the correct page, CSS changes on hover    | Clicked Buttons                      | All links work and change colour when hovered over  | Pass      |
-| Burger icon on IPhone 5/SE              | Item is clickable and navbar readable                  | Clicked burger icon                  | Navbar opens vertically, links work                 | Pass      |
-| Page layout                             | Layout changes to accommodate for smaller devices      | Opened site on IPhone 5/SE simulator | Every element visible through scrolling, links work | Pass      | -->
+You can view all testing in [this document.](https://github.com/ryanmcnally93/project-three-torquay-sunday-league/blob/main/testing.md)
 
 ### Fixed Bugs
 
@@ -822,4 +768,3 @@ To the best of my knowledge, there are no known bugs left to fix.
 - Tutor support and the Slack community at Code Institute for their help.
 
 This readme.md was spellchecked using the spell checker extension for Chrome.
-<!-- BE SURE TO CHECK -->
