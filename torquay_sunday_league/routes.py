@@ -75,12 +75,12 @@ def create_team(username):
             team_name = Team.query.filter_by(team_name=team.team_name).first()
             if team_name:
                 flash("This team name is taken!")
-                return redirect(url_for("create_team", username=session["user"], user=user))
+                return redirect(url_for("create_team", username=session["user"]))
 
             user.team_managed = team.team_name
             db.session.add(team)
             db.session.commit()
-            return redirect(url_for("teams", username=session["user"], user=user))
+            return redirect(url_for("teams"))
         else:
             flash("A user may only register one team.")
     return render_template("create_team.html", username=session["user"], user=user, team=team1)
@@ -97,19 +97,19 @@ def register():
 
         if written_password != confirmed_password:
             flash("ERROR! Your passwords do not match")
-            return render_template("register.html")
+            return redirect(url_for("register"))
 
         # Check username doesn't exist
         user_object = User.query.filter_by(username=username).first()
         if user_object:
             flash("Username is taken")
-            return render_template("register.html")
+            return redirect(url_for("register"))
 
         # Check email doesn't exist
         email_object = User.query.filter_by(emailaddress=emailaddress).first()
         if email_object:
             flash("Email address is taken")
-            return render_template("register.html")
+            return redirect(url_for("register"))
 
 
         # Get the month and year of registration
@@ -130,7 +130,7 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("create_team", username=session["user"], user=user))
+        return redirect(url_for("create_team", username=session["user"]))
     return render_template("register.html")
 
 
@@ -143,10 +143,9 @@ def log_in():
         if user_object:
             if check_password_hash(user_object.password, request.form.get("password")):
                 user = User.query.filter_by(username=username).first()
-                team1 = Team.query.filter_by(team_name=user.team_managed).first()
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("profile", username=session["user"], user=user))
+                return redirect(url_for("profile", username=session["user"]))
             else:
                 # Invalid password
                 flash("Incorrect Username and/or Password")
@@ -165,14 +164,14 @@ def profile(username):
     user = User.query.filter_by(username=username).first()
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
     profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
-    username = session["user"]
 
     # Checking for session cookie
-    if session["user"]:
+    if session:
+        username = session["user"]
         return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1)
     
     # If no session cookie, we return to log_in page
-    return redirect(url_for("log_in", username=username, user=user, team=team1))
+    return redirect(url_for("log_in"))
 
 
 @app.route("/log_out")
@@ -238,7 +237,7 @@ def delete_team(team_id):
         user1.team_managed = "None"
         db.session.delete(team)
         db.session.commit()
-        return redirect(url_for("teams", user=user1))
+        return redirect(url_for("teams"))
     else:
         flash("Only the creator of this team may delete it.")
 
