@@ -2,13 +2,13 @@
 {% block content %}
 
 <div class="heading-box" id="players-title-box">
-    <h1 class="main-heading" id="players-title">{{ team.team_name }}'s Players</h1>
+    <h1 class="main-heading" id="players-title">{{ currentteam.team_name }}'s Players</h1>
 </div>
 
-{% if team.team_created_by == session["user"] and team.confirmation_status == False %}
+{% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
 <div class="row row-with-mt">
     <div class="col s12 center-align">
-        <a href="{{ url_for('add_player', id=team.id) }}" class="btn green button-border">
+        <a href="{{ url_for('add_player', id=currentteam.id) }}" class="btn green button-border">
             Add Player <i class="fas fa-plus-square right"></i>
         </a>
     </div>
@@ -21,15 +21,15 @@
         <img alt="Enzo Fernandez" id="enzo" class="player-left" src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
     </div>
 
-    {% if team.team_no_of_players == 0 %}
-        <p id="no-players">{{ team.team_name }} currently has no players.</p>
+    {% if currentteam.team_no_of_players == 0 %}
+        <p id="no-players">{{ currentteam.team_name }} currently has no players.</p>
     {% else %}
         <div class="row players-row">
             <ul class="collapsible player-collapsible player-border">
                 <!-- Searching through all players -->
                 {% for player in players %}
                     <!-- Making sure to only display players in correct team -->
-                    {% if player.team_id == team.id %}
+                    {% if player.team_id == currentteam.id %}
                         <li id="player-background">
                             <div class="collapsible-header white-text green" id="player-name">
                                 <i class="fas fa-caret-down"></i>
@@ -39,8 +39,8 @@
                                 <p id="top-p">Country: {{ player.player_country }}</p>
                                 <p id="middle-p">Position: {{ player.player_position }}</p>
                                 <p id="bottom-p">Joined: {{ player.player_joined }}</p>
-                                {% if team.team_created_by == session["user"] and team.confirmation_status == False %}
-                                    <a class="btn green button-border" href="{{ url_for('edit_player', player_id=player.id, team_id=team.id) }}">Edit</a>
+                                {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
+                                    <a class="btn green button-border" href="{{ url_for('edit_player', player_id=player.id, team_id=currentteam.id) }}">Edit</a>
                                     <a class="btn red modal-trigger button-border" id="delete_player" href="#modal-{{ player.id }}">Delete</a>
                                 {% endif %}
                             </div>
@@ -51,7 +51,7 @@
         </div>
     {% endif %}
     {% for player in players %}
-        {% if player.team_id == team.id %}
+        {% if player.team_id == currentteam.id %}
             <!-- Modal Structure -->
             <div id="modal-{{ player.id }}" class="modal">
                 <div class="modal-content">
@@ -59,9 +59,9 @@
                     <p>This action cannot be undone</p>
                 </div>
                 <div class="modal-footer">
-                    <!--  url_for('delete_player', team_id=team.id)  -->
-                    <a href="{{ url_for('delete_player', team_id=team.id, player_id=player.id) }}" class="btn green button-border">Yes</a>
-                    <a href="{{ url_for('players', id=team.id) }}" class="btn red button-border">No</a>
+                    <!--  url_for('delete_player', team_id=currentteam.id)  -->
+                    <a href="{{ url_for('delete_player', team_id=currentteam.id, player_id=player.id) }}" class="btn green button-border">Yes</a>
+                    <a href="{{ url_for('players', id=currentteam.id) }}" class="btn red button-border">No</a>
                 </div>
             </div>
         {% endif %}

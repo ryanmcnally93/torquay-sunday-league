@@ -28,6 +28,7 @@ def teams():
     if session:
         user1 = User.query.filter_by(username=session["user"]).first()
         team1 = Team.query.filter_by(team_name=user1.team_managed).first()
+
         if request.method == "POST":
             team=Team.query.filter_by(team_name=request.form.get("teamid")).first()
             team.confirmation_status = bool(True if request.form.get(f"{team.id}confirmed") else False)
@@ -184,8 +185,9 @@ def log_out():
 @app.route("/edit_team/<int:team_id>", methods=["GET", "POST"])
 def edit_team(team_id):
     user1 = User.query.filter_by(username=session["user"]).first()
-    team = Team.query.get_or_404(team_id)
-    squad_picture = url_for('static', filename='images/profile_pics/' + team.profile_picture)
+    baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
+    currentteam = Team.query.get_or_404(team_id)
+    squad_picture = url_for('static', filename='images/profile_pics/' + currentteam.profile_picture)
     form = UpdateTeamPicture()
 
     if request.method == "POST":
@@ -193,39 +195,39 @@ def edit_team(team_id):
             flash("Validated!")
 
         if form.picture.errors:
-            return render_template("edit_team.html", team=team, user=user1, squad_picture=squad_picture, form=form)
+            return render_template("edit_team.html", currentteam=currentteam, team=baseteam, user=user1, squad_picture=squad_picture, form=form)
 
         if form.picture.data:
             # Deletes last image
-            if team.profile_picture != 'default_squad.webp':
+            if currentteam.profile_picture != 'default_squad.webp':
                 os.remove(os.path.join(app.root_path,
-                'static/images/profile_pics', team.profile_picture))
+                'static/images/profile_pics', currentteam.profile_picture))
             
             picture_file = save_squad_picture(form.picture.data)
-            team.profile_picture = picture_file
+            currentteam.profile_picture = picture_file
             db.session.commit()
-            squad_picture = url_for('static', filename='images/profile_pics/' + team.profile_picture)
+            squad_picture = url_for('static', filename='images/profile_pics/' + currentteam.profile_picture)
             flash("Squad picture changed")
 
-        if session["user"] == team.team_created_by:                  
+        if session["user"] == currentteam.team_created_by:                  
             team_name_search_positive = Team.query.filter_by(team_name=request.form.get("team_name")).first()
             if team_name_search_positive:
-                if team.team_name != request.form.get("team_name"):
+                if currentteam.team_name != request.form.get("team_name"):
                     flash("This team name is taken!")
-                    return render_template("edit_team.html", team=team, user=user1, squad_picture=squad_picture, form=form)
+                    return render_template("edit_team.html", team=baseteam,currentteam=currentteam, user=user1, squad_picture=squad_picture, form=form)
 
-            team.team_name = request.form.get("team_name")
-            team.team_colour = request.form.get("team_colour")
-            team.team_location = request.form.get("team_location")
-            team.team_contact = request.form.get("team_contact")
+            currentteam.team_name = request.form.get("team_name")
+            currentteam.team_colour = request.form.get("team_colour")
+            currentteam.team_location = request.form.get("team_location")
+            currentteam.team_contact = request.form.get("team_contact")
 
-            user1.team_managed = team.team_name
+            user1.team_managed = currentteam.team_name
             db.session.commit()
             # Change redirect for team profile page
-            return redirect(url_for("team_profile", id=team.id))
+            return redirect(url_for("team_profile", id=currentteam.id))
         else:
             flash("Only the creator of this team may edit it.")
-    return render_template("edit_team.html", team=team, user=user1, squad_picture=squad_picture, form=form)
+    return render_template("edit_team.html", team=baseteam, currentteam=currentteam, user=user1, squad_picture=squad_picture, form=form)
 
 
 @app.route("/delete_team/<int:team_id>")
@@ -245,76 +247,79 @@ def delete_team(team_id):
 def players(id):
     if session:
         user1 = User.query.filter_by(username=session["user"]).first()
+        baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
     else:
         user1 = "None"
-    team = Team.query.get_or_404(id)
+        baseteam = "None"
+
+    currentteam = Team.query.get_or_404(id)
     players = list(Player.query.order_by(Player.player_kit_number).all())
-    return render_template("players.html", players=players, team=team, user=user1)
+    return render_template("players.html", players=players, team=baseteam, user=user1, currentteam=currentteam)
 
 
 @app.route("/edit_player/<int:player_id>/<int:team_id>", methods=["GET", "POST"])
 def edit_player(player_id, team_id):
     user1 = User.query.filter_by(username=session["user"]).first()
     player = Player.query.get_or_404(player_id)
-
+    baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
     teams = list(Team.query.order_by(Team.team_name).all())
-    team = Team.query.get_or_404(team_id)
+    currentteam = Team.query.get_or_404(team_id)
 
     search = Team.query.get(team_id).players
     for current in search:
         if str(current.player_name) != player.player_name:
             if str(current.player_kit_number) == request.form.get("player_kit_number"):
-                flash(f"Error: This {team.team_name} kit number is already taken!")
-                return render_template("edit_player.html", player=player, team=team, teams=teams, user=user1)
+                flash(f"Error: This {currentteam.team_name} kit number is already taken!")
+                return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1)
 
     for current in search:
         if str(current.player_name) != player.player_name:
             if str(current.player_name) == request.form.get("player_name"):
                 flash(f"Error: This player has already been registered!")
-                return render_template("edit_player.html", player=player, team=team, teams=teams, user=user1)
+                return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1)
 
     if request.method == "POST":
-        if session["user"] == team.team_created_by:
+        if session["user"] == currentteam.team_created_by:
             player.player_kit_number=request.form.get("player_kit_number")
             player.player_name = request.form.get("player_name")
             player.player_country = request.form.get("player_country")
             player.player_position = request.form.get("player_position")
             db.session.commit()
             players = list(Player.query.order_by(Player.player_kit_number).all())
-            return render_template("players.html", players=players, team=team, user=user1)
+            return render_template("players.html", players=players, team=baseteam, currentteam=currentteam, user=user1)
         else:
             flash("Only the creator of this team may edit its players.")
-    return render_template("edit_player.html", player=player, team=team, teams=teams, user=user1)
+    return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1)
 
 
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
 def add_player(id):
     user1 = User.query.filter_by(username=session["user"]).first()
-    team = Team.query.get_or_404(id)
-
+    baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
+    currentteam = Team.query.get_or_404(id)
 
     players = list(Player.query.order_by(Player.player_kit_number).all())
     search = Team.query.get(id).players
     teams = list(Team.query.order_by(Team.team_name).all())
     for current in search:
         if str(current.player_kit_number) == request.form.get("player_kit_number"):
-            flash(f"Error: This {team.team_name} kit number is already taken!")
-            return render_template("add_player.html", teams=teams, team=team, user=user1)
+            flash(f"Error: This {currentteam.team_name} kit number is already taken!")
+            return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1)
 
     for current in search:
         if str(current.player_name) == request.form.get("player_name"):
             flash(f"Error: This player has already been registered!")
-            return render_template("add_player.html", teams=teams, team=team, user=user1)
+            return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1)
     
     if request.method == "POST":
-        if session["user"] == team.team_created_by:
+        if session["user"] == currentteam.team_created_by:
             player = Player(
                 player_kit_number=int(request.form.get("player_kit_number")),
                 player_name=request.form.get("player_name"),
                 player_position=request.form.get("player_position"),
                 player_joined=request.form.get("player_joined"),
                 player_country=request.form.get("player_country"),
-                team_id=team.id
+                team_id=currentteam.id
             )
             arrival = datetime.strptime(player.player_joined, "%d/%m/%Y")
             present = datetime.now()
@@ -322,31 +327,34 @@ def add_player(id):
                 flash("If this player hasn't officially joined he cannot be submitted")
                 return redirect(url_for("players"))
 
-            team.team_no_of_players += 1
+            currentteam.team_no_of_players += 1
             db.session.add(player)
             db.session.commit()
             players = list(Player.query.order_by(Player.player_kit_number).all())
-            return render_template("players.html", players=players, team=team, user=user1)
+            return render_template("players.html", players=players, team=baseteam, currentteam=currentteam, user=user1)
         else:
             flash("Only the creator of this team may add players to it.")
 
-    return render_template("add_player.html", teams=teams, team=team, user=user1)
+    return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1)
 
 
 @app.route("/team_profile/<int:id>", methods=["GET", "POST"]) 
 def team_profile(id):
     if session:
         user1 = User.query.filter_by(username=session["user"]).first()
+        baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
     else:
         user1 = "None"
-    team = Team.query.get_or_404(id)
+        baseteam = "None"
+
+    currentteam = Team.query.get_or_404(id)
     if session:
-        if team.team_no_of_players < 16 and session["user"] != "ryanmcnally93" and session["user"] == team.team_created_by:
+        if currentteam.team_no_of_players < 16 and session["user"] != "ryanmcnally93" and session["user"] == currentteam.team_created_by:
             flash("You must have 16 players to be accepted")
 
-    squad_picture = url_for('static', filename='images/profile_pics/' + team.profile_picture)
+    squad_picture = url_for('static', filename='images/profile_pics/' + currentteam.profile_picture)
 
-    return render_template("team_profile.html", team=team, user=user1, squad_picture=squad_picture)
+    return render_template("team_profile.html", currentteam=currentteam, team=baseteam, user=user1, squad_picture=squad_picture)
 
 
 @app.route("/delete_player/<int:team_id>/<int:player_id>")

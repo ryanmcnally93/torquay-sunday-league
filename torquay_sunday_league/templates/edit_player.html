@@ -6,7 +6,7 @@
 </div>
 
 <div class="row card-panel green lighten-4">
-    <form class="col s12" method="POST" action="{{ url_for('edit_player', player_id=player.id, team_id=team.id) }}"> 
+    <form class="col s12" method="POST" action="{{ url_for('edit_player', player_id=player.id, team_id=currentteam.id) }}"> 
         <!-- Player Name -->
         <div class="row">
             <div class="input-field col s12">

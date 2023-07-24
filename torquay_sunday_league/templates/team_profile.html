@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col picture-team-box">
-            <img alt="The team's profile picture" class="team-profile-picture" src="{{ squad_picture }}" alt="{{ team.team_name }}'s squad picture">
+            <img alt="The team's profile picture" class="team-profile-picture" src="{{ squad_picture }}" alt="{{ currentteam.team_name }}'s squad picture">
         </div>
     </div>
 
@@ -11,7 +11,7 @@
         <div class="col s12 m6 offset-m3">
             <div class="green lighten-4 team-title" id="tt-box">
                 <h3 class="center-align green lighten-4 team-title-inner">
-                    {{ team.team_name }}
+                    {{ currentteam.team_name }}
                 </h3>
             </div>
         </div>
@@ -19,23 +19,23 @@
 
     <div class="profile-content">
         <!-- Number of Registered Players -->
-        <div id="num_of_players"><p id="num_of_players-p">No. of players:</p><p id="no_of_players"> {{ team.team_no_of_players }}</p></div>
+        <div id="num_of_players"><p id="num_of_players-p">No. of players:</p><p id="no_of_players"> {{ currentteam.team_no_of_players }}</p></div>
 
         <!-- Kit Colour -->
-        <p >Kit Colours: {{ team.team_colour }}</p>
+        <p >Kit Colours: {{ currentteam.team_colour }}</p>
 
         <!-- Home Location -->
-        <p >Address: {{ team.team_location }}</p>
+        <p >Address: {{ currentteam.team_location }}</p>
 
         <!-- Created By -->
-        <p >Managed by: {{ team.team_created_by }}</p>
+        <p >Managed by: {{ currentteam.team_created_by }}</p>
 
-        {% if team.team_contact != "" %}
+        {% if currentteam.team_contact != "" %}
             <!-- Contact -->
-            <p>Contact: {{ team.team_contact }}</p>
+            <p>Contact: {{ currentteam.team_contact }}</p>
         {% endif %}
 
-        {% if team.confirmation_status == True %}
+        {% if currentteam.confirmation_status == True %}
             <p>Team Confirmed</p>
         {% else %}
             <p>Team not yet confirmed</p>
@@ -44,12 +44,12 @@
 
         <div class="row-without-mb">
             <div class="col player-edit-view">
-                {% if team.team_created_by == session["user"] and team.confirmation_status == False %}                    
+                {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}                    
                     <!-- Button to Edit Team info -->
-                    <a class="team-profile-button btn green button-border" href="{{ url_for('edit_team', team_id=team.id) }}">Edit Team</a>
+                    <a class="team-profile-button btn green button-border" href="{{ url_for('edit_team', team_id=currentteam.id) }}">Edit Team</a>
                 {% endif %}
                 <!-- Button to view players -->
-                <a class="team-profile-button btn green button-border" href="{{ url_for('players', id=team.id) }}">View Players</a>
+                <a class="team-profile-button btn green button-border" href="{{ url_for('players', id=currentteam.id) }}">View Players</a>
             </div>
         </div>
 
