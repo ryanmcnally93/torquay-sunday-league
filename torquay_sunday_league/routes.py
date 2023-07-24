@@ -87,13 +87,6 @@ def create_team(username):
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    # if session:
-    #     user = User.query.filter_by(username=session["user"]).first()
-    #     team = Team.query.filter_by(team_name=user.team_managed).first()
-    # else:
-    #     user = "None"
-    #     team = "None"
-
     if request.method == "POST":
         username = request.form.get("username")
         emailaddress = request.form.get("emailaddress").lower()
@@ -142,13 +135,6 @@ def register():
 
 @app.route("/log_in", methods=["GET", "POST"])
 def log_in():
-    # if session:
-    #     user1 = User.query.filter_by(username=session["user"]).first()
-    #     team = Team.query.filter_by(team_name=user1.team_managed).first()
-    # else:
-    #     user1 = "None"
-    #     team = "None"
-
     username = request.form.get("username")
     if request.method == "POST":
         # Check that the user exists
@@ -261,12 +247,7 @@ def players(id):
         user1 = User.query.filter_by(username=session["user"]).first()
     else:
         user1 = "None"
-    number_of_players = 0
     team = Team.query.get_or_404(id)
-    players = team.players
-    for player in players:
-        number_of_players += 1
-    team.team_no_of_players = number_of_players
     players = list(Player.query.order_by(Player.player_kit_number).all())
     return render_template("players.html", players=players, team=team, user=user1)
 
@@ -308,12 +289,9 @@ def edit_player(player_id, team_id):
 
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
 def add_player(id):
-    if session:
-        user1 = User.query.filter_by(username=session["user"]).first()
-        team = Team.query.get_or_404(id)
-    else:
-        user1 = "None"
-        team1 = "None"
+    user1 = User.query.filter_by(username=session["user"]).first()
+    team = Team.query.get_or_404(id)
+
 
     players = list(Player.query.order_by(Player.player_kit_number).all())
     search = Team.query.get(id).players
@@ -338,14 +316,13 @@ def add_player(id):
                 player_country=request.form.get("player_country"),
                 team_id=team.id
             )
-            print(player.player_joined)
-            print(request.form.get("player_joined"))
             arrival = datetime.strptime(player.player_joined, "%d/%m/%Y")
             present = datetime.now()
             if present.date() < arrival.date():
                 flash("If this player hasn't officially joined he cannot be submitted")
-                return render_template("players.html", players=players, team=team, user=user1)
+                return redirect(url_for("players"))
 
+            team.team_no_of_players += 1
             db.session.add(player)
             db.session.commit()
             players = list(Player.query.order_by(Player.player_kit_number).all())
@@ -363,13 +340,8 @@ def team_profile(id):
     else:
         user1 = "None"
     team = Team.query.get_or_404(id)
-    number_of_players = 0
-    players = Team.query.get(id).players
-    for player in players:
-        number_of_players += 1
-    team.team_no_of_players = number_of_players
     if session:
-        if number_of_players < 16 and session["user"] != "ryanmcnally93" and session["user"] == team.team_created_by:
+        if team.team_no_of_players < 16 and session["user"] != "ryanmcnally93" and session["user"] == team.team_created_by:
             flash("You must have 16 players to be accepted")
 
     squad_picture = url_for('static', filename='images/profile_pics/' + team.profile_picture)
@@ -383,6 +355,7 @@ def delete_player(team_id, player_id):
     player = Player.query.get_or_404(player_id)
     team = Team.query.get_or_404(team_id)
     if session["user"] == team.team_created_by:
+        team.team_no_of_players -=1
         db.session.delete(player)
         db.session.commit()
         players = list(Player.query.order_by(Player.player_kit_number).all())
