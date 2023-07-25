@@ -1078,6 +1078,9 @@ h1 .fa-futbol {
     .card-panel, .p-background {
         width: 90%;
     }
+    .team-profile-picture, .profile-picture {
+        width: 200px;
+    }
 }
 
 /* Register Page */

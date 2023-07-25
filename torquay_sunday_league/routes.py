@@ -58,36 +58,49 @@ def rules():
 def create_team(username):
     user = User.query.filter_by(username=username).first()
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
+    if session:
+        if session["user"] != username:
+            flash("You cannot create a team as another manager.")
+            return redirect(url_for("profile", username=session["user"]))
 
-    if request.method == "POST":
-        if session["user"] == "ryanmcnally93" or user.team_managed == "None":
-            team = Team(
-                team_name=request.form.get("team_name"),
-                team_no_of_players=0,
-                team_colour=request.form.get("team_colour"),
-                team_location=request.form.get("team_location"),
-                team_contact=request.form.get("team_contact"),
-                confirmation_status=bool(False),
-                team_created_by=session["user"],
-                users_id=user.id
-                )
+        if request.method == "POST":
+            if session["user"] == "ryanmcnally93" or user.team_managed == "None":
+                team = Team(
+                    team_name=request.form.get("team_name"),
+                    team_no_of_players=0,
+                    team_colour=request.form.get("team_colour"),
+                    team_location=request.form.get("team_location"),
+                    team_contact=request.form.get("team_contact"),
+                    confirmation_status=bool(False),
+                    team_created_by=session["user"],
+                    users_id=user.id
+                    )
 
-            team_name = Team.query.filter_by(team_name=team.team_name).first()
-            if team_name:
-                flash("This team name is taken!")
-                return redirect(url_for("create_team", username=session["user"]))
+                team_name = Team.query.filter_by(team_name=team.team_name).first()
+                if team_name:
+                    flash("This team name is taken!")
+                    return redirect(url_for("create_team", username=session["user"]))
 
-            user.team_managed = team.team_name
-            db.session.add(team)
-            db.session.commit()
-            return redirect(url_for("teams"))
-        else:
-            flash("A user may only register one team.")
+                user.team_managed = team.team_name
+                db.session.add(team)
+                db.session.commit()
+                return redirect(url_for("teams"))
+            else:
+                flash("A user may only register one team.")
+        
+    else:
+        flash("You are not logged in.")
+        return redirect(url_for("log_in"))
+
     return render_template("create_team.html", username=session["user"], user=user, team=team1)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if session:
+        flash("You are logged in.")
+        return redirect(url_for("profile", username=session["user"]))
+
     if request.method == "POST":
         username = request.form.get("username")
         emailaddress = request.form.get("emailaddress").lower()
@@ -136,6 +149,10 @@ def register():
 
 @app.route("/log_in", methods=["GET", "POST"])
 def log_in():
+    if session:
+        flash("You are logged in.")
+        return redirect(url_for("profile", username=session["user"]))
+
     username = request.form.get("username")
     if request.method == "POST":
         # Check that the user exists
@@ -169,9 +186,9 @@ def profile(username):
     if session:
         username = session["user"]
         return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1)
-    
-    # If no session cookie, we return to log_in page
-    return redirect(url_for("log_in"))
+    else:
+        flash("You are not logged in.")
+        return redirect(url_for("log_in"))
 
 
 @app.route("/log_out")
@@ -240,6 +257,7 @@ def delete_team(team_id):
         return redirect(url_for("teams"))
     else:
         flash("Only the creator of this team may delete it.")
+        return redirect(url_for("teams"))
 
 
 @app.route("/players/<int:id>")
@@ -367,6 +385,7 @@ def delete_player(team_id, player_id):
         return redirect(url_for("players", id=team_id))
     else:
         flash("Only the creator of this team may delete its players.")
+        return redirect(url_for("players", id=team_id))
 
 
 def save_picture(form_picture):
@@ -556,6 +575,7 @@ def delete_user(username):
         return redirect(url_for("log_in"))
     else:
         flash("You cannot delete another managers account.")
+        return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/delete_user_picture/<int:user_id>")
