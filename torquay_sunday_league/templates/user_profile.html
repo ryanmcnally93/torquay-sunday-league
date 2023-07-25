@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if session["user"] == user.username %}
+
 <div class="row picture-profile-row">
     <div class="col picture-profile-box">
         <img alt="User profile picture" class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
@@ -57,6 +59,13 @@
         <a href="{{ url_for('profile', username=session['user']) }}" class="btn red button-border">No</a>
     </div>
 </div>
+
+{% else %}
+<div id="cannot-view">
+    <p class="sub-heading">You cannot view another manager's details.</p>
+</div>
+
+{% endif %}
 
 <!-- Background Image -->
 <img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
