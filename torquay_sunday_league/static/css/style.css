@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap');
 
 /* Base CSS */
+html, body {
+    height: 100%;
+}
+
+footer {
+    margin-top: auto !important;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Navbar */
 #logo {

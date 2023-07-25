@@ -5,7 +5,7 @@
     <h1 class="main-heading">Teams</h1>
 </div>
 
-{% if session %}
+{% if session.user %}
     <div class="row row-with-mt">
         {% if session["user"] == "ryanmcnally93" or user.team_managed == "None" %}
             <div class="col s12 center-align">

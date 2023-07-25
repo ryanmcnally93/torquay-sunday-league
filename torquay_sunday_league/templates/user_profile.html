@@ -1,70 +1,72 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if session["user"] == user.username %}
-
-<div class="row picture-profile-row">
-    <div class="col picture-profile-box">
-        <img alt="User profile picture" class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
-    </div>
-</div>
-
-<div class="row">
-    <div class="col s12 m8 offset-m2">
-        <div class="green lighten-4 team-title">
-            <h3 class="center-align green lighten-4 team-title-inner">
-                {{ user.username }}
-            </h3>
-        </div>
-    </div>
-</div>
-
-<div class="profile-content" id="user-p-content">
-    {% if session["user"] == "ryanmcnally93" %}
-        <!-- I created multiple clubs -->
-        <p id="user-team">Web Application Administrator</p>
-    {% else %}
-        <!-- Club name -->
-        <p id="user-team">Club: {{ user.team_managed }}</p>
-    {% endif %}
-
-    <!-- Month Joined -->
-    <p>Joined: {{ user.month_joined }}</p>
-
-    <!-- Email Address -->
-    <p>Email: {{ user.emailaddress }}</p>
-    {% if session["user"] != "ryanmcnally93" %}
-        <p id="user-lastp">We ensure that every manager is protected from their data being changed or deleted by another user. If there are any issues with this site or you believe to have experienced your account being hacked please contact our technical support team on 07954622365.</p>
-    {% endif %}
-
+{% if session.user %}
     {% if session["user"] == user.username %}
-    <div class="row row-without-mb">
-        <div class="col player-edit-view">
-            <!-- Button to Edit Password or Email info -->
-            <a class="team-profile-button btn green button-border" href="{{ url_for('user_edit', username=user.username) }}">Edit User</a>
-            <!-- Button to delete user -->
-            <a class="team-profile-button btn red modal-trigger button-border" id="delete_user" href="#modal-{{ user.username }}">Delete User</a>
+
+    <div class="row picture-profile-row">
+        <div class="col picture-profile-box">
+            <img alt="User profile picture" class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
         </div>
     </div>
+
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="green lighten-4 team-title">
+                <h3 class="center-align green lighten-4 team-title-inner">
+                    {{ user.username }}
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-content" id="user-p-content">
+        {% if session["user"] == "ryanmcnally93" %}
+            <!-- I created multiple clubs -->
+            <p id="user-team">Web Application Administrator</p>
+        {% else %}
+            <!-- Club name -->
+            <p id="user-team">Club: {{ user.team_managed }}</p>
+        {% endif %}
+
+        <!-- Month Joined -->
+        <p>Joined: {{ user.month_joined }}</p>
+
+        <!-- Email Address -->
+        <p>Email: {{ user.emailaddress }}</p>
+        {% if session["user"] != "ryanmcnally93" %}
+            <p id="user-lastp">We ensure that every manager is protected from their data being changed or deleted by another user. If there are any issues with this site or you believe to have experienced your account being hacked please contact our technical support team on 07954622365.</p>
+        {% endif %}
+
+        {% if session["user"] == user.username %}
+        <div class="row row-without-mb">
+            <div class="col player-edit-view">
+                <!-- Button to Edit Password or Email info -->
+                <a class="team-profile-button btn green button-border" href="{{ url_for('user_edit', username=user.username) }}">Edit User</a>
+                <!-- Button to delete user -->
+                <a class="team-profile-button btn red modal-trigger button-border" id="delete_user" href="#modal-{{ user.username }}">Delete User</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div id="modal-{{ user.username }}" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure you want to delete your account?</h4>
+            <p>This action cannot be undone</p>
+        </div>
+        <div class="modal-footer">
+            <a href="{{ url_for('delete_user', username=user.username) }}" class="btn green button-border">Yes</a>
+            <a href="{{ url_for('user_profile', username=session['user']) }}" class="btn red button-border">No</a>
+        </div>
+    </div>
+
+    {% else %}
+    <div id="cannot-view">
+        <p class="sub-heading">You cannot view another manager's details.</p>
+    </div>
+
     {% endif %}
-</div>
-
-<div id="modal-{{ user.username }}" class="modal">
-    <div class="modal-content">
-        <h4>Are you sure you want to delete your account?</h4>
-        <p>This action cannot be undone</p>
-    </div>
-    <div class="modal-footer">
-        <a href="{{ url_for('delete_user', username=user.username) }}" class="btn green button-border">Yes</a>
-        <a href="{{ url_for('profile', username=session['user']) }}" class="btn red button-border">No</a>
-    </div>
-</div>
-
-{% else %}
-<div id="cannot-view">
-    <p class="sub-heading">You cannot view another manager's details.</p>
-</div>
-
 {% endif %}
 
 <!-- Background Image -->
