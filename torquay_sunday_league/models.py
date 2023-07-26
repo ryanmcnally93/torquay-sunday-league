@@ -46,7 +46,7 @@ class Player(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     player_kit_number = db.Column(
         db.Integer, primary_key=False, nullable=False)
-    player_name = db.Column(db.String(25), unique=True, nullable=False)
+    player_name = db.Column(db.String(25), nullable=False)
     player_country = db.Column(db.String(20), nullable=False)
     player_position = db.Column(db.String(15), nullable=False)
     player_joined = db.Column(db.String, nullable=False)

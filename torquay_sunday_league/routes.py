@@ -8,7 +8,9 @@ from torquay_sunday_league.models import Team, Player, User
 from torquay_sunday_league.models import (UpdateProfilePicture, UpdateTeamPicture)
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-
+import requests
+from pprint import pprint
+import json
 
 @app.route("/")
 def home():
@@ -176,7 +178,6 @@ def log_in():
     return render_template("log_in.html")
 
 
-# Fix creating session issue
 @app.route("/user_profile/<username>", methods=["GET", "POST"])
 def user_profile(username):
     if "user" in session:
@@ -191,7 +192,6 @@ def user_profile(username):
     return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1)
 
 
-# Fix Not Logging out issue
 @app.route("/log_out")
 def log_out():
     flash("You have been logged out")
@@ -199,7 +199,6 @@ def log_out():
     return redirect(url_for("log_in"))
 
 
-# Fix creating session issue
 @app.route("/edit_team/<int:team_id>", methods=["GET", "POST"])
 def edit_team(team_id):
     if "user" in session:
@@ -257,7 +256,6 @@ def edit_team(team_id):
     return render_template("edit_team.html", team=baseteam, currentteam=currentteam, user=user1, squad_picture=squad_picture, form=form)
 
 
-# Fix creating session issue
 @app.route("/delete_team/<int:team_id>")
 def delete_team(team_id):
     if "user" in session:
@@ -290,7 +288,6 @@ def players(id):
     return render_template("players.html", players=players, team=baseteam, user=user1, currentteam=currentteam)
 
 
-# Fix creating session issue
 @app.route("/edit_player/<int:player_id>/<int:team_id>", methods=["GET", "POST"])
 def edit_player(player_id, team_id):
     if "user" in session:
@@ -335,7 +332,6 @@ def edit_player(player_id, team_id):
     return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1)
 
 
-# Fix creating session issue
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
 def add_player(id):
     if "user" in session:
@@ -346,7 +342,6 @@ def add_player(id):
 
         user1 = User.query.filter_by(username=session["user"]).first()
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
-        players = list(Player.query.order_by(Player.player_kit_number).all())
         search = Team.query.get(id).players
         teams = list(Team.query.order_by(Team.team_name).all())
         for current in search:
@@ -378,7 +373,6 @@ def add_player(id):
                 currentteam.team_no_of_players += 1
                 db.session.add(player)
                 db.session.commit()
-                players = list(Player.query.order_by(Player.player_kit_number).all())
                 return redirect(url_for("players", id=id))
             else:
                 flash("Only the creator of this team may add players to it.")
@@ -408,7 +402,6 @@ def team_profile(id):
     return render_template("team_profile.html", currentteam=currentteam, team=baseteam, user=user1, squad_picture=squad_picture)
 
 
-# Fix creating session issue
 @app.route("/delete_player/<int:team_id>/<int:player_id>")
 def delete_player(team_id, player_id):
     if "user" in session:
@@ -463,7 +456,6 @@ def save_squad_picture(form_picture):
     return picture_fn
 
 
-# Fix creating session issue
 @app.route("/user_edit/<username>", methods=["GET", "POST"])
 def user_edit(username):
     if "user" in session:
@@ -608,7 +600,6 @@ def user_edit(username):
     return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form)
 
 
-# Fix creating session issue
 @app.route("/delete_user/<username>")
 def delete_user(username):
     if "user" in session:
@@ -627,7 +618,6 @@ def delete_user(username):
         return redirect(url_for("log_in"))
 
 
-# Fix creating session issue
 @app.route("/delete_user_picture/<int:user_id>")
 def delete_user_picture(user_id):
     if "user" in session:
@@ -652,7 +642,6 @@ def delete_user_picture(user_id):
         return redirect(url_for("log_in"))
 
 
-# Fix creating session issue
 @app.route("/delete_squad_picture/<int:team_id>")
 def delete_squad_picture(team_id):
     if "user" in session:
@@ -676,3 +665,18 @@ def delete_squad_picture(team_id):
     else:
         flash("You are not logged in")
         return redirect(url_for("log_in"))
+
+
+@app.route("/live_scores", methods=["GET", "POST"])
+def live_scores():
+    token = "75cf94657f2047ebbb9e09665358930d"
+    headers = {
+        'X-Auth-Token': token,
+    }
+
+    # Set variable for date picked on date picker and add it to the url below.
+
+    data = requests.get('https://api.football-data.org/v4/matches/?date=2022-01-01', headers=headers).json()
+    matches = data['matches']
+    print(data)
+    return render_template("live_scores.html", data=data, matches=matches)

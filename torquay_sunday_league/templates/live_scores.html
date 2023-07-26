@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="heading-box"> 
+    <h1 class="main-heading">Live Scores</h1>
+</div>
+
+<input type="datepicker" id="selected_date" onsubmit="writeToDocument('/date')">Date</input>
+<div id="data">
+
+    {% for match in matches %}
+        {% if match.competition.name == "Premier League" %}
+            <div>
+                <p>{{ match.homeTeam.name }}</p><p>{{ match.score.fullTime.home }}</p>
+                <p>{{ match.awayTeam.name }}</p><p>{{ match.score.fullTime.away }}</p>
+                <p>KO: {{ match.utcDate[11:16] }}</p>
+            </div>
+            <hr>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
