@@ -10,7 +10,7 @@
     <h2 class="center-align">You are currently logged in as {{ session["user"] }} </h2>
 {% else %}
 
-    <div class="row row-without-mb">
+    <div class="row-without-mb">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('log_in') }}">
             <div class="card-panel green lighten-4">
                 <!-- Username -->
