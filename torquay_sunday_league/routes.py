@@ -674,9 +674,17 @@ def live_scores():
         'X-Auth-Token': token,
     }
 
-    # Set variable for date picked on date picker and add it to the url below.
+    data = requests.get('https://api.football-data.org/v4/matches').json()
+    if request.method == "POST":
+        # Look at the date entered
+        date_str=request.form.get("match_date")
+        # Specify its format, ready to turn into a date from a string
+        date_format='%d/%m/%Y'
+        # Turn into a date
+        date_obj=datetime.strptime(date_str, date_format)
+        # Now that it's a date, rearrange to how it's needed for the URL
+        date=date_obj.strftime("%Y-%m-%d")
+        data = requests.get(f'https://api.football-data.org/v4/matches/?date={date}', headers=headers).json()
 
-    data = requests.get('https://api.football-data.org/v4/matches/?date=2022-01-01', headers=headers).json()
     matches = data['matches']
-    print(data)
     return render_template("live_scores.html", data=data, matches=matches)

@@ -4,9 +4,23 @@
 <div class="heading-box"> 
     <h1 class="main-heading">Live Scores</h1>
 </div>
-
-<input type="datepicker" id="selected_date" onchange="writeToDocument('/date')" placeholder="Pick a Date"></input>
-<div id="data">
+<form class="col s12" method="POST" action="{{ url_for('live_scores') }}">
+    <!-- Datepicker -->
+    <div class="row">
+        <div class="input-field col s6">
+            <input type="text" class="datepicker" id="match_date" name="match_date" placeholder="Pick a Date" required readonly></input>
+            <label for="match_date">Date</label>
+        </div>
+    </div>
+    <!-- Submit -->
+    <div class="row">
+        <div class="col s12 center-align">
+            <button type="submit" class="btn green button-border">
+                Search <i class="fas fa-plus-square right"></i>
+            </button>
+        </div>
+    </div>
+</form>
 
     {% for match in matches %}
         {% if match.competition.name == "Premier League" %}
