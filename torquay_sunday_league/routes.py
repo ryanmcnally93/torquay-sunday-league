@@ -686,5 +686,10 @@ def live_scores():
         date=date_obj.strftime("%Y-%m-%d")
         data = requests.get(f'https://api.football-data.org/v4/matches/?date={date}', headers=headers).json()
 
+        present = datetime.now()
+        if present.date() < date_obj.date():
+            flash("Cannot select future date.")
+            return redirect(url_for("live_scores"))
+
     matches = data['matches']
     return render_template("live_scores.html", data=data, matches=matches)
