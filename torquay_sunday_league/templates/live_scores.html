@@ -5,16 +5,16 @@
     <h1 class="main-heading">Live Scores</h1>
 </div>
 
-<input type="datepicker" id="selected_date" onsubmit="writeToDocument('/date')">Date</input>
+<input type="datepicker" id="selected_date" onchange="writeToDocument('/date')" placeholder="Pick a Date"></input>
 <div id="data">
 
     {% for match in matches %}
         {% if match.competition.name == "Premier League" %}
-            <div>
-                <p>{{ match.homeTeam.name }}</p><p>{{ match.score.fullTime.home }}</p>
-                <p>{{ match.awayTeam.name }}</p><p>{{ match.score.fullTime.away }}</p>
-                <p>KO: {{ match.utcDate[11:16] }}</p>
+            <div class="scores-inline">
+                <p class="api-team row-without-mb">{{ match.homeTeam.name[0:-3] }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
+                <p class="api-team row-without-mb">{{ match.awayTeam.name[0:-3] }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
+                <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
         {% endif %}
     {% endfor %}

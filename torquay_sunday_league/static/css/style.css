@@ -2,6 +2,14 @@
 
 /* Base CSS */
 
+.scores-inline {
+    display: inline-flex;
+}
+
+.api-team {
+    margin-right: 5px;
+}
+
 /* Navbar */
 #logo {
     width: 82px;
@@ -118,6 +126,10 @@ nav {
 }
 
 /* Row Margin alterations */
+
+.row-without-mt {
+    margin-top: 0;
+}
 
 .row-with-mt {
     margin-top: 20px;
