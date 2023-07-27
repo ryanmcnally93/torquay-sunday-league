@@ -21,6 +21,7 @@ def home():
     else:
         user1 = "None"
         team1 = "None"
+        profile_picture = "None"
 
     teams = list(Team.query.order_by(Team.team_name).all())
     return render_template("index.html", user=user1, team=team1, teams=teams, profile_picture=profile_picture)
@@ -41,6 +42,7 @@ def teams():
     else:
         user1 = "None"
         team1 = "None"
+        profile_picture = "None"
 
     teams = list(Team.query.order_by(Team.team_name).all())
     # update team no of players
@@ -56,6 +58,7 @@ def rules():
     else:
         user1 = "None"
         team1 = "None"
+        profile_picture = "None"
     return render_template("rules.html", user=user1, team=team1, profile_picture=profile_picture)
     
 
@@ -401,6 +404,7 @@ def team_profile(id):
     else:
         user1 = "None"
         baseteam = "None"
+        profile_picture = "None"
 
     currentteam = Team.query.get_or_404(id)
     if "user" in session:
@@ -691,6 +695,7 @@ def live_scores():
     else:
         user1 = "None"
         baseteam = "None"
+        profile_picture = "None"
 
     present = datetime.now()
     presentstring = present.strftime("%d/%m/%Y")

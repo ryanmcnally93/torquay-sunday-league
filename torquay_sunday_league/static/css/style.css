@@ -12,6 +12,15 @@
     }
 }
 
+#togglePassword, #toggleConfirmPassword, #toggleNewPassword {
+    cursor: pointer;
+    float: right;
+    position: absolute;
+    margin-top: 15px;
+    right: 22px;
+    color: #008285 !important;
+}
+
 #small-pp {
     border-style: none;
     width: 60px;
@@ -83,10 +92,11 @@
 }
 
 #results {
-    max-height: 675px;
+    max-height: 655px;
     overflow: scroll;
     width: 50%;
     margin: auto;
+    margin-top: 20px;
 }
 
 @media (min-width: 1100px) {
@@ -986,6 +996,7 @@ h1 .fa-futbol {
     height: 600px;
     background-color: rgb(250,250,250,0.8);
     border-radius: 25px;
+    margin-top: 20px;
 }
 
 #scroll-p {
@@ -1052,10 +1063,6 @@ h1 .fa-futbol {
 
 #edit-picture-team-box {
     margin-top: 10px;
-}
-
-#form-content {
-    min-height: 630px;
 }
 
 @media (max-width: 767px) {

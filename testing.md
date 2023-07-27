@@ -16,11 +16,21 @@ I have tested my web application automatically and manually using Test Driven De
 
 ### Javascript Validation
 
-<!--Jest Tests-->
+I have tested all my JavaScript code using JSHint
 
 #### JSHint
 
+- The main [script.js](/torquay_sunday_league/static/js/script.js) file returned 9 warnings that were letting me know that "const" and "let" are available in ES6. No other errors were found.
 
+- The [log_in.js](/torquay_sunday_league/static/js/log_inscript.js) file returned no errors.
+
+- The [player_form_script.js](/torquay_sunday_league/static/js/player_form_script.js) file returned no errors.
+
+- The [register_script.js](/torquay_sunday_league/static/js/register_script.js) file returned no errors.
+
+- The [team_form_script.js](/torquay_sunday_league/static/js/team_form_script.js) file returned no errors.
+
+- The [team_profile_script.js](/torquay_sunday_league/static/js/team_profile_script.js) file returned no errors.
 
 #### Python Validation
 
@@ -262,3 +272,11 @@ Desktop Macbook
 | Feature                                 | Expected Outcome                                       | Testing Performed                    | Result                                              | Pass/Fail |
 | --------------------------------------- | ------------------------------------------------------ | ------------------------------------ | --------------------------------------------------- | --------- |
 | Log out Navbar anchor | User logs out | Clicked anchor whilst logged in | Session cookie is deleted, user is taken to log in page | Pass |
+
+### API Scores Page
+| Feature                                 | Expected Outcome                                       | Testing Performed                    | Result                                              | Pass/Fail |
+| --------------------------------------- | ------------------------------------------------------ | ------------------------------------ | --------------------------------------------------- | --------- |
+| Datepicker input | Doesn't accept text | Clicked tab until on datepicker | Could not enter text | Pass |
+| Datepicker input | Opens Datepicker | Clicked on datepicker input field | Datepicker opened | Pass |
+| Search button | Doesn't allow no data to be entered | Clicked on button with no data entered | Message opened, did not POST | Pass |
+| Search button | Returns correct results when date entered | Entered dates with no matches and with some matches | Correct response | Pass |
