@@ -779,6 +779,10 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The image of Trent Alexander-Arnold was obtained from <a href="https://www.footyrenders.com/premier-league/liverpool/trent-alexander-arnold-72/">Footyrenders</a>, Cut by: crisssnw.
 
+- The image of Aleksandar Mitrovic was obtained from <a href="https://www.footyrenders.com/nations/serbia/aleksandar-mitrovic-3/">Footyrenders</a>, Cut by: szwejzi.
+
+- The image of Son Heung-min was obtained from <a href="https://www.footyrenders.com/premier-league/tottenham/son-heung-min-29/">Footyrenders</a>, Cut by: Lacen99.
+
 - The rules one image was obtained from <a href="https://www.pexels.com/photo/action-activity-adult-athletes-262524/">Pexels</a>, posted by "Pixabay".
 
 - The rules two image was obtained from <a href="https://pixabay.com/photos/soccer-ball-referee-sports-6679088/">Pixabay</a>, posted by "Planet_fox".
@@ -802,6 +806,22 @@ I struggled with the boxing of the matches and splitting them by competition, as
 - The winners image on the index page was obtained from <a href="https://www.nottinghampost.com/news/local-news/gallery/pictures-nottinghamshire-sunday-league-football-5689848">Nottinghampost</a>, By "Joe Rayner".
 
 - The goalscorer image was obtained from <a href="https://pixabay.com/photos/soccer-football-athlete-player-1473669/">Pixabay</a>, By "Keithjj".
+
+- The following country flags were obtained on [Flaticon]() with the author being "Freepik". They asked to be credited in their website and so I have placed a message on the live scores page.
+
+- [World Flag](torquay_sunday_league/static/images/world.webp)
+- [Europe Flag](torquay_sunday_league/static/images/europe.webp)
+- [South America Flag](torquay_sunday_league/static/images/south-america.webp)
+- [England Flag](torquay_sunday_league/static/images/england.webp)
+- [Germany Flag](torquay_sunday_league/static/images/germany.webp)
+- [France Flag](torquay_sunday_league/static/images/france.webp)
+- [Italy Flag](torquay_sunday_league/static/images/italy.webp)
+- [Spain Flag](torquay_sunday_league/static/images/spain.webp)
+- [Portugal Flag](torquay_sunday_league/static/images/portugal.webp)
+- [Brazil Flag](torquay_sunday_league/static/images/brazil.webp)
+- [Netherlands Flag](torquay_sunday_league/static/images/netherlands.webp)
+
+- The champions league logo was obtained from [pngwing](https://www.pngwing.com/en/free-png-nfain) with no author credited.
 
 ### Acknowledgements
 

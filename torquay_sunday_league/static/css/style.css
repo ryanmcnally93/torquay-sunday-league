@@ -92,40 +92,55 @@
 }
 
 #results {
-    max-height: 655px;
+    max-height: 613px;
     overflow: scroll;
     width: 50%;
     margin: auto;
     margin-top: 20px;
 }
 
+#freepik {
+    display: flex;
+    justify-content: center;
+    color: darkgreen;
+    background-color: rgb(250,250,250,0.8);
+    border-radius: 25px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+#freepik p {
+    margin: 15px;
+    text-align: center;
+}
+
 @media (min-width: 1100px) {
-    #results {
+    #results, #freepik {
         width: 40% !important;
     }
 }
 
 @media (min-width: 581px) and (max-width: 800px) {
-    #results {
+    #results, #freepik {
         width: 80% !important;
     }
 }
 
 @media (min-width: 501px) and (max-width: 580px) {
-    #results {
+    #results, #freepik {
         width: 50% !important;
     }
 }
 
 @media (max-width: 500px) {
-    #results {
+    #results, #freepik {
         width: 80% !important;
     }
 }
 
 .search-message {
     background-color: rgb(250, 250, 250, 0.8);
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     width: 100%;
     padding: 15px;
     border-radius: 25px;
@@ -141,12 +156,14 @@
     position: absolute;
     top: 265px;
     left: 5%;
+    height: 640px !important;
 }
 
 .scores-player-right-box {
     right: 3%;
     position: absolute;
     top: 265px;
+    height: 640px !important;
 }
 
 @media (max-width: 1000px) {
