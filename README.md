@@ -595,7 +595,6 @@ The issue was even though it was commented out, the {%%} symbols were being used
 
 I then realised that you could edit a player and put him in another team, which shouldn't be allowed. As you have to go onto the teams page to view and add this particular player, I thought it best that we cannot change the club of that player, and I deleted the field.
 
-<!-- UNFIXED BUG -->
 10). User was logged in but the login page could be viewed if typed into the URL, and potentially a second user could be logged in. I added an if statement that adds a message to the page to say you are logged in as (username).
 
 <img src="/torquay_sunday_league/static/images/readme-images/bug-10.webp" width="100%" alt="Undefined Error" style="display: inherit; ">
@@ -604,7 +603,9 @@ This however did not work and returned this result:
 
 <img src="/torquay_sunday_league/static/images/readme-images/fix-10.webp" width="70%" alt="Log in page message" style="display: inherit; ">
 
-FIX?
+This was part of a larger issue I was having. With the help of a tutor I recognised that my code for testing the session was wrong. I believed that a session cookie meant I was logged in. So I was writing (if session:), which would give true on some incorrect pages.
+
+I changed this to (if 'user' in session:) instead, which resolved a lot of issues I was having.
 
 11). Had an error appear when trying to edit the create team route. I had added code to change the user.team_managed property but I realised I had typed user.team_managed == team.team_name when I should have typed user.team_managed = team.team_name.
 
@@ -630,7 +631,6 @@ I changed the Db type to string instead of date, and disabled the input on the e
 
 You could not see the players and it was pointless having them on there. I decided to change the background so it was the same as the other pages. With the players page, I chose a different approach, moving one player to the side and the players collapsibles to the other.
 
-<!-- UNFIXED BUG -->
 15). I noticed on larger tablet devices that my footer element was not at the bottom of the page.
 
 <img src="/torquay_sunday_league/static/images/readme-images/bug-15.webp" width="50%" alt="Footer issue" style="display: inherit; ">
@@ -639,9 +639,27 @@ Simply adding position: absolute, width: 100% and bottom: 0 didn't work, as when
 
 I looked at using the sticky position too, but on mobile devices it takes up unnecessary space.
 
-### Unfixed Bugs
+This issue was fixed with the help of a tutor, who showed me that by giving the body and html height 100% and making the flow direction go downwards, the footer would stay where it needs to.
 
-10, 15
+16). I had an issue with my players page giving a result that I had no players in a team which had. I quickly realised this was because I was using a variable in my routes file to reference the number of players, even though I had already assigned a no_of_players attribute to my model! I wasn't utilising this at all.
+
+I made the number increase and decrease with the creation and deletion of a player within that team.
+
+17). I had an issue where if I was viewing someone elses team, the navbar anchor that displays my team name changes to theirs! This was because 'team' had the value of the team I was viewing.
+
+I fixed this by creating two variables where needed, one with base team, which referenced the team which should be shown in the navbar. The other was current team, which is the team we are currently viewing.
+
+19). My mentor Jubril showed me that my create team form allowed me to fill in every input with an empty string of spaces! This resulted in a team with blank spaces for properties.
+
+<img src="/torquay_sunday_league/static/images/readme-images/bug-19.webp" width="80%" alt="The teams page, viewed on desktop" style="display: inherit; ">
+
+To get around this I utilised the pattern attribute where I could. The syntax ^\S(?:.*\S)?$ doesn't allow a space at the start or end of the value. This meant a form could not be filled with spaces.
+
+20). When calling the API I managed to get results populating and started the CSS for the page when I hit a keyerror issue on 'matches'. My code hadn't changed.
+
+This was because the initial call to the API before the post didn't have header=header and therefore didn't have the token added to the header. Once the number of requests for a guest ran out, so did my access. I placed the headers=headers into the return statement and it worked again.
+
+### Unfixed Bugs
 
 To the best of my knowledge, there are no known bugs left to fix.
 
@@ -687,7 +705,35 @@ To the best of my knowledge, there are no known bugs left to fix.
 
 ### API Integration
 
-- Explain What, Why and How
+For my API live scores page, I used [football-data.org.](https://www.football-data.org/) This has access to all the live scores from the biggest competitions in world football, and a lot of them can be accessed for free!
+
+In an ideal scenario this page would display the scores from the league the site is for, but as this is fictional, I'm showing the results from the available top leagues of the world.
+
+#### Process
+
+I signed up for an account on the API website and received this email.
+
+<img src="/torquay_sunday_league/static/images/readme-images/api-token.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
+
+I then created the live scores html and app.route. Within this route I added the header variable and passed it the credentials received within the email.
+
+I gave the variable matches the value of all the matches today, and made that appear on screen loadup, while the post function returns the url for individual date results with todays date passed in using the correct format.
+
+I then used Jinja templates to only show competitions that had matches in and added messages when there were no games, and gave it all CSS properties.
+
+#### Issues
+
+I watched the Code Institute videos on API integration and in particular, the star wars API integration. This was achieved in JavaScript, which I followed as much as I could, but was stumped on how to alter my header to add the credentials.
+
+I discovered on a Stack Overflow the way to do this in Python so went from there. I managed to get the data to display all matches in JSON format like this:
+
+<img src="/torquay_sunday_league/static/images/readme-images/api-data.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
+
+However, I passed the data the wrong words, like winner and team instead of matches. I was stuck for a while until a tutor helped me find which word I needed to pass into data to deconstruct the JSON file and render what I wanted.
+
+I struggled with the boxing of the matches and splitting them by competition, as in the JSON file the matches aren't a child of competition. I achieved this by using loop.index and loop.last and adding the start and eng tags of my div within them, creating a box around the results.
+
+<img src="/torquay_sunday_league/static/images/readme-images/api-loops.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
 
 ## Credits
 

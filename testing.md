@@ -121,7 +121,7 @@ The following py documents have been tested using [extendsclass.](https://extend
 - [__init__.py](torquay_sunday_league/__init__.py) returned with no errors.
 - [routes.py](torquay_sunday_league/routes.py) returned with some errors. I have used f in strings to specify that the items in curly braces are not to be read as string.
 
-<!-- IMAGE -->
+<img src="/torquay_sunday_league/static/images/readme-images/testing-routes.webp" width="80%" alt="The teams page, viewed on desktop" style="display: inherit; ">
 
 I have also played aroung with unittest to try and create tests, similar to my Jest JavaScript tests used in my last project.
 
