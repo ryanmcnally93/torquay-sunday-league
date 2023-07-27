@@ -25,124 +25,124 @@
 {% if request.method == "POST" %}
 
     <h2>Premier League</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Premier League" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Premier League" %} 
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name[0:-3] }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name[0:-3] }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %}
+     {% endfor %}
 
     <h2>Championship</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Championship" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Championship" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name[0:-3] }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name[0:-3] }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>UEFA Champions League</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "UEFA Champions League" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "UEFA Champions League" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>Bundesliga</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Bundesliga" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Bundesliga" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>Ligue 1</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Ligue 1" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Ligue 1" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>Serie A</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Serie A" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Serie A" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>La Liga</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Primera Division" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Primera Division" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>Liga Portugal</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Primeira Liga" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Primeira Liga" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>Serie A Brazil</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Campeonato Brasileiro Série A" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Campeonato Brasileiro Série A" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
     <h2>Eredivisie</h2>
-    {% for match in matches %}
-        {% if match.competition.name == "Eredivisie" %}
+     {% for match in matches %} 
+         {% if match.competition.name == "Eredivisie" %}
             <div class="scores-inline">
                 <p class="api-team row-without-mb">{{ match.homeTeam.name }}: </p><p class="api-team row-without-mb">{{ match.score.fullTime.home }}</p>
                 <p class="api-team row-without-mb">{{ match.awayTeam.name }}: </p><p class="row-without-mb">{{ match.score.fullTime.away }}</p>
             </div>
                 <p class="row-without-mt">Time: {{ match.utcDate[11:16] }}</p>
             <hr>
-        {% endif %}
-    {% endfor %}
+         {% endif %} 
+     {% endfor %} 
 
 {% endif %}
 {% endblock %}

@@ -674,7 +674,7 @@ def live_scores():
         'X-Auth-Token': token,
     }
 
-    data = requests.get('https://api.football-data.org/v4/matches').json()
+    data = requests.get('https://api.football-data.org/v4/matches', headers=headers).json()
     if request.method == "POST":
         # Look at the date entered
         date_str=request.form.get("match_date")
