@@ -673,7 +673,7 @@ def live_scores():
     headers = {
         'X-Auth-Token': token,
     }
-
+    present = datetime.now()
     data = requests.get('https://api.football-data.org/v4/matches', headers=headers).json()
     if request.method == "POST":
         # Look at the date entered
@@ -690,6 +690,8 @@ def live_scores():
         if present.date() < date_obj.date():
             flash("Cannot select future date.")
             return redirect(url_for("live_scores"))
+        found = data['matches']
+        print(found)
 
     matches = data['matches']
-    return render_template("live_scores.html", data=data, matches=matches)
+    return render_template("live_scores.html", data=data, matches=matches, date=present)
