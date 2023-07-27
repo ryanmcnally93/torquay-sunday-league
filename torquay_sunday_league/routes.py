@@ -36,7 +36,7 @@ def teams():
 
         if request.method == "POST":
             team=Team.query.filter_by(team_name=request.form.get("teamid")).first()
-            team.confirmation_status = bool(True if request.form.get(f"{team.id}confirmed") else False)
+            team.confirmation_status = bool(True if request.form.get(f"confirmed") else False)
             db.session.commit()
             flash("Confirmation changed")
     else:
@@ -328,7 +328,7 @@ def edit_player(player_id, team_id):
         for current in search:
             if str(current.player_name) != player.player_name:
                 if str(current.player_name) == request.form.get("player_name"):
-                    flash(f"Error: This player has already been registered!")
+                    flash("Error: This player has already been registered!")
                     return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1)
 
         if request.method == "POST":
@@ -370,7 +370,7 @@ def add_player(id):
 
         for current in search:
             if str(current.player_name) == request.form.get("player_name"):
-                flash(f"Error: This player has already been registered!")
+                flash("Error: This player has already been registered!")
                 return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1)
         
         if request.method == "POST":

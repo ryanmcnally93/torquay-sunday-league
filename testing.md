@@ -114,7 +114,18 @@ I have tested all my JavaScript code using JSHint
 
 #### Python Validation
 
-<!-- Unit tests -->
+The following py documents have been tested using [extendsclass.](https://extendsclass.com/python-tester.html)
+
+- [run.py](run.py) returned with no errors.
+- [models.py](torquay_sunday_league/models.py) returned with no errors.
+- [__init__.py](torquay_sunday_league/__init__.py) returned with no errors.
+- [routes.py](torquay_sunday_league/routes.py) returned with some errors. I have used f in strings to specify that the items in curly braces are not to be read as string.
+
+<!-- IMAGE -->
+
+I have also played aroung with unittest to try and create tests, similar to my Jest JavaScript tests used in my last project.
+
+<!-- RESULTS -->
 
 ### Lighthouse
 
