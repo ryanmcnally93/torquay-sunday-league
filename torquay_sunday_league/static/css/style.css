@@ -50,6 +50,16 @@
     margin: 0 auto;
 }
 
+.search-message {
+    background-color: rgb(250, 250, 250, 0.8);
+    margin: 0 auto;
+    width: 40%;
+    padding: 15px;
+    border-radius: 25px;
+    text-align: center;
+    color: darkgreen;
+}
+
 /* Navbar */
 #logo {
     width: 82px;

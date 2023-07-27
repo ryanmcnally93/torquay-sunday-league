@@ -18,7 +18,18 @@
     </div>
 </form>
 
+{% if matches == [] and request.method != "POST" %}
+    <p class="search-message">There are no matches today.</p>
+{% endif %}
+
 {% if request.method == "POST" %}
+
+    <!-- Returns a different message if you choose today -->
+    {% if matches == [] and request.form.get("match_date") == present %}
+        <p class="search-message">There are no matches today.</p>
+    {% elif matches == [] %}
+        <p class="search-message">There were no matches on this day.</p>
+    {% endif %}
 
     {% for match in matches if match.competition.name == "FIFA World Cup" %} 
         {% if loop.index == 1 %}
