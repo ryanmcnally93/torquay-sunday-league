@@ -118,10 +118,8 @@ def register():
         username = request.form.get("username")
         emailaddress = request.form.get("emailaddress").lower()
         password = generate_password_hash(request.form.get("password"))
-        written_password = request.form.get("password")
-        confirmed_password = request.form.get("confirm_password")
 
-        if written_password != confirmed_password:
+        if request.form.get("password") != request.form.get("confirm_password"):
             flash("ERROR! Your passwords do not match")
             return redirect(url_for("register"))
 
@@ -174,7 +172,6 @@ def log_in():
         user_object = User.query.filter_by(username=username).first()
         if user_object:
             if check_password_hash(user_object.password, request.form.get("password")):
-                user = User.query.filter_by(username=username).first()
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("user_profile", username=session["user"]))
@@ -241,7 +238,7 @@ def edit_team(team_id):
                     os.remove(os.path.join(app.root_path,
                     'static/images/profile_pics', currentteam.profile_picture))
                 
-                picture_file = save_squad_picture(form.picture.data)
+                picture_file = save_picture(form.picture.data, 2)
                 currentteam.profile_picture = picture_file
                 db.session.commit()
                 squad_picture = url_for('static', filename='images/profile_pics/' + currentteam.profile_picture)
@@ -445,7 +442,7 @@ def delete_player(team_id, player_id):
         return redirect(url_for("log_in"))
 
 
-def save_picture(form_picture):
+def save_picture(form_picture, x):
     # This randomises the file name so 2 files can be uploaded with the same name
     random_hex = secrets.token_hex(8)
     # This gets the file extension type
@@ -455,26 +452,13 @@ def save_picture(form_picture):
     # Location of file save
     picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
     
-    im = Image.open(form_picture)
-    im.thumbnail((316, 500))
-    # Image saves
-    im.save(picture_path)
+    if x == 1:
+        im = Image.open(form_picture)
+        im.thumbnail((316, 500))
+    else:
+        im = Image.open(form_picture)
+        im.thumbnail((316, 316))
 
-    return picture_fn
-
-
-def save_squad_picture(form_picture):
-    # This randomises the file name so 2 files can be uploaded with the same name
-    random_hex = secrets.token_hex(8)
-    # This gets the file extension type
-    _, f_ext = os.path.splitext(form_picture.filename)
-    # This creates a new filename
-    picture_fn = random_hex + f_ext
-    # Location of file save
-    picture_path = os.path.join(app.root_path, 'static/images/profile_pics', picture_fn)
-    
-    im = Image.open(form_picture)
-    im.thumbnail((316, 316))
     # Image saves
     im.save(picture_path)
 
@@ -507,13 +491,13 @@ def user_edit(username):
                 if user.profile_picture != 'default_manager.webp':
                     os.remove(os.path.join(app.root_path,
                     'static/images/profile_pics', user.profile_picture))
-                current = request.form.get("password")
+                current = request.form.get("confirm_password")
                 # This code checks that the password is correct
                 if check_password_hash(user.password, current):
                     if request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress:
                         # PICTURE ONLY
-                        if request.form.get("new_password") == "":
-                            picture_file = save_picture(form.picture.data)
+                        if request.form.get("password") == "":
+                            picture_file = save_picture(form.picture.data, 1)
                             user.profile_picture = picture_file
                             db.session.commit()
                             profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
@@ -521,17 +505,17 @@ def user_edit(username):
                             return redirect(url_for("user_profile", username=username))
                         # PICTURE AND PASSWORD
                         else:
-                            picture_file = save_picture(form.picture.data)
+                            picture_file = save_picture(form.picture.data, 1)
                             user.profile_picture = picture_file
-                            user.password = generate_password_hash(request.form.get("new_password"))
+                            user.password = generate_password_hash(request.form.get("password"))
                             db.session.commit()
                             profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
                             flash("Profile picture and password changed")
                             return redirect(url_for("user_profile", username=username))
                     elif request.form.get("emailaddress") != "" or request.form.get("emailaddress") != user.emailaddress:
                         # PICTURE AND EMAIL
-                        if request.form.get("new_password") == "":
-                            picture_file = save_picture(form.picture.data)
+                        if request.form.get("password") == "":
+                            picture_file = save_picture(form.picture.data, 1)
                             user.profile_picture = picture_file
                             # Checking email address is not already taken
                             emailaddress=request.form.get("emailaddress")
@@ -547,7 +531,7 @@ def user_edit(username):
                             return redirect(url_for("user_profile", username=username))
                         # ALL THREE FIELDS CHANGED
                         else:
-                            picture_file = save_picture(form.picture.data)
+                            picture_file = save_picture(form.picture.data, 1)
                             user.profile_picture = picture_file
                             # Checking email address is not already taken
                             emailaddress=request.form.get("emailaddress")
@@ -557,20 +541,20 @@ def user_edit(username):
                                 return redirect(url_for("user_profile", username=username))
 
                             user.emailaddress = request.form.get("emailaddress")
-                            user.password = generate_password_hash(request.form.get("new_password"))
+                            user.password = generate_password_hash(request.form.get("password"))
                             db.session.commit()
                             profile_picture = url_for('static', filename='images/profile_pics/' + user.profile_picture)
                             flash("Profile picture, password and email address changed")
                             return redirect(url_for("user_profile", username=username))
 
 
-            if request.form.get("new_password") != "":
-                current = request.form.get("password")
+            if request.form.get("password") != "":
+                current = request.form.get("confirm_password")
                 # This code checks that the password is correct
                 if check_password_hash(user.password, current):
                     # PASSWORD ONLY
                     if request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress:
-                        user.password = generate_password_hash(request.form.get("new_password"))
+                        user.password = generate_password_hash(request.form.get("password"))
                         db.session.commit()
                         flash("User password has been changed ")
                         return redirect(url_for("user_profile", username=username))
@@ -584,7 +568,7 @@ def user_edit(username):
                             return redirect(url_for("user_profile", username=username))
 
                         user.emailaddress = request.form.get("emailaddress")
-                        user.password = generate_password_hash(request.form.get("new_password"))
+                        user.password = generate_password_hash(request.form.get("password"))
                         db.session.commit()
                         flash("User password and email address have been changed ")
                         return redirect(url_for("user_profile", username=username))
@@ -592,7 +576,7 @@ def user_edit(username):
                     flash("Your current password is incorrect")
 
             # EMAIL ONLY
-            elif request.form.get("new_password") == "" and request.form.get("emailaddress") != "" and request.form.get("emailaddress") != user.emailaddress:
+            elif request.form.get("password") == "" and request.form.get("emailaddress") != "" and request.form.get("emailaddress") != user.emailaddress:
                 # Checking email address is not already taken
                 emailaddress=request.form.get("emailaddress")
                 email_object = User.query.filter_by(emailaddress=emailaddress).first()
@@ -601,7 +585,7 @@ def user_edit(username):
                     return redirect(url_for("user_profile", username=username))
 
                 # We still need to run the code that checks the current password is correct
-                current = request.form.get("password")
+                current = request.form.get("confirm_password")
                 if check_password_hash(user.password, current):
                     user.emailaddress = request.form.get("emailaddress")
                     db.session.commit()
@@ -612,7 +596,7 @@ def user_edit(username):
 
             # NO DATA CHANGED
             else:
-                current = request.form.get("password")
+                current = request.form.get("confirm_password")
                 if check_password_hash(user.password, current):
                     flash("No user data was changed")
                     return redirect(url_for("user_profile", username=username))
