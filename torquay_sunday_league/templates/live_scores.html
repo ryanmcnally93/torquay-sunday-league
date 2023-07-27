@@ -22,7 +22,7 @@
 
     {% for match in matches if match.competition.name == "FIFA World Cup" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">FIFA World Cup</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/world.webp/') }}" class="flag">FIFA World Cup</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -37,7 +37,7 @@
 
     {% for match in matches if match.competition.name == "European Championship" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">European Championship</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/europe.webp/') }}" class="flag">European Championship</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -52,7 +52,7 @@
 
     {% for match in matches if match.competition.name == "Premier League" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Premier League</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/uk.webp/') }}" class="flag">Premier League</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -67,7 +67,7 @@
 
     {% for match in matches if match.competition.name == "Championship" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Championship</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/uk.webp/') }}" class="flag">Championship</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -82,7 +82,7 @@
 
     {% for match in matches if match.competition.name == "UEFA Champions League" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">UEFA Champions League</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/champions-league.webp/') }}" class="flag">UEFA Champions League</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -97,7 +97,7 @@
 
     {% for match in matches if match.competition.name == "Bundesliga" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Bundesliga</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/germany.webp/') }}" class="flag">Bundesliga</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -112,7 +112,7 @@
 
     {% for match in matches if match.competition.name == "Ligue 1" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Ligue 1</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/france.webp/') }}" class="flag">Ligue 1</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -127,7 +127,7 @@
 
     {% for match in matches if match.competition.name == "Serie A" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Serie A</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/italy.webp/') }}" class="flag">Serie A</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -142,7 +142,7 @@
 
     {% for match in matches if match.competition.name == "La Liga" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">La Liga</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/spain.webp/') }}" class="flag">La Liga</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -157,7 +157,7 @@
 
     {% for match in matches if match.competition.name == "Primeira Liga" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Liga Portugal</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/portugal.webp/') }}" class="flag">Liga Portugal</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -172,7 +172,7 @@
 
     {% for match in matches if match.competition.name == "Campeonato Brasileiro Série A" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Serie A Brazil</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/brazil.webp/') }}" class="flag">Serie A Brazil</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -187,7 +187,7 @@
 
     {% for match in matches if match.competition.name == "Eredivisie" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Eredivisie</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/netherlands.webp/') }}" class="flag">Eredivisie</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
@@ -202,7 +202,7 @@
 
     {% for match in matches if match.competition.name == "Copa Libertadores" %} 
         {% if loop.index == 1 %}
-            <h3 class="competition-header">Copa Libertadores</h3>
+            <h3 class="competition-header"><img src="{{ url_for('static', filename='images/south-america.webp/') }}" class="flag">Copa Libertadores</h3>
             <div class="league-box">
         {% endif %}
                 <div class="scores-inline">
