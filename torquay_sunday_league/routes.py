@@ -115,7 +115,7 @@ def register():
         return redirect(url_for("user_profile", username=session["user"]))
 
     if request.method == "POST":
-        username = request.form.get("username")
+        username = request.form.get("username").lower()
         emailaddress = request.form.get("emailaddress").lower()
         password = generate_password_hash(request.form.get("password"))
 
@@ -135,7 +135,6 @@ def register():
             flash("Email address is taken")
             return redirect(url_for("register"))
 
-
         # Get the month and year of registration
         date_time = datetime.now()
         month = date_time.strftime("%B")
@@ -150,6 +149,12 @@ def register():
             )
         db.session.add(user)
         db.session.commit()
+
+        # Steps to take when administrator registers account
+        if username == "ryanmcnally93":
+            session["user"] = request.form.get("username").lower()
+            flash("Registration Successful!")
+            return redirect(url_for("user_profile", username=session["user"]))
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()

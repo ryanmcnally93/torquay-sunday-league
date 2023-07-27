@@ -681,6 +681,8 @@ To the best of my knowledge, there are no known bugs left to fix.
 
 <img src="/torquay_sunday_league/static/images/readme-images/ipad.webp" width="50%" alt="The teams page on IPad" style="display: inherit; ">
 
+- On the live scores page, I added scroll to the list so it can handle any amount of matches, and made the players invisible below 1000px wide so as not to distract from the results on show.
+
 #### IPhone 5/SE screen resolution
 
 - All headings and their respective boxes change in size to adapt to a smaller page, keeping their centralisation.
