@@ -25,13 +25,14 @@
             <li><a href="{{ url_for('live_scores') }}">Live Scores</a></li>
             <li><a href="{{ url_for('teams') }}">Teams</a></li>
             {% if session.user %}
-                <li><a href="{{ url_for('user_profile', username=session['user']) }}">Profile</a></li>
+                
                 {% if user.team_managed == "None" or user.username == "ryanmcnally93" %}
                     <li><a href="{{ url_for('create_team', username=session['user']) }}">Create Team</a></li>
                 {% else %}
                     <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
                 {% endif %}
-                    <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
+                <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
+                <li><a id="p-anchor" href="{{ url_for('user_profile', username=session['user']) }}"><img src="{{ profile_picture }}" id="small-pp"></a></li>
             {% else %}
                 <li><a href="{{ url_for('log_in') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
