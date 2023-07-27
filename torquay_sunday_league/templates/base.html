@@ -10,7 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% if title %}
+    <title>{{title}} - TSL</title>
+    {% else %}
     <title>Torquay Sunday League</title>
+    {% endif %}
 </head>
 <body>
     <nav id="nav">

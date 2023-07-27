@@ -45,8 +45,9 @@ def teams():
         profile_picture = "None"
 
     teams = list(Team.query.order_by(Team.team_name).all())
+    title = "Teams"
     # update team no of players
-    return render_template("teams.html", teams=teams, user=user1, team=team1, profile_picture=profile_picture)
+    return render_template("teams.html", teams=teams, user=user1, team=team1, profile_picture=profile_picture, title=title)
 
 
 @app.route("/rules")
@@ -59,7 +60,8 @@ def rules():
         user1 = "None"
         team1 = "None"
         profile_picture = "None"
-    return render_template("rules.html", user=user1, team=team1, profile_picture=profile_picture)
+    title = "rules"
+    return render_template("rules.html", user=user1, team=team1, profile_picture=profile_picture, title=title)
     
 
 @app.route("/create_team/<username>", methods=["GET", "POST"])
@@ -102,7 +104,8 @@ def create_team(username):
         flash("You are not logged in.")
         return redirect(url_for("log_in"))
 
-    return render_template("create_team.html", username=session["user"], user=user, team=team1, profile_picture=profile_picture)
+    title = "Create Team"
+    return render_template("create_team.html", username=session["user"], user=user, team=team1, profile_picture=profile_picture, title=title)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -154,7 +157,9 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("create_team", username=session["user"]))
-    return render_template("register.html")
+    
+    title = "Register"
+    return render_template("register.html", title=title)
 
 
 @app.route("/log_in", methods=["GET", "POST"])
@@ -183,7 +188,8 @@ def log_in():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("log_in"))
 
-    return render_template("log_in.html")
+    title = "Log In"
+    return render_template("log_in.html", title=title)
 
 
 @app.route("/user_profile/<username>", methods=["GET", "POST"])
@@ -197,7 +203,8 @@ def user_profile(username):
         flash("You are not logged in.")
         return redirect(url_for("log_in"))
 
-    return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1)
+    title = "User Profile"
+    return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1, title=title)
 
 
 @app.route("/log_out")
@@ -262,7 +269,8 @@ def edit_team(team_id):
         flash("You are not logged in.")
         return redirect(url_for("log_in"))
 
-    return render_template("edit_team.html", team=baseteam, currentteam=currentteam, user=user1, squad_picture=squad_picture, form=form, profile_picture=profile_picture)
+    title = "Edit Team"
+    return render_template("edit_team.html", team=baseteam, currentteam=currentteam, user=user1, squad_picture=squad_picture, form=form, profile_picture=profile_picture, title=title)
 
 
 @app.route("/delete_team/<int:team_id>")
@@ -295,7 +303,8 @@ def players(id):
 
     currentteam = Team.query.get_or_404(id)
     players = list(Player.query.order_by(Player.player_kit_number).all())
-    return render_template("players.html", players=players, team=baseteam, user=user1, currentteam=currentteam, profile_picture=profile_picture)
+    title = "Players"
+    return render_template("players.html", players=players, team=baseteam, user=user1, currentteam=currentteam, profile_picture=profile_picture, title=title)
 
 
 @app.route("/edit_player/<int:player_id>/<int:team_id>", methods=["GET", "POST"])
@@ -340,7 +349,8 @@ def edit_player(player_id, team_id):
         flash("You are not logged in.")
         return redirect(url_for("log_in"))
 
-    return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1, profile_picture=profile_picture)
+    title = "Edit Player"
+    return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1, profile_picture=profile_picture, title=title)
 
 
 @app.route("/add_player/<int:id>", methods=["GET", "POST"])
@@ -392,7 +402,8 @@ def add_player(id):
         flash("You are not logged in.")
         return redirect(url_for("log_in"))
 
-    return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1, profile_picture=profile_picture)
+    title = "Add Player"
+    return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1, profile_picture=profile_picture, title=title)
 
 
 @app.route("/team_profile/<int:id>", methods=["GET", "POST"]) 
@@ -412,8 +423,8 @@ def team_profile(id):
             flash("You must have 16 players to be accepted")
 
     squad_picture = url_for('static', filename='images/profile_pics/' + currentteam.profile_picture)
-
-    return render_template("team_profile.html", currentteam=currentteam, team=baseteam, user=user1, squad_picture=squad_picture, profile_picture=profile_picture)
+    title = "Team Profile"
+    return render_template("team_profile.html", currentteam=currentteam, team=baseteam, user=user1, squad_picture=squad_picture, profile_picture=profile_picture, title=title)
 
 
 @app.route("/delete_player/<int:team_id>/<int:player_id>")
@@ -610,8 +621,8 @@ def user_edit(username):
     else:
         flash("You are not logged in.")
         return redirect(url_for("log_in"))
-
-    return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form)
+    title = "Edit User"
+    return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form, title=title)
 
 
 @app.route("/delete_user/<username>")
@@ -722,4 +733,5 @@ def live_scores():
             return redirect(url_for("live_scores"))
 
     matches = data['matches']
-    return render_template("live_scores.html", data=data, matches=matches, present=presentstring, user=user1, team=baseteam, profile_picture=profile_picture)
+    title = "Live Scores"
+    return render_template("live_scores.html", data=data, matches=matches, present=presentstring, user=user1, team=baseteam, profile_picture=profile_picture, title=title)

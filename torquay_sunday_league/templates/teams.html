@@ -60,7 +60,7 @@
                     {% if session["user"] == "ryanmcnally93" %}
                         <!-- Switch -->
                         <form method="POST" action="{{ url_for('teams') }}">
-                            <input type="text" id="teamid" name="teamid" value="{{ team.team_name }}" style="display:none;"></input>
+                            <input type="text" id="teamid" name="teamid" value="{{ team.team_name }}" style="display:none;">
                             <div class="switch">
                                 <label for="{{ team.id }}confirmed" class="switch-label">
                                 No
@@ -100,7 +100,11 @@
                             </label>
                         </div>
                     {% endif %}
-                    </div>
+                    {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
+                        </div>
+                    {% else %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             {% endif %}

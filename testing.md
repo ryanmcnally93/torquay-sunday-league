@@ -6,13 +6,72 @@ I have tested my web application automatically and manually using Test Driven De
 
 ### W3C Validation
 
-<!-- <p>
+#### HTML
+
+All the following HTML documents (which are written using Jinja templates), have been validated using the [W3C Validator.](https://validator.w3.org/nu/#textarea)
+
+##### Base
+
+- Tha base URL only returned errors when misreading the Jinja templates. I will disregard these on future HTML documents.
+
+##### Index
+
+- The only issue on this page was the register button, there are four elements with the same ID. However, there will only ever be one of these elements actually visible on the page so this is okay.
+
+##### Live Scores
+
+- There was a stray closing tab on my datepicker input, which is self-closing.
+- I'd also forgotten to add alt attributes to my flags, which are there now.
+
+##### Teams
+
+- Another stray end input tag.
+- The switches were span elements, which could not have a type attribute. I tried changing to a p or a div, but the validator doesn't like whatever type it is. I have not moved the element outside the label in case it messes with the layout of the card.
+- The teams-row wasn't closing because I had an if statement that opened two divs but never closed them both. I fixed this validation error by inserting another if statement below so there are the right amount of divs for the validator and the page itself.
+
+##### Log In
+
+- The login page received no further errors.
+
+##### Register
+
+##### Create Team
+
+##### Edit Player
+
+##### Players
+
+##### Add Player
+
+- The only error that wasn't a Jinja template was the kit numbers input, which had a pattern attribute checking for blank space. I removed this and the input still didn't accept empty space.
+RECHECK ALT?
+
+##### Edit Player
+
+##### Team Profile
+
+##### User Profile
+
+##### Edit User
+
+##### Rules
+
+#### CSS
+
+Initially, the [W3C Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) came back with 3 errors on my style.css.
+
+- 2 were the Aspect ratio's, which were set at 1 and 1.5 instead of 1/1 and 1.5/1.
+- The other was a media query with a space not added.
+
+Both have since been fixed.
+
+<p>
   <a href="http://jigsaw.w3.org/css-validator/check/referer">
     <img  style="border:0;width:88px;height:31px;margin:auto;display:flex;"
           src="http://jigsaw.w3.org/css-validator/images/vcss"
           alt="Valid css!" />
     </a>
-</p> -->
+</p>
 
 ### Javascript Validation
 
