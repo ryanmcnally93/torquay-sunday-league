@@ -110,6 +110,8 @@ I have tested all my JavaScript code using JSHint
 
 - The [team_profile_script.js](/torquay_sunday_league/static/js/team_profile_script.js) file returned no errors.
 
+- The [password_visibility.js](/torquay_sunday_league/static/js/password_visibility.js) file returned no errors.
+
 #### Python Validation
 
 <!-- Unit tests -->
