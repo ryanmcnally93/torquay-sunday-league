@@ -9,7 +9,7 @@
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('user_edit', username=user.username) }}" enctype="multipart/form-data">
         <div class="row picture-edit-row">
             <div class="col picture-edit-box"> 
-                <img alt="The user's profile picture" class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
+                <img class="profile-picture" src="{{ profile_picture }}" alt="{{ user.username }}'s profile picture">
             </div>
         </div>
         <div>

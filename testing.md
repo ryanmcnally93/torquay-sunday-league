@@ -35,26 +35,45 @@ All the following HTML documents (which are written using Jinja templates), have
 
 ##### Register
 
+- The register page received no further errors.
+
 ##### Create Team
 
-##### Edit Player
+- The create team page received no further errors.
+
+##### Edit Team
+
+- I had an element with two alt attributes, which has been changed.
 
 ##### Players
+
+- The players page received no further errors.
 
 ##### Add Player
 
 - The only error that wasn't a Jinja template was the kit numbers input, which had a pattern attribute checking for blank space. I removed this and the input still didn't accept empty space.
-RECHECK ALT?
 
 ##### Edit Player
 
+- This page had the same kit number input error, which has been corrected.
+
 ##### Team Profile
+
+- This page had the same two alt attribute error on one of the elements, which has been fixed.
 
 ##### User Profile
 
+- The user profile page has an error of duplicate ID's, but these are within an if statement and only one will ever show.
+
+- The user picture had the same two alt attribbutes error, which has been fixed.
+
 ##### Edit User
 
+- The user picture had the same two alt attribbutes error, which has been fixed.
+
 ##### Rules
+
+- The rules page received no further errors.
 
 #### CSS
 
@@ -97,11 +116,11 @@ I have tested all my JavaScript code using JSHint
 
 ### Lighthouse
 
-
+- 
 
 #### Mobile Lighthouse
 
-
+- 
 
 ## Manual Testing
 
