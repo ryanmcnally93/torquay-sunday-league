@@ -797,11 +797,11 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The Hele Cross Rangers image was obtained from <a href="https://pixabay.com/photos/people-soccer-players-athlete-1355497/">pixabay</a>, posted by "Ben_Kerckx".
 
-- The team two image was obtained from <a href="https://www.mirror.co.uk/sport/football/news/best-sunday-league-side-ever-12566783">Mirror</a>, posted by "Image: Birmingham Mail WS".
+- The Shiphay District image was obtained from <a href="https://www.mirror.co.uk/sport/football/news/best-sunday-league-side-ever-12566783">Mirror</a>, posted by "Image: Birmingham Mail WS".
 
-- The team three image was obtained from <a href="https://iamjimtaylor.com/posts/running-a-sunday-league-football-team/">I am Jim Taylor</a>, Posted by Jim Taylor on 28th March 2016.
+- The Torre Town image was obtained from <a href="https://iamjimtaylor.com/posts/running-a-sunday-league-football-team/">I am Jim Taylor</a>, Posted by Jim Taylor on 28th March 2016.
 
-- The team four image was obtained from <a href="http://www.lancssundayleague.co.uk/photo.php?action=news&pid=11487&title=Ashton%20on%20Ribble%20celebrate%2010%20years%20in%20the%20League">Lancssundayleague</a>, posted by "Ashton" on Ribble FC.
+- The Wellswood United image was obtained from <a href="http://www.lancssundayleague.co.uk/photo.php?action=news&pid=11487&title=Ashton%20on%20Ribble%20celebrate%2010%20years%20in%20the%20League">Lancssundayleague</a>, posted by "Ashton" on Ribble FC.
 
 - The Barton Albion image was obtained from <a href="https://www.huffingtonpost.co.uk/entry/men-mental-health-sunday-league_uk_5c487879e4b025aa26beea8b">Huffingtonpost</a>, image of Enate United article By Rob Kazandjian.
 
