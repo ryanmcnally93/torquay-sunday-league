@@ -283,7 +283,7 @@ Speak to a footballing fan.
 
 Manager:
 
-- ""
+- "A great football league website is easy to use and navigate."
 
 Player:
 
@@ -297,7 +297,7 @@ Fan:
 
 Manager:
 
-- ""
+- "I would be looking for score updates and team news."
 
 Player:
 
@@ -311,7 +311,7 @@ Fan:
 
 Manager:
 
-- ""
+- "I would use this site."
 
 Player:
 
@@ -325,7 +325,7 @@ Fan:
 
 Manager:
 
-- ""
+- "It's fun and easy to use."
 
 Player:
 
@@ -339,7 +339,7 @@ Fan:
 
 Manager:
 
-- ""
+- "You could add a transfer news section."
 
 Player:
 
@@ -353,7 +353,7 @@ Fan:
 
 Manager:
 
-- ""
+- "Other information such as legitimate signings could be good, and team stats."
 
 Player:
 
@@ -367,7 +367,7 @@ Fan:
 
 Manager:
 
-- ""
+- "I would expect to not be able to enter rude language into my team and player names."
 
 Player:
 
@@ -381,7 +381,7 @@ Fan:
 
 Manager:
 
-- ""
+- "I found it easy to sign up, register and create my own team, very easy to use and self explanatory."
 
 Player:
 
