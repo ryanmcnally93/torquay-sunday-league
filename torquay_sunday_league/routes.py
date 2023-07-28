@@ -385,6 +385,10 @@ def add_player(id):
         
         if request.method == "POST":
             if session["user"] == currentteam.team_created_by:
+                if request.form.get("player_joined") == "":
+                    flash("You must enter the player join date")
+                    return redirect(url_for("add_player", id=id))
+
                 player = Player(
                     player_kit_number=int(request.form.get("player_kit_number")),
                     player_name=request.form.get("player_name"),
