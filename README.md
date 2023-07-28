@@ -1,7 +1,7 @@
 # Torquay Sunday League
 
 
-<!--Image on all devices-->
+<img src="/torquay_sunday_league/static/images/readme-images/main-readme.webp" width="50%" alt="The Font used" style="display: inherit; ">
 
 This is a Sunday league football website, for a league based in Torquay. Languages include; HTML, CSS, JavaScript and Python. This application was created using the Flask framework, Postgres database and SQLAlchemy, and originally deployed on Heroku using ElephantSQL.
 
@@ -9,11 +9,39 @@ The season is about to begin in sunny Torquay but we have one more space open fo
 
 They can create, read, update and delete any information and the same is set for their player and user information too. What players can view, edit and delete depends on whether the content is theirs or not, and security measures are in place to stop people from changing each others data in any way.
 
-<!--Shields-->
+<p align="center">
+
+<img src="https://img.shields.io/github/stars/ryanmcnally93/project-three-torquay-sunday-league?style=social" style="max-width: 100%; margin: 0 10px 10px 0;" alt="Stars">
+
+<img src="https://img.shields.io/github/repo-size/ryanmcnally93/project-three-torquay-sunday-league" style="max-width: 100%; height: 20px; margin: 0 0 10px 10px;" alt="Size of repo">
+
+<br>
+
+<img src="https://img.shields.io/github/issues-raw/ryanmcnally93/project-three-torquay-sunday-league" style="max-width: 100%; height: 20px margin-right: 10px;" alt="Open issues">
+
+<img src="https://img.shields.io/github/last-commit/ryanmcnally93/project-three-torquay-sunday-league?color=green&style=for-the-badge" style="max-width: 100%; height: 20px; margin-left: 10px;" alt="GitHub last commit">
+
+</p>
 
 ## Deployment
 
-<!--New deployment method and links-->
+To deploy my first Heroku project, I followed the steps set by Code Institute.
+
+- Create an account on ElephantSQL
+- Create new instance and copy database URL
+- Create a Procfile and requirements.txt file
+- Add an if statement to ensure SQLAlchemy can read my external database.
+- Create new app on Heroku
+- Enter config vars, including the copied URL
+- Click on deploy, connect to github, find the repository
+- Click Deploy Branch
+- Once that is done, click more, and run console.
+
+It was importing the database from torquay_sunday_league that first provided issues.
+
+My requirements.txt hadn't created an instance for the 'requests' module which needed to be installed. I checked the version I had and provided it in the file.
+
+- I tried again and it worked, after this I opened the app and entered the teams data into the database.
 
 ## UX
 
@@ -251,7 +279,7 @@ Speak to a manager or captain of football team.
 Speak to a regular sunday league player.
 Speak to a footballing fan.
 
-#### Q1 What makes a good website for football?
+#### Q1 What makes a great football league website?
 
 Manager:
 
@@ -279,7 +307,7 @@ Fan:
 
 - ""
 
-#### Q3 If you lived in Torquay, would you use this site?
+#### Q3 Would you use this site?
 
 Manager:
 
