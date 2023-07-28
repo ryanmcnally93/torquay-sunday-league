@@ -12,7 +12,7 @@ All the following HTML documents (which are written using Jinja templates), have
 
 ##### Base
 
-- Tha base URL only returned errors when misreading the Jinja templates. I will disregard these on future HTML documents.
+- The base URL only returned errors when misreading the Jinja templates. I will disregard these on future HTML documents.
 
 ##### Index
 
@@ -65,11 +65,11 @@ All the following HTML documents (which are written using Jinja templates), have
 
 - The user profile page has an error of duplicate ID's, but these are within an if statement and only one will ever show.
 
-- The user picture had the same two alt attribbutes error, which has been fixed.
+- The user picture had the same two alt attributes error, which has been fixed.
 
 ##### Edit User
 
-- The user picture had the same two alt attribbutes error, which has been fixed.
+- The user picture had the same two alt attributes error, which has been fixed.
 
 ##### Rules
 
@@ -123,7 +123,7 @@ The following py documents have been tested using [extendsclass.](https://extend
 
 <img src="/torquay_sunday_league/static/images/readme-images/testing-routes.webp" width="80%" alt="The teams page, viewed on desktop" style="display: inherit; ">
 
-I have also played aroung with unittest to try and create tests, similar to my Jest JavaScript tests used in my last project.
+I have also played around with unittest to try and create tests, similar to my Jest JavaScript tests used in my last project.
 
 ### Lighthouse
 
@@ -319,7 +319,7 @@ Desktop Macbook, Ipad Air Simulator & IPhone 5/SE simulator
 
 | Feature                                 | Expected Outcome                                       | Testing Performed                    | Result                                              | Pass/Fail |
 | --------------------------------------- | ------------------------------------------------------ | ------------------------------------ | --------------------------------------------------- | --------- |
-| Edit User Button | CSS change and takes user to edit user form | Hovered then clicken on edit user button | Green button darkened, click took me to the correct form | Pass |
+| Edit User Button | CSS change and takes user to edit user form | Hovered then clicked on edit user button | Green button darkened, click took me to the correct form | Pass |
 | Delete user button | Modal popup | Clicked on delete user | Modal popped up | Pass |
 | Modal no button | Closes modal, user still on profile page | Clicked on no | Modal closed, still on page | Pass |
 | Modal yes button | Modal closes, account deletes, session cookie deletes, user taken to login page | Clicked on yes | Modal closed, account deleted, session cookie deleted, taken to login page. Message to confirm deletion appeared. | Pass |
@@ -478,3 +478,5 @@ Desktop Macbook, Ipad Air Simulator & IPhone 5/SE simulator
 | Datepicker input | Opens Datepicker | Clicked on datepicker input field | Datepicker opened | Pass |
 | Search button | Doesn't allow no data to be entered | Clicked on button with no data entered | Message opened, did not POST | Pass |
 | Search button | Returns correct results when date entered | Entered dates with no matches and with some matches | Correct response | Pass |
+
+This readme.md was spellchecked using the spell checker extension for Chrome.
