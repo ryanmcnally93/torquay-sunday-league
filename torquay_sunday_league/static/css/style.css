@@ -12,6 +12,10 @@
     }
 }
 
+#players-add-button {
+    margin-bottom: 0 !important;
+}
+
 #togglePassword, #toggleConfirmPassword, #toggleNewPassword {
     cursor: pointer;
     float: right;
@@ -765,6 +769,7 @@ h1 .fa-futbol {
     width: 100%;
     display: inline-flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .player-collapsible {
@@ -790,6 +795,7 @@ h1 .fa-futbol {
 #player-background {
     background-color: rgb(250,250,250,0.8);
     border-radius: 20px;
+    margin: 2px;
 }
 
 #top-p {
@@ -815,7 +821,7 @@ h1 .fa-futbol {
     box-shadow: none;
     border: none;
     margin-top: 0;
-    height: 670px;
+    height: 685px;
     overflow: scroll;
 }
 
@@ -992,6 +998,7 @@ h1 .fa-futbol {
     vertical-align: middle;
     line-height: 45px;
     padding: 25px 10px 0 10px;
+    margin-bottom: 0 !important;
 }
 
 .editable-content {
@@ -1053,7 +1060,7 @@ h1 .fa-futbol {
     display: block;
     line-height: 25px;
     height: 50px;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;

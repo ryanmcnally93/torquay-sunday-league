@@ -6,7 +6,7 @@
 </div>
 
 {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
-<div class="row row-with-mt">
+<div class="row row-with-mt" id="players-add-button">
     <div class="col s12 center-align">
         <a href="{{ url_for('add_player', id=currentteam.id) }}" class="btn green button-border">
             Add Player <i class="fas fa-plus-square right"></i>
