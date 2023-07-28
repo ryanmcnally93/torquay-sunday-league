@@ -36,7 +36,7 @@
                     <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
-                <li><a id="p-anchor" href="{{ url_for('user_profile', username=session['user']) }}"><img src="{{ profile_picture }}" id="small-pp"></a></li>
+                <li><a id="p-anchor" href="{{ url_for('user_profile', username=session['user']) }}"><img src="{{ profile_picture }}" id="small-pp" alt="User Profile Picture"></a></li>
             {% else %}
                 <li><a href="{{ url_for('log_in') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
@@ -84,11 +84,11 @@
 
     <footer>
         <ul class="social-networks" id="socials">
-            <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-            <li><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com" name="Facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.twitter.com" name="Twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
             <li>© Torquay Sunday League</li>
-            <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="https://www.tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+            <li><a href="https://www.instagram.com" name="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.tiktok.com" name="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
         </ul>
         <p><a id="rules-link" class="footer-line" href="{{ url_for('rules') }}">Rules</a>~<a id="back-to-top" class="footer-line" href="#nav">Back to top</a></p>
     </footer>

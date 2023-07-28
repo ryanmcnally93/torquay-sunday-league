@@ -30,8 +30,8 @@
                 {% for player in players %}
                     <!-- Making sure to only display players in correct team -->
                     {% if player.team_id == currentteam.id %}
-                        <li id="player-background">
-                            <div class="collapsible-header white-text green" id="player-name">
+                        <li class="player-background">
+                            <div class="collapsible-header white-text" id="player-name">
                                 <i class="fas fa-caret-down"></i>
                                 <strong>{{ player.player_kit_number }}).  {{ player.player_name }}</strong>
                             </div>

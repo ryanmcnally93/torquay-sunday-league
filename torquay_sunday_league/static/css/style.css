@@ -12,6 +12,10 @@
     }
 }
 
+label {
+    color: black;
+}
+
 #players-add-button {
     margin-bottom: 0 !important;
 }
@@ -93,6 +97,10 @@
     margin-bottom: 10px !important;
     margin: 0 auto;
     text-align: center;
+}
+
+.collapsible-header {
+    background-color: darkgreen !important;
 }
 
 .son {
@@ -792,7 +800,7 @@ h1 .fa-futbol {
     border-radius: 20px;
 }
 
-#player-background {
+.player-background {
     background-color: rgb(250,250,250,0.8);
     border-radius: 20px;
     margin: 2px;
