@@ -249,14 +249,11 @@ I have also played aroung with unittest to try and create tests, similar to my J
 
 This project has been tested using the following browsers:
 
-Chrome
-<!--Safari & Edge-->
+Chrome, Safari & Edge
 
 On the following devices:
 
-Desktop Macbook
-
-<!-- Ipad Air Simulator on Dev Tools & Smallest phone size IPhone 5/SE simulator on Dev Tools -->
+Desktop Macbook, Ipad Air Simulator & IPhone 5/SE simulator
 
 ### Base
 

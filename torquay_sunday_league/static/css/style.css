@@ -2,32 +2,7 @@
 
 /* Base CSS */
 
-.scores-inline {
-    display: flex;
-}
-
-@media (min-width: 761px) {
-    .sscores {
-        display: none;
-    }
-}
-
-label {
-    color: black;
-}
-
-#players-add-button {
-    margin-bottom: 0 !important;
-}
-
-#togglePassword, #toggleConfirmPassword, #toggleNewPassword {
-    cursor: pointer;
-    float: right;
-    position: absolute;
-    margin-top: 15px;
-    right: 22px;
-    color: #008285 !important;
-}
+/* Navbar */
 
 #small-pp {
     border-style: none;
@@ -39,166 +14,6 @@ label {
     border: 1px solid darkgreen;
 }
 
-#p-anchor {
-    height: 82px;
-}
-
-.league-box {
-    margin: 0 auto;
-    width: 100%;
-    background-color: rgb(250,250,250,0.8);
-    border-radius: 25px;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-}
-
-.flag {
-    border-style: none;
-    width: 30px;
-    vertical-align: text-bottom;
-    margin-right: 10px;
-}
-
-.api-team {
-    margin-right: 5px;
-}
-
-#search-button {
-    margin: 25px 0 0 0;
-}
-
-.search-row {
-    display: flex;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    justify-content: center;
-    width: 60%;
-    margin-bottom: 0 !important;
-}
-
-@media (max-width: 600px) {
-    .search-row {
-        display: block;
-        text-align: center;
-    }
-    #search-button {
-        margin: 10px 0 15px 0;
-    }
-}
-
-#search-bar {
-    width: 60%;
-    margin: 30px auto 0 auto;
-}
-
-.competition-header {
-    color: darkgreen;
-    font-size: 24px;
-    margin-bottom: 10px !important;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.collapsible-header {
-    background-color: darkgreen !important;
-}
-
-.son {
-    width: 360px !important;
-}
-
-.team-name {
-    margin-bottom: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-#results {
-    max-height: 613px;
-    overflow: scroll;
-    width: 50%;
-    margin: auto;
-    margin-top: 20px;
-}
-
-#freepik {
-    display: flex;
-    justify-content: center;
-    color: darkgreen;
-    background-color: rgb(250,250,250,0.8);
-    border-radius: 25px;
-    margin: 0 auto;
-    width: 50%;
-}
-
-#freepik p {
-    margin: 15px;
-    text-align: center;
-}
-
-@media (min-width: 1100px) {
-    #results, #freepik {
-        width: 40% !important;
-    }
-}
-
-@media (min-width: 581px) and (max-width: 800px) {
-    #results, #freepik {
-        width: 80% !important;
-    }
-}
-
-@media (min-width: 501px) and (max-width: 580px) {
-    #results, #freepik {
-        width: 50% !important;
-    }
-}
-
-@media (max-width: 500px) {
-    #results, #freepik {
-        width: 80% !important;
-    }
-}
-
-.search-message {
-    background-color: rgb(250, 250, 250, 0.8);
-    margin: 0 auto 20px auto;
-    width: 100%;
-    padding: 15px;
-    border-radius: 25px;
-    text-align: center;
-    color: darkgreen;
-}
-
-#api-main {
-    min-height: 770px;
-}
-
-.scores-player-left-box {
-    position: absolute;
-    top: 265px;
-    left: 5%;
-    height: 640px !important;
-}
-
-.scores-player-right-box {
-    right: 3%;
-    position: absolute;
-    top: 265px;
-    height: 640px !important;
-}
-
-@media (max-width: 1000px) {
-    .scores-player-right-box, .scores-player-left-box {
-        display: none !important;
-    }
-    #api-main {
-        min-height: auto;
-    }
-}
-
-/* Navbar */
 #logo {
     width: 82px;
     position: absolute;
@@ -252,195 +67,6 @@ nav {
     width: 60%;
     border-radius: 25px;
     margin: 30px auto 40px auto !important;
-}
-
-/* Headings */
-.main-heading, .sub-heading, #index-main-heading, .index-sub-heading {
-    color: #008000;
-    text-align: center;
-}
-
-#index-main-heading {
-    margin: 35px 0 25px 0;
-}
-
-.sub-heading, .index-sub-heading {
-    font-size: 32px;
-    margin-top: 0;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.main-heading {
-    font-weight: 600;
-    margin: 0;
-    font-weight: 400;
-}
-
-.heading-box {
-    background-color: rgb(250,250,250,0.8);
-    width: fit-content;
-    margin: auto;
-    border-radius: 25px;
-    height: 75px;
-    margin-top: 20px;
-    text-align: center;
-    padding: 8px 20px;
-    margin-bottom: 0;
-}
-
-@media (min-width: 768px) {
-    .heading-box {
-        height: 95px;
-    }
-}
-
-#cannot-view {
-    background-color: rgb(250,250,250,0.8);
-    width: fit-content;
-    margin: auto;
-    border-radius: 25px;
-    margin-top: 20px;
-    text-align: center;
-    padding: 8px 20px;
-    height: 70px;
-    margin-bottom: 20px;
-}
-
-/* All Pages Main Elements */
-
-#main-content {
-    margin-bottom: 20px;
-}
-
-/* Row Margin alterations */
-
-.row-without-mt {
-    margin-top: 0;
-}
-
-.row-with-mt {
-    margin-top: 20px;
-}
-
-.row-without-mb{
-    margin-bottom: 0;
-}
-
-/* Flash Messages */
-
-.flashes {
-    margin-bottom: 0;
-    margin-top: 10px;
-}
-
-.flashes h3 {
-    line-height: 1;
-    margin: auto;
-    width: fit-content;
-    border-radius: 25px;
-    padding: 20px;
-}
-
-@media (min-width: 768px) and (max-width: 1000px) {
-    .flashes h3 {
-        font-size: 32px;
-    }
-}
-
-@media (max-width: 767px) {
-    .flashes h3 {
-        font-size: 20px;
-    }
-}
-
-/* Modals */
-
-.modal {
-    border-radius: 20px;
-    padding: 10px;
-}
-
-.modal p {
-    margin-top: 20px;
-}
-
-/* Background Images */
-
-#background-image {
-    position: fixed;
-    top: -400px;
-    z-index: -1;
-    width: 1800px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    left: 50%;
-    margin-left: -900px;
-    display: block;
-    opacity: 0.8;
-}
-
-#background-image-large {
-    display: none;
-}
-
-@media (min-width: 1201px) {
-    #background-image-large {
-        position: fixed;
-        top: -100px;
-        z-index: -1;
-        width: 1800px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        left: 50%;
-        margin-left: -900px;
-        display: block;
-        opacity: 0.8;
-    }
-    #background-image {
-        display: none;
-    }
-}
-
-/* Buttons */
-
-.button-border {
-    border-radius: 10px;
-    font-family: 'Ysabeau Infant', sans-serif;
-}
-
-.turq {
-    background-color: turquoise;
-    color: black;
-}
-
-.turq:hover {
-    background-color: #008285 !important;
-    color: white !important;
-}
-
-.red:hover {
-    background-color: darkred !important;
-}
-
-.btn.green:hover {
-    background-color: darkgreen !important;
-}
-
-.btn.lyellow {
-    color: black;
-}
-
-.btn.lyellow {
-    background-color: #FFFF61;
-}
-
-.btn.lyellow:hover {
-    background-color: #E0E000 !important;
 }
 
 /* Whole Body */
@@ -530,6 +156,10 @@ footer p {
   
 .social-networks i:hover {
     color: turquoise;
+}
+
+label {
+    color: black;
 }
 
 /* Base Mobile Responsiveness */
@@ -755,10 +385,189 @@ h1 .fa-futbol {
     }
 }
 
+/* Live Scores Page */
+
+.search-message {
+    background-color: rgb(250, 250, 250, 0.8);
+    margin: 0 auto 20px auto;
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    text-align: center;
+    color: darkgreen;
+}
+
+#api-main {
+    min-height: 770px;
+}
+
+.scores-player-left-box {
+    position: absolute;
+    top: 265px;
+    left: 5%;
+    height: 640px !important;
+}
+
+.scores-player-right-box {
+    right: 3%;
+    position: absolute;
+    top: 265px;
+    height: 640px !important;
+}
+
+#search-bar {
+    width: 60%;
+    margin: 30px auto 0 auto;
+}
+
+#p-anchor {
+    height: 82px;
+}
+
+.league-box {
+    margin: 0 auto;
+    width: 100%;
+    background-color: rgb(250,250,250,0.8);
+    border-radius: 25px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.scores-inline {
+    display: flex;
+}
+
+.flag {
+    border-style: none;
+    width: 30px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+
+.api-team {
+    margin-right: 5px;
+}
+
+#search-button {
+    margin: 25px 0 0 0;
+}
+
+.search-row {
+    display: flex;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center;
+    width: 60%;
+    margin-bottom: 0 !important;
+}
+
+.competition-header {
+    color: darkgreen;
+    font-size: 24px;
+    margin-bottom: 10px !important;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.son {
+    width: 360px !important;
+}
+
+.team-name {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#results {
+    max-height: 613px;
+    overflow: scroll;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#freepik {
+    display: flex;
+    justify-content: center;
+    color: darkgreen;
+    background-color: rgb(250,250,250,0.8);
+    border-radius: 25px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+#freepik p {
+    margin: 15px;
+    text-align: center;
+}
+
+@media (min-width: 1100px) {
+    #results, #freepik {
+        width: 40% !important;
+    }
+}
+
+/* Live Scores Tablet Responsiveness */
+
+@media (max-width: 1000px) {
+    .scores-player-right-box, .scores-player-left-box {
+        display: none !important;
+    }
+    #api-main {
+        min-height: auto;
+    }
+}
+
+@media (min-width: 761px) {
+    .sscores {
+        display: none;
+    }
+}
+
+/* Live Scores Mobile Responsiveness */
+
+@media (min-width: 581px) and (max-width: 800px) {
+    #results, #freepik {
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .search-row {
+        display: block;
+        text-align: center;
+    }
+    #search-button {
+        margin: 10px 0 15px 0;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 580px) {
+    #results, #freepik {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 500px) {
+    #results, #freepik {
+        width: 80% !important;
+    }
+}
+
 /* Players Page */
 
 #players-background-image {
     display: none;
+}
+
+.collapsible-header {
+    background-color: darkgreen !important;
+}
+
+#players-add-button {
+    margin-bottom: 0 !important;
 }
 
 .players-player-left-box {
@@ -1108,6 +917,15 @@ h1 .fa-futbol {
     color: #008285 !important;
 }
 
+#togglePassword, #toggleConfirmPassword, #toggleNewPassword {
+    cursor: pointer;
+    float: right;
+    position: absolute;
+    margin-top: 15px;
+    right: 22px;
+    color: #008285 !important;
+}
+
 .fa-shirt {
     margin-left: -5px;
 }
@@ -1404,4 +1222,194 @@ h1 .fa-futbol {
     height: 35px;
     padding: 0;
     margin-bottom: 20px;
+}
+
+/* Headings */
+
+.main-heading, .sub-heading, #index-main-heading, .index-sub-heading {
+    color: #008000;
+    text-align: center;
+}
+
+#index-main-heading {
+    margin: 35px 0 25px 0;
+}
+
+.sub-heading, .index-sub-heading {
+    font-size: 32px;
+    margin-top: 0;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.main-heading {
+    font-weight: 600;
+    margin: 0;
+    font-weight: 400;
+}
+
+.heading-box {
+    background-color: rgb(250,250,250,0.8);
+    width: fit-content;
+    margin: auto;
+    border-radius: 25px;
+    height: 75px;
+    margin-top: 20px;
+    text-align: center;
+    padding: 8px 20px;
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .heading-box {
+        height: 95px;
+    }
+}
+
+#cannot-view {
+    background-color: rgb(250,250,250,0.8);
+    width: fit-content;
+    margin: auto;
+    border-radius: 25px;
+    margin-top: 20px;
+    text-align: center;
+    padding: 8px 20px;
+    height: 70px;
+    margin-bottom: 20px;
+}
+
+/* All Pages Main Elements */
+
+#main-content {
+    margin-bottom: 20px;
+}
+
+/* Row Margin alterations */
+
+.row-without-mt {
+    margin-top: 0;
+}
+
+.row-with-mt {
+    margin-top: 20px;
+}
+
+.row-without-mb{
+    margin-bottom: 0;
+}
+
+/* Flash Messages */
+
+.flashes {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.flashes h3 {
+    line-height: 1;
+    margin: auto;
+    width: fit-content;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .flashes h3 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .flashes h3 {
+        font-size: 20px;
+    }
+}
+
+/* Modals */
+
+.modal {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.modal p {
+    margin-top: 20px;
+}
+
+/* Background Images */
+
+#background-image {
+    position: fixed;
+    top: -400px;
+    z-index: -1;
+    width: 1800px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    left: 50%;
+    margin-left: -900px;
+    display: block;
+    opacity: 0.8;
+}
+
+#background-image-large {
+    display: none;
+}
+
+@media (min-width: 1201px) {
+    #background-image-large {
+        position: fixed;
+        top: -100px;
+        z-index: -1;
+        width: 1800px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        left: 50%;
+        margin-left: -900px;
+        display: block;
+        opacity: 0.8;
+    }
+    #background-image {
+        display: none;
+    }
+}
+
+/* Buttons */
+
+.button-border {
+    border-radius: 10px;
+    font-family: 'Ysabeau Infant', sans-serif;
+}
+
+.turq {
+    background-color: turquoise;
+    color: black;
+}
+
+.turq:hover {
+    background-color: #008285 !important;
+    color: white !important;
+}
+
+.red:hover {
+    background-color: darkred !important;
+}
+
+.btn.green:hover {
+    background-color: darkgreen !important;
+}
+
+.btn.lyellow {
+    color: black;
+}
+
+.btn.lyellow {
+    background-color: #FFFF61;
+}
+
+.btn.lyellow:hover {
+    background-color: #E0E000 !important;
 }
