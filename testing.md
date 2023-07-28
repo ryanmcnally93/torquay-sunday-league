@@ -125,15 +125,125 @@ The following py documents have been tested using [extendsclass.](https://extend
 
 I have also played aroung with unittest to try and create tests, similar to my Jest JavaScript tests used in my last project.
 
-<!-- RESULTS -->
-
 ### Lighthouse
 
-- 
+- The only issues I had with my desktop lighthouse scores were my forgotten alt attribute on the smaller profile picture icon and the collapsibles contrast, both of which have now been resolved.
+
+#### Homepage
+
+<img src="/torquay_sunday_league/static/images/readme-images/home-desk.png" width="80%" alt="Homepage on desktop" style="display: inherit; ">
+
+#### Live Scores
+
+<img src="/torquay_sunday_league/static/images/readme-images/live-scores-desk.png" width="80%" alt="Live scores page on desktop" style="display: inherit; ">
+
+#### Teams
+
+<img src="/torquay_sunday_league/static/images/readme-images/teams-desk.png" width="80%" alt="Teams page on desktop" style="display: inherit; ">
+
+#### Login
+
+<img src="/torquay_sunday_league/static/images/readme-images/login-desk.png" width="80%" alt="The login page on desktop" style="display: inherit; ">
+
+#### Register
+
+<img src="/torquay_sunday_league/static/images/readme-images/register-desk.png" width="80%" alt="The register page on desktop" style="display: inherit; ">
+
+#### Rules
+
+<img src="/torquay_sunday_league/static/images/readme-images/rules-desk.png" width="80%" alt="The rules page on desktop" style="display: inherit; ">
+
+#### Create Team
+
+<img src="/torquay_sunday_league/static/images/readme-images/create-team-desk.png" width="80%" alt="The create team page on desktop" style="display: inherit; ">
+
+#### Edit Team
+
+<img src="/torquay_sunday_league/static/images/readme-images/edit-team-desk.png" width="80%" alt="The edit team page on desktop" style="display: inherit; ">
+
+#### Team Profile
+
+<img src="/torquay_sunday_league/static/images/readme-images/team-profile-desk.png" width="80%" alt="The team profile page on desktop" style="display: inherit; ">
+
+#### Add Player
+
+<img src="/torquay_sunday_league/static/images/readme-images/add-player-desk.png" width="80%" alt="The add player page on desktop" style="display: inherit; ">
+
+#### Edit Player
+
+<img src="/torquay_sunday_league/static/images/readme-images/edit-player-desk.png" width="80%" alt="The edit player page on desktop" style="display: inherit; ">
+
+#### User Profile
+
+<img src="/torquay_sunday_league/static/images/readme-images/user-profile-desk.png" width="80%" alt="The users profile on desktop" style="display: inherit; ">
+
+#### User Edit
+
+<img src="/torquay_sunday_league/static/images/readme-images/user-edit-desk.png" width="80%" alt="The user edit page on desktop" style="display: inherit; ">
+
+#### Players
+
+<img src="/torquay_sunday_league/static/images/readme-images/players-desk.png" width="80%" alt="The players page on desktop" style="display: inherit; ">
 
 #### Mobile Lighthouse
 
-- 
+- The only issue with the mobile lighthouse checks were the social media icon margins, which have also been resolved since these images were taken.
+
+#### Homepage
+
+<img src="/torquay_sunday_league/static/images/readme-images/home-mobile.png" width="80%" alt="Homepage on mobile" style="display: inherit; ">
+
+#### Live Scores
+
+<img src="/torquay_sunday_league/static/images/readme-images/live-scores-mobile.png" width="80%" alt="Live scores page on mobile" style="display: inherit; ">
+
+#### Teams
+
+<img src="/torquay_sunday_league/static/images/readme-images/teams-mobile.png" width="80%" alt="Teams page on mobile" style="display: inherit; ">
+
+#### Login
+
+<img src="/torquay_sunday_league/static/images/readme-images/login-mobile.png" width="80%" alt="The login page on mobile" style="display: inherit; ">
+
+#### Register
+
+<img src="/torquay_sunday_league/static/images/readme-images/register-mobile.png" width="80%" alt="The register page on mobile" style="display: inherit; ">
+
+#### Rules
+
+<img src="/torquay_sunday_league/static/images/readme-images/rules-mobile.png" width="80%" alt="The rules page on mobile" style="display: inherit; ">
+
+#### Create Team
+
+<img src="/torquay_sunday_league/static/images/readme-images/create-team-mobile.png" width="80%" alt="The create team page on mobile" style="display: inherit; ">
+
+#### Edit Team
+
+<img src="/torquay_sunday_league/static/images/readme-images/edit-team-mobile.png" width="80%" alt="The edit team page on mobile" style="display: inherit; ">
+
+#### Team Profile
+
+<img src="/torquay_sunday_league/static/images/readme-images/team-profile-mobile.png" width="80%" alt="The team profile page on mobile" style="display: inherit; ">
+
+#### Add Player
+
+<img src="/torquay_sunday_league/static/images/readme-images/add-player-mobile.png" width="80%" alt="The add player page on mobile" style="display: inherit; ">
+
+#### Edit Player
+
+<img src="/torquay_sunday_league/static/images/readme-images/edit-player-mobile.png" width="80%" alt="The edit player page on mobile" style="display: inherit; ">
+
+#### User Profile
+
+<img src="/torquay_sunday_league/static/images/readme-images/user-profile-mobile.png" width="80%" alt="The users profile on mobile" style="display: inherit; ">
+
+#### User Edit
+
+<img src="/torquay_sunday_league/static/images/readme-images/user-edit-mobile.png" width="80%" alt="The user edit page on mobile" style="display: inherit; ">
+
+#### Players
+
+<img src="/torquay_sunday_league/static/images/readme-images/players-mobile.png" width="80%" alt="The players page on mobile" style="display: inherit; ">
 
 ## Manual Testing
 

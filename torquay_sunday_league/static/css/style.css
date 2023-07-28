@@ -561,7 +561,7 @@ nav .sidenav-trigger {
     }
     .social-networks li {
         display: inline-flex !important;
-        margin: 2px;
+        margin: 0 2%;
     }
 }
 

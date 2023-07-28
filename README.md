@@ -1,7 +1,7 @@
 # Torquay Sunday League
 
 
-<img src="/torquay_sunday_league/static/images/readme-images/main-readme.webp" width="50%" alt="The Font used" style="display: inherit; ">
+<img src="/torquay_sunday_league/static/images/readme-images/main-readme.webp" width="50%" alt="The TSL website on multiple devices" style="display: inherit; ">
 
 This is a Sunday league football website, for a league based in Torquay. Languages include; HTML, CSS, JavaScript and Python. This application was created using the Flask framework, Postgres database and SQLAlchemy, and originally deployed on Heroku using ElephantSQL.
 
@@ -743,7 +743,7 @@ In an ideal scenario this page would display the scores from the league the site
 
 I signed up for an account on the API website and received this email.
 
-<img src="/torquay_sunday_league/static/images/readme-images/api-token.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
+<img src="/torquay_sunday_league/static/images/readme-images/api-token.webp" width="50%" alt="API email" style="display: inherit; ">
 
 I then created the live scores html and app.route. Within this route I added the header variable and passed it the credentials received within the email.
 
@@ -757,13 +757,13 @@ I watched the Code Institute videos on API integration and in particular, the st
 
 I discovered on a Stack Overflow the way to do this in Python so went from there. I managed to get the data to display all matches in JSON format like this:
 
-<img src="/torquay_sunday_league/static/images/readme-images/api-data.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
+<img src="/torquay_sunday_league/static/images/readme-images/api-data.webp" width="50%" alt="API issues" style="display: inherit; ">
 
 However, I passed the data the wrong words, like winner and team instead of matches. I was stuck for a while until a tutor helped me find which word I needed to pass into data to deconstruct the JSON file and render what I wanted.
 
 I struggled with the boxing of the matches and splitting them by competition, as in the JSON file the matches aren't a child of competition. I achieved this by using loop.index and loop.last and adding the start and eng tags of my div within them, creating a box around the results.
 
-<img src="/torquay_sunday_league/static/images/readme-images/api-loops.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
+<img src="/torquay_sunday_league/static/images/readme-images/api-loops.webp" width="50%" alt="API loops" style="display: inherit; ">
 
 ## Credits
 
