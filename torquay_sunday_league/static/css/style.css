@@ -25,6 +25,10 @@
     border-style: none;
     width: 60px;
     margin-top: 10px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 1px solid darkgreen;
 }
 
 #p-anchor {
@@ -89,6 +93,13 @@
 
 .son {
     width: 360px !important;
+}
+
+.team-name {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 #results {

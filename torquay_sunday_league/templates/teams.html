@@ -48,7 +48,7 @@
                                 <a class="btn green card-button editable-button" href="{{ url_for('edit_team', team_id=team.id) }}">Edit</a>
                                 <a class="btn red modal-trigger card-button editable-button" id="delete_team" href="#modal-{{ team.id }}">Delete</a>
                             </div>
-                    {% else %}
+                    {% else %} 
                         <div class="card-action">
                             <a class="btn turq card-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
                             <!-- if team.confirmation_status == True  -->

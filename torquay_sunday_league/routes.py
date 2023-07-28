@@ -31,23 +31,27 @@ def home():
 def teams():
     if "user" in session:
         user1 = User.query.filter_by(username=session["user"]).first()
-        team1 = Team.query.filter_by(team_name=user1.team_managed).first()
+        baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for('static', filename='images/profile_pics/' + user1.profile_picture)
+        currentteam = "None"
 
         if request.method == "POST":
-            team=Team.query.filter_by(team_name=request.form.get("teamid")).first()
-            team.confirmation_status = bool(True if request.form.get(f"confirmed") else False)
+            currentteam = Team.query.filter_by(team_name=request.form.get("teamid")).first()
+            print(request.form.get("teamid"))
+            currentteam.confirmation_status = bool(True if request.form.get(f"{ currentteam.id }confirmed") else False)
             db.session.commit()
             flash("Confirmation changed")
+            print(currentteam.confirmation_status)
     else:
         user1 = "None"
-        team1 = "None"
+        baseteam = "None"
         profile_picture = "None"
+        currentteam = "None"
 
     teams = list(Team.query.order_by(Team.team_name).all())
     title = "Teams"
     # update team no of players
-    return render_template("teams.html", teams=teams, user=user1, team=team1, profile_picture=profile_picture, title=title)
+    return render_template("teams.html", teams=teams, user=user1, team=baseteam, profile_picture=profile_picture, title=title)
 
 
 @app.route("/rules")
@@ -263,7 +267,7 @@ def edit_team(team_id):
 
                 user1.team_managed = currentteam.team_name
                 db.session.commit()
-                # Change redirect for team profile page
+                flash("Team data changed")
                 return redirect(url_for("team_profile", id=currentteam.id))
             else:
                 flash("Only the creator of this team may edit it.")
@@ -302,6 +306,7 @@ def players(id):
     else:
         user1 = "None"
         baseteam = "None"
+        profile_picture = "None"
 
     currentteam = Team.query.get_or_404(id)
     players = list(Player.query.order_by(Player.player_kit_number).all())
