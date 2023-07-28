@@ -50,7 +50,9 @@
                 {% endif %}
                 <!-- Button to view players -->
                 <a class="team-profile-button btn lyellow button-border" href="{{ url_for('players', id=currentteam.id) }}">Players</a>
-                <a class="btn red modal-trigger team-profile-button button-border" id="delete_team" href="#modal-{{ currentteam.id }}">Delete</a>
+                {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
+                    <a class="btn red modal-trigger team-profile-button button-border" id="delete_team" href="#modal-{{ currentteam.id }}">Delete</a>
+                {% endif %}
             </div>
         </div>
 
