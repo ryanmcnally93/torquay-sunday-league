@@ -50,21 +50,21 @@
                 {% endif %}
                 <!-- Button to view players -->
                 <a class="team-profile-button btn lyellow button-border" href="{{ url_for('players', id=currentteam.id) }}">Players</a>
-                <a class="btn red modal-trigger team-profile-button button-border" id="delete_team" href="#modal-{{ team.id }}">Delete</a>
+                <a class="btn red modal-trigger team-profile-button button-border" id="delete_team" href="#modal-{{ currentteam.id }}">Delete</a>
             </div>
         </div>
 
     </div>
 
     <!-- Modal Structure -->
-    <div id="modal-{{ team.id }}" class="modal">
+    <div id="modal-{{ currentteam.id }}" class="modal">
         <div class="modal-content">
             <h4>Are you sure you want to delete this team?</h4>
             <p>This action cannot be undone</p>
         </div>
         <div class="modal-footer">
-            <a href="{{ url_for('delete_team', team_id=team.id) }}" class="btn green button-border">Yes</a>
-            <a href="{{ url_for('team_profile', id = team.id) }}" class="btn red button-border">No</a>
+            <a href="{{ url_for('delete_team', team_id=currentteam.id) }}" class="btn green button-border">Yes</a>
+            <a href="{{ url_for('team_profile', id = currentteam.id) }}" class="btn red button-border">No</a>
         </div>
     </div>
 
