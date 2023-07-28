@@ -795,7 +795,7 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The longer background image was obtained from <a href="https://pixabay.com/photos/stadium-soccer-santiago-grass-1525534/">Pixabay</a>, By "Voltamax".
 
-- The team one image was obtained from <a href="https://pixabay.com/photos/people-soccer-players-athlete-1355497/">pixabay</a>, posted by "Ben_Kerckx".
+- The Hele Cross Rangers image was obtained from <a href="https://pixabay.com/photos/people-soccer-players-athlete-1355497/">pixabay</a>, posted by "Ben_Kerckx".
 
 - The team two image was obtained from <a href="https://www.mirror.co.uk/sport/football/news/best-sunday-league-side-ever-12566783">Mirror</a>, posted by "Image: Birmingham Mail WS".
 
@@ -803,7 +803,7 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The team four image was obtained from <a href="http://www.lancssundayleague.co.uk/photo.php?action=news&pid=11487&title=Ashton%20on%20Ribble%20celebrate%2010%20years%20in%20the%20League">Lancssundayleague</a>, posted by "Ashton" on Ribble FC.
 
-- The team five image was obtained from <a href="https://www.huffingtonpost.co.uk/entry/men-mental-health-sunday-league_uk_5c487879e4b025aa26beea8b">Huffingtonpost</a>, image of Enate United article By Rob Kazandjian.
+- The Barton Albion image was obtained from <a href="https://www.huffingtonpost.co.uk/entry/men-mental-health-sunday-league_uk_5c487879e4b025aa26beea8b">Huffingtonpost</a>, image of Enate United article By Rob Kazandjian.
 
 - The winners image on the index page was obtained from <a href="https://www.nottinghampost.com/news/local-news/gallery/pictures-nottinghamshire-sunday-league-football-5689848">Nottinghampost</a>, By "Joe Rayner".
 
