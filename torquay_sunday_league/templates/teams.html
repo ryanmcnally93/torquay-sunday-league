@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Page Heading -->
 <div class="heading-box">
     <h1 class="main-heading">Teams</h1>
 </div>
 
+<!-- Create Team Button, not available if you already have one or are unregistered -->
+<!-- Administrator can make multiple teams -->
 {% if session.user %}
-    <div class="row-with-mt">
-        {% if session["user"] == "ryanmcnally93" or user.team_managed == "None" %}
-            <div class="col s12 center-align">
-                <a href="{{ url_for('create_team', username=session['user']) }}" class="btn green button-border">
-                    Create Team <i class="fas fa-plus-square right"></i>
-                </a>
-            </div>
-        {% endif %}
+<div class="row-with-mt">
+    {% if session["user"] == "ryanmcnally93" or user.team_managed == "None" %}
+    <div class="col s12 center-align">
+        <a href="{{ url_for('create_team', username=session['user']) }}" class="btn green button-border">
+            Create Team <i class="fas fa-plus-square right"></i>
+        </a>
     </div>
+    {% endif %}
+</div>
 {% endif %}
 
 <main id="teams-content">
@@ -22,114 +25,124 @@
     <div class="row teams-row">
         <!-- Looking through all the teams and displaying them -->
         {% for team in teams %}
-            <!-- Administrator can view all teams, other users can only see theirs and the administrator's teams -->
-            {% if team.team_created_by == session["user"] or team.confirmation_status == True or session["user"] == "ryanmcnally93" %}
-            <div class="col team-card-layout">
-                <div class="card team-card green-card darken-2">
+        <!-- Administrator can view all teams, other users can only see theirs and the administrator's teams -->
+        {% if team.team_created_by == session["user"] or team.confirmation_status == True or session["user"] ==
+        "ryanmcnally93" %}
+        <div class="col team-card-layout">
+            <div class="card team-card green-card darken-2">
 
-                    {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
-                        <div class="editable-content white-text">
-                            <span class="card-title">{{ team.team_name }}</span>
-                        </div>
+                <!-- Team Name -->
+                {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
+                <div class="editable-content white-text">
+                    <span class="card-title">{{ team.team_name }}</span>
+                </div>
+                {% else %}
+                <div class="card-content white-text">
+                    <span class="card-title">{{ team.team_name }}</span>
+                </div>
+                {% endif %}
+
+                {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
+                <!-- Four button cards -->
+                <div class="editable-action">
+                    <div class="editable-grid">
+                        <a class="btn turq card-button editable-button"
+                            href="{{ url_for('team_profile', id=team.id) }}">View</a>
+                        <a class="btn lyellow card-button editable-button"
+                            href="{{ url_for('players', id=team.id) }}">Players</a>
+                        <!-- Edit and delete functions are only visible for creators of the team -->
+                        <a class="btn green card-button editable-button"
+                            href="{{ url_for('edit_team', team_id=team.id) }}">Edit</a>
+                        <a class="btn red modal-trigger card-button editable-button" id="delete_team"
+                            href="#modal-{{ team.id }}">Delete</a>
+                    </div>
                     {% else %}
-                        <div class="card-content white-text">
-                            <span class="card-title">{{ team.team_name }}</span>
-                        </div>
-                    {% endif %}
-                    
-                    {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
-                        <div class="editable-action">
-                            <div class="editable-grid">
-                                <a class="btn turq card-button editable-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
-                                <!-- if team.confirmation_status == True  -->
-                                <a class="btn lyellow card-button editable-button" href="{{ url_for('players', id=team.id) }}">Players</a>
-                                <!-- endif  -->
-                                <!-- Edit and delete functions are only visible for creators of the team -->
-                                <a class="btn green card-button editable-button" href="{{ url_for('edit_team', team_id=team.id) }}">Edit</a>
-                                <a class="btn red modal-trigger card-button editable-button" id="delete_team" href="#modal-{{ team.id }}">Delete</a>
-                            </div>
-                    {% else %} 
-                        <div class="card-action">
-                            <a class="btn turq card-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
-                            <!-- if team.confirmation_status == True  -->
-                            <a class="btn lyellow card-button" href="{{ url_for('players', id=team.id) }}">Players</a>
-                            <!-- endif  -->
-                    {% endif %}
+                    <!-- Two Button Cards -->
+                    <div class="card-action">
+                        <a class="btn turq card-button" href="{{ url_for('team_profile', id=team.id) }}">View</a>
+                        <a class="btn lyellow card-button" href="{{ url_for('players', id=team.id) }}">Players</a>
+                        {% endif %}
 
-                    <!-- If the administrator is logged in, the switches can be changed -->
-                    {% if session["user"] == "ryanmcnally93" %}
+                        <!-- If the administrator is logged in, the switches can be changed -->
+                        {% if session["user"] == "ryanmcnally93" %}
                         <!-- Switch -->
                         <form method="POST" action="{{ url_for('teams') }}">
-                            <input type="text" id="teamid" name="teamid" value="{{ team.team_name }}" style="display:none;">
+                            <input type="text" id="teamid" name="teamid" value="{{ team.team_name }}"
+                                style="display:none;">
                             <div class="switch">
                                 <label for="{{ team.id }}confirmed" class="switch-label">
-                                No
-                                {% if team.confirmation_status == True %}
-                                    <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox" checked>
-                                {% else %}
+                                    No
+                                    {% if team.confirmation_status == True %}
+                                    <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox"
+                                        checked>
+                                    {% else %}
                                     <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox">
-                                {% endif %}
-                                <span class="lever" type="submit"></span>
-                                Yes
+                                    {% endif %}
+                                    <span class="lever" type="submit"></span>
+                                    Yes
                                 </label>
                             </div>
                             {% if team.confirmation_status == True %}
-                                <button class="confirm-submit" type="submit">Unconfirm</button>
+                            <button class="confirm-submit" type="submit">Unconfirm</button>
                             {% else %}
-                                <button class="confirm-submit" type="submit">Confirm</button>
+                            <button class="confirm-submit" type="submit">Confirm</button>
                             {% endif %}
                         </form>
-                    <!-- If not the admin, the switch is disabled, but still visible -->
-                    {% else %}
+                        <!-- If not the admin, the switch is disabled, but still visible -->
+                        {% else %}
                         <!-- Disabled Switch -->
                         {% if team.confirmation_status == True %}
-                            <p class="confirmed-p">Confirmed</p>
+                        <p class="confirmed-p">Confirmed</p>
                         {% else %}
-                            <p class="confirmed-p">Unconfirmed</p>
+                        <p class="confirmed-p">Unconfirmed</p>
                         {% endif %}
                         <div class="switch">
                             <label for="{{ team.id }}confirmed" class="switch-label">
-                            No
-                            {% if team.confirmation_status == True %}
-                                <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox" checked disabled>
-                            {% else %}
-                                <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox" disabled>
-                            {% endif %}
-                            <span class="lever"></span>
-                            Yes
+                                No
+                                {% if team.confirmation_status == True %}
+                                <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox" checked
+                                    disabled>
+                                {% else %}
+                                <input id="{{ team.id }}confirmed" name="{{ team.id }}confirmed" type="checkbox"
+                                    disabled>
+                                {% endif %}
+                                <span class="lever"></span>
+                                Yes
                             </label>
                         </div>
-                    {% endif %}
-                    {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
-                        </div>
+                        {% endif %}
+                        {% if team.confirmation_status == False and session["user"] == team.team_created_by %}
+                    </div>
                     {% else %}
-                        </div>
-                    {% endif %}
                 </div>
+                {% endif %}
             </div>
-            {% endif %}
-            
-            <!-- Modal Structure -->
-            <div id="modal-{{ team.id }}" class="modal">
-                <div class="modal-content">
-                    <h4>Are you sure you want to delete this team?</h4>
-                    <p>This action cannot be undone</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="{{ url_for('delete_team', team_id=team.id) }}" class="btn green button-border">Yes</a>
-                    <a href="{{ url_for('teams') }}" class="btn red button-border">No</a>
-                </div>
+        </div>
+        {% endif %}
+
+        <!-- Modal Structure -->
+        <div id="modal-{{ team.id }}" class="modal">
+            <div class="modal-content">
+                <h4>Are you sure you want to delete this team?</h4>
+                <p>This action cannot be undone</p>
             </div>
+            <div class="modal-footer">
+                <a href="{{ url_for('delete_team', team_id=team.id) }}" class="btn green button-border">Yes</a>
+                <a href="{{ url_for('teams') }}" class="btn red button-border">No</a>
+            </div>
+        </div>
         {% endfor %}
     </div>
 
     <p id="scroll-p">Be sure to scroll down to see all the teams.</p>
 
     <!-- Background Image -->
-    <img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+    <img alt="A football pitch" id="background-image"
+        src="{{ url_for('static', filename='images/background-image.webp') }}">
 
     <!-- Over 1200 image -->
-    <img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+    <img alt="A sunday league corner kick" id="background-image-large"
+        src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 </main>
 

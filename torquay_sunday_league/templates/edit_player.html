@@ -1,25 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="heading-box" id="edit-box"> 
+<!-- Page Heading -->
+<div class="heading-box" id="edit-box">
     <h1 class="main-heading" id="edit-user-heading">Edit {{ player.player_name }}</h1>
 </div>
 
 <div class="row card-panel green lighten-4">
-    <form class="col s12" method="POST" action="{{ url_for('edit_player', player_id=player.id, team_id=currentteam.id) }}"> 
+    <form class="col s12" method="POST"
+        action="{{ url_for('edit_player', player_id=player.id, team_id=currentteam.id) }}">
         <!-- Player Name -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-user-plus form-icon-colour prefix"></i>
-                <input id="player_name" name="player_name" value="{{ player.player_name }}" type="text" pattern="^\S(?:.*\S)?$" minlength="3" maxlength="25" class="validate" required>
+                <input id="player_name" name="player_name" value="{{ player.player_name }}" type="text"
+                    pattern="^\S(?:.*\S)?$" minlength="3" maxlength="25" class="validate" required>
                 <label for="player_name">Name</label>
             </div>
         </div>
-        <!-- Player Kit Number --> 
+        <!-- Player Kit Number -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-shirt form-icon-colour prefix"></i>
-                <input id="player_kit_number" name="player_kit_number" value="{{ player.player_kit_number }}" max="99" type="number" class="validate" required>
+                <input id="player_kit_number" name="player_kit_number" value="{{ player.player_kit_number }}" max="99"
+                    type="number" class="validate" required>
                 <label for="player_kit_number">Kit Number</label>
             </div>
         </div>
@@ -27,7 +31,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-futbol form-icon-colour prefix"></i>
-                <input id="player_position" name="player_position" value="{{ player.player_position }}" pattern="^\S(?:.*\S)?$" minlength="3" maxlength="15" type="text" class="validate" required>
+                <input id="player_position" name="player_position" value="{{ player.player_position }}"
+                    pattern="^\S(?:.*\S)?$" minlength="3" maxlength="15" type="text" class="validate" required>
                 <label for="player_position">Position</label>
             </div>
         </div>
@@ -35,7 +40,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-flag form-icon-colour prefix"></i>
-                <input id="player_country" name="player_country" value="{{ player.player_country }}" minlength="3" pattern="^\S(?:.*\S)?$" maxlength="20" type="text" class="validate" required>
+                <input id="player_country" name="player_country" value="{{ player.player_country }}" minlength="3"
+                    pattern="^\S(?:.*\S)?$" maxlength="20" type="text" class="validate" required>
                 <label for="player_country">Country</label>
             </div>
         </div>
@@ -43,7 +49,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-calendar form-icon-colour prefix"></i>
-                <input id="player_joined" name="player_joined" value="{{ player.player_joined }}" type="text" class="datepicker" required disabled readonly>
+                <input id="player_joined" name="player_joined" value="{{ player.player_joined }}" type="text"
+                    class="datepicker" required disabled readonly>
                 <label for="player_joined">Joined</label>
             </div>
         </div>
@@ -59,9 +66,11 @@
 </div>
 
 <!-- Background Image -->
-<img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+<img alt="A football pitch" id="background-image"
+    src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 <!-- Over 1200 image -->
-<img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+<img alt="A sunday league corner kick" id="background-image-large"
+    src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 {% endblock %}

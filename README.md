@@ -1,7 +1,6 @@
 # Torquay Sunday League
 
-
-<img src="/torquay_sunday_league/static/images/readme-images/main-readme.webp" width="50%" alt="The TSL website on multiple devices" style="display: inherit; ">
+<img src="/torquay_sunday_league/static/images/readme-images/main-readme.webp" width="100%" alt="The TSL website on multiple devices" style="display: inherit; ">
 
 This is a Sunday league football website, for a league based in Torquay. Languages include; HTML, CSS, JavaScript and Python. This application was created using the Flask framework, Postgres database and SQLAlchemy, and originally deployed on Heroku using ElephantSQL.
 
@@ -64,14 +63,14 @@ I also need to know my data is secure and cannot be changed by another manager.
 - Know my data is secure
 - View the rules
 
-| Goals | How are they achieved? |
-| :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| Create an account, which I can log in and out of | User register, login and logout pages have been created, logging in creates a session cookie which is deleted when logged out. |
-| Create a team and make changes or delete | There are buttons on the navbar, index page and the user is automatically taken to the create team once registered. The option to edit or delete the team is on the teams page. |
-| Add a player and make changes or delete | Once a team has been created the user can view players and add to that list, with the option to edit or delete each one. |
-| View confirmed teams in the league | These can be viewed by name in the table on the index page, and in more detail on the teams page. |
-| Know my data is secure | Message on user edit page explains users can only edit and delete their accounts. Typing into the url can view another manager at best, but edit and delete buttons are missing and typing the functions into the url flashes a warning message that they cannot make changes. |
-| View the rules | There is a page dedicated specifically to the rules of the league, the game itself and the application process. |
+| Goals                                            | How are they achieved?                                                                                                                                                                                                                                                         |
+| :----------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Create an account, which I can log in and out of | User register, login and logout pages have been created, logging in creates a session cookie which is deleted when logged out.                                                                                                                                                 |
+| Create a team and make changes or delete         | There are buttons on the navbar, index page and the user is automatically taken to the create team once registered. The option to edit or delete the team is on the teams page.                                                                                                |
+| Add a player and make changes or delete          | Once a team has been created the user can view players and add to that list, with the option to edit or delete each one.                                                                                                                                                       |
+| View confirmed teams in the league               | These can be viewed by name in the table on the index page, and in more detail on the teams page.                                                                                                                                                                              |
+| Know my data is secure                           | Message on user edit page explains users can only edit and delete their accounts. Typing into the url can view another manager at best, but edit and delete buttons are missing and typing the functions into the url flashes a warning message that they cannot make changes. |
+| View the rules                                   | There is a page dedicated specifically to the rules of the league, the game itself and the application process.                                                                                                                                                                |
 
 #### Player Goals
 
@@ -82,17 +81,18 @@ If I am an already signed player, I want to see my correct name and information 
 Once the league starts I would also like to see my stats, including matches played and goals scored, etc.
 
 View:
+
 - Teams in the league
 - Information of each team
 - Players in teams
 - Rules
 
-| Goals | How are they achieved? |
-| :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| Teams in the league | This information is on the index table and the teams page. Players cannot view unconfirmed teams. |
-| Information of each team | Each team has a profile page with its location, contact information and number of players. |
-| Players in teams | Once clicked onto the team profile you have the option to view its players. |
-| Rules | There is a page dedicated specifically to the rules of the league, the game itself and the application process. |
+| Goals                    | How are they achieved?                                                                                          |
+| :----------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| Teams in the league      | This information is on the index table and the teams page. Players cannot view unconfirmed teams.               |
+| Information of each team | Each team has a profile page with its location, contact information and number of players.                      |
+| Players in teams         | Once clicked onto the team profile you have the option to view its players.                                     |
+| Rules                    | There is a page dedicated specifically to the rules of the league, the game itself and the application process. |
 
 #### Fan Goals
 
@@ -101,19 +101,20 @@ As a fan I want to know when the league starts, and when the fixture list will b
 I also need to know of any rules that apply to me.
 
 View:
+
 - League start date
 - Fixture list date
 - Teams and info
 - Players and info
 - Rules
 
-| Goals | How are they achieved? |
-| :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| Goals             | How are they achieved?                |
+| :---------------- | :------------------------------------ |
 | League start date | Included on index page and rules page |
 | Fixture list date | Included on index page and rules page |
-| Teams and info | On teams page |
-| Players and info | View from team profile page |
-| Rules | Page created |
+| Teams and info    | On teams page                         |
+| Players and info  | View from team profile page           |
+| Rules             | Page created                          |
 
 #### Developer and Business Goals
 
@@ -133,15 +134,15 @@ We also want to promote the league wherever possible.
 - To create a site that responds to its user
 - To create a secure site
 
-| Goals | How are they achieved? |
-| :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| To promote football within the community | All teams are within the local area, each has a name associated with a town or district within Torquay. Twelve teams with a minimum of sixteen players who will all have families is a lot of people! |
-| To promote a fun footballing environment | The images across the site of very well known footballers, all either celebrating or fighting for the win in some way promote the fun aspect of the game. The site is bright in colours too. |
-| To give full access to confirmed teams and players | All users, and unregistered viewers can get to know the names and faces of the teams and players within this league |
-| To allow managers to submit teams | Once a managerial account has been created they can add a team with all the information and it's player information. |
-| To inform everyone of important dates and rules | All included on index and rules pages. |
-| To create a site that responds to its user | Flash and "invaid" messages appear across the site whenever incorrect or insufficient data is submitted. The flash messages also let the user know of any successful changes or submissions. |
-| To create a secure site | All urls have been checked multiple times and edit and delete functions take parameters not known to other teams. Even if these parameters are discovered, the user needs to login with the correct hash-protected password written twice to make changes, as if done by the wrong user, changes will not be made.|
+| Goals                                              | How are they achieved?                                                                                                                                                                                                                                                                                             |
+| :------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| To promote football within the community           | All teams are within the local area, each has a name associated with a town or district within Torquay. Twelve teams with a minimum of sixteen players who will all have families is a lot of people!                                                                                                              |
+| To promote a fun footballing environment           | The images across the site of very well known footballers, all either celebrating or fighting for the win in some way promote the fun aspect of the game. The site is bright in colours too.                                                                                                                       |
+| To give full access to confirmed teams and players | All users, and unregistered viewers can get to know the names and faces of the teams and players within this league                                                                                                                                                                                                |
+| To allow managers to submit teams                  | Once a managerial account has been created they can add a team with all the information and it's player information.                                                                                                                                                                                               |
+| To inform everyone of important dates and rules    | All included on index and rules pages.                                                                                                                                                                                                                                                                             |
+| To create a site that responds to its user         | Flash and "invalid" messages appear across the site whenever incorrect or insufficient data is submitted. The flash messages also let the user know of any successful changes or submissions.                                                                                                                      |
+| To create a secure site                            | All urls have been checked multiple times and edit and delete functions take parameters not known to other teams. Even if these parameters are discovered, the user needs to login with the correct hash-protected password written twice to make changes, as if done by the wrong user, changes will not be made. |
 
 ### User Stories
 
@@ -269,15 +270,15 @@ These wireframes were created using <a href="https://balsamiq.com/wireframes/?ga
 
 ### Prototype
 
-- This index prototype was created on Figma.com.
+- This index prototype was created on [Figma.com.](https://www.figma.com/login)
 
 <img src="/torquay_sunday_league/static/images/readme-images/index-prototype.webp" width="70%" alt="Homepage Prototype" style="display: inherit; ">
 
 ### Q and A of Potential Users
 
-Speak to a manager or captain of football team.
-Speak to a regular sunday league player.
-Speak to a footballing fan.
+I've spoken to a friend who is a manager of football team.
+I've spoken to a regular sunday league player.
+And my brother, who is a footballing fan.
 
 #### Q1 What makes a great football league website?
 
@@ -287,11 +288,11 @@ Manager:
 
 Player:
 
-- ""
+- "Easy to navigate so certain topics are found easily. A navigation bar for example helps the internet users locate the specific things they want to find."
 
 Fan:
 
-- ""
+- "Get to find out more about the players and the teams."
 
 #### Q2 What information would you be looking for?
 
@@ -301,11 +302,11 @@ Manager:
 
 Player:
 
-- ""
+- "How to join, the league table, an introduction to the website explaining what info the site can give you."
 
 Fan:
 
-- ""
+- "My team’s position in the league, and who won last season."
 
 #### Q3 Would you use this site?
 
@@ -315,11 +316,11 @@ Manager:
 
 Player:
 
-- ""
+- "Yes."
 
 Fan:
 
-- ""
+- "Yes."
 
 #### Q4 Why?
 
@@ -329,11 +330,11 @@ Manager:
 
 Player:
 
-- ""
+- "It’s easy to use and easy to understand; it’s not complicated."
 
 Fan:
 
-- ""
+- "The information is easy to find, and I can find out about when the players joined and what positions they play."
 
 #### Q5 What changes could I make?
 
@@ -343,11 +344,11 @@ Manager:
 
 Player:
 
-- ""
+- "Add more colour on the pages with clear backgrounds."
 
 Fan:
 
-- ""
+- "Add Information about last weekends games and scores."
 
 #### Q6 What other information might managers/players/fans need?
 
@@ -357,11 +358,11 @@ Manager:
 
 Player:
 
-- ""
+- "A fixture list for the season so they know who and when they’re playing."
 
 Fan:
 
-- ""
+- "Player statistics e.g. how many goals a player has scored this season."
 
 #### Q7 Are the rules what you would expect? Should any be added?
 
@@ -371,11 +372,11 @@ Manager:
 
 Player:
 
-- ""
+- "They’re what I would expect and I wouldn’t add any."
 
 Fan:
 
-- ""
+- "Teams are responsible for their fans, and abuse by fans at opposite teams will result in fines / fans banned from seeing matches etc."
 
 #### Q8 Did you find it easy to achieve what you would want to achieve?
 
@@ -385,11 +386,11 @@ Manager:
 
 Player:
 
-- ""
+- "It took me a little bit of time but I got there in the end."
 
 Fan:
 
-- ""
+- "Yes, I found the current score page easily and also liked the live scores page."
 
 ### Competitor Review
 
@@ -419,7 +420,7 @@ Cons:
 
 - There's no player information.
 
-- If you were a manager, you'd need to ask for team information to be updated by an FA representitive, you wouldn't have any control over it yourself.
+- If you were a manager, you'd need to ask for team information to be updated by an FA representative, you wouldn't have any control over it yourself.
 
 - As this page is probably used by multiple leagues, it doesn't have that leagues branding. The page doesn't have its own stamp.
 
@@ -453,17 +454,17 @@ Cons:
 
 This roadmap indicates the importance and viability of specific opportunities.
 
-| Opportunities/Problems               | Importance | Viability |
-| ------------------------------------ | ---------- | --------- |
-| League Table | 3          | 5         |
-| User authentication       | 5          | 5         |
-| CRUD functionality for users                    | 5          | 5         |
-| CRUD functionality for teams            | 5          | 5         |
-| CRUD functionality for players             | 5          | 5         |
-| Rules page | 5          | 5         |
+| Opportunities/Problems         | Importance | Viability |
+| ------------------------------ | ---------- | --------- |
+| League Table                   | 3          | 5         |
+| User authentication            | 5          | 5         |
+| CRUD functionality for users   | 5          | 5         |
+| CRUD functionality for teams   | 5          | 5         |
+| CRUD functionality for players | 5          | 5         |
+| Rules page                     | 5          | 5         |
 | Gallery                        | 3          | 4         |
-| Team and Player statistics | 1 | 4 |
-| Match information | 5 | 1 |
+| Team and Player statistics     | 1          | 4         |
+| Match information              | 5          | 1         |
 
 ## Features
 
@@ -573,7 +574,7 @@ I fixed this in several steps, first, I made the table inline-table and the two 
 
 3). I couldn't update postgres after I made changes to the model.py file. Max character length was originally twenty, but I needed it to be twenty-five.
 
-<img src="/torquay_sunday_league/static/images/readme-images/bug-3.webp" width="80%" alt="A dataerror" style="display: inherit; ">
+<img src="/torquay_sunday_league/static/images/readme-images/bug-3.webp" width="100%" alt="A dataerror" style="display: inherit; ">
 
 I fixed this by discovering the DROP DATABASE and CREATE DATABASE commands in psql. Then I typed python3, import torquay_sunday_league from db, db.create_all() and exit().
 
@@ -681,7 +682,7 @@ I fixed this by creating two variables where needed, one with base team, which r
 
 <img src="/torquay_sunday_league/static/images/readme-images/bug-19.webp" width="80%" alt="The teams page, viewed on desktop" style="display: inherit; ">
 
-To get around this I utilised the pattern attribute where I could. The syntax ^\S(?:.*\S)?$ doesn't allow a space at the start or end of the value. This meant a form could not be filled with spaces.
+To get around this I utilised the pattern attribute where I could. The syntax ^\S(?:.\*\S)?$ doesn't allow a space at the start or end of the value. This meant a form could not be filled with spaces.
 
 20). When calling the API I managed to get results populating and started the CSS for the page when I hit a keyerror issue on 'matches'. My code hadn't changed.
 
@@ -703,7 +704,7 @@ To the best of my knowledge, there are no known bugs left to fix.
 
 - On smaller screen widths, the navbar disappears and is replaced by the burger icon, which opens a sidenav. This is the same on mobile devices.
 
-- The team cards on the teams page display from 4 across to 3 across, and then to 2 across when needed. 
+- The team cards on the teams page display from 4 across to 3 across, and then to 2 across when needed.
 
 - On the players page, The right footballer is more central than before and the left player disappears, leaving more space for the collapsibles.
 
@@ -729,7 +730,7 @@ To the best of my knowledge, there are no known bugs left to fix.
 
 - The images on the rules page centralise within the div.
 
-- Profil page content widens to make use of smaller screens.
+- Profile page content widens to make use of smaller screens.
 
 <img src="/torquay_sunday_league/static/images/readme-images/mobile.webp" width="50%" alt="The teams page on Mobile" style="display: inherit; ">
 
@@ -743,7 +744,7 @@ In an ideal scenario this page would display the scores from the league the site
 
 I signed up for an account on the API website and received this email.
 
-<img src="/torquay_sunday_league/static/images/readme-images/api-token.webp" width="50%" alt="API email" style="display: inherit; ">
+<img src="/torquay_sunday_league/static/images/readme-images/api-token.webp" width="80%" alt="API email" style="display: inherit; ">
 
 I then created the live scores html and app.route. Within this route I added the header variable and passed it the credentials received within the email.
 
@@ -771,11 +772,11 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The code environment was set up using the <a href="https://github.com/Code-Institute-Org/ci-full-template" target="_blank">Code Institute Template.</a>
 
-- The modals, sidenav, datepicker, selects and collapsibles were created using <a href="materializecss.com" target="_blank">materializecss's</a> code.
+- The modals, sidenav, datepicker, selects and collapsibles were created using <a href="https://www.materializecss.com/" target="_blank">materializecss's</a> code.
 
-- script.js contains some code from <a href="materializecss.com" target="_blank">materializecss</a> which initialises the modals, sidenav, datepicker, selects and collapsibles.
+- script.js contains some code from <a href="https://www.materializecss.com" target="_blank">materializecss</a> which initialises the modals, sidenav, datepicker, selects and collapsibles.
 
-- The run.py, env.py, .gitignore, __init__.py, models.py and routes.py files were initially created by following the code institute tutorials, and making necessary changes and updates to adapt the code to my website.
+- The run.py, env.py, .gitignore, **init**.py, models.py and routes.py files were initially created by following the code institute tutorials, and making necessary changes and updates to adapt the code to my website.
 
 ### Web Tools
 
@@ -785,7 +786,7 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - This website was created on <a href="https://codeanywhere.com/" target="_blank">Code Anywhere.</a>
 
-- This is the site I used for my <a href="https://shields.io/category/analysis" target="_blank">Shields.</a>
+- This is the site I used for my <a href="https://www.shields.io/" target="_blank">Shields.</a>
 
 - I compressed images using <a href="https://tinypng.com/" target="_blank">tinypng</a> given to me by Jo_ci on Slack.
 
@@ -799,7 +800,7 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The default user image was obtained from <a href="https://www.pngwing.com/en/free-png-vyecs">Pngwing</a>, the uploader's name says "Non-commercial use, DMCA" - No user credited.
 
-- The squad default image was obtained from <a href="http://www.arbitrosfutbolgalicia.com/pnfg/NPcd/NFG_Sel_WebSeleccion?cod_primaria=5001577&tipo_juego=5&cod_delegacion=100&cod_seleccion=2265328&carga_filtro=1">Aibitros</a>, no author has been credited.
+- The squad default image was obtained from <a href="http://www.arbitrosfutbolgalicia.com/pnfg/NPcd/NFG_Sel_WebSeleccion?cod_primaria=5001577&tipo_juego=5&cod_delegacion=100&cod_seleccion=2265328&carga_filtro=1">Aibitros</a>, no author has been credited, the image is under the "Selección" tab.
 
 - The image of Kevin De Bruyne was obtained from <a href="https://www.pngplay.com/image/494974">Pngplay</a>, the uploader's name is "Arsh".
 
@@ -837,19 +838,19 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The goalscorer image was obtained from <a href="https://pixabay.com/photos/soccer-football-athlete-player-1473669/">Pixabay</a>, By "Keithjj".
 
-- The following country flags were obtained on [Flaticon]() with the author being "Freepik". They asked to be credited in their website and so I have placed a message on the live scores page.
+- The following country flags were obtained on [Flaticon](https://www.flaticon.com/) with the author being "Freepik". They asked to be credited in their website and so I have placed a message on the live scores page.
 
-- [World Flag](torquay_sunday_league/static/images/world.webp)
-- [Europe Flag](torquay_sunday_league/static/images/europe.webp)
-- [South America Flag](torquay_sunday_league/static/images/south-america.webp)
-- [England Flag](torquay_sunday_league/static/images/england.webp)
-- [Germany Flag](torquay_sunday_league/static/images/germany.webp)
-- [France Flag](torquay_sunday_league/static/images/france.webp)
-- [Italy Flag](torquay_sunday_league/static/images/italy.webp)
-- [Spain Flag](torquay_sunday_league/static/images/spain.webp)
-- [Portugal Flag](torquay_sunday_league/static/images/portugal.webp)
-- [Brazil Flag](torquay_sunday_league/static/images/brazil.webp)
-- [Netherlands Flag](torquay_sunday_league/static/images/netherlands.webp)
+- [World Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/world.webp)
+- [Europe Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/europe.webp)
+- [South America Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/south-america.webp)
+- [England Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/uk.webp)
+- [Germany Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/germany.webp)
+- [France Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/france.webp)
+- [Italy Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/italy.webp)
+- [Spain Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/spain.webp)
+- [Portugal Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/portugal.webp)
+- [Brazil Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/brazil.webp)
+- [Netherlands Flag](https://raw.githubusercontent.com/ryanmcnally93/project-three-torquay-sunday-league/main/torquay_sunday_league/static/images/netherlands.webp)
 
 - The champions league logo was obtained from [pngwing](https://www.pngwing.com/en/free-png-nfain) with no author credited.
 
@@ -864,3 +865,5 @@ I struggled with the boxing of the matches and splitting them by competition, as
 - Tutor support and the Slack community at Code Institute for their help.
 
 This readme.md was spellchecked using the spell checker extension for Chrome.
+
+All documents within this repository have been formatted using "Prettier".

@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="heading-box"> 
+<!-- Page Heading -->
+<div class="heading-box">
     <h1 class="main-heading">Add Player</h1>
 </div>
 
 <div class="row card-panel green lighten-4">
-    <form class="col s12" method="POST" action="{{ url_for('add_player', id=currentteam.id) }}"> 
+    <form class="col s12" method="POST" action="{{ url_for('add_player', id=currentteam.id) }}">
         <!-- Player Name -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-user-plus form-icon-colour prefix"></i>
-                <input id="player_name" name="player_name" type="text" minlength="3" maxlength="25" pattern="^\S(?:.*\S)?$" class="validate" required>
+                <input id="player_name" name="player_name" type="text" minlength="3" maxlength="25"
+                    pattern="^\S(?:.*\S)?$" class="validate" required>
                 <label for="player_name">Name</label>
             </div>
         </div>
-        <!-- Player Kit Number --> 
+        <!-- Player Kit Number -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-shirt form-icon-colour prefix"></i>
@@ -27,7 +29,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-futbol form-icon-colour prefix"></i>
-                <input id="player_position" name="player_position" minlength="3" pattern="^\S(?:.*\S)?$" maxlength="15" type="text" class="validate" required>
+                <input id="player_position" name="player_position" minlength="3" pattern="^\S(?:.*\S)?$" maxlength="15"
+                    type="text" class="validate" required>
                 <label for="player_position">Position</label>
             </div>
         </div>
@@ -35,7 +38,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-flag form-icon-colour prefix"></i>
-                <input id="player_country" name="player_country" minlength="3" maxlength="20" pattern="^\S(?:.*\S)?$" type="text" class="validate" required>
+                <input id="player_country" name="player_country" minlength="3" maxlength="20" pattern="^\S(?:.*\S)?$"
+                    type="text" class="validate" required>
                 <label for="player_country">Country</label>
             </div>
         </div>
@@ -59,10 +63,12 @@
 </div>
 
 <!-- Background Image -->
-<img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+<img alt="A football pitch" id="background-image"
+    src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 <!-- Over 1200 image -->
-<img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+<img alt="A sunday league corner kick" id="background-image-large"
+    src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 <script src="{{ url_for('static', filename='js/player_form_script.js') }}"></script>
 

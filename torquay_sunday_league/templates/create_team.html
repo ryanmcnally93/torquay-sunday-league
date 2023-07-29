@@ -2,17 +2,19 @@
 {% block content %}
 
 <main>
-    <div class="heading-box"> 
+    <!-- Page Heading -->
+    <div class="heading-box">
         <h1 class="main-heading">Create Team</h1>
     </div>
 
     <div class="row card-panel green lighten-4">
         <form class="col s12" method="POST" action="{{ url_for('create_team', username=session['user']) }}">
-            <!-- Team Name --> 
+            <!-- Team Name -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-solid fa-futbol form-icon-colour prefix"></i>
-                    <input id="team_name" name="team_name" minlength="3" maxlength="25" pattern="^\S(?:.*\S)?$" type="text" class="validate" required>
+                    <input id="team_name" name="team_name" minlength="3" maxlength="25" pattern="^\S(?:.*\S)?$"
+                        type="text" class="validate" required>
                     <label for="team_name">Team Name</label>
                 </div>
             </div>
@@ -20,7 +22,8 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-solid fa-palette form-icon-colour prefix"></i>
-                    <input id="team_colour" name="team_colour" minlength="3" maxlength="30" pattern="^\S(?:.*\S)?$" type="text" class="validate" required>
+                    <input id="team_colour" name="team_colour" minlength="3" maxlength="30" pattern="^\S(?:.*\S)?$"
+                        type="text" class="validate" required>
                     <label for="team_colour">Team Colours</label>
                 </div>
             </div>
@@ -28,7 +31,8 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-solid fa-globe form-icon-colour prefix"></i>
-                    <input id="team_location" name="team_location" minlength="3" maxlength="25" pattern="^\S(?:.*\S)?$" type="text" class="validate" required>
+                    <input id="team_location" name="team_location" minlength="3" maxlength="25" pattern="^\S(?:.*\S)?$"
+                        type="text" class="validate" required>
                     <label for="team_location">Team Address</label>
                 </div>
             </div>
@@ -52,10 +56,12 @@
     </div>
 
     <!-- Background Image -->
-    <img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+    <img alt="A football pitch" id="background-image"
+        src="{{ url_for('static', filename='images/background-image.webp') }}">
 
     <!-- Over 1200 image -->
-    <img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+    <img alt="A sunday league corner kick" id="background-image-large"
+        src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 </main>
 
 <script src="{{ url_for('static', filename='js/team_form_script.js') }}"></script>

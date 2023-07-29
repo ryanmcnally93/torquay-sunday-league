@@ -1,99 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/2e8f9e537f.js" crossorigin="anonymous"></script>
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico/') }}" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <!-- My Chosen Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap"
+        rel="stylesheet">
+    <!-- MaterializeCSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- This changes my title depending on what page I'm on -->
     {% if title %}
     <title>{{title}} - TSL</title>
     {% else %}
     <title>Torquay Sunday League</title>
     {% endif %}
 </head>
+
 <body>
     <nav id="nav">
         <!-- Desktop & Tablet Navbar -->
         <div class="nav-wrapper">
-          <a id="logo-a" href="{{ url_for('home') }}">
-            <img alt="The TSL logo" id="logo" src="{{ url_for('static', filename='images/logo.webp') }}">
-          </a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-          <ul class="right hide-on-med-and-down nav-list">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('live_scores') }}">Live Scores</a></li>
-            <li><a href="{{ url_for('teams') }}">Teams</a></li>
-            {% if session.user %}
-                
+            <a id="logo-a" href="{{ url_for('home') }}">
+                <img alt="The TSL logo" id="logo" src="{{ url_for('static', filename='images/logo.webp') }}">
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+            <ul class="right hide-on-med-and-down nav-list">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('live_scores') }}">Live Scores</a></li>
+                <li><a href="{{ url_for('teams') }}">Teams</a></li>
+                {% if session.user %}
+
                 {% if user.team_managed == "None" or user.username == "ryanmcnally93" %}
-                    <li><a href="{{ url_for('create_team', username=session['user']) }}">Create Team</a></li>
+                <li><a href="{{ url_for('create_team', username=session['user']) }}">Create Team</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
+                <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
-                <li><a id="p-anchor" href="{{ url_for('user_profile', username=session['user']) }}"><img src="{{ profile_picture }}" id="small-pp" alt="User Profile Picture"></a></li>
-            {% else %}
+                <!-- My mini profile picture -->
+                <li><a id="p-anchor" href="{{ url_for('user_profile', username=session['user']) }}"><img
+                            src="{{ profile_picture }}" id="small-pp" alt="User Profile Picture"></a></li>
+                {% else %}
                 <li><a href="{{ url_for('log_in') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
-            {% endif %}
-          </ul>
+                {% endif %}
+            </ul>
         </div>
-      </nav>
-    
-      <!-- Mobile Navbar -->
-      <div id="mobile-nav">
+    </nav>
+
+    <!-- Mobile Navbar -->
+    <div id="mobile-nav">
         <ul class="sidenav nav-list" id="mobile-demo">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('live_scores') }}">Live Scores</a></li>
             <li><a href="{{ url_for('teams') }}">Teams</a></li>
             {% if session.user %}
-                <li><a href="{{ url_for('user_profile', username=session['user']) }}">Profile</a></li>
-                {% if user.team_managed == "None" or user.username == "ryanmcnally93" %}
-                    <li><a href="{{ url_for('create_team', username=session['user']) }}">Create Team</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
-                {% endif %}
-                    <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
+            <li><a href="{{ url_for('user_profile', username=session['user']) }}">Profile</a></li>
+            {% if user.team_managed == "None" or user.username == "ryanmcnally93" %}
+            <li><a href="{{ url_for('create_team', username=session['user']) }}">Create Team</a></li>
             {% else %}
-                <li><a href="{{ url_for('log_in') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('team_profile', id=team.id ) }}">{{ team.team_name }}</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('log_out') }}">Log Out</a></li>
+            {% else %}
+            <li><a href="{{ url_for('log_in') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </ul>
     </div>
 
-      <section>
+    <section>
         <!-- Flash messages -->
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flashes" id="flash">
-                        <h3 class="green lighten-4 center-align">{{ message }}</h3>
-                    </div>
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes" id="flash">
+            <h3 class="green lighten-4 center-align">{{ message }}</h3>
+        </div>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
-      </section>
+    </section>
 
-      {% block content %}
-      {% endblock %}
+    {% block content %}
+    {% endblock %}
 
+    <!-- Footer -->
     <footer>
         <ul class="social-networks" id="socials">
-            <li><a href="https://www.facebook.com" name="Facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-            <li><a href="https://www.twitter.com" name="Twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="https://www.facebook.com" name="Facebook" target="_blank"><i
+                        class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.twitter.com" name="Twitter" target="_blank"><i
+                        class="fa-brands fa-twitter"></i></a></li>
             <li>© Torquay Sunday League</li>
-            <li><a href="https://www.instagram.com" name="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="https://www.tiktok.com" name="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+            <li><a href="https://www.instagram.com" name="Instagram" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.tiktok.com" name="TikTok" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </li>
         </ul>
-        <p><a id="rules-link" class="footer-line" href="{{ url_for('rules') }}">Rules</a>~<a id="back-to-top" class="footer-line" href="#nav">Back to top</a></p>
+        <p><a id="rules-link" class="footer-line" href="{{ url_for('rules') }}">Rules</a>~<a id="back-to-top"
+                class="footer-line" href="#nav">Back to top</a></p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>

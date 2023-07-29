@@ -100,7 +100,7 @@ I have tested all my JavaScript code using JSHint
 
 - The main [script.js](/torquay_sunday_league/static/js/script.js) file returned 9 warnings that were letting me know that "const" and "let" are available in ES6. No other errors were found.
 
-- The [log_in.js](/torquay_sunday_league/static/js/log_inscript.js) file returned no errors.
+- The [log_in_script.js](/torquay_sunday_league/static/js/log_in_script.js) file returned no errors.
 
 - The [player_form_script.js](/torquay_sunday_league/static/js/player_form_script.js) file returned no errors.
 

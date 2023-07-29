@@ -4,6 +4,7 @@ from flask import session
 from flask import Flask
 from myapp import app
 
+
 class TestHome(unittest.TestCase):
 
     def test_home(self):
@@ -13,3 +14,5 @@ class TestHome(unittest.TestCase):
         session["user"]
         routes.home()
         self.assertTrue(user == "None")
+
+# This is when I was trying to produce unittests.

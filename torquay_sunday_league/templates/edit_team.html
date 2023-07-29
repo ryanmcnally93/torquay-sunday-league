@@ -1,24 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="heading-box"> 
+<!-- Page Heading -->
+<div class="heading-box">
     <h1 class="main-heading">Edit {{ currentteam.team_name }}</h1>
 </div>
 
 <div class="row card-panel green lighten-4" id="edit-team-box">
-    <form class="col s12" method="POST" action="{{ url_for('edit_team', team_id=currentteam.id) }}" enctype="multipart/form-data">
+    <form class="col s12" method="POST" action="{{ url_for('edit_team', team_id=currentteam.id) }}"
+        enctype="multipart/form-data">
         <div class="row">
+            <!-- Team Image -->
             <div class="col picture-team-box" id="edit-picture-team-box">
-                <img class="team-profile-picture" src="{{ squad_picture }}" alt="{{ currentteam.team_name }}'s squad picture">
+                <img class="team-profile-picture" src="{{ squad_picture }}"
+                    alt="{{ currentteam.team_name }}'s squad picture">
             </div>
         </div>
         <div>
+            <!-- Upload New Image -->
             {{ form.picture.label(class="center-upload-profile") }}<br>
             {{ form.picture(class="center-upload-profile file-upload") }}<br>
             {% if form.picture.errors %}
-                {% for error in form.picture.errors %}
-                    <span class="center-upload-profile danger-text"> {{ error }} </span>
-                {% endfor %}<br>
+            {% for error in form.picture.errors %}
+            <span class="center-upload-profile danger-text"> {{ error }} </span>
+            {% endfor %}<br>
             {% endif %}
             <a href="#modal-{{ currentteam.id }}" class="btn red remove modal-trigger">Remove Image</a>
         </div>
@@ -26,15 +31,17 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-futbol form-icon-colour prefix"></i>
-                <input id="team_name" name="team_name" value="{{ currentteam.team_name }}" pattern="^\S(?:.*\S)?$" minlength="3" maxlength="25" type="text" class="validate" required>
-                <label for="team_name">Team Name</label> 
+                <input id="team_name" name="team_name" value="{{ currentteam.team_name }}" pattern="^\S(?:.*\S)?$"
+                    minlength="3" maxlength="25" type="text" class="validate" required>
+                <label for="team_name">Team Name</label>
             </div>
-        </div> 
+        </div>
         <!-- Team Colour -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-palette form-icon-colour prefix"></i>
-                <input id="team_colour" name="team_colour" value="{{ currentteam.team_colour }}" pattern="^\S(?:.*\S)?$" minlength="3" maxlength="30" type="text" class="validate" required>
+                <input id="team_colour" name="team_colour" value="{{ currentteam.team_colour }}" pattern="^\S(?:.*\S)?$"
+                    minlength="3" maxlength="30" type="text" class="validate" required>
                 <label for="team_colour">Team Colours</label>
             </div>
         </div>
@@ -42,7 +49,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-globe form-icon-colour prefix"></i>
-                <input id="team_location" name="team_location" value="{{ currentteam.team_location }}" pattern="^\S(?:.*\S)?$" minlength="3" maxlength="25" type="text" class="validate" required>
+                <input id="team_location" name="team_location" value="{{ currentteam.team_location }}"
+                    pattern="^\S(?:.*\S)?$" minlength="3" maxlength="25" type="text" class="validate" required>
                 <label for="team_location">Team Address</label>
             </div>
         </div>
@@ -50,7 +58,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-phone form-icon-colour prefix"></i>
-                <input id="team_contact" name="team_contact" pattern="[0-9]{11}" value="{{ currentteam.team_contact }}" type="text" class="validate">
+                <input id="team_contact" name="team_contact" pattern="[0-9]{11}" value="{{ currentteam.team_contact }}"
+                    type="text" class="validate">
                 <label for="team_contact">Contact Mobile</label>
             </div>
         </div>
@@ -78,9 +87,11 @@
 </div>
 
 <!-- Background Image -->
-<img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+<img alt="A football pitch" id="background-image"
+    src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 <!-- Over 1200 image -->
-<img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+<img alt="A sunday league corner kick" id="background-image-large"
+    src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 {% endblock %}

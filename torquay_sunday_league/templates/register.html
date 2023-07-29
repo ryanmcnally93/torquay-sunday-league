@@ -1,84 +1,94 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="heading-box"> 
+<!-- Page Heading -->
+<div class="heading-box">
     <h1 class="main-heading">Register</h1>
 </div>
 
 {% if session.user %}
-    <!-- Number of Registered Players -->
-    <h2 class="center-align">You are currently logged in as {{ session["user"] }} </h2>
+<!-- Number of Registered Players -->
+<h2 class="center-align">You are currently logged in as {{ session["user"] }} </h2>
 {% else %}
 
-    <div class="p-background" id="register-p">
-        <p>If you are a player please give all of your details to your respective manager for the upcoming season, this log in system is for management only.
-            <br> All information must be provided by 10th August 2023 or you will not be permitted to play.</p>
-    </div>
+<!-- Information for players -->
+<div class="p-background" id="register-p">
+    <p>If you are a player please give all of your details to your respective manager for the upcoming season, this log
+        in system is for management only.
+        <br> All information must be provided by 10th August 2023 or you will not be permitted to play.
+    </p>
+</div>
 
-    <div class="row card-panel green lighten-4">
-        <form class="col s12" method="POST" action="{{ url_for('register') }}">
-            <!-- Username -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-plus form-icon-colour prefix"></i>
-                    <input name="username" id="username" type="text" pattern="^[a-zA-Z0-9]{5,25}$" class="validate" required>
-                    <label for="username">Username</label>
-                </div>
+<div class="row card-panel green lighten-4">
+    <form class="col s12" method="POST" action="{{ url_for('register') }}">
+        <!-- Username -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-user-plus form-icon-colour prefix"></i>
+                <input name="username" id="username" type="text" pattern="^[a-zA-Z0-9]{5,25}$" class="validate"
+                    required>
+                <label for="username">Username</label>
             </div>
-            <!-- Email Address -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-envelope form-icon-colour prefix"></i>
-                    <input name="emailaddress" id="emailaddress" type="email" maxlength="35" class="validate" required>
-                    <label for="emailaddress">Email Address</label>
-                </div>
-            </div>
-            <!-- Password -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-lock form-icon-colour prefix"></i>
-                    <input name="password" id="password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Password</label>
-                    <i class="far fa-eye" id="togglePassword"></i>
-                </div>
-            </div>
-            <!-- Confirm Password -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-lock form-icon-colour prefix"></i>
-                    <input name="confirm_password" id="confirm_password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="confirm_password">Confirm Password</label>
-                    <i class="far fa-eye" id="toggleConfirmPassword"></i>
-                </div>
-            </div>
-            <!-- Submit -->
-            <div class="row">
-                <div class="col s12 center-align">
-                    <button type="submit" class="btn green button-border">
-                        Register <i class="fas fa-sign-in-alt right"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="row">
-        <div class="col s12 reg-login-p">
-            <p class="center-align">
-                Already have an account?
-                <a class="link-colour" href="{{ url_for('log_in') }}">Log In</a>
-            </p>
         </div>
+        <!-- Email Address -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-envelope form-icon-colour prefix"></i>
+                <input name="emailaddress" id="emailaddress" type="email" maxlength="35" class="validate" required>
+                <label for="emailaddress">Email Address</label>
+            </div>
+        </div>
+        <!-- Password -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-user-lock form-icon-colour prefix"></i>
+                <input name="password" id="password" type="password" pattern="^[a-zA-Z0-9]{5,15}$" class="validate"
+                    required>
+                <label for="password">Password</label>
+                <i class="far fa-eye" id="togglePassword"></i>
+            </div>
+        </div>
+        <!-- Confirm Password -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-user-lock form-icon-colour prefix"></i>
+                <input name="confirm_password" id="confirm_password" type="password" pattern="^[a-zA-Z0-9]{5,15}$"
+                    class="validate" required>
+                <label for="confirm_password">Confirm Password</label>
+                <i class="far fa-eye" id="toggleConfirmPassword"></i>
+            </div>
+        </div>
+        <!-- Submit -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn green button-border">
+                    Register <i class="fas fa-sign-in-alt right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Log In Page Link -->
+<div class="row">
+    <div class="col s12 reg-login-p">
+        <p class="center-align">
+            Already have an account?
+            <a class="link-colour" href="{{ url_for('log_in') }}">Log In</a>
+        </p>
     </div>
+</div>
 
-    <!-- Background Image -->
-    <img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+<!-- Background Image -->
+<img alt="A football pitch" id="background-image"
+    src="{{ url_for('static', filename='images/background-image.webp') }}">
 
-    <!-- Over 1200 image -->
-    <img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+<!-- Over 1200 image -->
+<img alt="A sunday league corner kick" id="background-image-large"
+    src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
-    <script src="{{ url_for('static', filename='js/register_script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/password_visibility.js') }}"></script>
+<script src="{{ url_for('static', filename='js/register_script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/password_visibility.js') }}"></script>
 
 {% endif %}
 {% endblock %}

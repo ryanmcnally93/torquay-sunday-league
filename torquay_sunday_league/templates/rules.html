@@ -1,37 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Page Heading -->
 <div class="heading-box">
     <h1 class="main-heading">Rules</h1>
-</div> 
+</div>
 
+<!-- List of rules -->
 <div class="row">
     <div class="col s12 m8 offset-m2">
         <div class="green lighten-4 rules-box">
-            <p>All of the following rules must be followed by all participants of this league. This includes players, managers and any other members if staff or participants.</p>
-            <p>Failure to abide by these rules can result in match bans, fines, and in more serious cases even expulsion from the league.</p>
+            <p>All of the following rules must be followed by all participants of this league. This includes players,
+                managers and any other members of staff or participants.</p>
+            <p>Failure to abide by these rules can result in match bans, fines, and in more serious cases even expulsion
+                from the league.</p>
             <h3>Team Registrations</h3>
             <p>1). All teams must have a minimum of 16 players to enter this competition.</p>
             <p>2). All players must be 16 years of age or over.</p>
-            <p>3). If you have completed filling out your team and player information for this upcoming season, you can either contact our team on 0121 364 8377 for faster application or wait until the deadline arrives.</p>
-            <p>HOWEVER this is not advised, as if there are any issues with your team or players, it will be too late to fix them.</p>
-            <p>4). Once the deadline day of 10th August 2023 arrives, no information can be changed, no players can be added, and there are no exceptions to this rule.</p>
+            <p>3). If you have completed filling out your team and player information for this upcoming season, you can
+                either contact our team on 0121 364 8377 for faster application or wait until the deadline arrives.</p>
+            <p>HOWEVER this is not advised, as if there are any issues with your team or players, it will be too late to
+                fix them.</p>
+            <p>4). Once the deadline day of 10th August 2023 arrives, no information can be changed, no players can be
+                added, and there are no exceptions to this rule.</p>
             <div id="rules-one-box">
-                <img alt="A sunday league team in training" id="rules-one" src="{{ url_for('static', filename='images/rules-one.webp') }}">
+                <img alt="A sunday league team in training" id="rules-one"
+                    src="{{ url_for('static', filename='images/rules-one.webp') }}">
             </div>
-            <p>5). Any abuse aimed at our team during the application process will be handled swiftly, with the team rejected and, if necessary, authorities contacted.</p>
+            <p>5). Any abuse aimed at our team during the application process will be handled swiftly, with the team
+                rejected.</p>
             <p>6). Any rude or profound team names will be rejected.</p>
             <h3>Transfers</h3>
             <p>7). All transfers must be complete and our online database updated by 10th August 2023.</p>
-            <p>8). Players MUST be playing for one team only. Any discovered cases of this will result in the player being rejected from the league and fines for the people involved.</p>
+            <p>8). Players MUST be playing for one team only. Any discovered cases of this will result in the player
+                being rejected from the league and fines for the people involved.</p>
             <h3>Match Day</h3>
-            <p>9). Teams must arrive on time, with at least 11 players ready to play. If this isn't the case the team short of players will forfeit the match 3-0.</p>
-            <p>10). Any equipment (nets, cones, balls, etc) provided by the league organisers must be returned once the game is complete. Any missing equipment will result in fines.</p>
+            <p>9). Teams must arrive on time, with at least 11 players ready to play. If this isn't the case the team
+                short of players will forfeit the match 3-0.</p>
+            <p>10). Any equipment (nets, cones, balls, etc) provided by the league organisers must be returned once the
+                game is complete. Any missing equipment will result in fines.</p>
             <p>11). All team locations MUST provide suitable changing areas for players.</p>
-            <p>12). Any matches abandoned due to wrongdoing of teams will result in fines to cover the pitch hire cost.</p>
-            <p>13). Any racial abuse will be dealt with swiftly, with the authorities contacted and members removed from game and league.</p>
+            <p>12). Any matches abandoned due to wrongdoing of teams will result in fines to cover the pitch hire cost.
+            </p>
+            <p>13). Any racial abuse will be dealt with swiftly, with the members removed from
+                game and league.</p>
             <div id="rules-three-box">
-                <img alt="A player kicking the ball" id="rules-three" src="{{ url_for('static', filename='images/rules-three.webp') }}">
+                <img alt="A player kicking the ball" id="rules-three"
+                    src="{{ url_for('static', filename='images/rules-three.webp') }}">
             </div>
             <h4>Kits</h4>
             <p>14). Teams MUST not wear kit colours that clash.</p>
@@ -42,12 +57,15 @@
             <h4>Referees</h4>
             <p>19). Referee decisions are final.</p>
             <p>20). Any abuse aimed at our referees will be logged and fines, bans and expulsions may result.</p>
-            <p>21). If red carded players and staff MUST remove themselves from the game or it will not continue.</p>
-            <p>22). Any diving or attempt to change the mind of the referee will be punished with a yellow card as per the rules of the game.</p>
+            <p>21). If red carded, players and staff MUST remove themselves from the game or it will not continue.</p>
+            <p>22). Any diving or attempt to change the mind of the referee will be punished with a yellow card as per
+                the rules of the game.</p>
             <h3>Please remember</h3>
-            <p>All of this is for the love of the game and our referees are well trained and hard to come by. 
-                The rules are in place to make the game fair and more enjoyable, if you see or hear our officials being disrespected please speak out.</p>
-            <p>At the end of the season the top team two teams will advance to the next league and the 3rd-6th teams will battle it out in our play-offs for that third promotion spot!</p>
+            <p>All of this is for the love of the game and our referees are well trained and hard to come by.
+                The rules are in place to make the game fair and more enjoyable, if you see or hear our officials being
+                disrespected please speak out.</p>
+            <p>At the end of the season the top two teams will advance to the next league and the 3rd-6th teams
+                will battle it out in our play-offs for that third promotion spot!</p>
             <p>Best of luck to you all and more importantly, HAVE FUN!</p>
             <div id="rules-two-box">
                 <img alt="A referee" id="rules-two" src="{{ url_for('static', filename='images/rules-two.webp') }}">
@@ -59,9 +77,11 @@
 </div>
 
 <!-- Background Image -->
-<img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+<img alt="A football pitch" id="background-image"
+    src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 <!-- Over 1200 image -->
-<img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
+<img alt="A sunday league corner kick" id="background-image-large"
+    src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
 {% endblock %}

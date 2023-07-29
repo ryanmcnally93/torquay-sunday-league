@@ -1,41 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="main-heading" id="index-main-heading"><i class="fa-solid fa-futbol"></i>Torquay Sunday League<i class="fa-solid fa-futbol"></i></h1>
+<!-- Page Heading -->
+<h1 class="main-heading" id="index-main-heading"><i class="fa-solid fa-futbol"></i>Torquay Sunday League<i
+        class="fa-solid fa-futbol"></i></h1>
 
 {% if session.user %}
-    <!-- This message will display if the user has an account but not a team -->
-    {% if user.team_managed == "None" %}
-    <h2 class="index-sub-heading">One more spot available for this season!</h2>
-    <div class="row">
-        <div class="col s12 center-align">
-            <i class="fa-solid fa-futbol football"></i>
-            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green button-border">Create Team</a>
-            <i class="fa-solid fa-futbol football"></i>
-        </div>
+<!-- This message will display if the user has an account but not a team -->
+{% if user.team_managed == "None" %}
+<h2 class="index-sub-heading">One more spot available for this season!</h2>
+<div class="row">
+    <div class="col s12 center-align">
+        <i class="fa-solid fa-futbol football"></i>
+        <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button"
+            class="btn green button-border">Create Team</a>
+        <i class="fa-solid fa-futbol football"></i>
     </div>
-    <!-- This message will display the users team if they have one, except for my account -->
-    {% elif session["user"] != "ryanmcnally93" %}
-    <h2 class="index-sub-heading">Team deadline 10/08/2023</h2>
-    <div class="row">
-        <div class="col s12 center-align">
-            <i class="fa-solid fa-futbol football"></i>
-            <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green button-border"> {{ team.team_name }} </a>
-            <i class="fa-solid fa-futbol football"></i>
-        </div>
+</div>
+<!-- This message will display the users team if they have one, except for my account -->
+{% elif session["user"] != "ryanmcnally93" %}
+<h2 class="index-sub-heading">Team deadline 10/08/2023</h2>
+<div class="row">
+    <div class="col s12 center-align">
+        <i class="fa-solid fa-futbol football"></i>
+        <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green button-border"> {{
+            team.team_name }} </a>
+        <i class="fa-solid fa-futbol football"></i>
     </div>
-    {% else %}
-    <h2 class="index-sub-heading">Viewing as Admin</h2>
-    <div class="row">
-        <div class="col s12 center-align">
-            <i class="fa-solid fa-futbol football"></i>
-            <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button" class="btn green button-border">Create Team</a>
-            <i class="fa-solid fa-futbol football"></i>
-        </div>
+</div>
+<!-- This is what the administrator will see -->
+{% else %}
+<h2 class="index-sub-heading">Viewing as Admin</h2>
+<div class="row">
+    <div class="col s12 center-align">
+        <i class="fa-solid fa-futbol football"></i>
+        <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button"
+            class="btn green button-border">Create Team</a>
+        <i class="fa-solid fa-futbol football"></i>
     </div>
+</div>
 
-    {% endif %}
-    
+{% endif %}
+
 <!-- The only other way this page can be displayed is by people who don't have an account -->
 {% else %}
 <h2 class="index-sub-heading">One more spot available for this season!</h2>
@@ -51,10 +57,12 @@
 
 <main id="main-content">
 
+    <!-- Left Football Player Image -->
     <div class="index-player-left-box player-left-box">
         <img alt="Martin Odegaard" class="player-left" src="{{ url_for('static', filename='images/odegaard.webp') }}">
     </div>
 
+    <!-- Table -->
     <table id="league-table">
         <thead>
             <tr>
@@ -66,27 +74,38 @@
         </thead>
         <tbody>
             {% for team in teams if team.confirmation_status == True %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ team.team_name }}</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
+            <!-- This displays all the confirmed teams, and gives them a position -->
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ team.team_name }}</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
 
+    <!-- Right Football Player Image -->
     <div class="index-player-right-box player-right-box">
-        <img alt="Trent Alexander-Arnold" id="trent" class="player-right" src="{{ url_for('static', filename='images/trent.webp') }}">
+        <img alt="Trent Alexander-Arnold" id="trent" class="player-right"
+            src="{{ url_for('static', filename='images/trent.webp') }}">
     </div>
 
     <div class="p-background" id="index-p">
         <div id="winners-goals">
-            <img alt="Last years winning team" id="winners" src="{{ url_for('static', filename='images/index-team.webp') }}">
-            <img alt="Last years top goalscorer" id="goalscorer" src="{{ url_for('static', filename='images/top-goalscorer.webp') }}">
+            <!-- Last Years Winners -->
+            <img alt="Last years winning team" id="winners"
+                src="{{ url_for('static', filename='images/index-team.webp') }}">
+            <!-- Last Years Top Goalscorer -->
+            <img alt="Last years top goalscorer" id="goalscorer"
+                src="{{ url_for('static', filename='images/top-goalscorer.webp') }}">
         </div>
-        <p>Congratulations to TQ Wanderers for their championship win and promotion to the higher league last year, as usual we have some huge teams that have fallen into our league with amazing players to add excitement too!</p>
-        <p>The top tier of torqish football is due to kick off on August 29th 2023, this league consists of the 12 best teams from in and around Torquay along with some of the biggest names associated with this ideal footballing location! <br> The teams latest submission dates are on 10th August 2023, to leave time for fixtures to be organised and announced.</p>
+        <!-- Information about last year -->
+        <p>Congratulations to TQ Wanderers for their championship win and promotion to the higher league last year, as
+            usual we have some huge teams that have fallen into our league with amazing players to add excitement too!
+        </p>
+        <p>The top tier of torqish football is due to kick off on August 29th 2023, this league consists of the 12 best
+            teams from in and around Torquay.</p>
         <p>Massive well done to last years top goalscorer Andrew Foster, hitting an amazing 32 goals!</p>
     </div>
 

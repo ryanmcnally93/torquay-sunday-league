@@ -1,6 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    // These pieces of code were taken from the materialize website
+    // They help make the pieces of content work as they should
+
     var sidenav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidenav, {edge:'right'});
+    M.Sidenav.init(sidenav, { edge: 'right' });
 
     var modal = document.querySelectorAll('.modal');
     M.Modal.init(modal);
@@ -8,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let datepicker = document.querySelectorAll('.datepicker');
     M.Datepicker.init(datepicker, {
         format: "dd/mm/yyyy",
-        i18n: {done: "Select"}
+        i18n: { done: "Select" }
     });
 
     let selects = document.querySelectorAll('select');

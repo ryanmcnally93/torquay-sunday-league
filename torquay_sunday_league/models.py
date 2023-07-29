@@ -10,7 +10,8 @@ class User(db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
-    profile_picture = db.Column(db.String(), nullable=False, default='default_manager.webp')
+    profile_picture = db.Column(
+        db.String(), nullable=False, default='default_manager.webp')
     emailaddress = db.Column(db.String(35), unique=True, nullable=False)
     password = db.Column(db.String(), nullable=False)
     month_joined = db.Column(db.String())
@@ -20,10 +21,12 @@ class User(db.Model):
 
 
 class Team(db.Model):
-    #schema for the Team model
+    """ Team Model """
+
     id = db.Column(db.Integer, primary_key=True)
     team_name = db.Column(db.String(25), unique=True, nullable=False)
-    profile_picture = db.Column(db.String(), nullable=False, default='default_squad.webp')
+    profile_picture = db.Column(
+        db.String(), nullable=False, default='default_squad.webp')
     team_no_of_players = db.Column(db.Integer, primary_key=False)
     team_colour = db.Column(db.String(30), nullable=False)
     team_location = db.Column(db.String(25), nullable=False)
@@ -36,13 +39,13 @@ class Team(db.Model):
         "Player", backref="team", cascade="all, delete", lazy=True)
 
     def __repr__(self):
-        #__repr__ to represent itself in the form of a string
+        # __repr__ to represent itself in the form of a string
         return self
 
 
-
 class Player(db.Model):
-    #schema for the Player model
+    """ Player Model """
+
     id = db.Column(db.Integer, primary_key=True)
     player_kit_number = db.Column(
         db.Integer, primary_key=False, nullable=False)
@@ -54,16 +57,19 @@ class Player(db.Model):
         "team.id", ondelete="CASCADE"), nullable=False)
 
     def __repr__(self):
-        #__repr__ to represent itself in the form of a string
+        # __repr__ to represent itself in the form of a string
         return "#{0} Name: {1} | - Kit Number: {2} | Joined: {3} | Country: {4} | Position: {5} | Team: {6}".format(
             self.id, self.player_name, self.player_kit_number, self.player_joined, self.player_country, self.player_position, self.team_id
         )
 
 
 class UpdateProfilePicture(FlaskForm):
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png', 'webp'])])
+    picture = FileField('Update Profile Picture', validators=[
+                        FileAllowed(['jpg', 'png', 'webp'])])
     submit = SubmitField('Update')
 
+
 class UpdateTeamPicture(FlaskForm):
-    picture = FileField('Update Squad Picture', validators=[FileAllowed(['jpg', 'png', 'webp'])])
+    picture = FileField('Update Squad Picture', validators=[
+                        FileAllowed(['jpg', 'png', 'webp'])])
     submit = SubmitField('Update')

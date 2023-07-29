@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Page Heading -->
 <div class="heading-box" id="players-title-box">
     <h1 class="main-heading" id="players-title">{{ currentteam.team_name }}'s Players</h1>
 </div>
 
+<!-- Add Player Button -->
 {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
 <div class="row row-with-mt" id="players-add-button">
     <div class="col s12 center-align">
@@ -17,62 +19,70 @@
 
 <main id="teams-content">
 
+    <!-- Left Football Player Image -->
     <div class="player-left-box players-player-left-box">
-        <img alt="Enzo Fernandez" id="enzo" class="player-left" src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
+        <img alt="Enzo Fernandez" id="enzo" class="player-left"
+            src="{{ url_for('static', filename='images/enzo-fernandez.webp') }}">
     </div>
 
+    <!-- No Players Message -->
     {% if currentteam.team_no_of_players == 0 %}
-        <p id="no-players">{{ currentteam.team_name }} currently has no players.</p>
+    <p id="no-players">{{ currentteam.team_name }} currently has no players.</p>
     {% else %}
-        <div class="row players-row">
-            <ul class="collapsible player-collapsible player-border">
-                <!-- Searching through all players -->
-                {% for player in players %}
-                    <!-- Making sure to only display players in correct team -->
-                    {% if player.team_id == currentteam.id %}
-                        <li class="player-background">
-                            <div class="collapsible-header white-text" id="player-name">
-                                <i class="fas fa-caret-down"></i>
-                                <strong>{{ player.player_kit_number }}).  {{ player.player_name }}</strong>
-                            </div>
-                            <div class="collapsible-body" id="player-body">
-                                <p id="top-p">Country: {{ player.player_country }}</p>
-                                <p id="middle-p">Position: {{ player.player_position }}</p>
-                                <p id="bottom-p">Joined: {{ player.player_joined }}</p>
-                                {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
-                                    <a class="btn green button-border" href="{{ url_for('edit_player', player_id=player.id, team_id=currentteam.id) }}">Edit</a>
-                                    <a class="btn red modal-trigger button-border" id="delete_player" href="#modal-{{ player.id }}">Delete</a>
-                                {% endif %}
-                            </div>
-                        </li>
+    <div class="row players-row">
+        <ul class="collapsible player-collapsible player-border">
+            <!-- Searching through all players -->
+            {% for player in players %}
+            <!-- Making sure to only display players in correct team -->
+            {% if player.team_id == currentteam.id %}
+            <li class="player-background">
+                <div class="collapsible-header white-text" id="player-name">
+                    <i class="fas fa-caret-down"></i>
+                    <strong>{{ player.player_kit_number }}). {{ player.player_name }}</strong>
+                </div>
+                <!-- Player Info -->
+                <div class="collapsible-body" id="player-body">
+                    <p id="top-p">Country: {{ player.player_country }}</p>
+                    <p id="middle-p">Position: {{ player.player_position }}</p>
+                    <p id="bottom-p">Joined: {{ player.player_joined }}</p>
+                    {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
+                    <a class="btn green button-border"
+                        href="{{ url_for('edit_player', player_id=player.id, team_id=currentteam.id) }}">Edit</a>
+                    <a class="btn red modal-trigger button-border" id="delete_player"
+                        href="#modal-{{ player.id }}">Delete</a>
                     {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
     {% endif %}
     {% for player in players %}
-        {% if player.team_id == currentteam.id %}
-            <!-- Modal Structure -->
-            <div id="modal-{{ player.id }}" class="modal">
-                <div class="modal-content">
-                    <h4>Are you sure you want to delete this player?</h4>
-                    <p>This action cannot be undone</p>
-                </div>
-                <div class="modal-footer">
-                    <!--  url_for('delete_player', team_id=currentteam.id)  -->
-                    <a href="{{ url_for('delete_player', team_id=currentteam.id, player_id=player.id) }}" class="btn green button-border">Yes</a>
-                    <a href="{{ url_for('players', id=currentteam.id) }}" class="btn red button-border">No</a>
-                </div>
-            </div>
-        {% endif %}
+    {% if player.team_id == currentteam.id %}
+    <!-- Modal Structure -->
+    <div id="modal-{{ player.id }}" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure you want to delete this player?</h4>
+            <p>This action cannot be undone</p>
+        </div>
+        <div class="modal-footer">
+            <a href="{{ url_for('delete_player', team_id=currentteam.id, player_id=player.id) }}"
+                class="btn green button-border">Yes</a>
+            <a href="{{ url_for('players', id=currentteam.id) }}" class="btn red button-border">No</a>
+        </div>
+    </div>
+    {% endif %}
     {% endfor %}
 
+    <!-- Right Football Player Image -->
     <div id="de-bruyne" class="player-right-box players-player-right-box">
         <img alt="Kevin De-Bruyne" class="player-right" src="{{ url_for('static', filename='images/de-bruyne.webp') }}">
     </div>
 
     <!-- Background Image -->
-    <img alt="A football pitch" id="players-background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+    <img alt="A football pitch" id="players-background-image"
+        src="{{ url_for('static', filename='images/background-image.webp') }}">
 
 </main>
 

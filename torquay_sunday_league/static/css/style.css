@@ -29,15 +29,19 @@
 }
 
 #logo-a:hover {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-#nav, footer {
+#nav,
+footer {
     height: 82px;
     background-color: #fafafa;
 }
 
-nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+nav,
+nav .nav-wrapper i,
+nav a.sidenav-trigger,
+nav a.sidenav-trigger i {
     height: 82px;
     line-height: 82px;
 }
@@ -50,17 +54,19 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     color: green;
 }
 
-nav ul a, #mobile-nav ul a {
+nav ul a,
+#mobile-nav ul a {
     color: green;
 }
 
-nav ul a:hover, #mobile-nav ul a:hover {
+nav ul a:hover,
+#mobile-nav ul a:hover {
     color: #008285;
 }
 
 nav {
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,128,0,0.14),0 3px 1px -2px rgba(0,128,0,0.12),0 1px 5px 0 rgba(0,128,0,0.2);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 128, 0, 0.14), 0 3px 1px -2px rgba(0, 128, 0, 0.12), 0 1px 5px 0 rgba(0, 128, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 128, 0, 0.14), 0 3px 1px -2px rgba(0, 128, 0, 0.12), 0 1px 5px 0 rgba(0, 128, 0, 0.2);
 }
 
 .card-panel {
@@ -71,7 +77,8 @@ nav {
 
 /* Whole Body */
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -84,8 +91,8 @@ body {
 /* Footer */
 
 footer {
-    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,128,0,0.14),0 -3px 1px -2px rgba(0,128,0,0.12),0 -1px 5px 0 rgba(0,128,0,0.2);
-    box-shadow: 0 -2px 2px 0 rgba(0,128,0,0.14),0 -3px 1px -2px rgba(0,128,0,0.12),0 -1px 5px 0 rgba(0,128,0,0.2);
+    -webkit-box-shadow: 0 -2px 2px 0 rgba(0, 128, 0, 0.14), 0 -3px 1px -2px rgba(0, 128, 0, 0.12), 0 -1px 5px 0 rgba(0, 128, 0, 0.2);
+    box-shadow: 0 -2px 2px 0 rgba(0, 128, 0, 0.14), 0 -3px 1px -2px rgba(0, 128, 0, 0.12), 0 -1px 5px 0 rgba(0, 128, 0, 0.2);
     margin-top: auto !important;
     padding-top: 5px;
 }
@@ -113,8 +120,8 @@ footer p {
     padding: 24px;
     margin: 20px 0 20px 0;
     border-radius: 25px;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 #socials:not(.browser-default) {
@@ -143,17 +150,17 @@ footer p {
     text-align: center;
     padding: 0;
 }
-  
+
 .social-networks li {
     display: inline;
 }
-  
+
 .social-networks i {
     font-size: 160%;
     margin: 10px 5%;
     color: green;
 }
-  
+
 .social-networks i:hover {
     color: turquoise;
 }
@@ -171,7 +178,8 @@ label {
     padding-bottom: 25px;
 }
 
-.fa-bars:before, .fa-bars:after {
+.fa-bars:before,
+.fa-bars:after {
     color: #008000;
 }
 
@@ -183,12 +191,15 @@ nav .sidenav-trigger {
     .sidenav.right-aligned {
         width: 150px;
     }
+
     .sub-heading {
         font-size: 20px;
     }
+
     .main-heading {
         font-size: 48px;
     }
+
     .social-networks li {
         display: inline-flex !important;
         margin: 0 2%;
@@ -199,6 +210,7 @@ nav .sidenav-trigger {
     .index-sub-heading {
         font-size: 20px;
     }
+
     .social-networks i {
         font-size: 110%;
     }
@@ -207,7 +219,7 @@ nav .sidenav-trigger {
 /* Index Page */
 
 #league-table {
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     width: 550px;
     margin: auto;
     border: 2px solid green;
@@ -229,7 +241,8 @@ nav .sidenav-trigger {
     display: none;
 }
 
-th, td {
+th,
+td {
     text-align: center;
 }
 
@@ -258,7 +271,8 @@ th, td {
     margin-bottom: 25px;
 }
 
-.player-left-box, .player-right-box {
+.player-left-box,
+.player-right-box {
     width: 380px;
     height: 680px;
     display: inline-block;
@@ -279,7 +293,8 @@ th, td {
     width: 530px;
 }
 
-.player-left, .player-right {
+.player-left,
+.player-right {
     width: 100%;
 }
 
@@ -300,16 +315,20 @@ h1 .fa-futbol {
     #trent {
         display: none;
     }
+
     #index-player-left-box {
         left: 50%;
         margin-left: -190px;
     }
+
     #winners-goals {
         flex-wrap: wrap;
     }
+
     #goalscorer {
         margin-top: 25px;
     }
+
     #winners {
         height: 190px;
     }
@@ -336,6 +355,7 @@ h1 .fa-futbol {
     .p-background {
         margin-top: 20px !important;
     }
+
     .index-player-left-box {
         left: 50%;
         margin-left: -150px;
@@ -345,19 +365,25 @@ h1 .fa-futbol {
 
 @media (min-width: 601px) and (max-width: 767px) {
     .index-player-left-box {
-        top: 330px;
+        top: 350px;
     }
 }
 
-@media (min-width: 368px) and (max-width: 600px) {
+@media (min-width: 499px) and (max-width: 600px) {
     .index-player-left-box {
-        top: 280px;
+        top: 320px;
+    }
+}
+
+@media (min-width: 368px) and (max-width: 498px) {
+    .index-player-left-box {
+        top: 360px;
     }
 }
 
 @media (max-width: 367px) {
     .index-player-left-box {
-        top: 320px;
+        top: 400px;
     }
 }
 
@@ -371,9 +397,11 @@ h1 .fa-futbol {
         vertical-align: middle;
         font-size: 24px;
     }
+
     h1 .fa-futbol {
         display: none;
     }
+
     #index-main-heading {
         font-size: 36px !important;
     }
@@ -427,7 +455,7 @@ h1 .fa-futbol {
 .league-box {
     margin: 0 auto;
     width: 100%;
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     border-radius: 25px;
     padding: 10px 15px;
     margin-bottom: 20px;
@@ -492,7 +520,7 @@ h1 .fa-futbol {
     display: flex;
     justify-content: center;
     color: darkgreen;
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     border-radius: 25px;
     margin: 0 auto;
     width: 50%;
@@ -504,7 +532,9 @@ h1 .fa-futbol {
 }
 
 @media (min-width: 1100px) {
-    #results, #freepik {
+
+    #results,
+    #freepik {
         width: 40% !important;
     }
 }
@@ -512,9 +542,12 @@ h1 .fa-futbol {
 /* Live Scores Tablet Responsiveness */
 
 @media (max-width: 1000px) {
-    .scores-player-right-box, .scores-player-left-box {
+
+    .scores-player-right-box,
+    .scores-player-left-box {
         display: none !important;
     }
+
     #api-main {
         min-height: auto;
     }
@@ -529,7 +562,9 @@ h1 .fa-futbol {
 /* Live Scores Mobile Responsiveness */
 
 @media (min-width: 581px) and (max-width: 800px) {
-    #results, #freepik {
+
+    #results,
+    #freepik {
         width: 80% !important;
     }
 }
@@ -539,19 +574,24 @@ h1 .fa-futbol {
         display: block;
         text-align: center;
     }
+
     #search-button {
         margin: 10px 0 15px 0;
     }
 }
 
 @media (min-width: 501px) and (max-width: 580px) {
-    #results, #freepik {
+
+    #results,
+    #freepik {
         width: 50% !important;
     }
 }
 
 @media (max-width: 500px) {
-    #results, #freepik {
+
+    #results,
+    #freepik {
         width: 80% !important;
     }
 }
@@ -595,7 +635,7 @@ h1 .fa-futbol {
 
 #no-players {
     color: green;
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     width: fit-content;
     padding: 10px 20px;
     border-radius: 20px;
@@ -610,7 +650,7 @@ h1 .fa-futbol {
 }
 
 .player-background {
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     border-radius: 20px;
     margin: 2px;
 }
@@ -658,15 +698,19 @@ h1 .fa-futbol {
         margin-top: 20px;
         font-size: 20px;
     }
+
     .players-player-right-box {
         margin-right: 5%;
     }
+
     .players-player-left-box {
         display: none;
     }
+
     .player-border {
         width: 40% !important;
     }
+
     .players-row {
         justify-content: flex-start !important;
         margin-left: 10%;
@@ -679,15 +723,19 @@ h1 .fa-futbol {
         justify-content: center;
         margin-left: 0;
     }
+
     .player-border {
         width: 60% !important;
     }
+
     .players-player-right-box {
         display: none;
     }
+
     .players-player-left-box {
         display: none;
     }
+
     #players-background-image {
         position: fixed;
         top: -400px;
@@ -702,10 +750,12 @@ h1 .fa-futbol {
         display: block !important;
         opacity: 0.8;
     }
+
     #players-title {
         font-size: 32px;
         word-break: break-word;
     }
+
     #players-title-box {
         height: 60px;
         padding: 10px 20px;
@@ -747,12 +797,14 @@ h1 .fa-futbol {
 }
 
 /* Disabled Switch */
-.switch label input[type=checkbox][disabled]+.lever:after, .switch label input[type=checkbox][disabled]:checked+.lever:after {
+.switch label input[type=checkbox][disabled]+.lever:after,
+.switch label input[type=checkbox][disabled]:checked+.lever:after {
     background-color: darkgreen;
 }
 
 /* Enabled Switch */
-.switch label input[type=checkbox]:checked+.lever:after, .switch label .lever:after {
+.switch label input[type=checkbox]:checked+.lever:after,
+.switch label .lever:after {
     background-color: white;
 }
 
@@ -837,11 +889,11 @@ h1 .fa-futbol {
 }
 
 .green-card {
-    background-color: rgb(0,128,0,0.8);
+    background-color: rgb(0, 128, 0, 0.8);
 }
 
 .card .card-action {
-    background-color: rgb(0,128,0,0.0);
+    background-color: rgb(0, 128, 0, 0.0);
     border-top: none;
 }
 
@@ -853,14 +905,14 @@ h1 .fa-futbol {
     width: 80%;
     overflow: scroll;
     height: 600px;
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     border-radius: 25px;
     margin-top: 20px;
 }
 
 #scroll-p {
     margin: auto;
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     padding: 10px 20px;
     border-radius: 15px;
     width: fit-content;
@@ -917,7 +969,9 @@ h1 .fa-futbol {
     color: #008285 !important;
 }
 
-#togglePassword, #toggleConfirmPassword, #toggleNewPassword {
+#togglePassword,
+#toggleConfirmPassword,
+#toggleNewPassword {
     cursor: pointer;
     float: right;
     position: absolute;
@@ -945,6 +999,7 @@ h1 .fa-futbol {
         font-size: 20px;
         word-break: break-all;
     }
+
     #edit-box {
         height: auto;
     }
@@ -958,7 +1013,9 @@ h1 .fa-futbol {
 
 /* Rules Page */
 
-#rules-one, #rules-two, #rules-three {
+#rules-one,
+#rules-two,
+#rules-three {
     width: 320px;
 }
 
@@ -990,23 +1047,32 @@ h1 .fa-futbol {
 /* Rules Mobile Responsiveness */
 
 @media (max-width: 767px) {
-    #rules-one, #rules-three {
+
+    #rules-one,
+    #rules-three {
         float: none !important;
         margin: auto !important;
         margin-right: auto !important;
     }
-    #rules-one, #rules-two, #rules-three {
+
+    #rules-one,
+    #rules-two,
+    #rules-three {
         width: 270px !important;
     }
+
     .rules-box {
         padding: 10px;
     }
+
     .rules-box h3 {
         font-size: 36px;
     }
+
     .rules-box h4 {
         font-size: 28px;
     }
+
     .rules-box p {
         font-size: 16px;
     }
@@ -1023,8 +1089,8 @@ h1 .fa-futbol {
     transition: -webkit-box-shadow .25s;
     transition: box-shadow .25s;
     transition: box-shadow .25s, -webkit-box-shadow .25s;
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .team-profile-picture {
@@ -1079,7 +1145,7 @@ h1 .fa-futbol {
 .profile-content {
     margin: 0 auto;
     width: 50%;
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     border-radius: 25px;
     padding: 0 13px 13px 13px;
     margin-bottom: 20px;
@@ -1109,22 +1175,29 @@ h1 .fa-futbol {
     .profile-content {
         width: 90% !important;
     }
+
     .team-title {
         width: 100%;
         padding: 5px 0;
         word-break: break-word;
     }
+
     .team-title-inner {
         font-size: 32px;
     }
+
     .team-profile-button {
         /* Biggest size width of 320px will allow before causing issues */
         font-size: 13.7px;
     }
-    .card-panel, .p-background {
+
+    .card-panel,
+    .p-background {
         width: 90% !important;
     }
-    .team-profile-picture, .profile-picture {
+
+    .team-profile-picture,
+    .profile-picture {
         width: 200px;
     }
 }
@@ -1147,13 +1220,14 @@ h1 .fa-futbol {
 }
 
 .reg-login-p {
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     border-radius: 25px;
     width: fit-content !important;
     margin: auto;
     float: none !important;
     padding: 2px 15px !important;
 }
+
 .reg-login-p p {
     margin: 5px;
 }
@@ -1192,7 +1266,8 @@ h1 .fa-futbol {
     margin-top: 20px;
 }
 
-.picture-profile-row, .picture-edit-row {
+.picture-profile-row,
+.picture-edit-row {
     margin-bottom: 10px;
 }
 
@@ -1226,7 +1301,10 @@ h1 .fa-futbol {
 
 /* Headings */
 
-.main-heading, .sub-heading, #index-main-heading, .index-sub-heading {
+.main-heading,
+.sub-heading,
+#index-main-heading,
+.index-sub-heading {
     color: #008000;
     text-align: center;
 }
@@ -1235,7 +1313,8 @@ h1 .fa-futbol {
     margin: 35px 0 25px 0;
 }
 
-.sub-heading, .index-sub-heading {
+.sub-heading,
+.index-sub-heading {
     font-size: 32px;
     margin-top: 0;
     font-weight: 400;
@@ -1249,7 +1328,7 @@ h1 .fa-futbol {
 }
 
 .heading-box {
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     width: fit-content;
     margin: auto;
     border-radius: 25px;
@@ -1267,7 +1346,7 @@ h1 .fa-futbol {
 }
 
 #cannot-view {
-    background-color: rgb(250,250,250,0.8);
+    background-color: rgb(250, 250, 250, 0.8);
     width: fit-content;
     margin: auto;
     border-radius: 25px;
@@ -1294,7 +1373,7 @@ h1 .fa-futbol {
     margin-top: 20px;
 }
 
-.row-without-mb{
+.row-without-mb {
     margin-bottom: 0;
 }
 
@@ -1372,6 +1451,7 @@ h1 .fa-futbol {
         display: block;
         opacity: 0.8;
     }
+
     #background-image {
         display: none;
     }

@@ -1,81 +1,91 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col picture-team-box">
-            <img class="team-profile-picture" src="{{ squad_picture }}" alt="{{ currentteam.team_name }}'s squad picture">
+<!-- Team Image -->
+<div class="row">
+    <div class="col picture-team-box">
+        <img class="team-profile-picture" src="{{ squad_picture }}" alt="{{ currentteam.team_name }}'s squad picture">
+    </div>
+</div>
+
+<!-- Team Name -->
+<div class="row-without-mb team-name">
+    <div class="col s12 m6">
+        <div class="green lighten-4 team-title" id="tt-box">
+            <h3 class="center-align green lighten-4 team-title-inner">
+                {{ currentteam.team_name }}
+            </h3>
+        </div>
+    </div>
+</div>
+
+<div class="profile-content">
+    <!-- Number of Registered Players -->
+    <div id="num_of_players">
+        <p id="num_of_players-p">No. of players:</p>
+        <p id="no_of_players"> {{ currentteam.team_no_of_players }}</p>
+    </div>
+
+    <!-- Kit Colour -->
+    <p>Kit Colours: {{ currentteam.team_colour }}</p>
+
+    <!-- Home Location -->
+    <p>Address: {{ currentteam.team_location }}</p>
+
+    <!-- Created By -->
+    <p>Managed by: {{ currentteam.team_created_by }}</p>
+
+    {% if currentteam.team_contact != "" %}
+    <!-- Contact -->
+    <p>Contact: {{ currentteam.team_contact }}</p>
+    {% endif %}
+
+    {% if currentteam.confirmation_status == True %}
+    <p>Team Confirmed</p>
+    {% else %}
+    <p>Team not yet confirmed</p>
+    <p>Teams will be reviewed once we have been contacted to say all players have all been submitted</p>
+    {% endif %}
+
+    <div class="row-without-mb">
+        <div class="col player-edit-view">
+            {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
+            <!-- Button to Edit Team info -->
+            <a class="team-profile-button btn green button-border"
+                href="{{ url_for('edit_team', team_id=currentteam.id) }}">Edit</a>
+            {% endif %}
+            <!-- Button to view players -->
+            <a class="team-profile-button btn lyellow button-border"
+                href="{{ url_for('players', id=currentteam.id) }}">Players</a>
+            {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
+            <a class="btn red modal-trigger team-profile-button button-border" id="delete_team"
+                href="#modal-{{ currentteam.id }}">Delete</a>
+            {% endif %}
         </div>
     </div>
 
-    <div class="row-without-mb team-name">
-        <div class="col s12 m6">
-            <div class="green lighten-4 team-title" id="tt-box">
-                <h3 class="center-align green lighten-4 team-title-inner">
-                    {{ currentteam.team_name }}
-                </h3>
-            </div>
-        </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal-{{ currentteam.id }}" class="modal">
+    <div class="modal-content">
+        <h4>Are you sure you want to delete this team?</h4>
+        <p>This action cannot be undone</p>
     </div>
-
-    <div class="profile-content">
-        <!-- Number of Registered Players -->
-        <div id="num_of_players"><p id="num_of_players-p">No. of players:</p><p id="no_of_players"> {{ currentteam.team_no_of_players }}</p></div>
-
-        <!-- Kit Colour -->
-        <p >Kit Colours: {{ currentteam.team_colour }}</p>
-
-        <!-- Home Location -->
-        <p >Address: {{ currentteam.team_location }}</p>
-
-        <!-- Created By -->
-        <p >Managed by: {{ currentteam.team_created_by }}</p>
-
-        {% if currentteam.team_contact != "" %}
-            <!-- Contact -->
-            <p>Contact: {{ currentteam.team_contact }}</p>
-        {% endif %}
-
-        {% if currentteam.confirmation_status == True %}
-            <p>Team Confirmed</p>
-        {% else %}
-            <p>Team not yet confirmed</p>
-            <p>Teams will be reviewed once we have been contacted to say all players have all been submitted</p>
-        {% endif %}
-
-        <div class="row-without-mb">
-            <div class="col player-edit-view">
-                {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}                    
-                    <!-- Button to Edit Team info -->
-                    <a class="team-profile-button btn green button-border" href="{{ url_for('edit_team', team_id=currentteam.id) }}">Edit</a>
-                {% endif %}
-                <!-- Button to view players -->
-                <a class="team-profile-button btn lyellow button-border" href="{{ url_for('players', id=currentteam.id) }}">Players</a>
-                {% if currentteam.team_created_by == session["user"] and currentteam.confirmation_status == False %}
-                    <a class="btn red modal-trigger team-profile-button button-border" id="delete_team" href="#modal-{{ currentteam.id }}">Delete</a>
-                {% endif %}
-            </div>
-        </div>
-
+    <div class="modal-footer">
+        <a href="{{ url_for('delete_team', team_id=currentteam.id) }}" class="btn green button-border">Yes</a>
+        <a href="{{ url_for('team_profile', id = currentteam.id) }}" class="btn red button-border">No</a>
     </div>
+</div>
 
-    <!-- Modal Structure -->
-    <div id="modal-{{ currentteam.id }}" class="modal">
-        <div class="modal-content">
-            <h4>Are you sure you want to delete this team?</h4>
-            <p>This action cannot be undone</p>
-        </div>
-        <div class="modal-footer">
-            <a href="{{ url_for('delete_team', team_id=currentteam.id) }}" class="btn green button-border">Yes</a>
-            <a href="{{ url_for('team_profile', id = currentteam.id) }}" class="btn red button-border">No</a>
-        </div>
-    </div>
+<!-- Background Image -->
+<img alt="A football pitch" id="background-image"
+    src="{{ url_for('static', filename='images/background-image.webp') }}">
 
-    <!-- Background Image -->
-    <img alt="A football pitch" id="background-image" src="{{ url_for('static', filename='images/background-image.webp') }}">
+<!-- Over 1200 image -->
+<img alt="A sunday league corner kick" id="background-image-large"
+    src="{{ url_for('static', filename='images/background-image-large.webp') }}">
 
-    <!-- Over 1200 image -->
-    <img alt="A sunday league corner kick" id="background-image-large" src="{{ url_for('static', filename='images/background-image-large.webp') }}">
-
-    <script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/team_profile_script.js') }}"></script>
 
 {% endblock %}
