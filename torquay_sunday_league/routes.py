@@ -839,7 +839,7 @@ def delete_squad_picture(team_id):
 @app.route("/live_scores", methods=["GET", "POST"])
 def live_scores():
     # API Token to make the API accessible
-    token = "75cf94657f2047ebbb9e09665358930d"
+    token = os.environ.get("API_KEY")
     headers = {
         'X-Auth-Token': token,
     }
