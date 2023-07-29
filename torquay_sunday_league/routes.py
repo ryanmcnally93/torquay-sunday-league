@@ -12,6 +12,8 @@ from datetime import datetime
 import requests
 from pprint import pprint
 import json
+if os.path.exists("env.py"):
+    import env # noqa
 
 
 # Homepage
