@@ -10,7 +10,7 @@
 {% if user.team_managed == "None" %}
 <h2 class="index-sub-heading">One more spot available for this season!</h2>
 <div class="row">
-    <div class="col s12 center-align">
+    <div class="col s12 center-align register-button">
         <i class="fa-solid fa-futbol football"></i>
         <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button"
             class="btn green button-border">Create Team</a>
@@ -21,7 +21,7 @@
 {% elif session["user"] != "ryanmcnally93" %}
 <h2 class="index-sub-heading">Team deadline 10/08/2023</h2>
 <div class="row">
-    <div class="col s12 center-align">
+    <div class="col s12 center-align register-button">
         <i class="fa-solid fa-futbol football"></i>
         <a href="{{ url_for('team_profile', id=team.id) }}" id="register-button" class="btn green button-border"> {{
             team.team_name }} </a>
@@ -32,7 +32,7 @@
 {% else %}
 <h2 class="index-sub-heading">Viewing as Admin</h2>
 <div class="row">
-    <div class="col s12 center-align">
+    <div class="col s12 center-align register-button">
         <i class="fa-solid fa-futbol football"></i>
         <a href="{{ url_for('create_team', username=session['user']) }}" id="register-button"
             class="btn green button-border">Create Team</a>
@@ -46,7 +46,7 @@
 {% else %}
 <h2 class="index-sub-heading">One more spot available for this season!</h2>
 <div class="row">
-    <div class="col s12 center-align">
+    <div class="col s12 center-align register-button">
         <i class="fa-solid fa-futbol football"></i>
         <a href="{{ url_for('register') }}" id="register-button" class="btn green button-border">Register NOW!</a>
         <i class="fa-solid fa-futbol football"></i>
