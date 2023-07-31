@@ -245,6 +245,12 @@ nav .sidenav-trigger {
     display: none;
 }
 
+@media (max-width: 400px) {
+    .football {
+        display: none !important;
+    }
+}
+
 th,
 td {
     text-align: center;
