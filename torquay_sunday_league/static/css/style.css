@@ -232,6 +232,10 @@ nav .sidenav-trigger {
     justify-content: center;
 }
 
+.register-button {
+    padding: 0 !important;
+}
+
 #register-button {
     margin: auto;
     border-radius: 10px;
@@ -757,7 +761,7 @@ h1 .fa-futbol {
     }
 
     #players-title-box {
-        height: 60px;
+        height: fit-content !important;
         padding: 10px 20px;
     }
 }
