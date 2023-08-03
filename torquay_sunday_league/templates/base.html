@@ -82,9 +82,11 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
+        {% if loop.index == 1 %}
         <div class="row flashes" id="flash">
             <h3 class="green lighten-4 center-align">{{ message }}</h3>
         </div>
+        {% endif %}
         {% endfor %}
         {% endif %}
         {% endwith %}

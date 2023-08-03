@@ -690,7 +690,9 @@ This was because the initial call to the API before the post didn't have header=
 
 ### Unfixed Bugs
 
-To the best of my knowledge, there are no known bugs left to fix.
+I have an issue with my API, but the issue is not on my end. You can only make 5 requests before the requests do not work. I have placed some code to capture this error and return a statement to the user, so they can close and re-open the window and search for 5 more dates.
+
+I have also contacted the API creator about this, as it says on the site that endless requests can be made.
 
 ### Responsive Design
 

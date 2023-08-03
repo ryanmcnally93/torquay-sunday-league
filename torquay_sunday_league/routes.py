@@ -886,6 +886,11 @@ def live_scores():
             flash("Cannot select future date.")
             return redirect(url_for("live_scores"))
 
-    matches = data['matches']
+    if 'matches' in data:
+        matches = data['matches']
+    else:
+        flash("You have run out of requests, try closing and re-opening the window.")
+        return redirect(url_for("live_scores"))
+
     title = "Live Scores"
     return render_template("live_scores.html", data=data, matches=matches, present=presentstring, user=user1, team=baseteam, profile_picture=profile_picture, title=title)
