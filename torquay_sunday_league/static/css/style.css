@@ -979,6 +979,15 @@ h1 .fa-futbol {
     color: #008285 !important;
 }
 
+.field-advice {
+    margin-left: 13px;
+}
+
+.field-advice-confirm {
+    display: flex;
+    justify-content: center;
+}
+
 #togglePassword,
 #toggleConfirmPassword,
 #toggleNewPassword {

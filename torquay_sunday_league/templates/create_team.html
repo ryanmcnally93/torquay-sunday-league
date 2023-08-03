@@ -11,6 +11,7 @@
         <form class="col s12" method="POST" action="{{ url_for('create_team', username=session['user']) }}">
             <!-- Team Name -->
             <div class="row">
+                <p class="field-advice">Please remove spaces before and after each field.</p>
                 <div class="input-field col s12">
                     <i class="fas fa-solid fa-futbol form-icon-colour prefix"></i>
                     <input id="team_name" name="team_name" minlength="3" maxlength="25" pattern="^\S(?:.*\S)?$"
@@ -41,7 +42,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-solid fa-phone form-icon-colour prefix"></i>
                     <input id="team_contact" name="team_contact" pattern="[0-9]{11}" type="tel" class="validate">
-                    <label for="team_contact">Contact Mobile</label>
+                    <label for="team_contact">Contact (Mobile only)</label>
                 </div>
             </div>
             <!-- Submit -->

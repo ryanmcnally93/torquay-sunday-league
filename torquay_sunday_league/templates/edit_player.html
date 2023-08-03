@@ -11,6 +11,7 @@
         action="{{ url_for('edit_player', player_id=player.id, team_id=currentteam.id) }}">
         <!-- Player Name -->
         <div class="row">
+            <p class="field-advice">Please remove spaces before and after each field.</p>
             <div class="input-field col s12">
                 <i class="fas fa-solid fa-user-plus form-icon-colour prefix"></i>
                 <input id="player_name" name="player_name" value="{{ player.player_name }}" type="text"

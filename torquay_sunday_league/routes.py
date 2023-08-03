@@ -13,7 +13,7 @@ import requests
 from pprint import pprint
 import json
 if os.path.exists("env.py"):
-    import env # noqa
+    import env  # noqa
 
 
 # Homepage
@@ -845,7 +845,7 @@ def live_scores():
     headers = {
         'X-Auth-Token': token,
     }
-    print(f'headers: {headers}')
+
     # Log in check, to display correct navbar information
     if "user" in session:
         user1 = User.query.filter_by(username=session["user"]).first()

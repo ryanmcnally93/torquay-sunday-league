@@ -23,11 +23,13 @@
     <form class="col s12" method="POST" action="{{ url_for('register') }}">
         <!-- Username -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 row-without-mb">
                 <i class="fas fa-user-plus form-icon-colour prefix"></i>
                 <input name="username" id="username" type="text" pattern="^[a-zA-Z0-9]{5,25}$" class="validate"
                     required>
                 <label for="username">Username</label>
+                <p class="row-without-mb">Your username must not include spaces, and be between 5 and 25 characters long
+                </p>
             </div>
         </div>
         <!-- Email Address -->
