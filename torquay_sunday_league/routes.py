@@ -762,7 +762,7 @@ def delete_user(username):
     # Log in check, to display correct navbar information
     if "user" in session:
         user = User.query.filter_by(username=username).first()
-        if session["user"] == username:
+        if session["user"] == username or session["user"] == "ryanmcnally93":
             session.pop("user")
             # User deleted
             db.session.delete(user)
