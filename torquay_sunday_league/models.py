@@ -58,9 +58,12 @@ class Player(db.Model):
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
-        return "#{0} Name: {1} | - Kit Number: {2} | Joined: {3} | Country: {4} | Position: {5} | Team: {6}".format(
-            self.id, self.player_name, self.player_kit_number, self.player_joined, self.player_country, self.player_position, self.team_id
-        )
+        return "#{0} Name: {1} | - Kit Number: {2} | Joined: {3} | Country:"\
+            "{4} | Position: {5} | Team: {6}".format(
+                self.id, self.player_name, self.player_kit_number,
+                self.player_joined, self.player_country, self.player_position,
+                self.team_id
+            )
 
 
 class UpdateProfilePicture(FlaskForm):

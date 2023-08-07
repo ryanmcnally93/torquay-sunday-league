@@ -125,6 +125,12 @@ The following py documents have been tested using [extendsclass.](https://extend
 
 I have also played around with unittest to try and create tests, similar to my Jest JavaScript tests used in my last project.
 
+#### Pep8 Compliancy
+
+- To check if all my .py files were pep8 compliant, I user [Code Institutes pep8 linter](https://pep8ci.herokuapp.com/), This returned many issues with the lengths of my Python code lines.
+
+- To solve this I pip installed [Black](https://black.readthedocs.io/en/stable/getting_started.html), running the command "black -l 79 (name of python document)".
+
 ### Lighthouse
 
 - The only issues I had with my desktop lighthouse scores were my forgotten alt attribute on the smaller profile picture icon and the collapsibles contrast, both of which have now been resolved.

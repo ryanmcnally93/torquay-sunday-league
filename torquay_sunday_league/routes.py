@@ -6,12 +6,15 @@ from sqlalchemy import exc
 from torquay_sunday_league import app, db
 from torquay_sunday_league.models import Team, Player, User
 from torquay_sunday_league.models import (
-    UpdateProfilePicture, UpdateTeamPicture)
+    UpdateProfilePicture,
+    UpdateTeamPicture,
+)
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import requests
 from pprint import pprint
 import json
+
 if os.path.exists("env.py"):
     import env  # noqa
 
@@ -24,7 +27,8 @@ def home():
         user1 = User.query.filter_by(username=session["user"]).first()
         team1 = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
     else:
         # Set to none if not logged in
         user1 = "None"
@@ -33,7 +37,13 @@ def home():
 
     # Teams is needed to display them in the table
     teams = list(Team.query.order_by(Team.team_name).all())
-    return render_template("index.html", user=user1, team=team1, teams=teams, profile_picture=profile_picture)
+    return render_template(
+        "index.html",
+        user=user1,
+        team=team1,
+        teams=teams,
+        profile_picture=profile_picture,
+    )
 
 
 # Teams Page
@@ -44,15 +54,20 @@ def teams():
         user1 = User.query.filter_by(username=session["user"]).first()
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
         currentteam = "None"
 
         # This code runs when the form is submitted
         if request.method == "POST":
             currentteam = Team.query.filter_by(
-                team_name=request.form.get("teamid")).first()
+                team_name=request.form.get("teamid")
+            ).first()
             currentteam.confirmation_status = bool(
-                True if request.form.get(f"{ currentteam.id }confirmed") else False)
+                True
+                if request.form.get(f"{ currentteam.id }confirmed")
+                else False
+            )
             db.session.commit()
             flash("Confirmation changed")
     else:
@@ -65,7 +80,14 @@ def teams():
     # Teams is needed for team cards
     teams = list(Team.query.order_by(Team.team_name).all())
     title = "Teams"
-    return render_template("teams.html", teams=teams, user=user1, team=baseteam, profile_picture=profile_picture, title=title)
+    return render_template(
+        "teams.html",
+        teams=teams,
+        user=user1,
+        team=baseteam,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Rules Page
@@ -76,14 +98,21 @@ def rules():
         user1 = User.query.filter_by(username=session["user"]).first()
         team1 = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
     else:
         # If user is not logged in, variables set to None
         user1 = "None"
         team1 = "None"
         profile_picture = "None"
     title = "rules"
-    return render_template("rules.html", user=user1, team=team1, profile_picture=profile_picture, title=title)
+    return render_template(
+        "rules.html",
+        user=user1,
+        team=team1,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Create Team Page
@@ -93,7 +122,8 @@ def create_team(username):
     user = User.query.filter_by(username=username).first()
     team1 = Team.query.filter_by(team_name=user.team_managed).first()
     profile_picture = url_for(
-        'static', filename='images/profile_pics/' + user.profile_picture)
+        "static", filename="images/profile_pics/" + user.profile_picture
+    )
 
     # Log in check, to display correct navbar information
     if "user" in session:
@@ -103,7 +133,10 @@ def create_team(username):
 
         # This code runs when the form is submitted
         if request.method == "POST":
-            if session["user"] == "ryanmcnally93" or user.team_managed == "None":
+            if (
+                session["user"] == "ryanmcnally93"
+                or user.team_managed == "None"
+            ):
                 team = Team(
                     team_name=request.form.get("team_name"),
                     team_no_of_players=0,
@@ -112,15 +145,18 @@ def create_team(username):
                     team_contact=request.form.get("team_contact"),
                     confirmation_status=bool(False),
                     team_created_by=session["user"],
-                    users_id=user.id
+                    users_id=user.id,
                 )
 
                 # Check to see if the team name is taken
                 team_name = Team.query.filter_by(
-                    team_name=team.team_name).first()
+                    team_name=team.team_name
+                ).first()
                 if team_name:
                     flash("This team name is taken!")
-                    return redirect(url_for("create_team", username=session["user"]))
+                    return redirect(
+                        url_for("create_team", username=session["user"])
+                    )
 
                 # Set the team managed status for user
                 user.team_managed = team.team_name
@@ -138,7 +174,14 @@ def create_team(username):
         return redirect(url_for("log_in"))
 
     title = "Create Team"
-    return render_template("create_team.html", username=session["user"], user=user, team=team1, profile_picture=profile_picture, title=title)
+    return render_template(
+        "create_team.html",
+        username=session["user"],
+        user=user,
+        team=team1,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Register Page
@@ -156,7 +199,9 @@ def register():
         password = generate_password_hash(request.form.get("password"))
 
         # This code runs if the password don't match
-        if request.form.get("password") != request.form.get("confirm_password"):
+        if request.form.get("password") != request.form.get(
+            "confirm_password"
+        ):
             flash("ERROR! Your passwords do not match")
             return redirect(url_for("register"))
 
@@ -182,7 +227,7 @@ def register():
             password=password,
             emailaddress=emailaddress,
             month_joined=month_joined,
-            team_managed="None"
+            team_managed="None",
         )
         db.session.add(user)
         db.session.commit()
@@ -216,10 +261,14 @@ def log_in():
         # Check that the user exists
         user_object = User.query.filter_by(username=username).first()
         if user_object:
-            if check_password_hash(user_object.password, request.form.get("password")):
+            if check_password_hash(
+                user_object.password, request.form.get("password")
+            ):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("user_profile", username=session["user"]))
+                return redirect(
+                    url_for("user_profile", username=session["user"])
+                )
             else:
                 # Invalid password
                 flash("Incorrect Username and/or Password")
@@ -242,7 +291,8 @@ def user_profile(username):
         user = User.query.filter_by(username=username).first()
         team1 = Team.query.filter_by(team_name=user.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user.profile_picture)
+            "static", filename="images/profile_pics/" + user.profile_picture
+        )
 
     else:
         # This code runs if the user is not logged in
@@ -250,7 +300,14 @@ def user_profile(username):
         return redirect(url_for("log_in"))
 
     title = "User Profile"
-    return render_template("user_profile.html", username=username, user=user, profile_picture=profile_picture, team=team1, title=title)
+    return render_template(
+        "user_profile.html",
+        username=username,
+        user=user,
+        profile_picture=profile_picture,
+        team=team1,
+        title=title,
+    )
 
 
 # Log Out Function, returns user to log in page
@@ -268,17 +325,20 @@ def edit_team(team_id):
     if "user" in session:
         currentteam = Team.query.get_or_404(team_id)
         if session["user"] != currentteam.team_created_by:
-            # Code to stop users being able to make changes to another managers team
+            # Stop users being able to make changes to another managers team
             flash("You cannot edit a team that is not yours.")
             return redirect(url_for("user_profile", username=session["user"]))
 
-        # Set these variables for the navbar to function and information to display
+        # Set these variables for the navbar to function
         user1 = User.query.filter_by(username=session["user"]).first()
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         squad_picture = url_for(
-            'static', filename='images/profile_pics/' + currentteam.profile_picture)
+            "static",
+            filename="images/profile_pics/" + currentteam.profile_picture,
+        )
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
         form = UpdateTeamPicture()
 
         # This code runs when the form is submitted
@@ -288,30 +348,53 @@ def edit_team(team_id):
 
             # Checks for errors in the form
             if form.picture.errors:
-                return render_template("edit_team.html", currentteam=currentteam, team=baseteam, user=user1, squad_picture=squad_picture, form=form)
+                return render_template(
+                    "edit_team.html",
+                    currentteam=currentteam,
+                    team=baseteam,
+                    user=user1,
+                    squad_picture=squad_picture,
+                    form=form,
+                )
 
             if form.picture.data:
                 # Deletes last image
-                if currentteam.profile_picture != 'default_squad.webp':
-                    os.remove(os.path.join(app.root_path,
-                                           'static/images/profile_pics', currentteam.profile_picture))
+                if currentteam.profile_picture != "default_squad.webp":
+                    os.remove(
+                        os.path.join(
+                            app.root_path,
+                            "static/images/profile_pics",
+                            currentteam.profile_picture,
+                        )
+                    )
 
                 # Setting new profile image
                 picture_file = save_picture(form.picture.data, 2)
                 currentteam.profile_picture = picture_file
                 db.session.commit()
                 squad_picture = url_for(
-                    'static', filename='images/profile_pics/' + currentteam.profile_picture)
+                    "static",
+                    filename="images/profile_pics/"
+                    + currentteam.profile_picture,
+                )
                 flash("Squad picture changed")
 
             if session["user"] == currentteam.team_created_by:
                 team_name_search_positive = Team.query.filter_by(
-                    team_name=request.form.get("team_name")).first()
+                    team_name=request.form.get("team_name")
+                ).first()
                 if team_name_search_positive:
                     # Checks for taken username
                     if currentteam.team_name != request.form.get("team_name"):
                         flash("This team name is taken!")
-                        return render_template("edit_team.html", team=baseteam, currentteam=currentteam, user=user1, squad_picture=squad_picture, form=form)
+                        return render_template(
+                            "edit_team.html",
+                            team=baseteam,
+                            currentteam=currentteam,
+                            user=user1,
+                            squad_picture=squad_picture,
+                            form=form,
+                        )
 
                 # Setting new team information
                 currentteam.team_name = request.form.get("team_name")
@@ -332,7 +415,16 @@ def edit_team(team_id):
         return redirect(url_for("log_in"))
 
     title = "Edit Team"
-    return render_template("edit_team.html", team=baseteam, currentteam=currentteam, user=user1, squad_picture=squad_picture, form=form, profile_picture=profile_picture, title=title)
+    return render_template(
+        "edit_team.html",
+        team=baseteam,
+        currentteam=currentteam,
+        user=user1,
+        squad_picture=squad_picture,
+        form=form,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Delete Team Function, returns user to teams page
@@ -366,7 +458,8 @@ def players(id):
         user1 = User.query.filter_by(username=session["user"]).first()
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
     else:
         # If you are not logged in
         user1 = "None"
@@ -377,11 +470,21 @@ def players(id):
     currentteam = Team.query.get_or_404(id)
     players = list(Player.query.order_by(Player.player_kit_number).all())
     title = "Players"
-    return render_template("players.html", players=players, team=baseteam, user=user1, currentteam=currentteam, profile_picture=profile_picture, title=title)
+    return render_template(
+        "players.html",
+        players=players,
+        team=baseteam,
+        user=user1,
+        currentteam=currentteam,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Edit Player Page
-@app.route("/edit_player/<int:player_id>/<int:team_id>", methods=["GET", "POST"])
+@app.route(
+    "/edit_player/<int:player_id>/<int:team_id>", methods=["GET", "POST"]
+)
 def edit_player(player_id, team_id):
     # Log in check, to display correct navbar information
     if "user" in session:
@@ -395,36 +498,56 @@ def edit_player(player_id, team_id):
         player = Player.query.get_or_404(player_id)
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
         teams = list(Team.query.order_by(Team.team_name).all())
 
         # Check to see if the team has another player with this kit number
         search = Team.query.get(team_id).players
         for current in search:
             if str(current.player_name) != player.player_name:
-                if str(current.player_kit_number) == request.form.get("player_kit_number"):
+                if str(current.player_kit_number) == request.form.get(
+                    "player_kit_number"
+                ):
                     flash(
-                        f"Error: This {currentteam.team_name} kit number is already taken!")
-                    return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1)
+                        f"Error: This kit number is already taken!"
+                    )
+                    return render_template(
+                        "edit_player.html",
+                        player=player,
+                        team=baseteam,
+                        currentteam=currentteam,
+                        teams=teams,
+                        user=user1,
+                    )
 
         # Check to see if this team has another player with the same name
         for current in search:
             if str(current.player_name) != player.player_name:
                 if str(current.player_name) == request.form.get("player_name"):
                     flash("Error: This player has already been registered!")
-                    return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1)
+                    return render_template(
+                        "edit_player.html",
+                        player=player,
+                        team=baseteam,
+                        currentteam=currentteam,
+                        teams=teams,
+                        user=user1,
+                    )
 
         # This code only runs when the form is submitted
         if request.method == "POST":
             if session["user"] == currentteam.team_created_by:
                 player.player_kit_number = request.form.get(
-                    "player_kit_number")
+                    "player_kit_number"
+                )
                 player.player_name = request.form.get("player_name")
                 player.player_country = request.form.get("player_country")
                 player.player_position = request.form.get("player_position")
                 db.session.commit()
-                players = list(Player.query.order_by(
-                    Player.player_kit_number).all())
+                players = list(
+                    Player.query.order_by(Player.player_kit_number).all()
+                )
                 return redirect(url_for("players", id=team_id))
             else:
                 # Check to see if you are the creator
@@ -435,7 +558,16 @@ def edit_player(player_id, team_id):
         return redirect(url_for("log_in"))
 
     title = "Edit Player"
-    return render_template("edit_player.html", player=player, team=baseteam, currentteam=currentteam, teams=teams, user=user1, profile_picture=profile_picture, title=title)
+    return render_template(
+        "edit_player.html",
+        player=player,
+        team=baseteam,
+        currentteam=currentteam,
+        teams=teams,
+        user=user1,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Add Player Page
@@ -451,23 +583,39 @@ def add_player(id):
         # Setting variables for the page
         user1 = User.query.filter_by(username=session["user"]).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         search = Team.query.get(id).players
         teams = list(Team.query.order_by(Team.team_name).all())
 
         # Check to see if the team has another player with this kit number
         for current in search:
-            if str(current.player_kit_number) == request.form.get("player_kit_number"):
+            if str(current.player_kit_number) == request.form.get(
+                "player_kit_number"
+            ):
                 flash(
-                    f"Error: This {currentteam.team_name} kit number is already taken!")
-                return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1)
+                    f"Error: This kit number is already taken!"
+                )
+                return render_template(
+                    "add_player.html",
+                    teams=teams,
+                    team=baseteam,
+                    currentteam=currentteam,
+                    user=user1,
+                )
 
         # Check to see if the team has another player with this name
         for current in search:
             if str(current.player_name) == request.form.get("player_name"):
                 flash("Error: This player has already been registered!")
-                return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1)
+                return render_template(
+                    "add_player.html",
+                    teams=teams,
+                    team=baseteam,
+                    currentteam=currentteam,
+                    user=user1,
+                )
 
         # This code only runs when the form is submitted
         if request.method == "POST":
@@ -479,12 +627,13 @@ def add_player(id):
                 # Set information for player
                 player = Player(
                     player_kit_number=int(
-                        request.form.get("player_kit_number")),
+                        request.form.get("player_kit_number")
+                    ),
                     player_name=request.form.get("player_name"),
                     player_position=request.form.get("player_position"),
                     player_joined=request.form.get("player_joined"),
                     player_country=request.form.get("player_country"),
-                    team_id=currentteam.id
+                    team_id=currentteam.id,
                 )
 
                 # Checks to see if the date is in the past
@@ -492,7 +641,8 @@ def add_player(id):
                 present = datetime.now()
                 if present.date() < arrival.date():
                     flash(
-                        "If this player hasn't officially joined he cannot be submitted")
+                        "If this player hasn't joined he cannot be submitted"
+                    )
                     return redirect(url_for("add_player", id=id))
 
                 # Adding player to database and increasing teams no. of players
@@ -509,7 +659,15 @@ def add_player(id):
         return redirect(url_for("log_in"))
 
     title = "Add Player"
-    return render_template("add_player.html", teams=teams, team=baseteam, currentteam=currentteam, user=user1, profile_picture=profile_picture, title=title)
+    return render_template(
+        "add_player.html",
+        teams=teams,
+        team=baseteam,
+        currentteam=currentteam,
+        user=user1,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Team Profile Page
@@ -520,7 +678,8 @@ def team_profile(id):
         user1 = User.query.filter_by(username=session["user"]).first()
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
     else:
         # If you are not logged in
         user1 = "None"
@@ -530,14 +689,27 @@ def team_profile(id):
     # If the number of player is under 16
     currentteam = Team.query.get_or_404(id)
     if "user" in session:
-        if currentteam.team_no_of_players < 16 and session["user"] != "ryanmcnally93" and session["user"] == currentteam.team_created_by:
+        if (
+            currentteam.team_no_of_players < 16
+            and session["user"] != "ryanmcnally93"
+            and session["user"] == currentteam.team_created_by
+        ):
             flash("You must have 16 players to be accepted")
 
     # For squad picture
     squad_picture = url_for(
-        'static', filename='images/profile_pics/' + currentteam.profile_picture)
+        "static", filename="images/profile_pics/" + currentteam.profile_picture
+    )
     title = "Team Profile"
-    return render_template("team_profile.html", currentteam=currentteam, team=baseteam, user=user1, squad_picture=squad_picture, profile_picture=profile_picture, title=title)
+    return render_template(
+        "team_profile.html",
+        currentteam=currentteam,
+        team=baseteam,
+        user=user1,
+        squad_picture=squad_picture,
+        profile_picture=profile_picture,
+        title=title,
+    )
 
 
 # Delete Player function, returns user to players page
@@ -564,7 +736,7 @@ def delete_player(team_id, player_id):
 
 # Save Picture Function, for profile pictures
 def save_picture(form_picture, x):
-    # This randomises the file name so 2 files can be uploaded with the same name
+    # This randomises the file name so 2 same name files can be uploaded
     random_hex = secrets.token_hex(8)
     # This gets the file extension type
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -572,7 +744,8 @@ def save_picture(form_picture, x):
     picture_fn = random_hex + f_ext
     # Location of file save
     picture_path = os.path.join(
-        app.root_path, 'static/images/profile_pics', picture_fn)
+        app.root_path, "static/images/profile_pics", picture_fn
+    )
 
     # For user profile
     if x == 1:
@@ -597,7 +770,8 @@ def user_edit(username):
         user = User.query.filter_by(username=username).first()
         team1 = Team.query.filter_by(team_name=user.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user.profile_picture)
+            "static", filename="images/profile_pics/" + user.profile_picture
+        )
         form = UpdateProfilePicture()
 
         # This if statement stops the user from being able
@@ -613,38 +787,68 @@ def user_edit(username):
 
             # Checking for errors
             if form.picture.errors:
-                return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form)
+                return render_template(
+                    "user_edit.html",
+                    user=user,
+                    team=team1,
+                    profile_picture=profile_picture,
+                    form=form,
+                )
 
             if form.picture.data:
                 # Deletes last image
-                if user.profile_picture != 'default_manager.webp':
-                    os.remove(os.path.join(app.root_path,
-                                           'static/images/profile_pics', user.profile_picture))
+                if user.profile_picture != "default_manager.webp":
+                    os.remove(
+                        os.path.join(
+                            app.root_path,
+                            "static/images/profile_pics",
+                            user.profile_picture,
+                        )
+                    )
                 current = request.form.get("confirm_password")
                 # This code checks that the password is correct
                 if check_password_hash(user.password, current):
-                    if request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress:
+                    if (
+                        request.form.get("emailaddress") == ""
+                        or request.form.get("emailaddress")
+                        == user.emailaddress
+                    ):
                         # When changing picture only
                         if request.form.get("password") == "":
                             picture_file = save_picture(form.picture.data, 1)
                             user.profile_picture = picture_file
                             db.session.commit()
                             profile_picture = url_for(
-                                'static', filename='images/profile_pics/' + user.profile_picture)
+                                "static",
+                                filename="images/profile_pics/"
+                                + user.profile_picture,
+                            )
                             flash("Profile picture changed")
-                            return redirect(url_for("user_profile", username=username))
+                            return redirect(
+                                url_for("user_profile", username=username)
+                            )
                         # When Changing picture and password
                         else:
                             picture_file = save_picture(form.picture.data, 1)
                             user.profile_picture = picture_file
                             user.password = generate_password_hash(
-                                request.form.get("password"))
+                                request.form.get("password")
+                            )
                             db.session.commit()
                             profile_picture = url_for(
-                                'static', filename='images/profile_pics/' + user.profile_picture)
+                                "static",
+                                filename="images/profile_pics/"
+                                + user.profile_picture,
+                            )
                             flash("Profile picture and password changed")
-                            return redirect(url_for("user_profile", username=username))
-                    elif request.form.get("emailaddress") != "" or request.form.get("emailaddress") != user.emailaddress:
+                            return redirect(
+                                url_for("user_profile", username=username)
+                            )
+                    elif (
+                        request.form.get("emailaddress") != ""
+                        or request.form.get("emailaddress")
+                        != user.emailaddress
+                    ):
                         # Changing picture and email
                         if request.form.get("password") == "":
                             picture_file = save_picture(form.picture.data, 1)
@@ -652,18 +856,27 @@ def user_edit(username):
                             # Checking email address is not already taken
                             emailaddress = request.form.get("emailaddress")
                             email_object = User.query.filter_by(
-                                emailaddress=emailaddress).first()
+                                emailaddress=emailaddress
+                            ).first()
                             if email_object:
                                 flash("Email address is taken")
-                                return redirect(url_for("user_profile", username=username))
+                                return redirect(
+                                    url_for("user_profile", username=username)
+                                )
 
                             user.emailaddress = request.form.get(
-                                "emailaddress")
+                                "emailaddress"
+                            )
                             db.session.commit()
                             profile_picture = url_for(
-                                'static', filename='images/profile_pics/' + user.profile_picture)
+                                "static",
+                                filename="images/profile_pics/"
+                                + user.profile_picture,
+                            )
                             flash("Profile picture and email address changed")
-                            return redirect(url_for("user_profile", username=username))
+                            return redirect(
+                                url_for("user_profile", username=username)
+                            )
                         # When changing all three pieces of data
                         else:
                             picture_file = save_picture(form.picture.data, 1)
@@ -671,21 +884,32 @@ def user_edit(username):
                             # Checking email address is not already taken
                             emailaddress = request.form.get("emailaddress")
                             email_object = User.query.filter_by(
-                                emailaddress=emailaddress).first()
+                                emailaddress=emailaddress
+                            ).first()
                             if email_object:
                                 flash("Email address is taken")
-                                return redirect(url_for("user_profile", username=username))
+                                return redirect(
+                                    url_for("user_profile", username=username)
+                                )
 
                             user.emailaddress = request.form.get(
-                                "emailaddress")
+                                "emailaddress"
+                            )
                             user.password = generate_password_hash(
-                                request.form.get("password"))
+                                request.form.get("password")
+                            )
                             db.session.commit()
                             profile_picture = url_for(
-                                'static', filename='images/profile_pics/' + user.profile_picture)
+                                "static",
+                                filename="images/profile_pics/"
+                                + user.profile_picture,
+                            )
                             flash(
-                                "Profile picture, password and email address changed")
-                            return redirect(url_for("user_profile", username=username))
+                                "Profile picture, password and email changed"
+                            )
+                            return redirect(
+                                url_for("user_profile", username=username)
+                            )
 
             # Checking the 'New Password' field
             if request.form.get("password") != "":
@@ -693,43 +917,63 @@ def user_edit(username):
                 # This code checks that the password is correct
                 if check_password_hash(user.password, current):
                     # Changing password only
-                    if request.form.get("emailaddress") == "" or request.form.get("emailaddress") == user.emailaddress:
+                    if (
+                        request.form.get("emailaddress") == ""
+                        or request.form.get("emailaddress")
+                        == user.emailaddress
+                    ):
                         user.password = generate_password_hash(
-                            request.form.get("password"))
+                            request.form.get("password")
+                        )
                         db.session.commit()
                         flash("User password has been changed ")
-                        return redirect(url_for("user_profile", username=username))
+                        return redirect(
+                            url_for("user_profile", username=username)
+                        )
                     # Changing email and password
                     else:
                         # Checking email address is not already taken
                         emailaddress = request.form.get("emailaddress")
                         email_object = User.query.filter_by(
-                            emailaddress=emailaddress).first()
+                            emailaddress=emailaddress
+                        ).first()
                         if email_object:
                             flash("Email address is taken")
-                            return redirect(url_for("user_profile", username=username))
+                            return redirect(
+                                url_for("user_profile", username=username)
+                            )
 
                         user.emailaddress = request.form.get("emailaddress")
                         user.password = generate_password_hash(
-                            request.form.get("password"))
+                            request.form.get("password")
+                        )
                         db.session.commit()
-                        flash("User password and email address have been changed ")
-                        return redirect(url_for("user_profile", username=username))
+                        flash(
+                            "User password and email address have been changed"
+                        )
+                        return redirect(
+                            url_for("user_profile", username=username)
+                        )
                 else:
                     # If password is incorrect
                     flash("Your current password is incorrect")
 
             # Changing email only
-            elif request.form.get("password") == "" and request.form.get("emailaddress") != "" and request.form.get("emailaddress") != user.emailaddress:
+            elif (
+                request.form.get("password") == ""
+                and request.form.get("emailaddress") != ""
+                and request.form.get("emailaddress") != user.emailaddress
+            ):
                 # Checking email address is not already taken
                 emailaddress = request.form.get("emailaddress")
                 email_object = User.query.filter_by(
-                    emailaddress=emailaddress).first()
+                    emailaddress=emailaddress
+                ).first()
                 if email_object:
                     flash("Email address is taken")
                     return redirect(url_for("user_profile", username=username))
 
-                # We still need to run the code that checks the current password is correct
+                # Check the current password is correct
                 current = request.form.get("confirm_password")
                 if check_password_hash(user.password, current):
                     user.emailaddress = request.form.get("emailaddress")
@@ -752,7 +996,14 @@ def user_edit(username):
         flash("You are not logged in.")
         return redirect(url_for("log_in"))
     title = "Edit User"
-    return render_template("user_edit.html", user=user, team=team1, profile_picture=profile_picture, form=form, title=title)
+    return render_template(
+        "user_edit.html",
+        user=user,
+        team=team1,
+        profile_picture=profile_picture,
+        form=form,
+        title=title,
+    )
 
 
 # Delete User Function, returns user to log in page
@@ -786,17 +1037,26 @@ def delete_user_picture(user_id):
         user = User.query.filter_by(id=user_id).first()
         if session["user"] == user.username:
             # Code to delete current image
-            if user.profile_picture != 'default_manager.webp':
-                os.remove(os.path.join(app.root_path,
-                                       'static/images/profile_pics', user.profile_picture))
-                user.profile_picture = 'default_manager.webp'
+            if user.profile_picture != "default_manager.webp":
+                os.remove(
+                    os.path.join(
+                        app.root_path,
+                        "static/images/profile_pics",
+                        user.profile_picture,
+                    )
+                )
+                user.profile_picture = "default_manager.webp"
                 db.session.commit()
                 flash("Profile picture removed")
-                return redirect(url_for("user_profile", username=session["user"]))
+                return redirect(
+                    url_for("user_profile", username=session["user"])
+                )
             else:
                 # To stop the default images leaving repository
                 flash("Cannot delete default picture")
-                return redirect(url_for("user_profile", username=session["user"]))
+                return redirect(
+                    url_for("user_profile", username=session["user"])
+                )
         else:
             # If you are not user
             flash("Cannot remove another users picture.")
@@ -816,10 +1076,15 @@ def delete_squad_picture(team_id):
         team = Team.query.get_or_404(team_id)
         if user.id == team.users_id:
             # Code to delete current image
-            if team.profile_picture != 'default_squad.webp':
-                os.remove(os.path.join(app.root_path,
-                                       'static/images/profile_pics', team.profile_picture))
-                team.profile_picture = 'default_squad.webp'
+            if team.profile_picture != "default_squad.webp":
+                os.remove(
+                    os.path.join(
+                        app.root_path,
+                        "static/images/profile_pics",
+                        team.profile_picture,
+                    )
+                )
+                team.profile_picture = "default_squad.webp"
                 db.session.commit()
                 flash("Squad picture removed")
                 return redirect(url_for("team_profile", id=team.id))
@@ -843,7 +1108,7 @@ def live_scores():
     # API Token to make the API accessible
     token = os.environ.get("API_KEY")
     headers = {
-        'X-Auth-Token': token,
+        "X-Auth-Token": token,
     }
 
     # Log in check, to display correct navbar information
@@ -851,7 +1116,8 @@ def live_scores():
         user1 = User.query.filter_by(username=session["user"]).first()
         baseteam = Team.query.filter_by(team_name=user1.team_managed).first()
         profile_picture = url_for(
-            'static', filename='images/profile_pics/' + user1.profile_picture)
+            "static", filename="images/profile_pics/" + user1.profile_picture
+        )
     else:
         # If not logged in
         user1 = "None"
@@ -862,7 +1128,8 @@ def live_scores():
     present = datetime.now()
     presentstring = present.strftime("%d/%m/%Y")
     data = requests.get(
-        'https://api.football-data.org/v4/matches', headers=headers).json()
+        "https://api.football-data.org/v4/matches", headers=headers
+    ).json()
     if request.method == "POST":
         if request.form.get("match_date") == "":
             flash("Please select a date")
@@ -871,13 +1138,15 @@ def live_scores():
         # Look at the date entered
         date_str = request.form.get("match_date")
         # Specify its format, ready to turn into a date from a string
-        date_format = '%d/%m/%Y'
+        date_format = "%d/%m/%Y"
         # Turn into a date
         date_obj = datetime.strptime(date_str, date_format)
         # Now that it's a date, rearrange to how it's needed for the URL
         date = date_obj.strftime("%Y-%m-%d")
         data = requests.get(
-            f'https://api.football-data.org/v4/matches/?date={date}', headers=headers).json()
+            f"https://api.football-data.org/v4/matches/?date={date}",
+            headers=headers,
+        ).json()
 
         # Checking date is not in the future
         present = datetime.now()
@@ -886,11 +1155,22 @@ def live_scores():
             flash("Cannot select future date.")
             return redirect(url_for("live_scores"))
 
-    if 'matches' in data:
-        matches = data['matches']
+    if "matches" in data:
+        matches = data["matches"]
     else:
-        flash("You have run out of requests, try closing and re-opening the window.")
+        flash(
+            "You have run out of requests, try refreshing the page"
+        )
         return redirect(url_for("live_scores"))
 
     title = "Live Scores"
-    return render_template("live_scores.html", data=data, matches=matches, present=presentstring, user=user1, team=baseteam, profile_picture=profile_picture, title=title)
+    return render_template(
+        "live_scores.html",
+        data=data,
+        matches=matches,
+        present=presentstring,
+        user=user1,
+        team=baseteam,
+        profile_picture=profile_picture,
+        title=title,
+    )

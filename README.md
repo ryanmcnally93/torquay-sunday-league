@@ -780,6 +780,8 @@ I struggled with the boxing of the matches and splitting them by competition, as
 
 - The run.py, env.py, .gitignore, **init**.py, models.py and routes.py files were initially created by following the code institute tutorials, and making necessary changes and updates to adapt the code to my website.
 
+- I found the "Black" auto python formatter on [Python Morsels.](https://www.pythonmorsels.com/breaking-long-lines-code-python/#:~:text=Summary,allows%20for%20implicit%20line%20continuation.)
+
 ### Web Tools
 
 - To integrate user authentication on Postgres, I coded along with <a href="https://www.youtube.com/watch?v=7EeAZx78P2U" target="_blank">this YouTube video</a>, by user "Sandeep Sudhakaran", making my own changes for my site to function.
