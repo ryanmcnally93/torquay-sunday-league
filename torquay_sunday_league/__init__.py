@@ -19,3 +19,5 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
 db = SQLAlchemy(app)
+
+from torquay_sunday_league import routes
